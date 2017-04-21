@@ -1,6 +1,6 @@
 # EVT Tally Function
 # The function Will determine the number of observations per EVT
-# Results will help determine which evts are used for following :
+# Results will help determine which evts are used for following:
 # pair correlations, higher dimensional analysis and potential distribution fitting.
 # The function creates tally of all observations per evt, and graphs the tally
 # min.tally is the minimum # of obs and will help determine how many evts are used

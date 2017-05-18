@@ -5,7 +5,7 @@
 # the file.inputname must be known in order to read the distribution fitting summary
 
 
-distfit.rank.fn<-function(evts,useFile=FALSE,evt.fits,file.inputname="DistFitSummaryEVT",write.file=FALSE,file.outputname="DistFitRankEVT")
+distfit.rank.fn<-function(evts,file.inputname="DistFitSummaryEVT",write.file=FALSE,file.outputname="DistFitRankEVT")
 {
   # loading LL results
   DistFitSum<-list()
@@ -17,15 +17,11 @@ distfit.rank.fn<-function(evts,useFile=FALSE,evt.fits,file.inputname="DistFitSum
 
   for(i in 1:length(evts))
   {
-    if(useFile)
-    {
     # reading distribution fitting summary csv
     DistFitSum[[i]]<-read.csv(paste(file.inputname,evts[i],".csv",sep=""))
     
-    }
-    else
-      DistFitSum[[i]]<-evt.fits[[i]]
-    DistFitRank[[i]]<-data.frame(fueltype=names(AllLoads)[3:ncol(AllLoads)],dist.LL=NA,tie=0,dist1.fit=NA,dist2.fit=NA,dist3.fit=NA,dist4.fit=NA)
+    DistFitRank[[i]]<-data.frame(fueltype=names(data.file)[3:ncol(AllLoads)],dist.LL=NA,tie=0,dist1.fit=NA,dist2.fit=NA,dist3.fit=NA,dist4.fit=NA)
+    
     dist.type<-as.data.frame(DistFitSum[[i]])
     
     for(j in 1:nrow(dist.type))

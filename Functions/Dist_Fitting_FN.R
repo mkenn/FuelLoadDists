@@ -7,18 +7,18 @@
 # After the function, there is script to create additional graphics to be use in presenations
 
 
-dist.fit.fn<-function(data,evts,evt.col="LFEVTGroupCd_FINAL",start.col=3,cur.cols=c(start.col:ncol(data)),min.plot=30,write.file=FALSE,file.name="DistFitSummaryEVT")
+dist.fit.fn<-function(data.file,evts,evt.col,start.col,cur.cols=c(start.col:ncol(data)),min.plot=30,write.file=FALSE,file.name="DistFitSummaryEVT")
 {
   distfit.df<-list()
 
   for(i in 1:length(evts))
   {
     # summary dataframe
-    distfit.df[[i]]<-data.frame(fueltype=names(data)[cur.cols],normLL=NA,norm.mu=NA,norm.sigma=NA,lgnormLL=NA,lnorm.mu=NA,lnorm.sigma=NA,gammaLL=NA,gamma.shape=NA,gamma.rate=NA,weibullLL=NA,weibull.shape=NA,weibull.scale=NA)
+    distfit.df[[i]]<-data.frame(fueltype=names(data.file)[cur.cols],normLL=NA,norm.mu=NA,norm.sigma=NA,lgnormLL=NA,lnorm.mu=NA,lnorm.sigma=NA,gammaLL=NA,gamma.shape=NA,gamma.rate=NA,weibullLL=NA,weibull.shape=NA,weibull.scale=NA)
     
     for(j in cur.cols)
     {
-      tmp.loads<-data[data[,evt.col]==evts[i],j]
+      tmp.loads<-data.file[.file[,evt.col]==evts[i],j]
       cur.loads.vals<-tmp.loads[!is.na(tmp.loads)&tmp.loads>0]
       
       if(length(cur.loads.vals)>min.plot)

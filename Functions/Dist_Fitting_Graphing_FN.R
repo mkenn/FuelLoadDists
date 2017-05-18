@@ -5,13 +5,13 @@
 # The minimum plot value was arbitrarily chosen
 
 
-dist.fit.graph.fn<-function(data,evts,evt.col="LFEVTGroupCd_FINAL",start.col=3,cur.cols=c(start.col:ncol(data)),min.plot=30,file.name="DistFitGraphEVT")
+dist.fit.graph.fn<-function(data.file,evts,evt.col,start.col,cur.cols=c(start.col:ncol(data)),min.plot=30,file.name="DistFitGraphEVT")
 {
   for(k in 1:length(evts))
   {
-    tmp.loads<-data[data[,evt.col]==evts[k],]
+    tmp.loads<-data.file[data.file[,evt.col]==evts[k],]
     
-    tally.var<-data.frame(fueltype=names(data)[cur.cols],tally=NA)
+    tally.var<-data.frame(fueltype=names(data.file)[cur.cols],tally=NA)
     
     # writing graphs to a pdf
     pdf(file=paste(file.name,evts[k],".pdf",sep=""))

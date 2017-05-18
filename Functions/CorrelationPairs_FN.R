@@ -52,10 +52,11 @@ corrpairs.fn<-function(data.file,evts,start.col,evt.col,min.co=10,write.file.coo
     names(corr.list[[i]])<-names(data.file)[start.col:ncol(data.file)]
     row.names(corr.list[[i]])<-names(data.file)[start.col:ncol(data.file)]
     
-    pdf(file=paste("Graph_",evts,".pdf",sep = ""))
-    {
-      plot(AllLoads[,15],AllLoads[,16],main="Correlation_",names(data.file),"_and_",names(data.file),pch=1,xlab="duff_loading",ylab="duff_depth")
-    }
+    pdf(file=paste("Graph_",evts,".pdf",sep = "")) # edit to loop through evts, so one evt per page
+    {# use par(mfrow=c(,)) to put multiple pairs on each page, and only include those with the minimum co-occurrence
+         plot(data.file[,15],data.file[,16],main=paste("Correlation_",names(data.file)[15],"_and_",names(data.file)[16]),pch=1,xlab=names(data.file)[15],ylab=names(data.file)[16])
+        # replace 15 & 16 with the column numbers for the current plot
+      }
     dev.off()
     
     #if(write.file.corr)

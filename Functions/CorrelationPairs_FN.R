@@ -6,7 +6,7 @@
 # this will determine the correlation between different pairs in the dataset
 # the minimum co-occurence was arbitrarily chosen
 
-corrpairs.fn<-function(data.file,evts,start.col,evt.col,min.co=10,write.file.cooccur=FALSE,cooccur.filename="Co-occurence_EVT",write.file.corr=FALSE,corr.filename="Correlation_EVT")
+corrpairs.fn<-function(start.col,data.file,evts,evt.col=2,min.co=10,write.file.cooccur=FALSE,cooccur.filename="Co-occurence_EVT",write.file.corr=FALSE,corr.filename="Correlation_EVT")
 {
   cooccur.list<-list()
   corr.list<-list()
@@ -44,8 +44,8 @@ corrpairs.fn<-function(data.file,evts,start.col,evt.col,min.co=10,write.file.coo
     names(cooccur.list[[i]])<-names(data.file)[start.col:ncol(data.file)]
     row.names(cooccur.list[[i]])<-names(data.file)[start.col:ncol(data.file)]
     
-    if(write.file.cooccur)
-      write.csv(cooccur.list[[i]],file=paste(cooccur.filename,evts[i],".csv",sep=""))
+     if(write.file.cooccur)
+       write.csv(cooccur.list[[i]],file=paste(cooccur.filename,evts[i],".csv",sep=""))
     
     # writing correlation to csv
     corr.list[[i]]<-as.data.frame(corr.list[[i]])

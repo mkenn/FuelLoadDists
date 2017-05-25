@@ -5,7 +5,7 @@
 # The minimum plot value was arbitrarily chosen
 
 
-dist.fit.graph.fn<-function(data.file,evts,evt.col,start.col,cur.cols=c(start.col:ncol(data)),min.plot=30,file.name="DistFitGraphEVT")
+dist.fit.graph.fn<-function(data.file,evts,evt.col,start.col,cur.cols=c(start.col:ncol(data.file)),min.plot=30,file.name="DistFitGraphEVT")
 {
   for(k in 1:length(evts))
   {

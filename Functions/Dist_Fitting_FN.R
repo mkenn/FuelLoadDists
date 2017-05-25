@@ -7,7 +7,7 @@
 # After the function, there is script to create additional graphics to be use in presenations
 
 
-dist.fit.fn<-function(data.file,evts,evt.col,start.col,cur.cols=c(start.col:ncol(data)),min.plot=30,write.file=FALSE,file.name="DistFitSummaryEVT")
+dist.fit.fn<-function(data.file,evts,evt.col,start.col,cur.cols=c(start.col:ncol(data.file)),min.plot=30,write.file=FALSE,file.name="DistFitSummaryEVT")
 {
   distfit.df<-list()
 
@@ -18,7 +18,7 @@ dist.fit.fn<-function(data.file,evts,evt.col,start.col,cur.cols=c(start.col:ncol
     
     for(j in cur.cols)
     {
-      tmp.loads<-data.file[.file[,evt.col]==evts[i],j]
+      tmp.loads<-data.file[data.file[,evt.col]==evts[i],j]
       cur.loads.vals<-tmp.loads[!is.na(tmp.loads)&tmp.loads>0]
       
       if(length(cur.loads.vals)>min.plot)

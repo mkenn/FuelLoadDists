@@ -42,7 +42,6 @@ samo.fn(data.file, evts = 624, start.col = 3)
 #The results are then entered into a dataframe that can compare likelihoods
 #The minimum plot was arbitrarily selected
 #EVT 624 is shown as example
-#After the function, there is script to create additional graphics to be use in presenations
 
 dist.fit.fn(data.file, evts = 624, start.col = 3, write.file = TRUE)
 #####
@@ -55,7 +54,7 @@ dist.fit.fn(data.file, evts = 624, start.col = 3, write.file = TRUE)
 
 dist.fit.graph.fn(data.file, evts = 624, start.col = 3)
 
-#
+#####
 #Distribution Fitting Rank Function
 #This function ranks the likelihood of the distribution fitting function
 #The function reads the results of the Dist_Fitting_FN likelihoods.

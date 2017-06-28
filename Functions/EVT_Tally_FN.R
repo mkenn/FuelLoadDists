@@ -24,7 +24,7 @@ EVT.tally.fn<-function(data.file,evt.col,write.file=FALSE,file.name="EVT_Tally.c
     dev.off()
   }
   
-  return(list(evt.min_tally=EVT.tab[EVT.tab[,2]>min.tally,1],evt.max_tally=EVT.tab[EVT.tab[,2]<max.tally,1]))
+  return(list(evt.tally=EVT.tab,evt.min_tally=EVT.tab[EVT.tab[,2]>min.tally,1],evt.max_tally=EVT.tab[EVT.tab[,2]<max.tally,1]))
   #return(EVT.tab)
 }
 

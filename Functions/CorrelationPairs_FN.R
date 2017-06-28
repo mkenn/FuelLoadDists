@@ -49,7 +49,7 @@ corrpairs.fn<-function(start.col,data.file,evts,evt.col=2,min.co=10,write.file.c
     
     # writing correlation to csv
     corr.list[[i]]<-as.data.frame(corr.list[[i]])
-    names(corr.list[[i]])<-names(data.file)[start.col:ncol(data.file)]
+  names(corr.list[[i]])<-names(data.file)[start.col:ncol(data.file)]
     row.names(corr.list[[i]])<-names(data.file)[start.col:ncol(data.file)]
     
     #pdf(file=paste("Graph_",evts,".pdf",sep = ""))

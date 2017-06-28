@@ -11,6 +11,8 @@ file.sources<-sapply(file.sources,FUN=function(x) paste("../FuelLoadDists/Functi
 sapply(file.sources,FUN="source")
 #####
 #EVT tally function 
+# arguments: 
+# return objects:
 # MK: assign these to objects so the results are stored in the workspace
 # here and for all function calls
 EVT.tally.fn(data.file, evt.col = "LFEVTGroupCd_FINAL", write.file = TRUE)

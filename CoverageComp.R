@@ -79,8 +79,7 @@ for(i in 10:18)
 }
 
 ######
-# next, account for each fuel loading catgory by expanding the columns in datacomp and including a loop over the fuel category columns, adapting the code above
-
+# next, pretty plots!
 
 
 

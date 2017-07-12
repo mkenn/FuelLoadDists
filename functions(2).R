@@ -4,7 +4,10 @@
 library(fitdistrplus)
 ###########
 # 1. Read in the data
-data.file<-read.csv("../FuelLoadDists/Data/loadingsByEVTGroup_20170328.csv") #substitute filepath and name for local system
+# this is the old data base
+#data.file<-read.csv("../FuelLoadDists/Data/loadingsByEVTGroup_20170328.csv") #substitute filepath and name for local system
+# this is the current database
+data.file<-read.csv("../FuelLoadDists/Data/loadingsByEVTGroup_20170518.csv") #substitute filepath and name for local system
 # 2. Source the function scripts; works if all functions in 1 directory
 file.sources<-list.files("../FuelLoadDists/Functions/") # all functions in this directory
 file.sources<-sapply(file.sources,FUN=function(x) paste("../FuelLoadDists/Functions/",x,sep=""))

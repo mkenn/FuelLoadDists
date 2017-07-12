@@ -13,8 +13,8 @@ samo.fn<-function(data.file,evts,start.col,cur.cols=c(start.col:ncol(data.file))
   
   for(i in 1:length(evts))
   {
-    samo.list[[i]]<-data.frame(fueltypes=names(data.file)[cur.cols],lower.q=NA,upper.q=NA,min=NA,max=NA)
-    
+    samo.list[[i]]<-list(EVT=evts[i],range.vals=data.frame(fueltypes=names(data.file)[cur.cols],lower.q=NA,upper.q=NA,min=NA,max=NA))
+         
     for(j in cur.cols)
     {
       tmp.loads<-data.file[data.file[,evt.col]==evts[i],j]
@@ -22,15 +22,15 @@ samo.fn<-function(data.file,evts,start.col,cur.cols=c(start.col:ncol(data.file))
       
       if(length(cur.loads.vals)>min.n)
       {
-        samo.list[[i]][j-(start.col-1),2]<-quantile(cur.loads.vals,q.lower)
-        samo.list[[i]][j-(start.col-1),3]<-quantile(cur.loads.vals,q.upper)
-        samo.list[[i]][j-(start.col-1),4]<-min(cur.loads.vals)
-        samo.list[[i]][j-(start.col-1),5]<-max(cur.loads.vals)
+        samo.list[[i]][[2]][j-(start.col-1),2]<-quantile(cur.loads.vals,q.lower)
+        samo.list[[i]][[2]][j-(start.col-1),3]<-quantile(cur.loads.vals,q.upper)
+        samo.list[[i]][[2]][j-(start.col-1),4]<-min(cur.loads.vals)
+        samo.list[[i]][[2]][j-(start.col-1),5]<-max(cur.loads.vals)
       }
       
       if(write.file)
       {
-        write.csv(samo.list[[i]],file=paste(file.name,evts[i],"minQ",q.lower,"maxQ",q.upper,".csv",sep=""),row.names=FALSE)
+        write.csv(samo.list[[i]][[2]],file=paste(file.name,evts[i],"minQ",q.lower,"maxQ",q.upper,".csv",sep=""),row.names=FALSE)
       }
     }
   }

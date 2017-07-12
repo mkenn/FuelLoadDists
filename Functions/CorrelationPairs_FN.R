@@ -10,8 +10,50 @@ corrpairs.fn<-function(start.col,data.file,evts,evt.col=2,min.co=10,write.file.c
 {
   cooccur.list<-list()
   corr.list<-list()
-  
-  for(i in 1:length(evts))
+  if(is.na(evts)) # calculate correlations for whole database regardless
+  {
+    cooccur.list[[1]]<-matrix(NA,nrow=30,ncol=30)
+    corr.list[[1]]<-matrix(NA,nrow=30,ncol=30)
+    
+    tmp.loads<-data.file
+    for(j in 3:(ncol(data.file)-1))
+    {
+      tmp.load1<-tmp.loads[!is.na(tmp.loads[,j]),]
+      for(k in (j+1):ncol(data.file)) 
+      {
+        tmp.load2<-tmp.load1[!is.na(tmp.load1[,k]),1]
+        cooccur.list[[1]][j-2,k-2]<-length(tmp.load2)
+      }
+    }
+    
+    ## correlation
+    cor.id<-which(cooccur.list[[i]]>min.co,arr.ind=TRUE)
+    
+    for(l in 1:length(cor.id[,1]))
+    {
+      curloads<-tmp.loads[,c(cor.id[l,1]+2,cor.id[l,2]+2)]
+      curloads<-curloads[!is.na(curloads[,1])&!is.na(curloads[,2]),]
+      corr.list[[1]][cor.id[l,1],cor.id[l,2]]<-cor(x=curloads[,1],y=curloads[,2])
+    }
+    
+    # writing cooccurence to csv
+    cooccur.list[[1]]<-as.data.frame(cooccur.list[[1]])
+    names(cooccur.list[[1]])<-names(data.file)[start.col:ncol(data.file)]
+    row.names(cooccur.list[[1]])<-names(data.file)[start.col:ncol(data.file)]
+    
+    if(write.file.cooccur)
+      write.csv(cooccur.list[[1]],file=paste(cooccur.filename,".csv",sep=""))
+    
+    # writing correlation to csv
+    corr.list[[1]]<-as.data.frame(corr.list[[1]])
+    names(corr.list[[1]])<-names(data.file)[start.col:ncol(data.file)]
+    row.names(corr.list[[1]])<-names(data.file)[start.col:ncol(data.file)]
+    
+    
+  }
+  else
+  {  
+    for(i in 1:length(evts))
   {
     cooccur.list[[i]]<-matrix(NA,nrow=30,ncol=30)
     corr.list[[i]]<-matrix(NA,nrow=30,ncol=30)
@@ -62,6 +104,7 @@ corrpairs.fn<-function(start.col,data.file,evts,evt.col=2,min.co=10,write.file.c
       #write.csv(corr.list[[i]],file=paste(corr.filename,evts[i],".csv",sep=""))
     
   }
+    }
   return(corr.list[[i]])
 }
 

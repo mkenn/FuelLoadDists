@@ -57,6 +57,7 @@ names(datacomp)<-c("evt","dataobs","cover",names(data.file)[cur.cols])
 # this feels like it should be in the table - gives descriptive information about what the pixel coverage is for each evt and its total number of observations
 datacomp$coverProp<-datacomp$cover/sum(as.numeric(datacomp$cover))
 
+#####
 plot(datacomp$coverProp,datacomp$dataobs,ylim=c(0,500),xlim=c(0,.05))
 
 # determining what the holes are, if proportion is less than a set amount and less than a set of observations
@@ -78,8 +79,33 @@ for(i in 10:18)
        ylim=c(0,500),xlim=c(0,.05))
 }
 
+# pretty plots - 3x3
+# saving graphs to pdf - probably want to save as postscript
+#####
+num.obs=c(0,500)
+cov.pro=c(0,0.05)
+
+pdf(file="DatabaseCoveragePlots.pdf")
+
+par(mfrow=c(3,3))
+for(i in 1:9)
+{
+  plot(datacomp$coverProp,datacomp[,i+3],ylab=names(datacomp)[i+3],xlab = "Coverage Proportion",
+       ylim=num.obs,xlim=cov.pro)
+}
+
+for(i in 10:18)
+{
+  plot(datacomp$coverProp,datacomp[,i+3],ylab=names(datacomp)[i+3],xlab = "Coverage Proportion",
+       ylim=num.obs,xlim=cov.pro)
+}
+dev.off()
+
+
+# MUST CLEAN UP SCRIPT
 ######
 # next, pretty plots!
+
 
 
 

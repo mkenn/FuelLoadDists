@@ -6,7 +6,7 @@
 # this will determine the correlation between different pairs in the dataset
 # the minimum co-occurence was arbitrarily chosen
 
-corrpairs.fn<-function(start.col,data.file,evts,evt.col=2,min.co=10,write.file.cooccur=FALSE,cooccur.filename="Co-occurence_EVT",write.file.corr=FALSE,corr.filename="Correlation_EVT")
+corrpairs.fn<-function(start.col,data.file,evts=NA,evt.col=2,min.co=10,write.file.cooccur=FALSE,cooccur.filename="Co-occurence_EVT",write.file.corr=FALSE,corr.filename="Correlation_EVT")
 {
   cooccur.list<-list()
   corr.list<-list()
@@ -34,7 +34,8 @@ corrpairs.fn<-function(start.col,data.file,evts,evt.col=2,min.co=10,write.file.c
     {
       curloads<-tmp.loads[,c(cor.id[l,1]+2,cor.id[l,2]+2)]
       curloads<-curloads[!is.na(curloads[,1])&!is.na(curloads[,2]),]
-      corr.list[[1]][cor.id[l,1],cor.id[l,2]]<-cor(x=curloads[,1],y=curloads[,2])
+      if(sd(curloads[,1])>0&sd(curloads[,2])>0)
+        corr.list[[1]][cor.id[l,1],cor.id[l,2]]<-cor(x=curloads[,1],y=curloads[,2])
     }
     
     # writing cooccurence to csv
@@ -54,58 +55,58 @@ corrpairs.fn<-function(start.col,data.file,evts,evt.col=2,min.co=10,write.file.c
   else
   {  
     for(i in 1:length(evts))
-  {
-    cooccur.list[[i]]<-matrix(NA,nrow=30,ncol=30)
-    corr.list[[i]]<-matrix(NA,nrow=30,ncol=30)
-    
-    tmp.loads<-data.file[data.file[,evt.col]==evts[i],]
-    
-    ## co-occurence
-    for(j in 3:(ncol(data.file)-1))
     {
-      tmp.load1<-tmp.loads[!is.na(tmp.loads[,j]),]
-      for(k in (j+1):ncol(data.file)) 
+      cooccur.list[[i]]<-matrix(NA,nrow=30,ncol=30)
+      corr.list[[i]]<-matrix(NA,nrow=30,ncol=30)
+      
+      tmp.loads<-data.file[data.file[,evt.col]==evts[i],]
+      
+      ## co-occurence
+      for(j in 3:(ncol(data.file)-1))
       {
-        tmp.load2<-tmp.load1[!is.na(tmp.load1[,k]),1]
-        cooccur.list[[i]][j-2,k-2]<-length(tmp.load2)
+        tmp.load1<-tmp.loads[!is.na(tmp.loads[,j]),]
+        for(k in (j+1):ncol(data.file)) 
+        {
+          tmp.load2<-tmp.load1[!is.na(tmp.load1[,k]),1]
+          cooccur.list[[i]][j-2,k-2]<-length(tmp.load2)
+        }
       }
+      
+      ## correlation
+      cor.id<-which(cooccur.list[[i]]>min.co,arr.ind=TRUE)
+      
+      for(l in 1:length(cor.id[,1]))
+      {
+        curloads<-tmp.loads[,c(cor.id[l,1]+2,cor.id[l,2]+2)]
+        curloads<-curloads[!is.na(curloads[,1])&!is.na(curloads[,2]),]
+        corr.list[[i]][cor.id[l,1],cor.id[l,2]]<-cor(x=curloads[,1],y=curloads[,2])
+      }
+      
+      # writing cooccurence to csv
+      cooccur.list[[i]]<-as.data.frame(cooccur.list[[i]])
+      names(cooccur.list[[i]])<-names(data.file)[start.col:ncol(data.file)]
+      row.names(cooccur.list[[i]])<-names(data.file)[start.col:ncol(data.file)]
+      
+       if(write.file.cooccur)
+         write.csv(cooccur.list[[i]],file=paste(cooccur.filename,evts[i],".csv",sep=""))
+      
+      # writing correlation to csv
+      corr.list[[i]]<-as.data.frame(corr.list[[i]])
+    names(corr.list[[i]])<-names(data.file)[start.col:ncol(data.file)]
+      row.names(corr.list[[i]])<-names(data.file)[start.col:ncol(data.file)]
+      
+      #pdf(file=paste("Graph_",evts,".pdf",sep = ""))
+      #{
+        #plot(AllLoads[,15],AllLoads[,16],main="Correlation_",names(data.file),"_and_",names(data.file),pch=1,xlab="duff_loading",ylab="duff_depth")
+      #}
+      #dev.off()
+      
+      #if(write.file.corr)
+        #write.csv(corr.list[[i]],file=paste(corr.filename,evts[i],".csv",sep=""))
+      
     }
-    
-    ## correlation
-    cor.id<-which(cooccur.list[[i]]>min.co,arr.ind=TRUE)
-    
-    for(l in 1:length(cor.id[,1]))
-    {
-      curloads<-tmp.loads[,c(cor.id[l,1]+2,cor.id[l,2]+2)]
-      curloads<-curloads[!is.na(curloads[,1])&!is.na(curloads[,2]),]
-      corr.list[[i]][cor.id[l,1],cor.id[l,2]]<-cor(x=curloads[,1],y=curloads[,2])
-    }
-    
-    # writing cooccurence to csv
-    cooccur.list[[i]]<-as.data.frame(cooccur.list[[i]])
-    names(cooccur.list[[i]])<-names(data.file)[start.col:ncol(data.file)]
-    row.names(cooccur.list[[i]])<-names(data.file)[start.col:ncol(data.file)]
-    
-     if(write.file.cooccur)
-       write.csv(cooccur.list[[i]],file=paste(cooccur.filename,evts[i],".csv",sep=""))
-    
-    # writing correlation to csv
-    corr.list[[i]]<-as.data.frame(corr.list[[i]])
-  names(corr.list[[i]])<-names(data.file)[start.col:ncol(data.file)]
-    row.names(corr.list[[i]])<-names(data.file)[start.col:ncol(data.file)]
-    
-    #pdf(file=paste("Graph_",evts,".pdf",sep = ""))
-    #{
-      #plot(AllLoads[,15],AllLoads[,16],main="Correlation_",names(data.file),"_and_",names(data.file),pch=1,xlab="duff_loading",ylab="duff_depth")
-    #}
-    #dev.off()
-    
-    #if(write.file.corr)
-      #write.csv(corr.list[[i]],file=paste(corr.filename,evts[i],".csv",sep=""))
-    
   }
-    }
-  return(corr.list[[i]])
+  return(corr.list)
 }
 
 

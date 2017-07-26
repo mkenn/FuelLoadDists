@@ -10,6 +10,7 @@ corrpairs.fn<-function(start.col,data.file,evts,evt.col=2,min.co=10,write.file.c
 {
   cooccur.list<-list()
   corr.list<-list()
+  
   if(is.na(evts)) # calculate correlations for whole database regardless
   {
     cooccur.list[[1]]<-matrix(NA,nrow=30,ncol=30)
@@ -27,7 +28,7 @@ corrpairs.fn<-function(start.col,data.file,evts,evt.col=2,min.co=10,write.file.c
     }
     
     ## correlation
-    cor.id<-which(cooccur.list[[i]]>min.co,arr.ind=TRUE)
+    cor.id<-which(cooccur.list[[1]]>min.co,arr.ind=TRUE)
     
     for(l in 1:length(cor.id[,1]))
     {
@@ -48,9 +49,8 @@ corrpairs.fn<-function(start.col,data.file,evts,evt.col=2,min.co=10,write.file.c
     corr.list[[1]]<-as.data.frame(corr.list[[1]])
     names(corr.list[[1]])<-names(data.file)[start.col:ncol(data.file)]
     row.names(corr.list[[1]])<-names(data.file)[start.col:ncol(data.file)]
-    
-    
   }
+  
   else
   {  
     for(i in 1:length(evts))

@@ -82,17 +82,17 @@ for(i in 10:18)
 # pretty plots - 3x3
 # saving graphs to pdf - probably want to save as postscript
 #####
-num.obs=c(0,500)
+num.obs=c(0,100)
 cov.pro=c(0,0.05)
 
-pdf(file="DatabaseCoveragePlots.pdf")
+pdf(file="DatabaseCoveragePlots_observation100.pdf")
 
 postscript(file="DatabaseCoveragePlots1.eps",height=8,width=10,onefile=F,horizontal=F)
 par(mfrow=c(3,3),mar=c(3.5,3.5,0.5,0.5),mgp=c(2.5,0.5,0))
 for(i in 1:9)
 {
   plot(datacomp$coverProp,datacomp[,i+3],ylab=names(datacomp)[i+3],xlab = "Coverage Proportion",
-       ylim=num.obs,xlim=cov.pro)
+       ylim=num.obs,xlim=cov.pro,pch=16,cex=0.5)
 }
 dev.off()
 postscript(file="DatabaseCoveragePlots2.eps",height=8,width=10,onefile=F,horizontal=F)
@@ -100,7 +100,7 @@ par(mfrow=c(3,3),mar=c(3.5,3.5,0.5,0.5),mgp=c(2.5,0.5,0))
 for(i in 10:18)
 {
   plot(datacomp$coverProp,datacomp[,i+3],ylab=names(datacomp)[i+3],xlab = "Coverage Proportion",
-       ylim=num.obs,xlim=cov.pro)
+       ylim=num.obs,xlim=cov.pro,pch=16,cex=0.5)
 }
 dev.off()
 
@@ -109,7 +109,11 @@ dev.off()
 ######
 # next, pretty plots!
 
-
+# try less that 100 num.obs
+#to see the pointss
+#cex
+?points
+#pch=16
 
 
 

@@ -87,13 +87,16 @@ cov.pro=c(0,0.05)
 
 pdf(file="DatabaseCoveragePlots.pdf")
 
-par(mfrow=c(3,3))
+postscript(file="DatabaseCoveragePlots1.eps",height=8,width=10,onefile=F,horizontal=F)
+par(mfrow=c(3,3),mar=c(3.5,3.5,0.5,0.5),mgp=c(2.5,0.5,0))
 for(i in 1:9)
 {
   plot(datacomp$coverProp,datacomp[,i+3],ylab=names(datacomp)[i+3],xlab = "Coverage Proportion",
        ylim=num.obs,xlim=cov.pro)
 }
-
+dev.off()
+postscript(file="DatabaseCoveragePlots2.eps",height=8,width=10,onefile=F,horizontal=F)
+par(mfrow=c(3,3),mar=c(3.5,3.5,0.5,0.5),mgp=c(2.5,0.5,0))
 for(i in 10:18)
 {
   plot(datacomp$coverProp,datacomp[,i+3],ylab=names(datacomp)[i+3],xlab = "Coverage Proportion",

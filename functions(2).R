@@ -31,17 +31,19 @@ loadingTallies <- loading.tally.fn(data.file, start.col = 12, write.file = TRUE)
 #Sensitivity Analysis Function 
 #EVT 624 as example
 
-sensitivityAnalysis <- samo.fn(data.file, evts = 624, start.col = 12)
+sensitivityAnalysis <- samo.fn(data.file, evts = EVTTallies$evt.min_tally, start.col = 12)
 #####
 #Distribution Fitting Function
 #EVT 624 is shown as example
 #Minimum plot 100 
 
+distributionFitting <- dist.fit.fn(data.file, evts = EVTTallies$evt.min_tally, start.col = 12, write.file = FALSE, min.plot = 100)
 distributionFitting <- dist.fit.fn(data.file, evts = 624, start.col = 12, write.file = FALSE, min.plot = 100)
+distributionRanking<-distfit.rank.fn(evts = 624,DistFitSum = distributionFitting)
 #####
 #Distribution Fitting Graphing Function
 #EVT 624 as example 
 #Minimum plot 100 
 
-distributionFittingGraph <- dist.fit.graph.fn(data.file, evts = 624, start.col = 12, min.plot = 100)
- 
+dist.fit.graph.fn(data.file, evts = 624, start.col = 12, min.plot = 100)
+# error in running, need to update function with start.col indexing 

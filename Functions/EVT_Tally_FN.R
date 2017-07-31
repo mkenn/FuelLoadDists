@@ -8,9 +8,10 @@
 # both the minimum and maximum were arbitrarily selected
 
 
-EVT.tally.fn<-function(data.file,evt.col,write.file=FALSE,file.name="EVT_Tally.csv",min.tally=1000,max.tally=10,show.plot=FALSE,plot.name="EVT.Tally.Graph.pdf")
+EVT.tally.fn<-function(data.file,evt.col,write.file=FALSE,file.name="EVT_Tally.csv",min.tally=100,max.tally=10,show.plot=FALSE,plot.name="EVT.Tally.Graph.pdf")
 {
   EVT.tab<-as.data.frame(table(data.file[,evt.col]))
+  EVT.tab[,1]<-sort(unique(data.file[,evt.col]))
   
   # EVT tally to csv
   if(write.file)

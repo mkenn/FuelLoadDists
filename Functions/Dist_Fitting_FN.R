@@ -7,13 +7,14 @@
 # After the function, there is script to create additional graphics to be use in presenations
 
 
-dist.fit.fn<-function(data.file,evts,evt.col,start.col,cur.cols=c(start.col:ncol(data.file)),min.plot=30,write.file=FALSE,file.name="DistFitSummaryEVT")
+dist.fit.fn<-function(data.file,evts,evt.col,start.col,min.plot=30,write.file=FALSE,file.name="DistFitSummaryEVT")
 {
   distfit.df<-list()
-
+  cur.cols=c(start.col:ncol(data.file))
   for(i in 1:length(evts))
   {
     # summary dataframe
+    print(paste("starting evt",evts[i]))
     distfit.df[[i]]<-data.frame(fueltype=names(data.file)[cur.cols],normLL=NA,norm.mu=NA,norm.sigma=NA,lgnormLL=NA,lnorm.mu=NA,lnorm.sigma=NA,gammaLL=NA,gamma.shape=NA,gamma.rate=NA,weibullLL=NA,weibull.shape=NA,weibull.scale=NA)
     
     for(j in cur.cols)
@@ -26,34 +27,46 @@ dist.fit.fn<-function(data.file,evts,evt.col,start.col,cur.cols=c(start.col:ncol
         ############# normal ##############
         normal.fit<-fitdist(cur.loads.vals,distr="norm")
         normal.ll<-normal.fit$loglik
-        test.normal<-gofstat(normal.fit)
-        distfit.df[[i]][j-2,2]<-round(normal.ll,digits=0)
-        distfit.df[[i]][j-2,3]<-round(normal.fit$estimate[1],digits=2)
-        distfit.df[[i]][j-2,4]<-round(normal.fit$estimate[2],digits=2)
+      #  test.normal<-gofstat(normal.fit)
+        distfit.df[[i]][j-(start.col-1),2]<-round(normal.ll,digits=0)
+        distfit.df[[i]][j-(start.col-1),3]<-round(normal.fit$estimate[1],digits=2)
+        distfit.df[[i]][j-(start.col-1),4]<-round(normal.fit$estimate[2],digits=2)
+        # distfit.df[[i]][j-2,2]<-round(normal.ll,digits=0)
+        # distfit.df[[i]][j-2,3]<-round(normal.fit$estimate[1],digits=2)
+        # distfit.df[[i]][j-2,4]<-round(normal.fit$estimate[2],digits=2)
         
         ############# lognormal ##############
         lnorm.fit<-fitdist(cur.loads.vals,distr="lnorm")
         lnorm.ll<-lnorm.fit$loglik
-        test.lnorm<-gofstat(lnorm.fit)
-        distfit.df[[i]][j-2,5]<-round(lnorm.ll,digits=0)
-        distfit.df[[i]][j-2,6]<-round(lnorm.fit$estimate[1],digits=2)
-        distfit.df[[i]][j-2,7]<-round(lnorm.fit$estimate[2],digits=2)
+      #  test.lnorm<-gofstat(lnorm.fit)
+        distfit.df[[i]][j-(start.col-1),5]<-round(lnorm.ll,digits=0)
+        distfit.df[[i]][j-(start.col-1),6]<-round(lnorm.fit$estimate[1],digits=2)
+        distfit.df[[i]][j-(start.col-1),7]<-round(lnorm.fit$estimate[2],digits=2)
+        # distfit.df[[i]][j-2,5]<-round(lnorm.ll,digits=0)
+        # distfit.df[[i]][j-2,6]<-round(lnorm.fit$estimate[1],digits=2)
+        # distfit.df[[i]][j-2,7]<-round(lnorm.fit$estimate[2],digits=2)
         
         ############# gamma ##############
         gamma.fit<-fitdist(cur.loads.vals,distr="gamma")
         gamma.ll<-gamma.fit$loglik
-        test.gamma<-gofstat(gamma.fit)
-        distfit.df[[i]][j-2,8]<-round(gamma.ll,digits=0)
-        distfit.df[[i]][j-2,9]<-round(gamma.fit$estimate[1],digits=2)
-        distfit.df[[i]][j-2,10]<-round(gamma.fit$estimate[2],digits=2)
+      #  test.gamma<-gofstat(gamma.fit)
+        distfit.df[[i]][j-(start.col-1),8]<-round(gamma.ll,digits=0)
+        distfit.df[[i]][j-(start.col-1),9]<-round(gamma.fit$estimate[1],digits=2)
+        distfit.df[[i]][j-(start.col-1),10]<-round(gamma.fit$estimate[2],digits=2)
+        # distfit.df[[i]][j-2,8]<-round(gamma.ll,digits=0)
+        # distfit.df[[i]][j-2,9]<-round(gamma.fit$estimate[1],digits=2)
+        # distfit.df[[i]][j-2,10]<-round(gamma.fit$estimate[2],digits=2)
         
         ############# weibull ##############
         weibull.fit<-fitdist(cur.loads.vals,distr="weibull")
         weibull.ll<-weibull.fit$loglik
-        test.weibull<-gofstat(weibull.fit)
-        distfit.df[[i]][j-2,11]<-round(weibull.ll,digits = 0)
-        distfit.df[[i]][j-2,12]<-round(weibull.fit$estimate[1],digits=2)
-        distfit.df[[i]][j-2,13]<-round(weibull.fit$estimate[2],digits=2)
+     #   test.weibull<-gofstat(weibull.fit)
+        distfit.df[[i]][j-(start.col-1),11]<-round(weibull.ll,digits = 0)
+        distfit.df[[i]][j-(start.col-1),12]<-round(weibull.fit$estimate[1],digits=2)
+        distfit.df[[i]][j-(start.col-1),13]<-round(weibull.fit$estimate[2],digits=2)
+        # distfit.df[[i]][j-2,11]<-round(weibull.ll,digits = 0)
+        # distfit.df[[i]][j-2,12]<-round(weibull.fit$estimate[1],digits=2)
+        # distfit.df[[i]][j-2,13]<-round(weibull.fit$estimate[2],digits=2)
         
         if(write.file)
         {

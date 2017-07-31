@@ -7,6 +7,7 @@
 
 dist.fit.graph.fn<-function(data.file,evts,evt.col,start.col,cur.cols=c(start.col:ncol(data.file)),min.plot=30,file.name="DistFitGraphEVT")
 {
+  cur.cols=c(start.col:ncol(data.file))
   for(k in 1:length(evts))
   {
     tmp.loads<-data.file[data.file[,evt.col]==evts[k],]
@@ -18,10 +19,10 @@ dist.fit.graph.fn<-function(data.file,evts,evt.col,start.col,cur.cols=c(start.co
     
     # plotting for each loading based on EVT
     # plot histogram, boxplot, qqplot for each loading
-    for(i in 3:32)
+    for(i in cur.cols)
     {
-      tally.var[i-2,2]<-length(tmp.loads[!is.na(tmp.loads[,i]),3])
-      if(tally.var$tally[i-2]>min.plot)
+      tally.var[i-(start.col-1),2]<-length(tmp.loads[!is.na(tmp.loads[,i]),3])
+      if(tally.var$tally[i-(start.col-1)]>min.plot)
       {
         cur.loads.vals<-tmp.loads[,as.character(tally.var$fueltype)[i-2]]
         par(mfrow=c(2,2))

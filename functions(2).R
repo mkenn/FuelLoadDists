@@ -8,9 +8,12 @@ library(fitdistrplus)
 #data.file<-read.csv("../FuelLoadDists/Data/loadingsByEVTGroup_20170328.csv") #substitute filepath and name for local system
 # this is the current database
 data.file<-read.csv("../FuelLoadDists/Data/loadingsByEVTGroup_20170518.csv") #substitute filepath and name for local system
+data.file<-read.csv("../Data/loadingsByEVTGroup_20170518.csv") #substitute filepath and name for local system
 # 2. Source the function scripts; works if all functions in 1 directory
 file.sources<-list.files("../FuelLoadDists/Functions/") # all functions in this directory
+file.sources<-list.files("../Functions/") # all functions in this directory
 file.sources<-sapply(file.sources,FUN=function(x) paste("../FuelLoadDists/Functions/",x,sep=""))
+file.sources<-sapply(file.sources,FUN=function(x) paste("../Functions/",x,sep=""))
 sapply(file.sources,FUN="source")
 #####
 #EVT tally function 
@@ -33,12 +36,12 @@ samo.fn(data.file, evts = 624, start.col = 12)
 #Distribution Fitting Function
 #EVT 624 is shown as example
 
-dist.fit.fn(data.file, evts = 624, start.col = 12, write.file = FALSE,min.plot=100)
+dist.fit.fn(data.file, evts = 624, start.col = 12,cur.cols=c(12:ncol(data.file)), write.file = FALSE,min.plot=100)
 #####
 #Distribution Fitting Graphing Function
 #EVT 624 as example 
 
-dist.fit.graph.fn(data.file, evts = 624, start.col = 3)
+dist.fit.graph.fn(data.file, evts = 624, start.col = 12,cur.cols=c(12:ncol(data.file)))
 
 #####
 #dist.fit.fn function for evts over 100

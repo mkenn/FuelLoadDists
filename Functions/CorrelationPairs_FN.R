@@ -6,7 +6,7 @@
 # this will determine the correlation between different pairs in the dataset
 # the minimum co-occurence was arbitrarily chosen
 
-corrpairs.fn<-function(start.col,data.file,evts=NA,evt.col=2,min.co=10,write.file.cooccur=FALSE,cooccur.filename="Co-occurence_EVT",write.file.corr=FALSE,corr.filename="Correlation_EVT")
+corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.cooccur=FALSE,cooccur.filename="Co-occurence_EVT",write.file.corr=FALSE,corr.filename="Correlation_EVT")
 {
   cooccur.list<-list()
   corr.list<-list()
@@ -16,14 +16,24 @@ corrpairs.fn<-function(start.col,data.file,evts=NA,evt.col=2,min.co=10,write.fil
     cooccur.list[[1]]<-matrix(NA,nrow=30,ncol=30)
     corr.list[[1]]<-matrix(NA,nrow=30,ncol=30)
     
+    #resaves datafile. WHY?
     tmp.loads<-data.file
-    for(j in 3:(ncol(data.file)-1))
+    
+    
+    for(j in start.col:(ncol(data.file)-1))
     {
+      # this part is not removing the NAs from each column, it does so when it is done by itself, not as the whole for loop
       tmp.load1<-tmp.loads[!is.na(tmp.loads[,j]),]
+    }
       for(k in (j+1):ncol(data.file)) 
       {
         tmp.load2<-tmp.load1[!is.na(tmp.load1[,k]),1]
+        
+        # why is it -2, should it be j-(start.col-1) and k-(start.col-1)
         cooccur.list[[1]][j-2,k-2]<-length(tmp.load2)
+        
+        #cooccur.list[[1]][j-(start.col-1),k-(start.col-1)]<-length(tmp.load2)
+        
       }
     }
     
@@ -62,12 +72,13 @@ corrpairs.fn<-function(start.col,data.file,evts=NA,evt.col=2,min.co=10,write.fil
       tmp.loads<-data.file[data.file[,evt.col]==evts[i],]
       
       ## co-occurence
-      for(j in 3:(ncol(data.file)-1))
+      for(j in start.col:(ncol(data.file)-1))
       {
         tmp.load1<-tmp.loads[!is.na(tmp.loads[,j]),]
+      
         for(k in (j+1):ncol(data.file)) 
         {
-          tmp.load2<-tmp.load1[!is.na(tmp.load1[,k]),1]
+          tmp.load2<-tmp.load1[!is.na(tmp.load1[,k]),]
           cooccur.list[[i]][j-2,k-2]<-length(tmp.load2)
         }
       }

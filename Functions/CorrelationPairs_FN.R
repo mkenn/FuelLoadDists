@@ -93,12 +93,16 @@ corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.
       ## correlation
       cor.id<-which(cooccur.list[[i]]>min.co,arr.ind=TRUE)
       
-      for(l in 1:length(cor.id[,1]))
+      if(length(cor.id[,1])>0)
       {
-#        curloads<-tmp.loads[,c(cor.id[l,1]+2,cor.id[l,2]+2)]
-        curloads<-tmp.loads[,c(cor.id[l,1],cor.id[l,2])]
-        curloads<-curloads[!is.na(curloads[,1])&!is.na(curloads[,2]),]
-        corr.list[[i]][cor.id[l,1],cor.id[l,2]]<-cor(x=curloads[,1],y=curloads[,2])
+        for(l in 1:length(cor.id[,1]))
+        {
+  #        curloads<-tmp.loads[,c(cor.id[l,1]+2,cor.id[l,2]+2)]
+          curloads<-tmp.loads[,c(cor.id[l,1],cor.id[l,2])]
+          curloads<-curloads[!is.na(curloads[,1])&!is.na(curloads[,2]),]
+          if(sd(curloads[,1])>0&sd(curloads[,2])>0)
+            corr.list[[i]][cor.id[l,1],cor.id[l,2]]<-cor(x=curloads[,1],y=curloads[,2])
+        }
       }
       
       # writing cooccurence to csv

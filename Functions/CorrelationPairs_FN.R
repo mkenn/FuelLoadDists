@@ -19,21 +19,19 @@ corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.
     #resaves datafile. WHY?
     tmp.loads<-data.file
     
-    
     for(j in start.col:(ncol(data.file)-1))
     {
       # this part is not removing the NAs from each column, it does so when it is done by itself, not as the whole for loop
       tmp.load1<-tmp.loads[!is.na(tmp.loads[,j]),]
-    }
+    
       for(k in (j+1):ncol(data.file)) 
       {
         tmp.load2<-tmp.load1[!is.na(tmp.load1[,k]),1]
-        
+       
         # why is it -2, should it be j-(start.col-1) and k-(start.col-1)
-        cooccur.list[[1]][j-2,k-2]<-length(tmp.load2)
+        #cooccur.list[[1]][j-2,k-2]<-length(tmp.load2)
         
-        #cooccur.list[[1]][j-(start.col-1),k-(start.col-1)]<-length(tmp.load2)
-        
+        cooccur.list[[1]][j-(start.col-1),k-start.col]<-length(tmp.load2)
       }
     }
     

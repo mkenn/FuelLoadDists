@@ -16,22 +16,26 @@ corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.
     cooccur.list[[1]]<-matrix(NA,nrow=30,ncol=30)
     corr.list[[1]]<-matrix(NA,nrow=30,ncol=30)
     
-    #resaves datafile. WHY?
-    tmp.loads<-data.file
+    #resaves datafile. WHY? How about here we go ahead and make the tmp.loads only be loading
+#    tmp.loads<-data.file
+    #So:
+    tmp.loads<-data.file[,start.col:ncol(data.file)]
+    # and now we can just work j and k with tmp.loads
     
-    for(j in start.col:(ncol(data.file)-1))
-    {
+#    for(j in start.col:(ncol(data.file)-1))
+     for(j in 1:(ncol(tmp.loads)-1))
+      {
       # this part is not removing the NAs from each column, it does so when it is done by itself, not as the whole for loop
       tmp.load1<-tmp.loads[!is.na(tmp.loads[,j]),]
     
-      for(k in (j+1):ncol(data.file)) 
+#      for(k in (j+1):ncol(data.file)) 
+      for(k in (j+1):ncol(tmp.loads)) 
       {
         tmp.load2<-tmp.load1[!is.na(tmp.load1[,k]),1]
        
-        # why is it -2, should it be j-(start.col-1) and k-(start.col-1)
-        #cooccur.list[[1]][j-2,k-2]<-length(tmp.load2)
+        cooccur.list[[1]][j,k]<-length(tmp.load2)
         
-        cooccur.list[[1]][j-(start.col-1),k-start.col]<-length(tmp.load2)
+#        cooccur.list[[1]][j-(start.col-1),k-(start.col-1)]<-length(tmp.load2)
       }
     }
     
@@ -40,7 +44,8 @@ corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.
     
     for(l in 1:length(cor.id[,1]))
     {
-      curloads<-tmp.loads[,c(cor.id[l,1]+2,cor.id[l,2]+2)]
+#      curloads<-tmp.loads[,c(cor.id[l,1]+2,cor.id[l,2]+2)]
+      curloads<-tmp.loads[,c(cor.id[l,1],cor.id[l,2])]
       curloads<-curloads[!is.na(curloads[,1])&!is.na(curloads[,2]),]
       if(sd(curloads[,1])>0&sd(curloads[,2])>0)
         corr.list[[1]][cor.id[l,1],cor.id[l,2]]<-cor(x=curloads[,1],y=curloads[,2])
@@ -67,18 +72,22 @@ corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.
       cooccur.list[[i]]<-matrix(NA,nrow=30,ncol=30)
       corr.list[[i]]<-matrix(NA,nrow=30,ncol=30)
       
-      tmp.loads<-data.file[data.file[,evt.col]==evts[i],]
+#      tmp.loads<-data.file[data.file[,evt.col]==evts[i],]
+      tmp.loads<-data.file[data.file[,evt.col]==evts[i],start.col:ncol(data.file)]
       
       ## co-occurence
-      for(j in start.col:(ncol(data.file)-1))
-      {
+#      for(j in start.col:(ncol(data.file)-1))
+      for(j in 1:(ncol(tmp.loads)-1))
+        {
         tmp.load1<-tmp.loads[!is.na(tmp.loads[,j]),]
       
-        for(k in (j+1):ncol(data.file)) 
-        {
-          tmp.load2<-tmp.load1[!is.na(tmp.load1[,k]),]
-          cooccur.list[[i]][j-2,k-2]<-length(tmp.load2)
-        }
+#        for(k in (j+1):ncol(data.file)) 
+          for(k in (j+1):ncol(tmp.loads)) 
+          {
+          tmp.load2<-tmp.load1[!is.na(tmp.load1[,k]),1]
+#          cooccur.list[[i]][j-2,k-2]<-length(tmp.load2)
+          cooccur.list[[i]][j,k]<-length(tmp.load2)
+          }
       }
       
       ## correlation
@@ -86,7 +95,8 @@ corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.
       
       for(l in 1:length(cor.id[,1]))
       {
-        curloads<-tmp.loads[,c(cor.id[l,1]+2,cor.id[l,2]+2)]
+#        curloads<-tmp.loads[,c(cor.id[l,1]+2,cor.id[l,2]+2)]
+        curloads<-tmp.loads[,c(cor.id[l,1],cor.id[l,2])]
         curloads<-curloads[!is.na(curloads[,1])&!is.na(curloads[,2]),]
         corr.list[[i]][cor.id[l,1],cor.id[l,2]]<-cor(x=curloads[,1],y=curloads[,2])
       }

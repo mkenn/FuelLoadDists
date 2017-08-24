@@ -4,6 +4,7 @@
 # The distributions being examined are normal, lognormal, gamma, weibull
 # The minimum plot value was arbitrarily chosen
 
+#DM: Indexing for new database completed, trouble with PDF. The file is created but there are no graphs within the PDF file
 
 dist.fit.graph.fn<-function(data.file,evts,evt.col,start.col,cur.cols=c(start.col:ncol(data.file)),min.plot=30,file.name="DistFitGraphEVT")
 {
@@ -24,18 +25,18 @@ dist.fit.graph.fn<-function(data.file,evts,evt.col,start.col,cur.cols=c(start.co
       tally.var[i-(start.col-1),2]<-length(tmp.loads[!is.na(tmp.loads[,i]),3])
       if(tally.var$tally[i-(start.col-1)]>min.plot)
       {
-        cur.loads.vals<-tmp.loads[,as.character(tally.var$fueltype)[i-2]]
+        cur.loads.vals<-tmp.loads[,as.character(tally.var$fueltype)[start.col-1]]
         par(mfrow=c(2,2))
-        boxplot(cur.loads.vals,ylab=tally.var$fueltype[i-2])
-        hist(cur.loads.vals,xlab=tally.var$fueltype[i-2],main=tally.var$fueltype[i-2])
-        qqnorm(cur.loads.vals,main=tally.var$fueltype[i-2])
+        boxplot(cur.loads.vals,ylab=tally.var$fueltype[start.col-1])
+        hist(cur.loads.vals,xlab=tally.var$fueltype[start.col-1],main=tally.var$fueltype[start.col-1])
+        qqnorm(cur.loads.vals,main=tally.var$fueltype[start.col-1])
         qqline(cur.loads.vals)
-        boxplot(cur.loads.vals[cur.loads.vals>0],main=paste(tally.var$fueltype[i-2],">0"))
+        boxplot(cur.loads.vals[cur.loads.vals>0],main=paste(tally.var$fueltype[start.col-1],">0"))
       }
     }
     # closing pdf writing
     dev.off()
     
-  }
+  
 }
 

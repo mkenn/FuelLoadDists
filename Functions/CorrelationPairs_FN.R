@@ -49,7 +49,7 @@ corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.
       curloads<-curloads[!is.na(curloads[,1])&!is.na(curloads[,2]),]
       if(sd(curloads[,1])>0&sd(curloads[,2])>0)
         corr.list[[1]][cor.id[l,1],cor.id[l,2]]<-cor(x=curloads[,1],y=curloads[,2])
-    }
+     }
     
     # writing cooccurence to csv
     cooccur.list[[1]]<-as.data.frame(cooccur.list[[1]])
@@ -102,6 +102,12 @@ corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.
           curloads<-curloads[!is.na(curloads[,1])&!is.na(curloads[,2]),]
           if(sd(curloads[,1])>0&sd(curloads[,2])>0)
             corr.list[[i]][cor.id[l,1],cor.id[l,2]]<-cor(x=curloads[,1],y=curloads[,2])
+          else
+          {
+            if(mean(curloads[,1])!=0&mean(curloads[,2])!=0)
+            print(paste("Zero variability EVT:",evts[i],"loading: ",names(curloads)[1],names(curloads)[2]))
+          }
+          
         }
       }
       
@@ -124,8 +130,8 @@ corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.
       #}
       #dev.off()
       
-      #if(write.file.corr)
-        #write.csv(corr.list[[i]],file=paste(corr.filename,evts[i],".csv",sep=""))
+      if(write.file.corr)
+        write.csv(corr.list[[i]],file=paste(corr.filename,evts[i],".csv",sep=""))
       
     }
   }

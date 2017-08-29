@@ -10,11 +10,13 @@ corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.
 {
   cooccur.list<-list()
   corr.list<-list()
+  corr.log.list<-list()
   
-  if(is.na(evts)) # calculate correlations for whole database regardless
+  if(is.na(evts[1])) # calculate correlations for whole database regardless
   {
     cooccur.list[[1]]<-matrix(NA,nrow=30,ncol=30)
     corr.list[[1]]<-matrix(NA,nrow=30,ncol=30)
+    corr.log.list[[1]]<-matrix(NA,nrow=30,ncol=30)
     
     #resaves datafile. WHY? How about here we go ahead and make the tmp.loads only be loading
 #    tmp.loads<-data.file
@@ -46,9 +48,15 @@ corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.
     {
 #      curloads<-tmp.loads[,c(cor.id[l,1]+2,cor.id[l,2]+2)]
       curloads<-tmp.loads[,c(cor.id[l,1],cor.id[l,2])]
-      curloads<-curloads[!is.na(curloads[,1])&!is.na(curloads[,2]),]
+      curloads<-curloads[!is.na(curloads[,1])&!is.na(curloads[,2]),] # should we be excluding zeroes here too? Also, might want to calculate log transformation
       if(sd(curloads[,1])>0&sd(curloads[,2])>0)
+      {
         corr.list[[1]][cor.id[l,1],cor.id[l,2]]<-cor(x=curloads[,1],y=curloads[,2])
+        cur2.loads<-curloads[curloads[,1]>0&curloads[,2]>0,]
+        if(nrow(cur2.loads)>min.co)
+          corr.log.list[[1]][cor.id[l,1],cor.id[l,2]]<-cor(x=log(cur2.loads[,1]),y=log(cur2.loads[,2]))
+        
+      }
      }
     
     # writing cooccurence to csv
@@ -63,6 +71,10 @@ corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.
     corr.list[[1]]<-as.data.frame(corr.list[[1]])
     names(corr.list[[1]])<-names(data.file)[start.col:ncol(data.file)]
     row.names(corr.list[[1]])<-names(data.file)[start.col:ncol(data.file)]
+    
+    corr.log.list[[1]]<-as.data.frame(corr.log.list[[1]])
+    names(corr.log.list[[1]])<-names(data.file)[start.col:ncol(data.file)]
+    row.names(corr.log.list[[1]])<-names(data.file)[start.col:ncol(data.file)]
   }
   
   else
@@ -71,6 +83,7 @@ corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.
     {
       cooccur.list[[i]]<-matrix(NA,nrow=30,ncol=30)
       corr.list[[i]]<-matrix(NA,nrow=30,ncol=30)
+      corr.log.list[[i]]<-matrix(NA,nrow=30,ncol=30)
       
 #      tmp.loads<-data.file[data.file[,evt.col]==evts[i],]
       tmp.loads<-data.file[data.file[,evt.col]==evts[i],start.col:ncol(data.file)]
@@ -101,7 +114,14 @@ corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.
           curloads<-tmp.loads[,c(cor.id[l,1],cor.id[l,2])]
           curloads<-curloads[!is.na(curloads[,1])&!is.na(curloads[,2]),]
           if(sd(curloads[,1])>0&sd(curloads[,2])>0)
+          {            
             corr.list[[i]][cor.id[l,1],cor.id[l,2]]<-cor(x=curloads[,1],y=curloads[,2])
+            cur2.loads<-curloads[curloads[,1]>0,]
+            cur2.loads<-cur2.loads[cur2.loads[,2]>0,]
+            if(nrow(cur2.loads)>min.co)
+              corr.log.list[[i]][cor.id[l,1],cor.id[l,2]]<-cor(x=log(cur2.loads[,1]),y=log(cur2.loads[,2]))
+            
+          }          
           else
           {
             if(mean(curloads[,1])!=0&mean(curloads[,2])!=0)
@@ -121,8 +141,12 @@ corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.
       
       # writing correlation to csv
       corr.list[[i]]<-as.data.frame(corr.list[[i]])
-    names(corr.list[[i]])<-names(data.file)[start.col:ncol(data.file)]
+      names(corr.list[[i]])<-names(data.file)[start.col:ncol(data.file)]
       row.names(corr.list[[i]])<-names(data.file)[start.col:ncol(data.file)]
+
+      corr.log.list[[i]]<-as.data.frame(corr.log.list[[i]])
+      names(corr.log.list[[i]])<-names(data.file)[start.col:ncol(data.file)]
+      row.names(corr.log.list[[i]])<-names(data.file)[start.col:ncol(data.file)]
       
       #pdf(file=paste("Graph_",evts,".pdf",sep = ""))
       #{
@@ -135,7 +159,7 @@ corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.
       
     }
   }
-  return(corr.list)
+  return(all.list=list(corr.list,corr.log.list))
 }
 
 

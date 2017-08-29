@@ -34,6 +34,7 @@ dist.fit.graph.fn<-function(data.file,evts,evt.col,start.col,cur.cols=c(start.co
         boxplot(cur.loads.vals[cur.loads.vals>0],main=paste(tally.var$fueltype[start.col-1],">0"))
       }
     }
+  }
     # closing pdf writing
     dev.off()
     

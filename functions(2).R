@@ -11,9 +11,11 @@ data.file<-read.csv("../FuelLoadDists/Data/loadingsByEVTGroup_20170518.csv") #su
 data.file<-read.csv("../Data/loadingsByEVTGroup_20170518.csv") #substitute filepath and name for local system
 # 2. Source the function scripts; works if all functions in 1 directory
 file.sources<-list.files("../FuelLoadDists/Functions/") # all functions in this directory
-file.sources<-list.files("../Functions/") # all functions in this directory
 file.sources<-sapply(file.sources,FUN=function(x) paste("../FuelLoadDists/Functions/",x,sep=""))
+
+file.sources<-list.files("../Functions/") # all functions in this directory
 file.sources<-sapply(file.sources,FUN=function(x) paste("../Functions/",x,sep=""))
+
 sapply(file.sources,FUN="source")
 #####
 #EVT tally function 
@@ -37,6 +39,8 @@ sensitivityAnalysis <- samo.fn(data.file, evts = EVTTallies$evt.min_tally, start
 #EVT 624 is shown as example
 #Minimum plot 100 
 
+evt.vals<-EVTTallies[[1]][EVTTallies[[1]][,2]>30,1]
+
 distributionFitting <- dist.fit.fn(data.file, evts = EVTTallies$evt.min_tally, start.col = 12, write.file = FALSE, min.plot = 100)
 distributionFitting <- dist.fit.fn(data.file, evts = 624, start.col = 12, write.file = FALSE, min.plot = 100)
 distributionRanking<-distfit.rank.fn(evts = 624,DistFitSum = distributionFitting)
@@ -44,6 +48,10 @@ distributionRanking<-distfit.rank.fn(evts = 624,DistFitSum = distributionFitting
 #Distribution Fitting Graphing Function
 #EVT 624 as example 
 #Minimum plot 100 
+
+corr.vals<-corrpairs.fn(data.file = data.file,start.col = 12,evts = evt.vals,evt.col = "LFEVTGroupCd",min.co = 30)
+corr.all.vals<-corrpairs.fn(data.file = data.file,start.col = 12,evts = NA,evt.col = "LFEVTGroupCd",min.co = 30)
+
 
 dist.fit.graph.fn(data.file, evts = 624, start.col = 12, min.plot = 100)
 # error in running, need to update function with start.col indexing 

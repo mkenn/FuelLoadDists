@@ -23,14 +23,14 @@ dist.fit.graph.fn<-function(data.file,evts,evt.col,start.col,cur.cols=c(start.co
     # plot histogram, boxplot, qqplot for each loading
     for(i in cur.cols) # so here we concentrate on each loading
     {
-      cur.loads.vals<-tmp.loads[!is.na(tmp.loads[,i])&tmp.loads[,i]>0,i]
+      cur.loads.vals<-tmp.loads[!is.na(tmp.loads[,i]),i]#&tmp.loads[,i]>0,i] #MCK
       #tally.var[i-(start.col-1),2]<-length(tmp.loads[!is.na(tmp.loads[,i]),3])
       # so we want to tally the current fuel loading
 #      if(tally.var$tally[i-(start.col-1)]>min.plot)
         if(length(cur.loads.vals)>min.plot)
         {
 #        cur.loads.vals<-tmp.loads[,as.character(tally.var$fueltype)[start.col-1]]
-        par(mfrow=c(2,2))
+        par(mfrow=c(2,3))
 #        boxplot(cur.loads.vals,ylab=tally.var$fueltype[start.col-1])
         # boxplot(cur.loads.vals,ylab=names(data.file)[i])
         # hist(cur.loads.vals,xlab=tally.var$fueltype[start.col-1],main=tally.var$fueltype[start.col-1])
@@ -41,6 +41,10 @@ dist.fit.graph.fn<-function(data.file,evts,evt.col,start.col,cur.cols=c(start.co
         hist(cur.loads.vals,xlab=names(data.file)[i],main=paste("EVT",evts[k]))
         qqnorm(cur.loads.vals,main=names(data.file)[i])
         qqline(cur.loads.vals)
+        boxplot(cur.loads.vals[cur.loads.vals>0],ylab=names(data.file)[i])
+        hist(cur.loads.vals[cur.loads.vals>0],xlab=names(data.file)[i],main=paste("EVT",evts[k]))
+        qqnorm(cur.loads.vals[cur.loads.vals>0],main=names(data.file)[i])
+        qqline(cur.loads.vals[cur.loads.vals>0])
         }
     }
     # closing pdf writing

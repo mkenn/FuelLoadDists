@@ -23,7 +23,7 @@ sapply(file.sources,FUN="source")
 # return objects:
 # MK: assign these to objects so the results are stored in the workspace
 # here and for all function calls
-EVT.tally.fn(data.file, evt.col = "LFEVTGroupCd_FINAL", write.file = TRUE)
+#EVT.tally.fn(data.file, evt.col = "LFEVTGroupCd_FINAL", write.file = TRUE)
 EVTTallies<-EVT.tally.fn(data.file, evt.col = "LFEVTGroupCd", write.file = TRUE)
 #####
 #Loading Tally Function 
@@ -46,7 +46,7 @@ distributionFitting <- dist.fit.fn(data.file, evts = 624, start.col = 12, write.
 distributionFitting <- dist.fit.fn(data.file, evts = evt.vals, start.col = 12, write.file = FALSE, min.plot = 100)
 distributionFittingNoOut <- dist.fitNoOut.fn(data.file, evts = evt.vals, start.col = 12, write.file = FALSE, min.plot = 100)
 distributionRanking<-distfit.rank.fn(evts = 624,DistFitSum = distributionFitting)
-distributionRanking<-distfit.rank.fn(evts = evt.vals,DistFitSum = distributionFitting)
+distributionRanking<-distfit.rank.fn(evts = evt.vals,DistFitSum = distributionFitting,start.col=12)
 distributionRankingNoOut<-distfit.rank.fn(evts = evt.vals,DistFitSum = distributionFittingNoOut)
 
 

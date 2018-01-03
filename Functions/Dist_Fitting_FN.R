@@ -7,7 +7,9 @@
 # After the function, there is script to create additional graphics to be use in presenations
 
 
-dist.fit.fn<-function(data.file,evts,evt.col,start.col,min.plot=30,write.file=FALSE,file.name="DistFitSummaryEVT")
+dist.fit.fn<-function(data.file,evts,evt.col,start.col,min.plot=30,
+                      write.file=FALSE,file.name="DistFitSummaryEVT",
+                      include0=FALSE,add.val=0.01)
 {
   distfit.df<-list()
   cur.cols=c(start.col:ncol(data.file))
@@ -20,7 +22,12 @@ dist.fit.fn<-function(data.file,evts,evt.col,start.col,min.plot=30,write.file=FA
     for(j in cur.cols)
     {
       tmp.loads<-data.file[data.file[,evt.col]==evts[i],j]
-      cur.loads.vals<-tmp.loads[!is.na(tmp.loads)&tmp.loads>0]
+      if(include0)
+      {
+        cur.loads.vals<-tmp.loads[!is.na(tmp.loads)&tmp.loads>=0]+add.val # perturb all values by 0.01
+      }
+      else
+        cur.loads.vals<-tmp.loads[!is.na(tmp.loads)&tmp.loads>0]
       
       if(length(cur.loads.vals)>min.plot)
       {
@@ -83,10 +90,11 @@ dist.fit.fn<-function(data.file,evts,evt.col,start.col,min.plot=30,write.file=FA
 # repeat fit object - repeat cur.loads j index (reset j to the specific loading type)
 # based on fit, copy paste fit
 # example
-#j<-13
-#tmp.loads<-data[data[,evt.col]==666,j]
+#j<-18
+#tmp.loads<-data.file[data.file[,evt.col]==666,j]
 #cur.loads.vals<-tmp.loads[!is.na(tmp.loads)&tmp.loads>0]
 #gamma.fit<-fitdist(cur.loads.vals,distr="gamma")
+#lnorm.fit<-fitdist(cur.loads.vals,distr="lnorm")
 
 # Where fit1b is your fitdistr object
 #postscript(file = "ExampleFuelFit.eps",height=4,width=8,onefile=FALSE,horizontal=FALSE)
@@ -96,6 +104,16 @@ dist.fit.fn<-function(data.file,evts,evt.col,start.col,min.plot=30,write.file=FA
 #cdfcomp(gamma.fit,xlab="Litter loading (Mg/ha)",legendtext = "Gamma distribution")
 #mtext(text="Gamma distribution fit to litter loading (>0 Mg/ha) for US Eastern Floodplain vegetation type",outer=TRUE,side=1)
 #dev.off()
+
+#par(mfrow=c(1,1),oma=c(2,0,0,0))
+#denscomp(norm.fit,lwd=2,xlab="Shrub loading (Mg/ha)",
+#  legendtext="Normal theoretical distribution",datacol = "grey")
+#denscomp(lnorm.fit,lwd=2,xlab="Shrub loading (Mg/ha)",
+#  legendtext="Log-normal theoretical distribution",datacol = "grey")
+#qqcomp(gamma.fit,fitpch = 16,legendtext = "Gamma distribution")
+#cdfcomp(gamma.fit,xlab="Litter loading (Mg/ha)",legendtext = "Gamma distribution")
+#mtext(text="Gamma distribution fit to litter loading (>0 Mg/ha) for US Eastern Floodplain vegetation type",outer=TRUE,side=1)
+
 
 
 ### practice - evt=615, distirbution=weibull

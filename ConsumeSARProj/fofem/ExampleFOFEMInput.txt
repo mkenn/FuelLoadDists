@@ -1,0 +1,96 @@
+# ---------------------------------------------------------------------------------
+# This is a sample input file for the FOFEM6 Batch Program
+# Consumed - Emission
+# ---------------------------------------------------------------------------------
+# Units: Loading = tons/acre, depth = inches, moisture = % , crown burned = %
+# ----------------------------------------------------------------------------------
+# Distr. - 1000 hour fuel distribution into classes
+# Right, Left, Even, End, Center
+# ----------------------------------------------------------------------------------
+# Region:
+# SouthEast, InteriorWest, PacificWest, NorthEast
+# ----------------------------------------------------------------------------------
+# Cover Group:
+# GrassGroup or GG, Sagebrush or SB, ShrubGroup or SG,
+# Pocosin or PC, Ponderosa or PN, WhiPinHem or WPH,
+# RedJacPin or RJP, BalBRWSpr or BBS,  PinFlaWoo or PFL
+# "" = no cover group, or leave blank
+# ----------------------------------------------------------------------------------
+# Season:
+# Winter, Spring, Summer, Fall
+# ----------------------------------------------------------------------------------
+# Fuel Category:
+# Natural, Slash
+# ----------------------------------------------------------------------------------
+# Lines starting with hastags # followed by a space are comment lines
+# Lines starting with hastags # immediately followed by text are switches
+# that supply information or cause FOFEM to act a certain way.
+# for example...
+# This is a comment: # BurnUpFile Burnup.txt
+# This is a Switch:  #BurnUpFile Burnup.txt
+# This is a Switch:  #Season: Spring
+# ----------------------------------------------------------------------------------
+# #ConsumptionEquation
+# This optional switch is used to set the FOFEM equations for:
+# 1)litter load consumption, 2) duff load consumption, 3) duff depth reduction,
+# 4) mineral soil exposure, 5) herbaceous load consumption and
+# 6) shrub load consumption.
+# Using this switch requires you add six equation numbers at the end of each
+# record in the order they appear above. Separate equation numbers with commas.
+# Enter equation number -1 to use default equation. 
+# Valid equation numbers are: 
+#   Litter: 997, 998, 999
+#   Duff load consumption: 1, 2, 3, 4, 5, 6, 7, 15, 16, 17, 19, 20
+#   Duff depth reduction: 1, 2, 3, 4, 5, 6, 7, 15, 16, 17, 19, 20
+#   MSE: 9, 10, 11, 12, 13, 14, 18, 202
+#   Herb: 22, 221, 222, 223
+#   Shrub: 23, 231, 232, 233, 234, 235, 236
+# If this switch is not used FOFEM will use default logic to set consumption
+# equations. Equations are described in the Scientific Content section of the FOFEM
+# User Guide.
+# ----------------------------------------------------------------------------------
+# #EFG-STFS n, #EFG-CWDRSC n, #EFG-DuffRSC n
+# This optional switch is used to set emission factor groups for short-term
+# flaming and smoldering (STFS), CWD residual smoldering component (CWDRSC)
+# and Duff residual smoldering component (DuffRSC).
+# When using this option all three switches are required.
+# Refer to Emission_Factors.csv (found here: C:\Users...AppData\Local\FOFEMx.x)
+# for valid emission factor group numbers.
+# Example:
+# #EFG-STFS 3
+# #EFG-CWDRSC 7
+# #EFG-DuffRSC 8
+# If this switch is not used FOFEM will use default logic to set emissions factors.
+# ----------------------------------------------------------------------------------
+# #Emission-File [EmFile]
+# This optional switch causes an emission file to be # created for each plot.
+# You must supply an argument (e.g., 'EmFile') after the # switch which will be
+# used as a prefix to form output file names. The emission files will go into
+# the same folder as the other output files.
+# ----------------------------------------------------------------------------------
+# #BurnUpFile Burnup.txt
+# This optional switch specifies the name of a Burnup parameter file. Specify
+# just the burnup file name (no file path) and place # the file in the same folder
+# as the stand input file (this file).
+# ----------------------------------------------------------------------------------
+# #1k-SizeClass
+# This optional switch specifies >3 inch fuel loads are entered in size classes
+# in inches: 3=3-<6, 6=6-<9, 9=9-<20, 20=20+
+# Example:
+# Remove the four columns of 1000 hour data in the standard format (Load, Moist,
+# Rot, Distr) and insert the following nine columns of data.
+#  .......Sound......   ......Rotten......    1000Hr
+#   3    6    9    20    3    6    9    20    Moist
+#  0.5, 1.2, 2.3, 3.5,  0.2, 0.8, 1.1, 1.4,    50,
+#
+# Quote marks must be used if you have blank spaces in your plot numbers.
+# Example:   "Plot 1" 
+#
+# Sample Data. Note the Soil Type and Moisture columns on end of each row
+# ___________________________________________________________________________________________________________________________________________________
+# Stand           1    ...10...  100   ......1000 Hr........   ....Duff......              ....Crown......                Cover                Fuel 
+#  Id      Litt   Hr   Hr  Moist  Hr   Load Moist Rot Distr   Load Moist  Dep  Herb  Shrub Foli Brnch Brn    Region       Group       Season  Category 
+Plot-1,   0.50, 1.00, 1.00, 16, 1.00,  1.0,  30,  50,  Even,  10.0,  75,  1.00, 0.06, 0.23, 0.25, 1.20, 50, PacificWest,  GrassGroup, Spring, Natural
+Plot-2,   0.60, 0.33, 0.52, 10, 1.44,  6.6,  15,  50,  Even,  29.7,  40,  1.38, 0.18, 0.13, 6.00, 3.90, 75, InteriorWest, WhiPinHem,  Summer, Natural
+Plot-3,   0.90, 0.20, 0.20, 16, 1.12,  3.0,  30,  30,  Left,   5.0,  75,  0.50, 0.30, 0.50, 0.00, 0.00, 50, Northeast,    ,           Fall,   Natural
+Plot-4,   3.22, 1.20, 0.68, 22, 0.70,  0.0,  30,  50,Center,   223, 130,  10.5, 0.11, 7.53, 0.68, 7.53, 75, Southeast,    PC,         Spring, Natural

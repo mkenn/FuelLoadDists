@@ -1,0 +1,738 @@
+EVT_Fuel,EVT_Fuel_N,FCCSID,Fuelbed Name,,EVT_FUEL,EVT_FUEL_N,EVT_LF,EVT_GP,EVT_GP_N,EVT_PHYS
+11,Ba Open Water,900,Water,,11,Ba Open Water,Water,11,Open Water,Open Water
+12,Ba Snow-Ice,0,Urban-Barren,,12,Ba Snow-Ice,Barren,12,Snow-Ice,Snow-Ice
+31,Bab Barren,0,Urban-Barren,,31,Bab Barren,Barren,31,Barren,Barren
+32,Bab Quarries-Strip Mines-Gravel Pits,0,Urban-Barren,,32,Bab Quarries-Strip Mines-Gravel Pits,Barren,32,Quarries-Strip Mines-Gravel Pits,Quarries-Strip Mines-Gravel Pits
+2001,Sps Inter-Mountain Basins Sparsely Vegetated Systems,0,Urban-Barren,,2001,Sps Inter-Mountain Basins Sparsely Vegetated Systems,Sparse,700,Sparse Vegetation,Sparsely Vegetated
+2002,Sps Mediterranean California Sparsely Vegetated Systems,0,Urban-Barren,,2002,Sps Mediterranean California Sparsely Vegetated Systems,Sparse,700,Sparse Vegetation,Sparsely Vegetated
+2003,Sps North Pacific Sparsely Vegetated Systems,0,Urban-Barren,,2003,Sps North Pacific Sparsely Vegetated Systems,Sparse,700,Sparse Vegetation,Sparsely Vegetated
+2004,Sps North American Warm Desert Sparsely Vegetated Systems,0,Urban-Barren,,2004,Sps North American Warm Desert Sparsely Vegetated Systems,Sparse,700,Sparse Vegetation,Sparsely Vegetated
+2006,Sps Rocky Mountain Alpine/Montane Sparsely Vegetated Systems,0,Urban-Barren,,2006,Sps Rocky Mountain Alpine/Montane Sparsely Vegetated Systems,Sparse,700,Sparse Vegetation,Sparsely Vegetated
+2007,Sps Western Great Plains Sparsely Vegetated Systems,0,Urban-Barren,,2007,Sps Western Great Plains Sparsely Vegetated Systems,Sparse,700,Sparse Vegetation,Sparsely Vegetated
+2008,Tr North Pacific Oak Woodland,41,Idaho fescue-bluebunch wheatgrass grassland,,2008,Tr North Pacific Oak Woodland,Tree,629,Western Oak Woodland and Savanna,Hardwood
+2009,Tr Northwestern Great Plains Aspen Forest and Parkland,42,Quaking aspen/Engelmann spruce forest,,2009,Tr Northwestern Great Plains Aspen Forest and Parkland,Tree,602,"Aspen Forest, Woodland, and Parkland",Hardwood
+2011,Tr Rocky Mountain Aspen Forest and Woodland,42,Quaking aspen/Engelmann spruce forest,,2011,Tr Rocky Mountain Aspen Forest and Woodland,Tree,602,"Aspen Forest, Woodland, and Parkland",Hardwood
+2012,Tr Rocky Mountain Bigtooth Maple Ravine Woodland,317,Bigtooth maple forest,,2012,Tr Rocky Mountain Bigtooth Maple Ravine Woodland,Tree,605,Bigtooth Maple Woodland,Hardwood
+2013,Tr Western Great Plains Dry Bur Oak Forest and Woodland,154,Bur oak savanna,,2013,Tr Western Great Plains Dry Bur Oak Forest and Woodland,Tree,659,Bur Oak Woodland and Savanna,Hardwood
+2014,Tr Central and Southern California Mixed Evergreen Woodland,46,Chamise chaparral shrubland,,2014,Tr Central and Southern California Mixed Evergreen Woodland,Tree,626,California Mixed Evergreen Forest and Woodland,Conifer
+2015,Tr California Coastal Redwood Forest,47,Redwood-tanoak forest,,2015,Tr California Coastal Redwood Forest,Tree,634,Redwood Forest and Woodland,Conifer
+2016,Tr Colorado Plateau Pinyon-Juniper Woodland,210,Pinyon-Utah juniper forest,,2016,Tr Colorado Plateau Pinyon-Juniper Woodland,Tree,630,Pinyon-Juniper Woodland,Conifer
+2017,Tr Columbia Plateau Western Juniper Woodland and Savanna,232,Mesquite savanna,,2017,Tr Columbia Plateau Western Juniper Woodland and Savanna,Tree,620,Juniper Woodland and Savanna,Conifer
+2018,Tr East Cascades Mesic Montane Mixed-Conifer Forest and Woodland,52,Douglas-fir-Pacific ponderosa pine/oceanspray forest,,2018,Tr East Cascades Mesic Montane Mixed-Conifer Forest and Woodland,Tree,643,Douglas-fir-Grand Fir-White Fir Forest and Woodland,Conifer
+2019,Tr Great Basin Pinyon-Juniper Woodland,210,Pinyon-Utah juniper forest,,2019,Tr Great Basin Pinyon-Juniper Woodland,Tree,630,Pinyon-Juniper Woodland,Conifer
+2020,Tr Inter-Mountain Basins Subalpine Limber-Bristlecone Pine Woodland,314,Limber-bristlecone pine forest,,2020,Tr Inter-Mountain Basins Subalpine Limber-Bristlecone Pine Woodland,Tree,621,Limber Pine Woodland,Conifer
+2021,Tr Klamath-Siskiyou Lower Montane Serpentine Mixed Conifer Woodland,24,Pacific ponderosa pine-Douglas-fir forest,,2021,Tr Klamath-Siskiyou Lower Montane Serpentine Mixed Conifer Woodland,Tree,645,Western Red-cedar-Western Hemlock Forest,Conifer
+2022,Tr Klamath-Siskiyou Upper Montane Serpentine Mixed Conifer Woodland,24,Pacific ponderosa pine-Douglas-fir forest,,2022,Tr Klamath-Siskiyou Upper Montane Serpentine Mixed Conifer Woodland,Tree,645,Western Red-cedar-Western Hemlock Forest,Conifer
+2023,Tr Madrean Encinal,43,Arizona white-gray-Emory oak woodland,,2023,Tr Madrean Encinal,Tree,696,Juniper-Oak,Conifer-Hardwood
+2024,Tr Madrean Lower Montane Pine-Oak Forest and Woodland,27,Ponderosa pine-two-needle pinyon-Utah juniper forest,,2024,Tr Madrean Lower Montane Pine-Oak Forest and Woodland,Tree,610,Conifer-Oak Forest and Woodland,Conifer-Hardwood
+2025,Tr Madrean Pinyon-Juniper Woodland,210,Pinyon-Utah juniper forest,,2025,Tr Madrean Pinyon-Juniper Woodland,Tree,630,Pinyon-Juniper Woodland,Conifer
+2026,Tr Madrean Upper Montane Conifer-Oak Forest and Woodland,34,Interior Douglas-fir-ponderosa pine/gambel oak forest,,2026,Tr Madrean Upper Montane Conifer-Oak Forest and Woodland,Tree,610,Conifer-Oak Forest and Woodland,Conifer-Hardwood
+2027,Tr Mediterranean California Dry-Mesic Mixed Conifer Forest and Woodland,37,Ponderosa pine-Jeffrey pine forest,,2027,Tr Mediterranean California Dry-Mesic Mixed Conifer Forest and Woodland,Tree,625,Douglas-fir-Ponderosa Pine-Lodgepole Pine Forest and Woodland,Conifer
+2028,Tr Mediterranean California Mesic Mixed Conifer Forest and Woodland,24,Pacific ponderosa pine-Douglas-fir forest,,2028,Tr Mediterranean California Mesic Mixed Conifer Forest and Woodland,Tree,643,Douglas-fir-Grand Fir-White Fir Forest and Woodland,Conifer
+2029,Tr Mediterranean California Mixed Oak Woodland,14,California black oak woodland,,2029,Tr Mediterranean California Mixed Oak Woodland,Tree,629,Western Oak Woodland and Savanna,Hardwood
+2030,Tr Mediterranean California Lower Montane Conifer Forest and Woodland,14,California black oak woodland,,2030,Tr Mediterranean California Lower Montane Conifer Forest and Woodland,Tree,610,Conifer-Oak Forest and Woodland,Conifer
+2031,Tr California Montane Jeffrey Pine(-Ponderosa Pine) Woodland,16,Jeffrey pine-ponderosa pine-Douglas-fir-California black oak forest,,2031,Tr California Montane Jeffrey Pine(-Ponderosa Pine) Woodland,Tree,631,"Ponderosa Pine Forest, Woodland and Savanna",Conifer
+2032,Tr Mediterranean California Red Fir Forest,17,Red fir forest,,2032,Tr Mediterranean California Red Fir Forest,Tree,633,Red Fir Forest and Woodland,Conifer
+2033,Tr Mediterranean California Subalpine Woodland,12,Red fir-mountain hemlock-lodgepole pine-western white pine forest,,2033,Tr Mediterranean California Subalpine Woodland,Tree,640,Subalpine Woodland and Parkland,Conifer
+2034,Tr Mediterranean California Mesic Serpentine Woodland and Chaparral,53,Pacific ponderosa pine forest,,2034,Tr Mediterranean California Mesic Serpentine Woodland and Chaparral,Tree,607,Chaparral,Conifer
+2035,Tr North Pacific Dry Douglas-fir(-Madrone) Forest and Woodland,215,Douglas-fir-madrone/tanoak forest,,2035,Tr North Pacific Dry Douglas-fir(-Madrone) Forest and Woodland,Tree,614,Douglas-fir Forest and Woodland,Conifer
+2036,Tr North Pacific Hypermaritime Seasonal Sitka Spruce Forest,10,Western hemlock-Douglas-fir-Sitka spruce forest,,2036,Tr North Pacific Hypermaritime Seasonal Sitka Spruce Forest,Tree,638,Sitka Spruce Forest,Conifer
+2037,Tr North Pacific Maritime Dry-Mesic Douglas-fir-Western Hemlock Forest,8,Western hemlock-Douglas-fir-western redcedar/vine maple forest,,2037,Tr North Pacific Maritime Dry-Mesic Douglas-fir-Western Hemlock Forest,Tree,615,Douglas-fir-Western Hemlock Forest and Woodland,Conifer
+2038,Tr North Pacific Maritime Mesic Subalpine Parkland,238,Pacific silver fir-mountain hemlock forest,,2038,Tr North Pacific Maritime Mesic Subalpine Parkland,Tree,627,Mountain Hemlock Forest and Woodland,Conifer
+2039,Tr North Pacific Maritime Mesic-Wet Douglas-fir-Western Hemlock Forest,8,Western hemlock-Douglas-fir-western redcedar/vine maple forest,,2039,Tr North Pacific Maritime Mesic-Wet Douglas-fir-Western Hemlock Forest,Tree,615,Douglas-fir-Western Hemlock Forest and Woodland,Conifer
+2041,Tr North Pacific Mountain Hemlock Forest,238,Pacific silver fir-mountain hemlock forest,,2041,Tr North Pacific Mountain Hemlock Forest,Tree,627,Mountain Hemlock Forest and Woodland,Conifer
+2042,Tr North Pacific Mesic Western Hemlock-Silver Fir Forest,8,Western hemlock-Douglas-fir-western redcedar/vine maple forest,,2042,Tr North Pacific Mesic Western Hemlock-Silver Fir Forest,Tree,642,Western Hemlock-Silver Fir Forest,Conifer
+2043,Tr Mediterranean California Mixed Evergreen Forest,37,Ponderosa pine-Jeffrey pine forest,,2043,Tr Mediterranean California Mixed Evergreen Forest,Tree,626,California Mixed Evergreen Forest and Woodland,Conifer
+2044,Tr Northern California Mesic Subalpine Woodland,12,Red fir-mountain hemlock-lodgepole pine-western white pine forest,,2044,Tr Northern California Mesic Subalpine Woodland,Tree,627,Mountain Hemlock Forest and Woodland,Conifer
+2045,Tr Northern Rocky Mountain Dry-Mesic Montane Mixed Conifer Forest,52,Douglas-fir-Pacific ponderosa pine/oceanspray forest,,2045,Tr Northern Rocky Mountain Dry-Mesic Montane Mixed Conifer Forest,Tree,625,Douglas-fir-Ponderosa Pine-Lodgepole Pine Forest and Woodland,Conifer
+2046,Tr Northern Rocky Mountain Subalpine Woodland and Parkland,61,Whitebark pine/subalpine fir forest,,2046,Tr Northern Rocky Mountain Subalpine Woodland and Parkland,Tree,640,Subalpine Woodland and Parkland,Conifer
+2047,Tr Northern Rocky Mountain Mesic Montane Mixed Conifer Forest,2,Western hemlock-western redcedar-Douglas-fir forest,,2047,Tr Northern Rocky Mountain Mesic Montane Mixed Conifer Forest,Tree,643,Douglas-fir-Grand Fir-White Fir Forest and Woodland,Conifer
+2048,Tr Northwestern Great Plains Highland White Spruce Woodland,265,Balsam fir-white spruce-mixed hardwood forest,,2048,Tr Northwestern Great Plains Highland White Spruce Woodland,Tree,639,Spruce-Fir Forest and Woodland,Conifer
+2049,Tr Rocky Mountain Foothill Limber Pine-Juniper Woodland,286,Limber pine-ponderosa pine forest,,2049,Tr Rocky Mountain Foothill Limber Pine-Juniper Woodland,Tree,621,Limber Pine Woodland,Conifer
+2050,Tr Rocky Mountain Lodgepole Pine Forest,22,Mature lodgepole pine forest,,2050,Tr Rocky Mountain Lodgepole Pine Forest,Tree,622,Lodgepole Pine Forest and Woodland,Conifer
+2051,Tr Southern Rocky Mountain Dry-Mesic Montane Mixed Conifer Forest and Woodland,273,Engelmann spruce-Douglas-fir-white fir-ponderosa pine forest,,2051,Tr Southern Rocky Mountain Dry-Mesic Montane Mixed Conifer Forest and Woodland,Tree,625,Douglas-fir-Ponderosa Pine-Lodgepole Pine Forest and Woodland,Conifer
+2052,Tr Southern Rocky Mountain Mesic Montane Mixed Conifer Forest and Woodland,273,Engelmann spruce-Douglas-fir-white fir-ponderosa pine forest,,2052,Tr Southern Rocky Mountain Mesic Montane Mixed Conifer Forest and Woodland,Tree,643,Douglas-fir-Grand Fir-White Fir Forest and Woodland,Conifer
+2053,Tr Northern Rocky Mountain Ponderosa Pine Woodland and Savanna,53,Pacific ponderosa pine forest,,2053,Tr Northern Rocky Mountain Ponderosa Pine Woodland and Savanna,Tree,631,"Ponderosa Pine Forest, Woodland and Savanna",Conifer
+2054,Tr Southern Rocky Mountain Ponderosa Pine Woodland,211,Ponderosa pine forest - high density,,2054,Tr Southern Rocky Mountain Ponderosa Pine Woodland,Tree,631,"Ponderosa Pine Forest, Woodland and Savanna",Conifer
+2055,Tr Rocky Mountain Subalpine Dry-Mesic Spruce-Fir Forest and Woodland,59,Subalpine fir-Engelmann spruce -Douglas-fir-lodgepole pine forest,,2055,Tr Rocky Mountain Subalpine Dry-Mesic Spruce-Fir Forest and Woodland,Tree,639,Spruce-Fir Forest and Woodland,Conifer
+2056,Tr Rocky Mountain Subalpine Mesic-Wet Spruce-Fir Forest and Woodland,59,Subalpine fir-Engelmann spruce -Douglas-fir-lodgepole pine forest,,2056,Tr Rocky Mountain Subalpine Mesic-Wet Spruce-Fir Forest and Woodland,Tree,639,Spruce-Fir Forest and Woodland,Conifer
+2057,Tr Rocky Mountain Subalpine-Montane Limber-Bristlecone Pine Woodland,314,Limber-bristlecone pine forest,,2057,Tr Rocky Mountain Subalpine-Montane Limber-Bristlecone Pine Woodland,Tree,621,Limber Pine Woodland,Conifer
+2058,Tr Sierra Nevada Subalpine Lodgepole Pine Forest and Woodland,12,Red fir-mountain hemlock-lodgepole pine-western white pine forest,,2058,Tr Sierra Nevada Subalpine Lodgepole Pine Forest and Woodland,Tree,622,Lodgepole Pine Forest and Woodland,Conifer
+2059,Tr Southern Rocky Mountain Pinyon-Juniper Woodland,210,Pinyon-Utah juniper forest,,2059,Tr Southern Rocky Mountain Pinyon-Juniper Woodland,Tree,630,Pinyon-Juniper Woodland,Conifer
+2060,Tr East Cascades Ponderosa Pine Forest and Woodland,53,Pacific ponderosa pine forest,,2060,Tr East Cascades Ponderosa Pine Forest and Woodland,Tree,610,Conifer-Oak Forest and Woodland,Conifer
+2061,Tr Inter-Mountain Basins Aspen-Mixed Conifer Forest and Woodland,224,Quaking aspen forest,,2061,Tr Inter-Mountain Basins Aspen-Mixed Conifer Forest and Woodland,Tree,603,Aspen-Mixed Conifer Forest and Woodland,Conifer-Hardwood
+2062,Tr Inter-Mountain Basins Curl-leaf Mountain Mahogany Woodland and Shrubland,313,Mountain mahogany shrubland,,2062,Tr Inter-Mountain Basins Curl-leaf Mountain Mahogany Woodland and Shrubland,Tree,628,Mountain Mahogany Woodland and Shrubland,Conifer
+2063,Tr North Pacific Broadleaf Landslide Forest and Shrubland,319,Pacific silver fir-Sitka alder forest,,2063,Tr North Pacific Broadleaf Landslide Forest and Shrubland,Tree,632,Red Alder Forest and Woodland,Hardwood
+2064,Sh Colorado Plateau Mixed Low Sagebrush Shrubland,308,Low sagebrush shrubland,,2064,Sh Colorado Plateau Mixed Low Sagebrush Shrubland,Shrub,623,Low Sagebrush Shrubland and Steppe,Shrubland
+2065,Sh Columbia Plateau Scabland Shrubland,308,Low sagebrush shrubland,,2065,Sh Columbia Plateau Scabland Shrubland,Shrub,613,Desert Scrub,Shrubland
+2066,Sh Inter-Mountain Basins Mat Saltbush Shrubland,310,Greasewood shrubland,,2066,Sh Inter-Mountain Basins Mat Saltbush Shrubland,Shrub,636,Salt Desert Scrub,Shrubland
+2067,Sh Mediterranean California Alpine Fell-Field,315,Showy sedge-black alpine sedge grassland,,2067,Sh Mediterranean California Alpine Fell-Field,Shrub,601,"Alpine Dwarf-Shrubland, Fell-field and Meadow",Grassland
+2068,Sh North Pacific Dry and Mesic Alpine Dwarf-Shrubland or Fell-field or Meadow,319,Pacific silver fir-Sitka alder forest,,2068,Sh North Pacific Dry and Mesic Alpine Dwarf-Shrubland or Fell-field or Meadow,Shrub,601,"Alpine Dwarf-Shrubland, Fell-field and Meadow",Grassland
+2070,Sh Rocky Mountain Alpine Dwarf-Shrubland,237,Huckleberry-heather shrubland,,2070,Sh Rocky Mountain Alpine Dwarf-Shrubland,Shrub,601,"Alpine Dwarf-Shrubland, Fell-field and Meadow",Grassland
+2071,Sh Sierra Nevada Alpine Dwarf-Shrubland,237,Huckleberry-heather shrubland,,2071,Sh Sierra Nevada Alpine Dwarf-Shrubland,Shrub,601,"Alpine Dwarf-Shrubland, Fell-field and Meadow",Grassland
+2072,Sh Wyoming Basins Dwarf Sagebrush Shrubland and Steppe,308,Low sagebrush shrubland,,2072,Sh Wyoming Basins Dwarf Sagebrush Shrubland and Steppe,Shrub,623,Low Sagebrush Shrubland and Steppe,Shrubland
+2074,Sh Chihuahuan Creosotebush Desert Scrub,49,Creosote bush shrubland,,2074,Sh Chihuahuan Creosotebush Desert Scrub,Shrub,611,Creosotebush Desert Scrub,Shrubland
+2075,Sh Chihuahuan Mixed Salt Desert Scrub,311,Saltbrush shrubland,,2075,Sh Chihuahuan Mixed Salt Desert Scrub,Shrub,636,Salt Desert Scrub,Shrubland
+2076,Sh Chihuahuan Stabilized Coppice Dune and Sand Flat Scrub,352,Honey mesquite-fourwing saltbush shrubland,,2076,Sh Chihuahuan Stabilized Coppice Dune and Sand Flat Scrub,Shrub,613,Desert Scrub,Shrubland
+2077,Sh Chihuahuan Succulent Desert Scrub,307,Paloverde shrubland,,2077,Sh Chihuahuan Succulent Desert Scrub,Shrub,641,Succulent Desert Scrub,Shrubland
+2078,Sh Colorado Plateau Blackbrush-Mormon-tea Shrubland,309,Blackbrush shrubland,,2078,Sh Colorado Plateau Blackbrush-Mormon-tea Shrubland,Shrub,606,Blackbrush Shrubland,Shrubland
+2079,Sh Great Basin Xeric Mixed Sagebrush Shrubland,308,Low sagebrush shrubland,,2079,Sh Great Basin Xeric Mixed Sagebrush Shrubland,Shrub,623,Low Sagebrush Shrubland and Steppe,Shrubland
+2080,Sh Inter-Mountain Basins Big Sagebrush Shrubland,55,Western juniper/sagebrush savanna,,2080,Sh Inter-Mountain Basins Big Sagebrush Shrubland,Shrub,604,Big Sagebrush Shrubland and Steppe,Shrubland
+2081,Sh Inter-Mountain Basins Mixed Salt Desert Scrub,311,Saltbrush shrubland,,2081,Sh Inter-Mountain Basins Mixed Salt Desert Scrub,Shrub,636,Salt Desert Scrub,Shrubland
+2082,Sh Mojave Mid-Elevation Mixed Desert Scrub,309,Blackbrush shrubland,,2082,Sh Mojave Mid-Elevation Mixed Desert Scrub,Shrub,613,Desert Scrub,Shrubland
+2083,Sh North Pacific Avalanche Chute Shrubland,319,Pacific silver fir-Sitka alder forest,,2083,Sh North Pacific Avalanche Chute Shrubland,Shrub,612,Deciduous Shrubland,Shrubland
+2084,Sh North Pacific Montane Shrubland,237,Huckleberry-heather shrubland,,2084,Sh North Pacific Montane Shrubland,Shrub,612,Deciduous Shrubland,Shrubland
+2085,Sh Northwestern Great Plains Shrubland,308,Low sagebrush shrubland,,2085,Sh Northwestern Great Plains Shrubland,Shrub,604,Big Sagebrush Shrubland and Steppe,Shrubland
+2086,Sh Rocky Mountain Lower Montane-Foothill Shrubland,313,Mountain mahogany shrubland,,2086,Sh Rocky Mountain Lower Montane-Foothill Shrubland,Shrub,612,Deciduous Shrubland,Shrubland
+2087,Sh Sonora-Mojave Creosotebush-White Bursage Desert Scrub,49,Creosote bush shrubland,,2087,Sh Sonora-Mojave Creosotebush-White Bursage Desert Scrub,Shrub,611,Creosotebush Desert Scrub,Shrubland
+2088,Sh Sonora-Mojave Mixed Salt Desert Scrub,311,Saltbrush shrubland,,2088,Sh Sonora-Mojave Mixed Salt Desert Scrub,Shrub,636,Salt Desert Scrub,Shrubland
+2090,Sh Sonoran Granite Outcrop Desert Scrub,307,Paloverde shrubland,,2090,Sh Sonoran Granite Outcrop Desert Scrub,Shrub,613,Desert Scrub,Shrubland
+2091,Sh Sonoran Mid-Elevation Desert Scrub,307,Paloverde shrubland,,2091,Sh Sonoran Mid-Elevation Desert Scrub,Shrub,613,Desert Scrub,Shrubland
+2092,Sh Southern California Coastal Scrub,51,Coastal sage shrubland,,2092,Sh Southern California Coastal Scrub,Shrub,609,Pacific Coastal Scrub,Shrubland
+2093,Sh Southern Colorado Plateau Sand Shrubland,236,Tobosa-grama grassland,,2093,Sh Southern Colorado Plateau Sand Shrubland,Shrub,637,Sand Shrubland,Shrubland
+2094,Sh Western Great Plains Sandhill Steppe,352,Honey mesquite-fourwing saltbush shrubland,,2094,Sh Western Great Plains Sandhill Steppe,Herb,637,Sand Shrubland,Shrubland
+2094,Sh Western Great Plains Sandhill Steppe,352,Honey mesquite-fourwing saltbush shrubland,,2094,Sh Western Great Plains Sandhill Steppe,Shrub,637,Sand Shrubland,Shrubland
+2095,Sh Apacherian-Chihuahuan Mesquite Upland Scrub,236,Tobosa-grama grassland,,2095,Sh Apacherian-Chihuahuan Mesquite Upland Scrub,Shrub,624,Mesquite Woodland and Scrub,Shrubland
+2096,Sh California Maritime Chaparral,51,Coastal sage shrubland,,2096,Sh California Maritime Chaparral,Shrub,607,Chaparral,Shrubland
+2097,Sh California Mesic Chaparral,46,Chamise chaparral shrubland,,2097,Sh California Mesic Chaparral,Shrub,607,Chaparral,Shrubland
+2098,Sh California Montane Woodland and Chaparral,237,Huckleberry-heather shrubland,,2098,Sh California Montane Woodland and Chaparral,Shrub,607,Chaparral,Shrubland
+2099,Sh California Xeric Serpentine Chaparral,237,Huckleberry-heather shrubland,,2099,Sh California Xeric Serpentine Chaparral,Shrub,607,Chaparral,Shrubland
+2100,Sh Chihuahuan Mixed Desert and Thornscrub,49,Creosote bush shrubland,,2100,Sh Chihuahuan Mixed Desert and Thornscrub,Shrub,613,Desert Scrub,Shrubland
+2101,Sh Madrean Oriental Chaparral,44,Scrub oak chaparral shrubland,,2101,Sh Madrean Oriental Chaparral,Shrub,607,Chaparral,Shrubland
+2103,Sh Great Basin Semi-Desert Chaparral,237,Huckleberry-heather shrubland,,2103,Sh Great Basin Semi-Desert Chaparral,Shrub,607,Chaparral,Shrubland
+2104,Sh Mogollon Chaparral,30,Turbinella oak-alderleaf mountain mahogany shrubland,,2104,Sh Mogollon Chaparral,Shrub,607,Chaparral,Shrubland
+2105,Sh Northern and Central California Dry-Mesic Chaparral,44,Scrub oak chaparral shrubland,,2105,Sh Northern and Central California Dry-Mesic Chaparral,Shrub,607,Chaparral,Shrubland
+2106,Sh Northern Rocky Mountain Montane-Foothill Deciduous Shrubland,305,Red alder forest,,2106,Sh Northern Rocky Mountain Montane-Foothill Deciduous Shrubland,Shrub,612,Deciduous Shrubland,Shrubland
+2107,Sh Rocky Mountain Gambel Oak-Mixed Montane Shrubland,218,Gambel oak/big sagebrush shrubland,,2107,Sh Rocky Mountain Gambel Oak-Mixed Montane Shrubland,Shrub,612,Deciduous Shrubland,Shrubland
+2108,Sh Sonora-Mojave Semi-Desert Chaparral,237,Huckleberry-heather shrubland,,2108,Sh Sonora-Mojave Semi-Desert Chaparral,Shrub,607,Chaparral,Shrubland
+2109,Sh Sonoran Paloverde-Mixed Cacti Desert Scrub,307,Paloverde shrubland,,2109,Sh Sonoran Paloverde-Mixed Cacti Desert Scrub,Shrub,613,Desert Scrub,Shrubland
+2110,Sh Southern California Dry-Mesic Chaparral,44,Scrub oak chaparral shrubland,,2110,Sh Southern California Dry-Mesic Chaparral,Shrub,607,Chaparral,Shrubland
+2111,Tr Western Great Plains Mesquite Woodland and Shrubland,232,Mesquite savanna,,2111,Tr Western Great Plains Mesquite Woodland and Shrubland,Shrub,624,Mesquite Woodland and Scrub,Shrubland
+2112,Tr California Central Valley Mixed Oak Savanna,36,California live oak-blue oak woodland,,2112,Tr California Central Valley Mixed Oak Savanna,Tree,629,Western Oak Woodland and Savanna,Hardwood
+2113,Tr California Coastal Live Oak Woodland and Savanna,36,California live oak-blue oak woodland,,2113,Tr California Coastal Live Oak Woodland and Savanna,Tree,629,Western Oak Woodland and Savanna,Hardwood
+2114,Tr California Lower Montane Foothill Pine Woodland and Savanna,36,California live oak-blue oak woodland,,2114,Tr California Lower Montane Foothill Pine Woodland and Savanna,Tree,610,Conifer-Oak Forest and Woodland,Conifer
+2115,Tr Inter-Mountain Basins Juniper Savanna,210,Pinyon-Utah juniper forest,,2115,Tr Inter-Mountain Basins Juniper Savanna,Tree,620,Juniper Woodland and Savanna,Conifer
+2116,Tr Madrean Juniper Savanna,210,Pinyon-Utah juniper forest,,2116,Tr Madrean Juniper Savanna,Tree,620,Juniper Woodland and Savanna,Conifer
+2117,Tr Southern Rocky Mountain Ponderosa Pine Savanna,28,Ponderosa pine savanna,,2117,Tr Southern Rocky Mountain Ponderosa Pine Savanna,Tree,631,"Ponderosa Pine Forest, Woodland and Savanna",Conifer
+2118,Tr Southern California Oak Woodland and Savanna,14,California black oak woodland,,2118,Tr Southern California Oak Woodland and Savanna,Tree,629,Western Oak Woodland and Savanna,Hardwood
+2119,Tr Southern Rocky Mountain Juniper Woodland and Savanna,210,Pinyon-Utah juniper forest,,2119,Tr Southern Rocky Mountain Juniper Woodland and Savanna,Tree,620,Juniper Woodland and Savanna,Conifer
+2120,Tr Willamette Valley Upland Prairie and Savanna,6,Oregon white oak-Douglas-fir forest,,2120,Tr Willamette Valley Upland Prairie and Savanna,Tree,629,Western Oak Woodland and Savanna,Hardwood
+2121,Sh Apacherian-Chihuahuan Semi-Desert Grassland and Steppe,236,Tobosa-grama grassland,,2121,Sh Apacherian-Chihuahuan Semi-Desert Grassland and Steppe,Herb,618,Grassland and Steppe,Grassland
+2121,Sh Apacherian-Chihuahuan Semi-Desert Grassland and Steppe,236,Tobosa-grama grassland,,2121,Sh Apacherian-Chihuahuan Semi-Desert Grassland and Steppe,Shrub,618,Grassland and Steppe,Shrubland
+2122,Sh Chihuahuan Gypsophilous Grassland and Steppe,353,Honey mesquite/black grama steppe grassland,,2122,Sh Chihuahuan Gypsophilous Grassland and Steppe,Shrub,618,Grassland and Steppe,Shrubland
+2123,He Columbia Plateau Steppe and Grassland,66,Bluebunch wheatgrass-bluegrass grassland,,2123,He Columbia Plateau Steppe and Grassland,Herb,618,Grassland and Steppe,Shrubland
+2124,Sh Columbia Plateau Low Sagebrush Steppe,308,Low sagebrush shrubland,,2124,Sh Columbia Plateau Low Sagebrush Steppe,Shrub,623,Low Sagebrush Shrubland and Steppe,Shrubland
+2125,Sh Inter-Mountain Basins Big Sagebrush Steppe,56,Sagebrush shrubland - exotic species,,2125,Sh Inter-Mountain Basins Big Sagebrush Steppe,Shrub,604,Big Sagebrush Shrubland and Steppe,Shrubland
+2126,Sh Inter-Mountain Basins Montane Sagebrush Steppe,232,Mesquite savanna,,2126,Sh Inter-Mountain Basins Montane Sagebrush Steppe,Shrub,604,Big Sagebrush Shrubland and Steppe,Shrubland
+2127,Sh Inter-Mountain Basins Semi-Desert Shrub-Steppe,311,Saltbrush shrubland,,2127,Sh Inter-Mountain Basins Semi-Desert Shrub-Steppe,Shrub,613,Desert Scrub,Shrubland
+2128,Sh Northern California Coastal Scrub,316,Coyotebush-ceanothus shrubland,,2128,Sh Northern California Coastal Scrub,Shrub,609,Pacific Coastal Scrub,Shrubland
+2129,He California Central Valley and Southern Coastal Grassland,57,Wheatgrass-cheatgrass grassland - exotic species,,2129,He California Central Valley and Southern Coastal Grassland,Herb,617,Grassland,Grassland
+2130,He California Mesic Serpentine Grassland,237,Huckleberry-heather shrubland,,2130,He California Mesic Serpentine Grassland,Herb,617,Grassland,Grassland
+2131,He California Northern Coastal Grassland,65,Tussock grass-oatgrass grassland,,2131,He California Northern Coastal Grassland,Herb,617,Grassland,Grassland
+2132,Sh Central Mixedgrass Prairie,66,Bluebunch wheatgrass-bluegrass grassland,,2132,Sh Central Mixedgrass Prairie,Herb,646,Mixedgrass Prairie,Grassland
+2133,He Chihuahuan Sandy Plains Semi-Desert Grassland,353,Honey mesquite/black grama steppe grassland,,2133,He Chihuahuan Sandy Plains Semi-Desert Grassland,Herb,617,Grassland,Grassland
+2134,He Columbia Basin Foothill and Canyon Dry Grassland,218,Gambel oak/big sagebrush shrubland,,2134,He Columbia Basin Foothill and Canyon Dry Grassland,Herb,617,Grassland,Grassland
+2135,He Inter-Mountain Basins Semi-Desert Grassland,236,Tobosa-grama grassland,,2135,He Inter-Mountain Basins Semi-Desert Grassland,Herb,617,Grassland,Grassland
+2136,He Mediterranean California Alpine Dry Tundra,315,Showy sedge-black alpine sedge grassland,,2136,He Mediterranean California Alpine Dry Tundra,Herb,616,Dry Tundra,Grassland
+2137,He Mediterranean California Subalpine Meadow,315,Showy sedge-black alpine sedge grassland,,2137,He Mediterranean California Subalpine Meadow,Herb,601,"Alpine Dwarf-Shrubland, Fell-field and Meadow",Grassland
+2138,He North Pacific Montane Grassland,41,Idaho fescue-bluebunch wheatgrass grassland,,2138,He North Pacific Montane Grassland,Herb,617,Grassland,Grassland
+2139,He Northern Rocky Mountain Lower Montane-Foothill-Valley Grassland,232,Mesquite savanna,,2139,He Northern Rocky Mountain Lower Montane-Foothill-Valley Grassland,Herb,617,Grassland,Grassland
+2140,He Northern Rocky Mountain Subalpine-Upper Montane Grassland,315,Showy sedge-black alpine sedge grassland,,2140,He Northern Rocky Mountain Subalpine-Upper Montane Grassland,Herb,617,Grassland,Grassland
+2141,He Northwestern Great Plains Mixedgrass Prairie,66,Bluebunch wheatgrass-bluegrass grassland,,2141,He Northwestern Great Plains Mixedgrass Prairie,Herb,646,Mixedgrass Prairie,Grassland
+2142,He Columbia Basin Palouse Prairie,57,Wheatgrass-cheatgrass grassland - exotic species,,2142,He Columbia Basin Palouse Prairie,Herb,617,Grassland,Grassland
+2143,He Rocky Mountain Alpine Fell-Field,315,Showy sedge-black alpine sedge grassland,,2143,He Rocky Mountain Alpine Fell-Field,Herb,601,"Alpine Dwarf-Shrubland, Fell-field and Meadow",Grassland
+2144,He Rocky Mountain Alpine Turf,315,Showy sedge-black alpine sedge grassland,,2144,He Rocky Mountain Alpine Turf,Herb,616,Dry Tundra,Grassland
+2145,He Rocky Mountain Subalpine-Montane Mesic Meadow,315,Showy sedge-black alpine sedge grassland,,2145,He Rocky Mountain Subalpine-Montane Mesic Meadow,Herb,601,"Alpine Dwarf-Shrubland, Fell-field and Meadow",Grassland
+2146,He Southern Rocky Mountain Montane-Subalpine Grassland,315,Showy sedge-black alpine sedge grassland,,2146,He Southern Rocky Mountain Montane-Subalpine Grassland,Herb,617,Grassland,Grassland
+2147,He Western Great Plains Foothill and Piedmont Grassland,57,Wheatgrass-cheatgrass grassland - exotic species,,2147,He Western Great Plains Foothill and Piedmont Grassland,Herb,617,Grassland,Grassland
+2148,Sh Western Great Plains Sand Prairie,236,Tobosa-grama grassland,,2148,Sh Western Great Plains Sand Prairie,Herb,647,Sand Prairie,Grassland
+2149,He Western Great Plains Shortgrass Prairie,236,Tobosa-grama grassland,,2149,He Western Great Plains Shortgrass Prairie,Herb,648,Shortgrass Prairie,Grassland
+2150,He Western Great Plains Tallgrass Prairie,420,Big bluestem-bluejoint grassland,,2150,He Western Great Plains Tallgrass Prairie,Herb,649,Tallgrass Prairie,Grassland
+2151,Tr California Central Valley Riparian Woodland and Shrubland,301,Fremont cottonwood-California sycamore forest,,2151,Tr California Central Valley Riparian Woodland and Shrubland,Tree,635,Western Riparian Woodland and Shrubland,Riparian
+2152,Tr California Montane Riparian Systems,302,Willow/sedge grassland,,2152,Tr California Montane Riparian Systems,Tree,635,Western Riparian Woodland and Shrubland,Riparian
+2153,Sh Inter-Mountain Basins Greasewood Flat,310,Greasewood shrubland,,2153,Sh Inter-Mountain Basins Greasewood Flat,Shrub,619,Greasewood Shrubland,Shrubland
+2154,Tr Inter-Mountain Basins Montane Riparian Systems,302,Willow/sedge grassland,,2154,Tr Inter-Mountain Basins Montane Riparian Systems,Tree,635,Western Riparian Woodland and Shrubland,Riparian
+2155,Tr North American Warm Desert Riparian Systems,303,Cottonwood/willow savanna,,2155,Tr North American Warm Desert Riparian Systems,Shrub,635,Western Riparian Woodland and Shrubland,Riparian
+2156,Tr North Pacific Lowland Riparian Forest and Shrubland,305,Red alder forest,,2156,Tr North Pacific Lowland Riparian Forest and Shrubland,Tree,632,Red Alder Forest and Woodland,Riparian
+2157,Tr North Pacific Swamp Systems,304,Engelmann spruce-subalpine fir/horsetail forest,,2157,Tr North Pacific Swamp Systems,Tree,645,Western Red-cedar-Western Hemlock Forest,Riparian
+2158,Tr North Pacific Montane Riparian Woodland and Shrubland,302,Willow/sedge grassland,,2158,Tr North Pacific Montane Riparian Woodland and Shrubland,Tree,635,Western Riparian Woodland and Shrubland,Riparian
+2159,Tr Rocky Mountain Montane Riparian Systems,302,Willow/sedge grassland,,2159,Tr Rocky Mountain Montane Riparian Systems,Tree,635,Western Riparian Woodland and Shrubland,Riparian
+2160,Tr Rocky Mountain Subalpine/Upper Montane Riparian Systems,302,Willow/sedge grassland,,2160,Tr Rocky Mountain Subalpine/Upper Montane Riparian Systems,Shrub,635,Western Riparian Woodland and Shrubland,Riparian
+2161,Tr Northern Rocky Mountain Conifer Swamp,304,Engelmann spruce-subalpine fir/horsetail forest,,2161,Tr Northern Rocky Mountain Conifer Swamp,Tree,639,Spruce-Fir Forest and Woodland,Riparian
+2162,Tr Western Great Plains Floodplain Systems,1,Black cottonwood-Douglas-fir-quaking aspen forest,,2162,Tr Western Great Plains Floodplain Systems,Tree,635,Western Riparian Woodland and Shrubland,Riparian
+2163,He Pacific Coastal Marsh Systems,318,Bluejoint reedgrass-water sedge grassland,,2163,He Pacific Coastal Marsh Systems,Herb,608,Pacific Coastal Marsh,Riparian
+2164,He Rocky Mountain Wetland-Herbaceous,318,Bluejoint reedgrass-water sedge grassland,,2164,He Rocky Mountain Wetland-Herbaceous,Herb,635,Western Herbaceous Wetland,Riparian
+2165,Tr Northern Rocky Mountain Foothill Conifer Wooded Steppe,53,Pacific ponderosa pine forest,,2165,Tr Northern Rocky Mountain Foothill Conifer Wooded Steppe,Tree,614,Douglas-fir Forest and Woodland,Conifer
+2166,Tr Middle Rocky Mountain Montane Douglas-fir Forest and Woodland,52,Douglas-fir-Pacific ponderosa pine/oceanspray forest,,2166,Tr Middle Rocky Mountain Montane Douglas-fir Forest and Woodland,Tree,614,Douglas-fir Forest and Woodland,Conifer
+2167,Tr Rocky Mountain Poor-Site Lodgepole Pine Forest,22,Mature lodgepole pine forest,,2167,Tr Rocky Mountain Poor-Site Lodgepole Pine Forest,Tree,622,Lodgepole Pine Forest and Woodland,Conifer
+2168,Sh Northern Rocky Mountain Avalanche Chute Shrubland,319,Pacific silver fir-Sitka alder forest,,2168,Sh Northern Rocky Mountain Avalanche Chute Shrubland,Shrub,612,Deciduous Shrubland,Shrubland
+2169,Sh Northern Rocky Mountain Subalpine Deciduous Shrubland,305,Red alder forest,,2169,Sh Northern Rocky Mountain Subalpine Deciduous Shrubland,Shrub,612,Deciduous Shrubland,Shrubland
+2170,Tr Klamath-Siskiyou Xeromorphic Serpentine Savanna and Chaparral,0,Urban-Barren,,2170,Tr Klamath-Siskiyou Xeromorphic Serpentine Savanna and Chaparral,Tree,607,Chaparral,Shrubland
+2171,He North Pacific Alpine and Subalpine Dry Grassland,315,Showy sedge-black alpine sedge grassland,,2171,He North Pacific Alpine and Subalpine Dry Grassland,Herb,617,Grassland,Grassland
+2172,Tr Sierran-Intermontane Desert Western White Pine-White Fir Woodland,273,Engelmann spruce-Douglas-fir-white fir-ponderosa pine forest,,2172,Tr Sierran-Intermontane Desert Western White Pine-White Fir Woodland,Tree,643,Douglas-fir-Grand Fir-White Fir Forest and Woodland,Conifer
+2173,Tr North Pacific Wooded Volcanic Flowage,28,Ponderosa pine savanna,,2173,Tr North Pacific Wooded Volcanic Flowage,Tree,625,Douglas-fir-Ponderosa Pine-Lodgepole Pine Forest and Woodland,Conifer
+2174,Tr North Pacific Dry-Mesic Silver Fir-Western Hemlock-Douglas-fir Forest,8,Western hemlock-Douglas-fir-western redcedar/vine maple forest,,2174,Tr North Pacific Dry-Mesic Silver Fir-Western Hemlock-Douglas-fir Forest,Tree,642,Western Hemlock-Silver Fir Forest,Conifer
+2177,Tr California Coastal Closed-Cone Conifer Forest and Woodland,306,Knobcone pine forest,,2177,Tr California Coastal Closed-Cone Conifer Forest and Woodland,Tree,610,Conifer-Oak Forest and Woodland,Conifer-Hardwood
+2178,Tr North Pacific Hypermaritime Western Red-cedar-Western Hemlock Forest,8,Western hemlock-Douglas-fir-western redcedar/vine maple forest,,2178,Tr North Pacific Hypermaritime Western Red-cedar-Western Hemlock Forest,Tree,645,Western Red-cedar-Western Hemlock Forest,Conifer
+2179,Tr Northwestern Great Plains-Black Hills Ponderosa Pine Woodland and Savanna,53,Pacific ponderosa pine forest,,,,,,,
+2180,Tr Introduced Riparian Vegetation,305,Red alder forest,,2180,Tr Introduced Riparian Vegetation,Tree,701,Introduced Riparian Vegetation,Exotic Tree-Shrub
+2181,He Introduced Upland Vegetation-Annual Grassland,57,Wheatgrass-cheatgrass grassland - exotic species,,,,,,,
+2182,He Introduced Upland Vegetation-Perennial Grassland and Forbland,57,Wheatgrass-cheatgrass grassland - exotic species,,2182,He Introduced Upland Vegetation-Perennial Grassland and Forbland,Herb,703,Introduced Perennial Grassland and Forbland,Exotic Herbaceous
+2183,He Introduced Upland Vegetation-Annual and Biennial Forbland,57,Wheatgrass-cheatgrass grassland - exotic species,,2183,He Introduced Upland Vegetation-Annual and Biennial Forbland,Herb,704,Introduced Annual and Biennial Forbland,Exotic Herbaceous
+2184,He California Annual Grassland,57,Wheatgrass-cheatgrass grassland - exotic species,,2184,He California Annual Grassland,Herb,702,Introduced Annual Grassland,Exotic Herbaceous
+2185,Tr Introduced Wetland Vegetation,456,Chinese tallow forest,,2185,Tr Introduced Wetland Vegetation,Herb,705,Introduced Wetland Vegetation,Exotic Tree-Shrub
+2186,Sh Introduced Upland Vegetation-Shrub,305,Red alder forest,,2186,Sh Introduced Upland Vegetation-Shrub,Shrub,706,Introduced Upland Vegetation-Shrub,Shrubland
+2187,Tr Introduced Upland Vegetation-Treed,429,Black locust forest,,2187,Tr Introduced Upland Vegetation-Treed,Tree,707,Introduced Upland Vegetation-Treed,Exotic Tree-Shrub
+2190,Sh Recently Burned-Shrub Cover,0,Urban-Barren,,,,,,,
+2191,He Recently Logged-Herb and Grass Cover,196,Loblolly pine/bluestem forest,,2191,He Recently Logged-Herb and Grass Cover,Herb,710,Transitional Herbacous Vegetation,Grassland
+2192,Sh Recently Logged-Shrub Cover,401,Holly-privet shrubland,,2192,Sh Recently Logged-Shrub Cover,Shrub,720,Transitional Shrub Vegetation,Shrubland
+2193,Tr Recently Logged-Tree Cover,402,Pine/holly-privet forest,,2193,Tr Recently Logged-Tree Cover,Tree,730,Transitional Forest Vegetation,Conifer
+2194,Tr Ruderal Upland-Treed,180,Red maple-oak-hickory-sweetgum forest,,2194,Tr Ruderal Upland-Treed,Tree,740,Ruderal Forest,Conifer-Hardwood
+2195,He Recently Burned-Herb and Grass Cover,0,Urban-Barren,,2195,He Recently Burned-Herb and Grass Cover,Herb,710,Transitional Herbacous Vegetation,Grassland
+2200,Tr Coastal Douglas-fir Woodland,52,Douglas-fir-Pacific ponderosa pine/oceanspray forest,,2200,Tr Coastal Douglas-fir Woodland,Tree,610,Conifer-Oak Forest and Woodland,Conifer
+2201,Tr Quercus garryana Woodland Alliance,6,Oregon white oak-Douglas-fir forest,,2201,Tr Quercus garryana Woodland Alliance,Tree,629,Western Oak Woodland and Savanna,Hardwood
+2202,Tr Juniperus occidentalis Wooded Herbaceous Alliance,20,Western juniper/curl-leaf mountain mahogany woodland,,2202,Tr Juniperus occidentalis Wooded Herbaceous Alliance,Tree,620,Juniper Woodland and Savanna,Conifer
+2203,Tr Juniperus occidentalis Woodland Alliance,69,Western juniper/sagebrush-bitterbrush shrubland,,2203,Tr Juniperus occidentalis Woodland Alliance,Tree,620,Juniper Woodland and Savanna,Conifer
+2205,Tr Tsuga mertensiana-Abies amabilis Woodland Alliance,238,Pacific silver fir-mountain hemlock forest,,2205,Tr Tsuga mertensiana-Abies amabilis Woodland Alliance,Tree,627,Mountain Hemlock Forest and Woodland,Conifer
+2206,Tr Pseudotsuga menziesii Giant Forest Alliance,8,Western hemlock-Douglas-fir-western redcedar/vine maple forest,,2206,Tr Pseudotsuga menziesii Giant Forest Alliance,Tree,614,Douglas-fir Forest and Woodland,Conifer
+2208,Tr Abies concolor Forest Alliance,19,White fir-giant sequoia-sugar pine forest,,2208,Tr Abies concolor Forest Alliance,Tree,643,Douglas-fir-Grand Fir-White Fir Forest and Woodland,Conifer
+2210,Sh Coleogyne ramosissima Shrubland Alliance,309,Blackbrush shrubland,,2210,Sh Coleogyne ramosissima Shrubland Alliance,Shrub,606,Blackbrush Shrubland,Shrubland
+2211,Sh Grayia spinosa Shrubland Alliance,309,Blackbrush shrubland,,2211,Sh Grayia spinosa Shrubland Alliance,Shrub,613,Desert Scrub,Shrubland
+2213,Sh Quercus havardii Shrubland Alliance,354,Havard oak shrubland,,2213,Sh Quercus havardii Shrubland Alliance,Shrub,696,Juniper-Oak,Conifer-Hardwood
+2214,Sh Arctostaphylos patula Shrubland Alliance,218,Gambel oak/big sagebrush shrubland,,2214,Sh Arctostaphylos patula Shrubland Alliance,Shrub,607,Chaparral,Shrubland
+2215,Sh Quercus turbinella Shrubland Alliance,30,Turbinella oak-alderleaf mountain mahogany shrubland,,2215,Sh Quercus turbinella Shrubland Alliance,Shrub,607,Chaparral,Shrubland
+2216,Sh Cercocarpus montanus Shrubland Alliance,313,Mountain mahogany shrubland,,2216,Sh Cercocarpus montanus Shrubland Alliance,Shrub,607,Chaparral,Shrubland
+2217,Sh Quercus gambelii Shrubland Alliance,218,Gambel oak/big sagebrush shrubland,,2217,Sh Quercus gambelii Shrubland Alliance,Shrub,612,Deciduous Shrubland,Shrubland
+2218,Sps North American Warm Desert Sparsely Vegetated Systems II,0,Urban-Barren,,2218,Sps North American Warm Desert Sparsely Vegetated Systems II,Sparse,700,Sparse Vegetation,Sparsely Vegetated
+2219,Sps Inter-Mountain Basins Sparsely Vegetated Systems II,0,Urban-Barren,,2219,Sps Inter-Mountain Basins Sparsely Vegetated Systems II,Sparse,700,Sparse Vegetation,Sparsely Vegetated
+2220,Sh Artemisia tridentata ssp. vaseyana Shrubland Alliance,56,Sagebrush shrubland - exotic species,,2220,Sh Artemisia tridentata ssp. vaseyana Shrubland Alliance,Shrub,604,Big Sagebrush Shrubland and Steppe,Shrubland
+2221,Sps Mediterranean California Sparsely Vegetated Systems II,0,Urban-Barren,,2221,Sps Mediterranean California Sparsely Vegetated Systems II,Sparse,700,Sparse Vegetation,Sparsely Vegetated
+2222,Sps Rocky Mountain Alpine/Montane Sparsely Vegetated Systems II,0,Urban-Barren,,2222,Sps Rocky Mountain Alpine/Montane Sparsely Vegetated Systems II,Sparse,700,Sparse Vegetation,Sparsely Vegetated
+2223,Sps Sonoran Desert Sparsely Vegetated,0,Urban-Barren,,2223,Sps Sonoran Desert Sparsely Vegetated,Sparse,700,Sparse Vegetation,Sparsely Vegetated
+2227,Tr Pseudotsuga menziesii Forest Alliance,52,Douglas-fir-Pacific ponderosa pine/oceanspray forest,,2227,Tr Pseudotsuga menziesii Forest Alliance,Tree,614,Douglas-fir Forest and Woodland,Conifer
+2228,Tr Larix occidentalis Forest Alliance,320,Western larch forest,,2228,Tr Larix occidentalis Forest Alliance,Tree,644,Western Larch Forest and Woodland,Conifer
+2229,Tr Pinus albicaulis Woodland Alliance,61,Whitebark pine/subalpine fir forest,,2229,Tr Pinus albicaulis Woodland Alliance,Tree,640,Subalpine Woodland and Parkland,Conifer
+2230,Tr Pinus sabiniana Woodland Alliance,36,California live oak-blue oak woodland,,2230,Tr Pinus sabiniana Woodland Alliance,Tree,610,Conifer-Oak Forest and Woodland,Conifer-Hardwood
+2231,Tr Sequoiadendron giganteum Forest Alliance,19,White fir-giant sequoia-sugar pine forest,,2231,Tr Sequoiadendron giganteum Forest Alliance,Tree,643,Douglas-fir-Grand Fir-White Fir Forest and Woodland,Conifer
+2232,Tr Abies grandis Forest Forest,208,Grand fir-Douglas-fir forest,,2232,Tr Abies grandis Forest Forest,Tree,643,Douglas-fir-Grand Fir-White Fir Forest and Woodland,Conifer
+2238,Tr Laurentian-Acadian Northern Oak Forest,123,White oak-northern red oak-black oak-hickory forest,,2238,Tr Laurentian-Acadian Northern Oak Forest,Tree,665,Red Pine-White Pine Forest and Woodland,Hardwood
+2239,Tr Laurentian-Acadian Northern Pine-Oak Forest,109,Eastern white pine-northern red oak-red maple forest,,2239,Tr Laurentian-Acadian Northern Pine-Oak Forest,Tree,665,Red Pine-White Pine Forest and Woodland,Conifer-Hardwood
+2240,Tr Laurentian-Acadian Hardwood Forest,110,American beech-yellow birch-sugar maple forest,,2240,Tr Laurentian-Acadian Hardwood Forest,Tree,685,Pine-Hemlock-Hardwood Forest,Hardwood
+2241,Tr Laurentian-Acadian Pine-Hemlock-Hardwood Forest,287,Eastern white pine-eastern hemlock forest,,2241,Tr Laurentian-Acadian Pine-Hemlock-Hardwood Forest,Tree,685,Pine-Hemlock-Hardwood Forest,Conifer-Hardwood
+2242,Tr Laurentian Oak Barrens,459,Northern pin oak forest,,2242,Tr Laurentian Oak Barrens,Tree,676,Jack Pine Forest,Hardwood
+2243,Tr Laurentian Pine-Oak Barrens,460,Red-jack pine-northern pin oak forest,,2243,Tr Laurentian Pine-Oak Barrens,Tree,676,Jack Pine Forest,Conifer-Hardwood
+2244,Tr Boreal Hardwood Forest,142,Quaking aspen-paper birch forest,,2244,Tr Boreal Hardwood Forest,Tree,693,Spruce-Fir-Hardwood Forest,Hardwood
+2245,Tr Boreal White Spruce-Fir-Hardwood Forest,103,White spruce-paper birch forest,,2245,Tr Boreal White Spruce-Fir-Hardwood Forest,Tree,693,Spruce-Fir-Hardwood Forest,Conifer-Hardwood
+2260,Tr Mediterranean California Lower Montane Black Oak Forest and Woodland,14,California black oak woodland,,2260,Tr Mediterranean California Lower Montane Black Oak Forest and Woodland,Tree,610,Conifer-Oak Forest and Woodland,Hardwood
+2261,Tr Mediterranean California Lower Montane Black Oak - Conifer Forest and Woodland,16,Jeffrey pine-ponderosa pine-Douglas-fir-California black oak forest,,2261,Tr Mediterranean California Lower Montane Black Oak - Conifer Forest and Woodland,Tree,610,Conifer-Oak Forest and Woodland,Conifer-Hardwood
+2262,Tr East Cascades Oak Forest and Woodland,6,Oregon white oak-Douglas-fir forest,,2262,Tr East Cascades Oak Forest and Woodland,Tree,610,Conifer-Oak Forest and Woodland,Hardwood
+2263,Tr East Cascades Oak - Ponderosa Pine Forest and Woodland,361,Oregon white oak-ponderosa pine forest,,2263,Tr East Cascades Oak - Ponderosa Pine Forest and Woodland,Tree,610,Conifer-Oak Forest and Woodland,Conifer-Hardwood
+2264,Tr California Lower Montane Blue Oak Forest and Woodland,36,California live oak-blue oak woodland,,2264,Tr California Lower Montane Blue Oak Forest and Woodland,Tree,610,Conifer-Oak Forest and Woodland,Hardwood
+2265,Tr California Lower Montane Blue Oak-Foothill Pine Forest and Woodland,39,Sugar pine-Douglas-fir-oak forest,,2265,Tr California Lower Montane Blue Oak-Foothill Pine Forest and Woodland,Tree,610,Conifer-Oak Forest and Woodland,Conifer-Hardwood
+2266,Tr Oregon White Oak Woodland,360,Oregon white oak forest,,2266,Tr Oregon White Oak Woodland,Tree,610,Conifer-Oak Forest and Woodland,Hardwood
+2267,Tr Douglas-fir - Oregon White Oak Woodland,6,Oregon white oak-Douglas-fir forest,,2267,Tr Douglas-fir - Oregon White Oak Woodland,Tree,610,Conifer-Oak Forest and Woodland,Conifer-Hardwood
+2301,Tr Boreal Aspen-Birch Forest,142,Quaking aspen-paper birch forest,,2301,Tr Boreal Aspen-Birch Forest,Tree,652,Aspen-Birch Forest,Hardwood
+2302,Tr Laurentian-Acadian Northern Hardwoods Forest,110,American beech-yellow birch-sugar maple forest,,2302,Tr Laurentian-Acadian Northern Hardwoods Forest,Tree,682,Yellow Birch-Sugar Maple Forest,Hardwood
+2303,Tr Northeastern Interior Dry-Mesic Oak Forest,123,White oak-northern red oak-black oak-hickory forest,,2303,Tr Northeastern Interior Dry-Mesic Oak Forest,Tree,660,White Oak-Red Oak-Hickory Forest and Woodland,Hardwood
+2304,Tr Ozark-Ouachita Dry-Mesic Oak Forest,90,White oak-northern red oak forest,,2304,Tr Ozark-Ouachita Dry-Mesic Oak Forest,Tree,660,White Oak-Red Oak-Hickory Forest and Woodland,Hardwood
+2305,Tr Southern Interior Low Plateau Dry-Mesic Oak Forest,275,Chestnut-white-northern red oak forest,,2305,Tr Southern Interior Low Plateau Dry-Mesic Oak Forest,Tree,661,Chestnut Oak Forest and Woodland,Hardwood
+2306,Tr East Gulf Coastal Plain Northern Loess Plain Oak-Hickory Upland,123,White oak-northern red oak-black oak-hickory forest,,2306,Tr East Gulf Coastal Plain Northern Loess Plain Oak-Hickory Upland,Tree,667,White Oak-Beech Forest and Woodland,Hardwood
+2307,Tr East Gulf Coastal Plain Northern Dry Upland Hardwood Forest,123,White oak-northern red oak-black oak-hickory forest,,2307,Tr East Gulf Coastal Plain Northern Dry Upland Hardwood Forest,Tree,658,Coastal Plain Oak Forest,Hardwood
+2308,Tr Crosstimbers Oak Forest and Woodland,264,Post-blackjack oak forest,,2308,Tr Crosstimbers Oak Forest and Woodland,Tree,662,Post Oak Woodland and Savanna,Hardwood
+2309,Tr Southern Appalachian Northern Hardwood Forest,110,American beech-yellow birch-sugar maple forest,,2309,Tr Southern Appalachian Northern Hardwood Forest,Tree,682,Yellow Birch-Sugar Maple Forest,Hardwood
+2310,Tr North-Central Interior Dry-Mesic Oak Forest and Woodland,90,White oak-northern red oak forest,,2310,Tr North-Central Interior Dry-Mesic Oak Forest and Woodland,Tree,660,White Oak-Red Oak-Hickory Forest and Woodland,Hardwood
+2311,Tr North-Central Interior Dry Oak Forest and Woodland,154,Bur oak savanna,,2311,Tr North-Central Interior Dry Oak Forest and Woodland,Tree,663,Black Oak Woodland and Savanna,Hardwood
+2312,Tr Ouachita Montane Oak Forest,403,Post-blackjack-white oak forest,,2312,Tr Ouachita Montane Oak Forest,Tree,681,Montane Oak Forest,Hardwood
+2313,Tr North-Central Interior Beech-Maple Forest,110,American beech-yellow birch-sugar maple forest,,2313,Tr North-Central Interior Beech-Maple Forest,Tree,655,Beech-Maple-Basswood Forest,Hardwood
+2314,Tr North-Central Interior Maple-Basswood Forest,266,Sugar maple-basswood forest,,2314,Tr North-Central Interior Maple-Basswood Forest,Tree,655,Beech-Maple-Basswood Forest,Hardwood
+2315,Tr Southern Appalachian Oak Forest,275,Chestnut-white-northern red oak forest,,2315,Tr Southern Appalachian Oak Forest,Tree,661,Chestnut Oak Forest and Woodland,Hardwood
+2316,Tr Southern Piedmont Mesic Forest,269,Sugar maple-yellow poplar-American beech-oak forest,,2316,Tr Southern Piedmont Mesic Forest,Tree,667,White Oak-Beech Forest and Woodland,Hardwood
+2317,Tr Allegheny-Cumberland Dry Oak Forest and Woodland,275,Chestnut-white-northern red oak forest,,2317,Tr Allegheny-Cumberland Dry Oak Forest and Woodland,Tree,661,Chestnut Oak Forest and Woodland,Hardwood
+2318,Tr Southern and Central Appalachian Cove Forest,404,Yellow poplar-sugar maple-basswood forest,,2318,Tr Southern and Central Appalachian Cove Forest,Tree,655,Beech-Maple-Basswood Forest,Hardwood
+2320,Tr Central and Southern Appalachian Montane Oak Forest,405,Northern red oak montane forest,,2320,Tr Central and Southern Appalachian Montane Oak Forest,Tree,681,Montane Oak Forest,Hardwood
+2321,Tr Crowley's Ridge Mesic Loess Slope Forest,269,Sugar maple-yellow poplar-American beech-oak forest,,2321,Tr South-Central Interior Mesophytic Forest,Tree,655,Beech-Maple-Basswood Forest,Hardwood
+2322,Tr South-Central Interior Mesophytic Forest,430,White oak-southern red oak forest,,2321,Tr Crowley's Ridge Mesic Loess Slope Forest,Tree,667,White Oak-Beech Forest and Woodland,Hardwood
+2323,Tr West Gulf Coastal Plain Mesic Hardwood Forest,406,American beech-southern magnolia-oak forest,,2323,Tr West Gulf Coastal Plain Mesic Hardwood Forest,Tree,680,Sweetgum-Water Oak Forest,Hardwood
+2324,Tr Northern Atlantic Coastal Plain Hardwood Forest,123,White oak-northern red oak-black oak-hickory forest,,2324,Tr Northern Atlantic Coastal Plain Hardwood Forest,Tree,658,Coastal Plain Oak Forest,Hardwood
+2325,Tr East Gulf Coastal Plain Northern Mesic Hardwood Slope Forest,269,Sugar maple-yellow poplar-American beech-oak forest,,2325,Tr East Gulf Coastal Plain Northern Mesic Hardwood Slope Forest,Tree,680,Sweetgum-Water Oak Forest,Hardwood
+2326,Tr South-Central Interior/Upper Coastal Plain Flatwoods,264,Post-blackjack oak forest,,2326,Tr South-Central Interior/Upper Coastal Plain Flatwoods,Tree,673,Hardwood Flatwoods,Hardwood
+2327,Tr East Gulf Coastal Plain Northern Loess Bluff Forest,269,Sugar maple-yellow poplar-American beech-oak forest,,2327,Tr East Gulf Coastal Plain Northern Loess Bluff Forest,Tree,667,White Oak-Beech Forest and Woodland,Hardwood
+2328,Tr Southern Coastal Plain Limestone Forest,431,Chinkapin oak-Shumard oak forest,,2328,Tr Southern Coastal Plain Limestone Forest,Tree,680,Sweetgum-Water Oak Forest,Hardwood
+2329,Tr East Gulf Coastal Plain Southern Loess Bluff Forest,276,Oak-pine-magnolia forest,,2329,Tr East Gulf Coastal Plain Southern Loess Bluff Forest,Tree,667,White Oak-Beech Forest and Woodland,Hardwood
+2330,Tr Southern Coastal Plain Dry Upland Hardwood Forest,407,Darlington oak  forest,,2330,Tr Southern Coastal Plain Dry Upland Hardwood Forest,Tree,658,Coastal Plain Oak Forest,Hardwood
+2331,Tr Eastern Great Plains Tallgrass Aspen Parkland,408,Quaking aspen-bur oak forest,,2331,Tr Eastern Great Plains Tallgrass Aspen Parkland,Tree,602,"Aspen Forest, Woodland, and Parkland",Hardwood
+2331,Tr Eastern Great Plains Tallgrass Aspen Parkland,408,Quaking aspen-bur oak forest,,2331,Tr Eastern Great Plains Tallgrass Aspen Parkland,Shrub,602,"Aspen Forest, Woodland, and Parkland",Shrubland
+2333,Tr South Florida Hardwood Hammock,432,Florida poisontree-West Indian mahogany forest,,2333,Tr South Florida Hardwood Hammock,Tree,672,Hammocks,Hardwood
+2334,Tr Ozark-Ouachita Mesic Hardwood Forest,180,Red maple-oak-hickory-sweetgum forest,,2334,Tr Ozark-Ouachita Mesic Hardwood Forest,Tree,655,Beech-Maple-Basswood Forest,Hardwood
+2335,Tr Southern Atlantic Coastal Plain Dry and Dry-Mesic Oak Forest,186,Turkey oak-bluejack oak forest,,2335,Tr Southern Atlantic Coastal Plain Dry and Dry-Mesic Oak Forest,Tree,658,Coastal Plain Oak Forest,Hardwood
+2336,Tr Southwest Florida Coastal Strand and Maritime Hammock,457,Florida strangler fig-gumbo limbo-cabbage palm forest,,2336,Tr Southwest Florida Coastal Strand and Maritime Hammock,Tree,672,Hammocks,Hardwood
+2337,Tr Southeast Florida Coastal Strand and Maritime Hammock,457,Florida strangler fig-gumbo limbo-cabbage palm forest,,2337,Tr Southeast Florida Coastal Strand and Maritime Hammock,Tree,672,Hammocks,Hardwood
+2338,Tr Central and South Texas Coastal Fringe Forest and Woodland,173,Live oak/sea oats savanna,,2338,Tr Central and South Texas Coastal Fringe Forest and Woodland,Tree,656,Texas Live Oak,Hardwood
+2339,Tr West Gulf Coastal Plain Chenier and Upper Texas Coastal Fringe Forest and Woodland,173,Live oak/sea oats savanna,,2339,Tr West Gulf Coastal Plain Chenier and Upper Texas Coastal Fringe Forest and Woodland,Tree,656,Texas Live Oak,Hardwood
+2340,Tr Appalachian Shale Barrens,409,Virginia pine-chestnut oak/little bluestem forest,,2340,Tr Appalachian Shale Barrens,Tree,664,Chestnut Oak-Virginia Pine Forest and Woodland,Conifer-Hardwood
+2342,Tr Piedmont Hardpan Woodland and Forest,264,Post-blackjack oak forest,,2342,Tr Piedmont Hardpan Woodland and Forest,Tree,662,Post Oak Woodland and Savanna,Hardwood
+2343,Tr Southern Atlantic Coastal Plain Mesic Hardwood Forest,283,Willow-laurel-water oak forest,,2343,Tr Southern Atlantic Coastal Plain Mesic Hardwood Forest,Tree,680,Sweetgum-Water Oak Forest,Hardwood
+2344,Tr Boreal Jack Pine-Black Spruce Forest,140,Jack pine/black spruce forest,,2344,Tr Boreal Jack Pine-Black Spruce Forest,Tree,676,Jack Pine Forest,Conifer
+2346,Tr Atlantic Coastal Plain Fall-line Sandhills Longleaf Pine Woodland,185,Longleaf pine/turkey oak forest 1-2 yr postfire,,2346,Tr Atlantic Coastal Plain Fall-line Sandhills Longleaf Pine Woodland,Tree,677,Longleaf Pine Woodland,Conifer
+2347,Tr Atlantic Coastal Plain Upland Longleaf Pine Woodland,185,Longleaf pine/turkey oak forest 1-2 yr postfire,,2347,Tr Atlantic Coastal Plain Upland Longleaf Pine Woodland,Tree,677,Longleaf Pine Woodland,Conifer
+2348,Tr West Gulf Coastal Plain Upland Longleaf Pine Forest and Woodland,180,Red maple-oak-hickory-sweetgum forest,,2348,Tr West Gulf Coastal Plain Upland Longleaf Pine Forest and Woodland,Tree,677,Longleaf Pine Woodland,Conifer
+2349,Tr East Gulf Coastal Plain Interior Upland Longleaf Pine Woodland,185,Longleaf pine/turkey oak forest 1-2 yr postfire,,2349,Tr East Gulf Coastal Plain Interior Upland Longleaf Pine Woodland,Tree,677,Longleaf Pine Woodland,Conifer
+2350,Tr Central and Southern Appalachian Spruce-Fir Forest,270,Red spruce-Fraser fir/rhododendron forest,,2350,Tr Central and Southern Appalachian Spruce-Fir Forest,Tree,693,Spruce-Fir-Hardwood Forest,Conifer-Hardwood
+2351,Tr Southeastern Interior Longleaf Pine Woodland,185,Longleaf pine/turkey oak forest 1-2 yr postfire,,2351,Tr Southeastern Interior Longleaf Pine Woodland,Tree,677,Longleaf Pine Woodland,Conifer
+2352,Tr Southern Appalachian Montane Pine Forest and Woodland,410,Table Mountain pine-chestnut oak forest,,2352,Tr Southern Appalachian Montane Pine Forest and Woodland,Tree,686,Pitch Pine Woodlands,Conifer
+2353,Tr Southern Appalachian Low-Elevation Pine Forest,114,Virginia pine-pitch pine-shortleaf pine forest,,2353,Tr Southern Appalachian Low-Elevation Pine Forest,Tree,695,Virginia Pine Forest,Conifer
+2354,Tr Northeastern Interior Pine Barrens,107,Pitch pine/scrub oak forest,,2354,Tr Northeastern Interior Pine Barrens,Tree,686,Pitch Pine Woodlands,Conifer
+2355,Tr Northern Atlantic Coastal Plain Pitch Pine Barrens,107,Pitch pine/scrub oak forest,,2355,Tr Northern Atlantic Coastal Plain Pitch Pine Barrens,Tree,686,Pitch Pine Woodlands,Conifer
+2356,Tr Florida Longleaf Pine Sandhill,180,Red maple-oak-hickory-sweetgum forest,,2356,Tr Florida Longleaf Pine Sandhill,Tree,677,Longleaf Pine Woodland,Conifer
+2357,Tr Southern Coastal Plain Mesic Slope Forest,276,Oak-pine-magnolia forest,,2357,Tr Southern Coastal Plain Mesic Slope Forest,Tree,680,Sweetgum-Water Oak Forest,Hardwood
+2358,Tr East-Central Texas Plains Pine Forest and Woodland,281,Shortleaf pine-post oak-black oak forest  ,,2358,Tr East-Central Texas Plains Pine Forest and Woodland,Tree,689,Shortleaf Pine Woodland,Conifer
+2361,Tr Central Atlantic Coastal Plain Maritime Forest,174,Live oak-sabal palm forest,,2361,Tr Central Atlantic Coastal Plain Maritime Forest,Tree,679,Maritime Forest,Hardwood
+2362,Tr Laurentian-Acadian Northern Pine Forest,138,Red pine-eastern white pine forest,,2362,Tr Laurentian-Acadian Northern Pine Forest,Tree,665,Red Pine-White Pine Forest and Woodland,Conifer
+2363,Tr Central Interior Highlands Dry Acidic Glade and Barrens,135,Eastern redcedar-oak/bluestem savanna,,2363,Tr Central Interior Highlands Dry Acidic Glade and Barrens,Tree,670,Glades and Barrens,Conifer-Hardwood
+2364,Tr Ozark-Ouachita Dry Oak Woodland,264,Post-blackjack oak forest,,2364,Tr Ozark-Ouachita Dry Oak Woodland,Tree,662,Post Oak Woodland and Savanna,Hardwood
+2365,Tr Boreal White Spruce-Fir Forest,143,Quaking aspen-paper birch-white spruce-balsam fir forest,,2365,Tr Boreal White Spruce-Fir Forest,Tree,693,Spruce-Fir-Hardwood Forest,Conifer
+2366,Tr Laurentian-Acadian Pine-Hemlock Forest,287,Eastern white pine-eastern hemlock forest,,2366,Tr Laurentian-Acadian Pine-Hemlock Forest,Tree,685,Pine-Hemlock-Hardwood Forest,Conifer
+2367,Tr Ozark-Ouachita Shortleaf Pine Forest and Woodland,281,Shortleaf pine-post oak-black oak forest  ,,2367,Tr Ozark-Ouachita Shortleaf Pine Forest and Woodland,Tree,690,Shortleaf Pine-Oak Forest and Woodland,Conifer-Hardwood
+2368,Tr Southern Piedmont Dry Pine Forest,114,Virginia pine-pitch pine-shortleaf pine forest,,2368,Tr Southern Piedmont Dry Pine Forest,Tree,664,Chestnut Oak-Virginia Pine Forest and Woodland,Conifer-Hardwood
+2369,Tr Central Appalachian Dry Pine Forest,114,Virginia pine-pitch pine-shortleaf pine forest,,2369,Tr Central Appalachian Dry Pine Forest,Tree,664,Chestnut Oak-Virginia Pine Forest and Woodland,Conifer-Hardwood
+2370,Tr Appalachian Hemlock Forest,268,American beech-yellow birch-sugar maple-eastern hemlock forest,,2370,Tr Appalachian Hemlock Forest,Tree,685,Pine-Hemlock-Hardwood Forest,Conifer
+2371,Tr West Gulf Coastal Plain Pine Forest,157,Loblolly-shortleaf pine-mixed hardwood forest,,2371,Tr West Gulf Coastal Plain Pine Forest,Tree,689,Shortleaf Pine Woodland,Conifer
+2372,Tr East Gulf Coastal Plain Interior Shortleaf Pine Forest,281,Shortleaf pine-post oak-black oak forest  ,,2372,Tr East Gulf Coastal Plain Interior Shortleaf Pine Forest,Tree,690,Shortleaf Pine-Oak Forest and Woodland,Conifer-Hardwood
+2373,Tr Acadian Low-Elevation Spruce-Fir Forest,155,Red spruce-balsam fir forest,,2373,Tr Acadian Low-Elevation Spruce-Fir Forest,Tree,693,Spruce-Fir-Hardwood Forest,Conifer-Hardwood
+2374,Tr Acadian-Appalachian Montane Spruce-Fir Forest,155,Red spruce-balsam fir forest,,2374,Tr Acadian-Appalachian Montane Spruce-Fir Forest,Tree,693,Spruce-Fir-Hardwood Forest,Conifer-Hardwood
+2375,Tr Eastern Serpentine Woodland,135,Eastern redcedar-oak/bluestem savanna,,2375,Tr Eastern Serpentine Woodland,Tree,670,Glades and Barrens,Conifer-Hardwood
+2376,Tr Southern Ridge and Valley/Cumberland Dry Calcareous Forest,123,White oak-northern red oak-black oak-hickory forest,,2376,Tr Southern Ridge and Valley/Cumberland Dry Calcareous Forest,Tree,660,White Oak-Red Oak-Hickory Forest and Woodland,Hardwood
+2377,Tr Central Appalachian Rocky Pine Woodland,243,Pitch pine/scrub oak shrubland,,2377,Tr Central Appalachian Rocky Pine Woodland,Tree,664,Chestnut Oak-Virginia Pine Forest and Woodland,Conifer-Hardwood
+2377,Tr Central Appalachian Rocky Pine Woodland,243,Pitch pine/scrub oak shrubland,,2377,Tr Central Appalachian Rocky Pine Woodland,Shrub,664,Chestnut Oak-Virginia Pine Forest and Woodland,Conifer-Hardwood
+2378,Tr West Gulf Coastal Plain Sandhill Shortleaf Pine Forest and Woodland,281,Shortleaf pine-post oak-black oak forest  ,,2378,Tr West Gulf Coastal Plain Sandhill Shortleaf Pine Forest and Woodland,Tree,689,Shortleaf Pine Woodland,Conifer
+2379,Tr Northern Atlantic Coastal Plain Maritime Forest,433,Pine-oak/American beachgrass savanna,,2379,Tr Northern Atlantic Coastal Plain Maritime Forest,Tree,679,Maritime Forest,Hardwood
+2380,Tr East Gulf Coastal Plain Maritime Forest,174,Live oak-sabal palm forest,,2380,Tr East Gulf Coastal Plain Maritime Forest,Tree,679,Maritime Forest,Hardwood
+2381,Tr Lower Mississippi River Dune Woodland and Forest,434,Post oak-southern red oak/little bluestem-Indiangrass forest,,2381,Tr Lower Mississippi River Dune Woodland and Forest,Tree,662,Post Oak Woodland and Savanna,Hardwood
+2382,Tr Southern Atlantic Coastal Plain Maritime Forest,174,Live oak-sabal palm forest,,2382,Tr Southern Atlantic Coastal Plain Maritime Forest,Tree,679,Maritime Forest,Hardwood
+2383,Tr Edwards Plateau Limestone Savanna and Woodland,411,Ashe juniper-oak savanna,,2383,Tr Edwards Plateau Limestone Savanna and Woodland,Tree,662,Post Oak Woodland and Savanna,Hardwood
+2383,Tr Edwards Plateau Limestone Savanna and Woodland,411,Ashe juniper-oak savanna,,2383,Tr Edwards Plateau Limestone Savanna and Woodland,Shrub,662,Post Oak Woodland and Savanna,Hardwood
+2383,Tr Edwards Plateau Limestone Savanna and Woodland,411,Ashe juniper-oak savanna,,2383,Tr Edwards Plateau Limestone Savanna and Woodland,Herb,662,Post Oak Woodland and Savanna,Hardwood
+2384,Tr Mississippi Delta Maritime Forest,173,Live oak/sea oats savanna,,2384,Tr Mississippi Delta Maritime Forest,Tree,679,Maritime Forest,Hardwood
+2385,Tr Western Great Plains Wooded Draw and Ravine,1,Black cottonwood-Douglas-fir-quaking aspen forest,,2385,Tr Western Great Plains Wooded Draw and Ravine,Tree,635,Western Riparian Woodland and Shrubland,Riparian
+2386,Sh Acadian-Appalachian Alpine Tundra,412,Dwarf bilberry-bog blueberry shrubland,,2386,Sh Acadian-Appalachian Alpine Tundra,Shrub,651,Alpine-Subalpine Barrens,Shrubland
+2387,Tr Florida Peninsula Inland Scrub,188,Sand pine-oak forest,,2387,Tr Florida Peninsula Inland Scrub,Shrub,691,Southern Scrub Oak,Shrubland
+2389,Tr Acadian-Appalachian Subalpine Woodland and Heath-Krummholz,412,Dwarf bilberry-bog blueberry shrubland,,2389,Tr Acadian-Appalachian Subalpine Woodland and Heath-Krummholz,Tree,651,Alpine-Subalpine Barrens,Shrubland
+2389,Tr Acadian-Appalachian Subalpine Woodland and Heath-Krummholz,412,Dwarf bilberry-bog blueberry shrubland,,2389,Tr Acadian-Appalachian Subalpine Woodland and Heath-Krummholz,Shrub,651,Alpine-Subalpine Barrens,Shrubland
+2390,Sh Tamaulipan Mixed Deciduous Thornscrub,232,Mesquite savanna,,2390,Sh Tamaulipan Mixed Deciduous Thornscrub,Shrub,613,Desert Scrub,Shrubland
+2391,Tr Tamaulipan Mesquite Upland Scrub,232,Mesquite savanna,,2391,Tr Tamaulipan Mesquite Upland Scrub,Shrub,613,Desert Scrub,Shrubland
+2391,Tr Tamaulipan Mesquite Upland Scrub,232,Mesquite savanna,,2391,Tr Tamaulipan Mesquite Upland Scrub,Tree,624,Mesquite Woodland and Scrub,Shrubland
+2392,Sh Tamaulipan Calcareous Thornscrub,232,Mesquite savanna,,2392,Sh Tamaulipan Calcareous Thornscrub,Shrub,613,Desert Scrub,Shrubland
+2393,Sh Edwards Plateau Limestone Shrubland,411,Ashe juniper-oak savanna,,2393,Sh Edwards Plateau Limestone Shrubland,Shrub,696,Juniper-Oak,Conifer-Hardwood
+2394,Tr North-Central Interior Oak Savanna,154,Bur oak savanna,,2394,Tr North-Central Interior Oak Savanna,Tree,659,Bur Oak Woodland and Savanna,Hardwood
+2395,Tr North-Central Oak Barrens,413,Pin oak/bluestem forest,,2395,Tr North-Central Oak Barrens,Tree,663,Black Oak Woodland and Savanna,Hardwood
+2395,Tr North-Central Oak Barrens,413,Pin oak/bluestem forest,,2395,Tr North-Central Oak Barrens,Herb,663,Black Oak Woodland and Savanna,Hardwood
+2397,Tr Nashville Basin Limestone Glade and Woodland,414,Eastern redcedar/big bluestem savanna,,2397,Tr Nashville Basin Limestone Glade and Woodland,Tree,670,Glades and Barrens,Conifer-Hardwood
+2398,Tr Cumberland Sandstone Glade and Barrens,415,Bluestem-forb grassland,,2398,Tr Cumberland Sandstone Glade and Barrens,Tree,670,Glades and Barrens,Conifer-Hardwood
+2400,Tr Central Appalachian Alkaline Glade and Woodland,416,Chinkapin oak-eastern redcedar/bluestem savanna,,2400,Tr Central Appalachian Alkaline Glade and Woodland,Tree,670,Glades and Barrens,Conifer-Hardwood
+2401,Tr Central Interior Highlands Calcareous Glade and Barrens,416,Chinkapin oak-eastern redcedar/bluestem savanna,,2401,Tr Central Interior Highlands Calcareous Glade and Barrens,Tree,670,Glades and Barrens,Conifer-Hardwood
+2401,Tr Central Interior Highlands Calcareous Glade and Barrens,416,Chinkapin oak-eastern redcedar/bluestem savanna,,2401,Tr Central Interior Highlands Calcareous Glade and Barrens,Herb,670,Glades and Barrens,Conifer-Hardwood
+2403,Tr West Gulf Coastal Plain Catahoula Barrens,417,Little bluestem-blackseed speargrass grassland,,2403,Tr West Gulf Coastal Plain Catahoula Barrens,Tree,670,Glades and Barrens,Conifer-Hardwood
+2405,Tr West Gulf Coastal Plain Nepheline Syenite Glade,417,Little bluestem-blackseed speargrass grassland,,2405,Tr West Gulf Coastal Plain Nepheline Syenite Glade,Tree,670,Glades and Barrens,Conifer-Hardwood
+2406,Tr Southern Piedmont Dry Oak Forest,461,Post oak-black oak forest,,2406,Tr Southern Piedmont Dry Oak Forest,Tree,664,Chestnut Oak-Virginia Pine Forest and Woodland,Hardwood
+2407,Tr Laurentian Pine Barrens,460,Red-jack pine-northern pin oak forest,,2407,Tr Laurentian Pine Barrens,Tree,676,Jack Pine Forest,Conifer
+2407,Tr Laurentian Pine Barrens,460,Red-jack pine-northern pin oak forest,,2407,Tr Laurentian Pine Barrens,Shrub,676,Jack Pine Forest,Shrubland
+2408,Tr Alabama Ketona Glade and Woodland,416,Chinkapin oak-eastern redcedar/bluestem savanna,,2408,Tr Alabama Ketona Glade and Woodland,Tree,670,Glades and Barrens,Conifer-Hardwood
+2409,Sh Great Lakes Alvar Shrubland,418,White spruce/juniper/little bluestem savanna,,2409,Sh Great Lakes Alvar Shrubland,Shrub,671,Great Lakes Alvar,Shrubland
+2410,"Tr Llano Uplift Acidic Forest, Woodland, and Glade",419,Blackjack oak-post oak/bluestem savanna,,2410,"Tr Llano Uplift Acidic Forest, Woodland, and Glade",Tree,670,Glades and Barrens,Conifer-Hardwood
+2410,"Tr Llano Uplift Acidic Forest, Woodland, and Glade",419,Blackjack oak-post oak/bluestem savanna,,2410,"Tr Llano Uplift Acidic Forest, Woodland, and Glade",Herb,670,Glades and Barrens,Conifer-Hardwood
+2411,He Great Lakes Wet-Mesic Lakeplain Prairie,420,Big bluestem-bluejoint grassland,,2411,He Great Lakes Wet-Mesic Lakeplain Prairie,Herb,675,Inland Marshes and Prairies,Riparian
+2412,Sh North-Central Interior Sand and Gravel Tallgrass Prairie,131,Bluestem-Indian grass-switchgrass grassland,,2412,Sh North-Central Interior Sand and Gravel Tallgrass Prairie,Herb,649,Tallgrass Prairie,Grassland
+2412,Sh North-Central Interior Sand and Gravel Tallgrass Prairie,131,Bluestem-Indian grass-switchgrass grassland,,2412,Sh North-Central Interior Sand and Gravel Tallgrass Prairie,Shrub,649,Tallgrass Prairie,Shrubland
+2413,He Bluegrass Savanna and Woodland,421,Chinkapin oak-bur oak/giant cane forest,,2413,He Bluegrass Savanna and Woodland,Herb,688,Prairies and Barrens,Grassland
+2414,Sh Southern Appalachian Grass and Shrub Bald,115,Rhododendron-blueberry-mountain laurel shrubland,,2414,Sh Southern Appalachian Grass and Shrub Bald,Shrub,670,Glades and Barrens,Conifer-Hardwood
+2414,Sh Southern Appalachian Grass and Shrub Bald,115,Rhododendron-blueberry-mountain laurel shrubland,,2414,Sh Southern Appalachian Grass and Shrub Bald,Herb,670,Glades and Barrens,Conifer-Hardwood
+2415,He Arkansas Valley Prairie and Woodland,422,Post oak-shortleaf pine/bluestem-Indiangrass savanna,,2415,He Arkansas Valley Prairie and Woodland,Herb,688,Prairies and Barrens,Grassland
+2416,He Western Highland Rim Prairie and Barrens,423,Oak/bluestem-Indiangrass savanna,,2416,He Western Highland Rim Prairie and Barrens,Herb,688,Prairies and Barrens,Grassland
+2417,He Eastern Highland Rim Prairie and Barrens,423,Oak/bluestem-Indiangrass savanna,,2417,He Eastern Highland Rim Prairie and Barrens,Herb,688,Prairies and Barrens,Grassland
+2418,He Pennyroyal Karst Plain Prairie and Barrens,423,Oak/bluestem-Indiangrass savanna,,2418,He Pennyroyal Karst Plain Prairie and Barrens,Herb,688,Prairies and Barrens,Grassland
+2419,He Southern Ridge and Valley Patch Prairie,423,Oak/bluestem-Indiangrass savanna,,2419,He Southern Ridge and Valley Patch Prairie,Herb,688,Prairies and Barrens,Grassland
+2420,He Northern Tallgrass Prairie,131,Bluestem-Indian grass-switchgrass grassland,,2420,He Northern Tallgrass Prairie,Herb,649,Tallgrass Prairie,Grassland
+2421,He Central Tallgrass Prairie,131,Bluestem-Indian grass-switchgrass grassland,,2421,He Central Tallgrass Prairie,Herb,649,Tallgrass Prairie,Grassland
+2422,He Texas Blackland Tallgrass Prairie,131,Bluestem-Indian grass-switchgrass grassland,,2422,He Texas Blackland Tallgrass Prairie,Herb,649,Tallgrass Prairie,Grassland
+2423,He Southeastern Great Plains Tallgrass Prairie,131,Bluestem-Indian grass-switchgrass grassland,,2423,He Southeastern Great Plains Tallgrass Prairie,Herb,649,Tallgrass Prairie,Grassland
+2425,Sh Florida Dry Prairie,240,Saw palmetto/three-awned grass shrubland,,2425,Sh Florida Dry Prairie,Herb,688,Prairies and Barrens,Grassland
+2425,Sh Florida Dry Prairie,240,Saw palmetto/three-awned grass shrubland,,2425,Sh Florida Dry Prairie,Shrub,688,Prairies and Barrens,Grassland
+2426,He Southern Atlantic Coastal Plain Dune and Maritime Grassland,173,Live oak/sea oats savanna,,2426,He Southern Atlantic Coastal Plain Dune and Maritime Grassland,Herb,654,Atlantic Dunes and Grasslands,Grassland
+2428,He West Gulf Coastal Plain Northern Calcareous Prairie,131,Bluestem-Indian grass-switchgrass grassland,,2428,He West Gulf Coastal Plain Northern Calcareous Prairie,Herb,688,Prairies and Barrens,Grassland
+2429,He West Gulf Coastal Plain Southern Calcareous Prairie,131,Bluestem-Indian grass-switchgrass grassland,,2429,He West Gulf Coastal Plain Southern Calcareous Prairie,Herb,688,Prairies and Barrens,Grassland
+2430,Tr Southern Coastal Plain Blackland Prairie and Woodland,135,Eastern redcedar-oak/bluestem savanna,,2430,Tr Southern Coastal Plain Blackland Prairie and Woodland,Herb,688,Prairies and Barrens,Grassland
+2430,Tr Southern Coastal Plain Blackland Prairie and Woodland,135,Eastern redcedar-oak/bluestem savanna,,2430,Tr Southern Coastal Plain Blackland Prairie and Woodland,Tree,688,Prairies and Barrens,Grassland
+2433,Tr East Gulf Coastal Plain Jackson Prairie and Woodland,423,Oak/bluestem-Indiangrass savanna,,2433,Tr East Gulf Coastal Plain Jackson Prairie and Woodland,Tree,688,Prairies and Barrens,Grassland
+2433,Tr East Gulf Coastal Plain Jackson Prairie and Woodland,423,Oak/bluestem-Indiangrass savanna,,2433,Tr East Gulf Coastal Plain Jackson Prairie and Woodland,Herb,688,Prairies and Barrens,Grassland
+2434,He Texas-Louisiana Coastal Prairie,280,Bluestem-Gulf cordgrass grassland,,2434,He Texas-Louisiana Coastal Prairie,Herb,675,Inland Marshes and Prairies,Riparian
+2435,He East Gulf Coastal Plain Dune and Coastal Grassland,173,Live oak/sea oats savanna,,2435,He East Gulf Coastal Plain Dune and Coastal Grassland,Herb,654,Atlantic Dunes and Grasslands,Grassland
+2436,Sh Northern Atlantic Coastal Plain Dune and Swale,433,Pine-oak/American beachgrass savanna,,2436,Sh Northern Atlantic Coastal Plain Dune and Swale,Shrub,654,Atlantic Dunes and Grasslands,Grassland
+2436,Sh Northern Atlantic Coastal Plain Dune and Swale,433,Pine-oak/American beachgrass savanna,,2436,Sh Northern Atlantic Coastal Plain Dune and Swale,Herb,654,Atlantic Dunes and Grasslands,Grassland
+2437,He Central and Upper Texas Coast Dune and Coastal Grassland,173,Live oak/sea oats savanna,,2437,He Central and Upper Texas Coast Dune and Coastal Grassland,Herb,654,Atlantic Dunes and Grasslands,Grassland
+2438,He Tamaulipan Savanna Grassland,232,Mesquite savanna,,2438,He Tamaulipan Savanna Grassland,Herb,617,Grassland,Grassland
+2439,He South Texas Lomas,458,Berlandier's fiddlewood-Texas ebony shrubland,,2439,He South Texas Lomas,Herb,617,Grassland,Grassland
+2440,He Tamaulipan Clay Grassland,435,Little bluestem-buffalograss grassland,,2440,He Tamaulipan Clay Grassland,Herb,617,Grassland,Grassland
+2442,He South Texas Sand Sheet Grassland,436,Shore little bluestem-paspalum grassland,,2442,He South Texas Sand Sheet Grassland,Herb,617,Grassland,Grassland
+2443,He South Texas Dune and Coastal Grassland,437,Saltmeadow cordgrass-switchgrass grassland,,2443,He South Texas Dune and Coastal Grassland,Herb,654,Atlantic Dunes and Grasslands,Grassland
+2444,Tr Eastern Boreal Floodplain,284,Green ash-American elm-silver maple-cottonwood forest,,2444,Tr Eastern Boreal Floodplain,Tree,676,Jack Pine Forest,Conifer
+2444,Tr Eastern Boreal Floodplain,284,Green ash-American elm-silver maple-cottonwood forest,,2444,Tr Eastern Boreal Floodplain,Shrub,676,Jack Pine Forest,Riparian
+2444,Tr Eastern Boreal Floodplain,284,Green ash-American elm-silver maple-cottonwood forest,,2444,Tr Eastern Boreal Floodplain,Herb,676,Jack Pine Forest,Riparian
+2446,Tr South Florida Pine Flatwoods,291,Longleaf pine-slash pine/saw palmetto forest,,2446,Tr South Florida Pine Flatwoods,Tree,684,Pine Flatwoods,Conifer
+2447,Tr South Florida Cypress Dome,438,Pondcypress/pond apple forest,,2447,Tr South Florida Cypress Dome,Tree,657,Cypress,Hardwood
+2447,Tr South Florida Cypress Dome,438,Pondcypress/pond apple forest,,2447,Tr South Florida Cypress Dome,Herb,657,Cypress,Hardwood
+2448,Tr Southern Piedmont Dry Oak-Pine Forest,281,Shortleaf pine-post oak-black oak forest  ,,2448,Tr Southern Piedmont Dry Oak-Pine Forest,Tree,664,Chestnut Oak-Virginia Pine Forest and Woodland,Hardwood-Conifer
+2449,Tr Central Atlantic Coastal Plain Wet Longleaf Pine Savanna and Flatwoods,165,Longleaf pine/three-awned grass-pitcher plant savanna - managed with prescribed fire,,2449,Tr Central Atlantic Coastal Plain Wet Longleaf Pine Savanna and Flatwoods,Tree,684,Pine Flatwoods,Conifer
+2449,Tr Central Atlantic Coastal Plain Wet Longleaf Pine Savanna and Flatwoods,165,Longleaf pine/three-awned grass-pitcher plant savanna - managed with prescribed fire,,2449,Tr Central Atlantic Coastal Plain Wet Longleaf Pine Savanna and Flatwoods,Shrub,684,Pine Flatwoods,Conifer
+2450,Tr Southern Atlantic Coastal Plain Wet Pine Savanna and Flatwoods,191,Longleaf pine-slash pine/gallberry forest,,2450,Tr Southern Atlantic Coastal Plain Wet Pine Savanna and Flatwoods,Tree,684,Pine Flatwoods,Conifer
+2451,Tr West Gulf Coastal Plain Wet Longleaf Pine Savanna and Flatwoods,191,Longleaf pine-slash pine/gallberry forest,,2451,Tr West Gulf Coastal Plain Wet Longleaf Pine Savanna and Flatwoods,Tree,684,Pine Flatwoods,Conifer
+2452,Tr Atlantic Coastal Plain Peatland Pocosin and Canebrake,170,Pond pine/little gallberry-fetterbush shrubland,,2452,Tr Atlantic Coastal Plain Peatland Pocosin and Canebrake,Shrub,687,Pocosin,Shrubland
+2452,Tr Atlantic Coastal Plain Peatland Pocosin and Canebrake,170,Pond pine/little gallberry-fetterbush shrubland,,2452,Tr Atlantic Coastal Plain Peatland Pocosin and Canebrake,Tree,687,Pocosin,Shrubland
+2453,Tr Central Florida Pine Flatwoods,191,Longleaf pine-slash pine/gallberry forest,,2453,Tr Central Florida Pine Flatwoods,Tree,684,Pine Flatwoods,Conifer
+2454,Tr East Gulf Coastal Plain Near-Coast Pine Flatwoods,191,Longleaf pine-slash pine/gallberry forest,,2454,Tr East Gulf Coastal Plain Near-Coast Pine Flatwoods,Tree,684,Pine Flatwoods,Conifer
+2455,Tr East Gulf Coastal Plain Southern Loblolly Flatwoods,276,Oak-pine-magnolia forest,,2455,Tr East Gulf Coastal Plain Southern Loblolly Flatwoods,Tree,684,Pine Flatwoods,Conifer
+2456,Tr Northern Atlantic Coastal Plain Pitch Pine Lowland,107,Pitch pine/scrub oak forest,,2456,Tr Northern Atlantic Coastal Plain Pitch Pine Lowland,Tree,686,Pitch Pine Woodlands,Conifer
+2457,Tr South-Central Interior/Upper Coastal Plain Wet Flatwoods,283,Willow-laurel-water oak forest,,2457,Tr South-Central Interior/Upper Coastal Plain Wet Flatwoods,Tree,673,Hardwood Flatwoods,Hardwood
+2458,Tr West Gulf Coastal Plain Pine Flatwoods,157,Loblolly-shortleaf pine-mixed hardwood forest,,2458,Tr West Gulf Coastal Plain Pine Flatwoods,Tree,684,Pine Flatwoods,Conifer
+2459,Tr Atlantic Coastal Plain Clay-Based Carolina Bay Wetland,439,Pondcypress/swamp titi/maidencane savanna,,2459,Tr Atlantic Coastal Plain Clay-Based Carolina Bay Wetland,Tree,657,Cypress,Hardwood
+2460,Tr Southern Coastal Plain Nonriverine Cypress Dome,424,Pondcypress/dahoon holly/sedge forest,,2460,Tr Southern Coastal Plain Nonriverine Cypress Dome,Tree,657,Cypress,Hardwood
+2460,Tr Southern Coastal Plain Nonriverine Cypress Dome,424,Pondcypress/dahoon holly/sedge forest,,2460,Tr Southern Coastal Plain Nonriverine Cypress Dome,Herb,657,Cypress,Hardwood
+2461,Tr Southern Coastal Plain Seepage Swamp and Baygall,425,Swamp tupelo-sweetbay magnolia forest,,2461,Tr Southern Coastal Plain Seepage Swamp and Baygall,Tree,694,Atlantic Swamp Forests,Riparian
+2461,Tr Southern Coastal Plain Seepage Swamp and Baygall,425,Swamp tupelo-sweetbay magnolia forest,,2461,Tr Southern Coastal Plain Seepage Swamp and Baygall,Shrub,694,Atlantic Swamp Forests,Riparian
+2462,Tr West Gulf Coastal Plain Seepage Swamp and Baygall,425,Swamp tupelo-sweetbay magnolia forest,,2462,Tr West Gulf Coastal Plain Seepage Swamp and Baygall,Tree,694,Atlantic Swamp Forests,Riparian
+2463,Tr Central Appalachian Dry Oak Forest,275,Chestnut-white-northern red oak forest,,2463,Tr Central Appalachian Dry Oak Forest,Tree,664,Chestnut Oak-Virginia Pine Forest and Woodland,Conifer-Hardwood
+2464,Tr Acadian Near-Boreal Spruce Barrens,462,Spruce-hardwood barrens,,2464,Tr Acadian Near-Boreal Spruce Barrens,Tree,692,Spruce Flats and Barrens,Conifer
+2466,Tr Great Lakes Wooded Dune and Swale,147,Jack pine savanna,,2466,Tr Great Lakes Wooded Dune and Swale,Tree,675,Inland Marshes and Prairies,Riparian
+2467,Tr Tamaulipan Floodplain Forest,425,Swamp tupelo-sweetbay magnolia forest,,2467,Tr Tamaulipan Floodplain Forest,Tree,666,Eastern Floodplain Forests,Riparian
+2468,Tr Atlantic Coastal Plain Streamhead Seepage Swamp-Pocosin-Baygall,170,Pond pine/little gallberry-fetterbush shrubland,,2468,Tr Atlantic Coastal Plain Streamhead Seepage Swamp-Pocosin-Baygall,Tree,694,Atlantic Swamp Forests,Riparian
+2469,Tr Eastern Great Plains Floodplain Systems,129,Green ash-American elm forest,,2469,Tr Eastern Great Plains Floodplain Systems,Tree,666,Eastern Floodplain Forests,Riparian
+2469,Tr Eastern Great Plains Floodplain Systems,129,Green ash-American elm forest,,2469,Tr Eastern Great Plains Floodplain Systems,Herb,666,Eastern Floodplain Forests,Riparian
+2470,Tr Caribbean Coastal Wetland Systems,272,Mangrove forest,,2470,Tr Caribbean Coastal Wetland Systems,Tree,678,Mangrove,Riparian
+2471,Tr Central Interior and Appalachian Floodplain Systems,129,Green ash-American elm forest,,2471,Tr Central Interior and Appalachian Floodplain Systems,Tree,666,Eastern Floodplain Forests,Riparian
+2471,Tr Central Interior and Appalachian Floodplain Systems,129,Green ash-American elm forest,,2471,Tr Central Interior and Appalachian Floodplain Systems,Shrub,666,Eastern Floodplain Forests,Riparian
+2471,Tr Central Interior and Appalachian Floodplain Systems,129,Green ash-American elm forest,,2471,Tr Central Interior and Appalachian Floodplain Systems,Herb,666,Eastern Floodplain Forests,Riparian
+2472,Tr Central Interior and Appalachian Riparian Systems,129,Green ash-American elm forest,,2472,Tr Central Interior and Appalachian Riparian Systems,Tree,668,Eastern Small Stream Riparian Forests,Riparian
+2472,Tr Central Interior and Appalachian Riparian Systems,129,Green ash-American elm forest,,2472,Tr Central Interior and Appalachian Riparian Systems,Shrub,668,Eastern Small Stream Riparian Forests,Riparian
+2472,Tr Central Interior and Appalachian Riparian Systems,129,Green ash-American elm forest,,2472,Tr Central Interior and Appalachian Riparian Systems,Herb,668,Eastern Small Stream Riparian Forests,Riparian
+2473,Tr Gulf and Atlantic Coastal Plain Floodplain Systems,283,Willow-laurel-water oak forest,,2473,Tr Gulf and Atlantic Coastal Plain Floodplain Systems,Tree,666,Eastern Floodplain Forests,Riparian
+2473,Tr Gulf and Atlantic Coastal Plain Floodplain Systems,283,Willow-laurel-water oak forest,,2473,Tr Gulf and Atlantic Coastal Plain Floodplain Systems,Herb,666,Eastern Floodplain Forests,Riparian
+2473,Tr Gulf and Atlantic Coastal Plain Floodplain Systems,283,Willow-laurel-water oak forest,,2473,Tr Gulf and Atlantic Coastal Plain Floodplain Systems,Shrub,666,Eastern Floodplain Forests,Riparian
+2474,Tr Gulf and Atlantic Coastal Plain Small Stream Riparian Systems,283,Willow-laurel-water oak forest,,2474,Tr Gulf and Atlantic Coastal Plain Small Stream Riparian Systems,Tree,668,Eastern Small Stream Riparian Forests,Riparian
+2474,Tr Gulf and Atlantic Coastal Plain Small Stream Riparian Systems,283,Willow-laurel-water oak forest,,2474,Tr Gulf and Atlantic Coastal Plain Small Stream Riparian Systems,Shrub,668,Eastern Small Stream Riparian Forests,Riparian
+2474,Tr Gulf and Atlantic Coastal Plain Small Stream Riparian Systems,283,Willow-laurel-water oak forest,,2474,Tr Gulf and Atlantic Coastal Plain Small Stream Riparian Systems,Herb,668,Eastern Small Stream Riparian Forests,Riparian
+2475,Tr Laurentian-Acadian Floodplain Systems,284,Green ash-American elm-silver maple-cottonwood forest,,2475,Tr Laurentian-Acadian Floodplain Systems,Tree,666,Eastern Floodplain Forests,Riparian
+2475,Tr Laurentian-Acadian Floodplain Systems,284,Green ash-American elm-silver maple-cottonwood forest,,2475,Tr Laurentian-Acadian Floodplain Systems,Shrub,666,Eastern Floodplain Forests,Riparian
+2475,Tr Laurentian-Acadian Floodplain Systems,284,Green ash-American elm-silver maple-cottonwood forest,,2475,Tr Laurentian-Acadian Floodplain Systems,Herb,666,Eastern Floodplain Forests,Riparian
+2476,Tr Tamaulipan Riparian Systems,426,Sugarberry/acacia forest,,2476,Tr Tamaulipan Riparian Systems,Tree,668,Eastern Small Stream Riparian Forests,Riparian
+2476,Tr Tamaulipan Riparian Systems,426,Sugarberry/acacia forest,,2476,Tr Tamaulipan Riparian Systems,Shrub,668,Eastern Small Stream Riparian Forests,Riparian
+2477,Tr Boreal Acidic Peatland Systems,279,Black spruce-northern white cedar-larch fores,,2477,Tr Boreal Acidic Peatland Systems,Tree,683,Peatland Forests,Riparian
+2477,Tr Boreal Acidic Peatland Systems,279,Black spruce-northern white cedar-larch fores,,2477,Tr Boreal Acidic Peatland Systems,Shrub,683,Peatland Forests,Riparian
+2477,Tr Boreal Acidic Peatland Systems,279,Black spruce-northern white cedar-larch fores,,2477,Tr Boreal Acidic Peatland Systems,Herb,683,Peatland Forests,Riparian
+2478,Tr Caribbean Swamp System,440,Pondcypress-cabbage palm-strangler fig forest,,2478,Tr Caribbean Swamp System,Herb,694,Atlantic Swamp Forests,Riparian
+2478,Tr Caribbean Swamp System,440,Pondcypress-cabbage palm-strangler fig forest,,2478,Tr Caribbean Swamp System,Tree,694,Atlantic Swamp Forests,Riparian
+2479,Tr Central Interior and Appalachian Swamp Systems,441,Red maple-black ash/common winterberry forest,,2479,Tr Central Interior and Appalachian Swamp Systems,Tree,694,Atlantic Swamp Forests,Riparian
+2479,Tr Central Interior and Appalachian Swamp Systems,441,Red maple-black ash/common winterberry forest,,2479,Tr Central Interior and Appalachian Swamp Systems,Shrub,694,Atlantic Swamp Forests,Riparian
+2480,Tr Gulf and Atlantic Coastal Plain Swamp Systems,288,Bald cypress-water tupelo forest,,2480,Tr Gulf and Atlantic Coastal Plain Swamp Systems,Tree,694,Atlantic Swamp Forests,Riparian
+2481,Tr Laurentian-Acadian Alkaline Conifer-Hardwood Swamp,427,Red spruce-northern white cedar-tamarack forest,,2481,Tr Laurentian-Acadian Alkaline Conifer-Hardwood Swamp,Tree,694,Atlantic Swamp Forests,Riparian
+2481,Tr Laurentian-Acadian Alkaline Conifer-Hardwood Swamp,427,Red spruce-northern white cedar-tamarack forest,,2481,Tr Laurentian-Acadian Alkaline Conifer-Hardwood Swamp,Shrub,694,Atlantic Swamp Forests,Riparian
+2482,He Great Plains Prairie Pothole,442,Bulrush grassland,,2482,He Great Plains Prairie Pothole,Herb,650,Depressional Wetland,Riparian
+2483,Tr South Florida Everglades Sawgrass Marsh,203,Sawgrass-muhly grassland,,2483,Tr South Florida Everglades Sawgrass Marsh,Herb,653,Atlantic Coastal Marsh,Riparian
+2483,Tr South Florida Everglades Sawgrass Marsh,203,Sawgrass-muhly grassland,,2483,Tr South Florida Everglades Sawgrass Marsh,Shrub,653,Atlantic Coastal Marsh,Riparian
+2483,Tr South Florida Everglades Sawgrass Marsh,203,Sawgrass-muhly grassland,,2483,Tr South Florida Everglades Sawgrass Marsh,Shrub,653,Atlantic Coastal Marsh,Riparian
+2485,Tr East Gulf Coastal Plain Savanna and Wet Prairie,165,Longleaf pine/three-awned grass-pitcher plant savanna - managed with prescribed fire,,2485,Tr East Gulf Coastal Plain Savanna and Wet Prairie,Herb,675,Inland Marshes and Prairies,Riparian
+2485,Tr East Gulf Coastal Plain Savanna and Wet Prairie,165,Longleaf pine/three-awned grass-pitcher plant savanna - managed with prescribed fire,,2485,Tr East Gulf Coastal Plain Savanna and Wet Prairie,Herb,675,Inland Marshes and Prairies,Riparian
+2485,Tr East Gulf Coastal Plain Savanna and Wet Prairie,165,Longleaf pine/three-awned grass-pitcher plant savanna - managed with prescribed fire,,2485,Tr East Gulf Coastal Plain Savanna and Wet Prairie,Shrub,675,Inland Marshes and Prairies,Riparian
+2486,He Texas Saline Coastal Prairie,175,Smooth cordgrass-black needlerush grassland,,2486,He Texas Saline Coastal Prairie,Herb,675,Inland Marshes and Prairies,Riparian
+2488,He Eastern Great Plains Wet Meadow-Prairie-Marsh,443,Prairie cordgrass-bluejoint grassland,,2488,He Eastern Great Plains Wet Meadow-Prairie-Marsh,Herb,650,Depressional Wetland,Riparian
+2489,Tr Floridian Highlands Freshwater Marsh,318,Bluejoint reedgrass-water sedge grassland,,2489,Tr Floridian Highlands Freshwater Marsh,Herb,675,Inland Marshes and Prairies,Riparian
+2489,Tr Floridian Highlands Freshwater Marsh,318,Bluejoint reedgrass-water sedge grassland,,2489,Tr Floridian Highlands Freshwater Marsh,Tree,675,Inland Marshes and Prairies,Riparian
+2489,Tr Floridian Highlands Freshwater Marsh,318,Bluejoint reedgrass-water sedge grassland,,2489,Tr Floridian Highlands Freshwater Marsh,Shrub,675,Inland Marshes and Prairies,Riparian
+2490,Sh Gulf and Atlantic Coastal Plain Tidal Marsh Systems,175,Smooth cordgrass-black needlerush grassland,,2490,Sh Gulf and Atlantic Coastal Plain Tidal Marsh Systems,Herb,653,Atlantic Coastal Marsh,Riparian
+2490,Sh Gulf and Atlantic Coastal Plain Tidal Marsh Systems,175,Smooth cordgrass-black needlerush grassland,,2490,Sh Gulf and Atlantic Coastal Plain Tidal Marsh Systems,Shrub,653,Atlantic Coastal Marsh,Riparian
+2491,He Acadian Salt Marsh and Estuary Systems,175,Smooth cordgrass-black needlerush grassland,,2491,He Acadian Salt Marsh and Estuary Systems,Herb,653,Atlantic Coastal Marsh,Riparian
+2492,Sh Great Lakes Coastal Marsh Systems,443,Prairie cordgrass-bluejoint grassland,,2492,Sh Great Lakes Coastal Marsh Systems,Herb,675,Inland Marshes and Prairies,Riparian
+2492,Sh Great Lakes Coastal Marsh Systems,443,Prairie cordgrass-bluejoint grassland,,2492,Sh Great Lakes Coastal Marsh Systems,Shrub,675,Inland Marshes and Prairies,Riparian
+2493,Sh Central Interior and Appalachian Shrub-Herbaceous Wetland Systems,445,Woollyfruit sedge-yellow sedge grassland,,2493,Sh Central Interior and Appalachian Shrub-Herbaceous Wetland Systems,Herb,675,Inland Marshes and Prairies,Riparian
+2493,Sh Central Interior and Appalachian Shrub-Herbaceous Wetland Systems,445,Woollyfruit sedge-yellow sedge grassland,,2493,Sh Central Interior and Appalachian Shrub-Herbaceous Wetland Systems,Shrub,675,Inland Marshes and Prairies,Riparian
+2494,Tr Laurentian-Acadian Shrub-Herbaceous Wetland Systems,442,Bulrush grassland,,2494,Tr Laurentian-Acadian Shrub-Herbaceous Wetland Systems,Herb,675,Inland Marshes and Prairies,Riparian
+2494,Tr Laurentian-Acadian Shrub-Herbaceous Wetland Systems,442,Bulrush grassland,,2494,Tr Laurentian-Acadian Shrub-Herbaceous Wetland Systems,Shrub,675,Inland Marshes and Prairies,Riparian
+2494,Tr Laurentian-Acadian Shrub-Herbaceous Wetland Systems,442,Bulrush grassland,,2494,Tr Laurentian-Acadian Shrub-Herbaceous Wetland Systems,Tree,675,Inland Marshes and Prairies,Riparian
+2495,He Western Great Plains Depressional Wetland Systems,318,Bluejoint reedgrass-water sedge grassland,,2495,He Western Great Plains Depressional Wetland Systems,Herb,650,Depressional Wetland,Riparian
+2497,Sps Central Interior and Appalachian Sparsely Vegetated Systems,0,Urban-Barren,,2497,Sps Central Interior and Appalachian Sparsely Vegetated Systems,Sparse,700,Sparse Vegetation,Sparsely Vegetated
+2498,Sps Gulf and Atlantic Coastal Plain Sparsely Vegetated Systems,0,Urban-Barren,,2498,Sps Gulf and Atlantic Coastal Plain Sparsely Vegetated Systems,Sparse,700,Sparse Vegetation,Sparsely Vegetated
+2499,Sps Laurentian-Acadian Sparsely Vegetated Systems,0,Urban-Barren,,2499,Sps Laurentian-Acadian Sparsely Vegetated Systems,Sparse,700,Sparse Vegetation,Sparsely Vegetated
+2501,Tr Southern Atlantic Coastal Plain Nonriverine Swamp and Wet Hardwood Forest,448,Bald cypress-tupelo/swamp titi forest,,2501,Tr Southern Atlantic Coastal Plain Nonriverine Swamp and Wet Hardwood Forest,Tree,694,Atlantic Swamp Forests,Riparian
+2502,Tr Central Appalachian Dry Oak-Pine Forest,281,Shortleaf pine-post oak-black oak forest  ,,2502,Tr Central Appalachian Dry Oak-Pine Forest,Tree,664,Chestnut Oak-Virginia Pine Forest and Woodland,Conifer-Hardwood
+2503,He Chihuahuan Loamy Plains Desert Grassland,352,Honey mesquite-fourwing saltbush shrubland,,2503,He Chihuahuan Loamy Plains Desert Grassland,Herb,617,Grassland,Grassland
+2504,He Chihuahuan-Sonoran Desert Bottomland and Swale Grassland,353,Honey mesquite/black grama steppe grassland,,2504,He Chihuahuan-Sonoran Desert Bottomland and Swale Grassland,Herb,650,Depressional Wetland,Riparian
+2506,Tr West Gulf Coastal Plain Nonriverine Wet Hardwood Flatwoods,283,Willow-laurel-water oak forest,,2506,Tr West Gulf Coastal Plain Nonriverine Wet Hardwood Flatwoods,Tree,673,Hardwood Flatwoods,Hardwood
+2507,Tr Ozark-Ouachita Shortleaf Pine-Bluestem Woodland,281,Shortleaf pine-post oak-black oak forest  ,,2507,Tr Ozark-Ouachita Shortleaf Pine-Bluestem Woodland,Tree,689,Shortleaf Pine Woodland,Conifer
+2509,Tr Mississippi River Alluvial Plain Dry-Mesic Loess Slope Forest,430,White oak-southern red oak forest,,2509,Tr Mississippi River Alluvial Plain Dry-Mesic Loess Slope Forest,Tree,667,White Oak-Beech Forest and Woodland,Hardwood
+2510,Tr Crowley's Ridge Sand Forest,281,Shortleaf pine-post oak-black oak forest  ,,2510,Tr Crowley's Ridge Sand Forest,Tree,690,Shortleaf Pine-Oak Forest and Woodland,Conifer-Hardwood
+2511,Tr Appalachian Northern Hardwood Forest,268,American beech-yellow birch-sugar maple-eastern hemlock forest,,2511,Tr Appalachian Northern Hardwood Forest,Tree,685,Pine-Hemlock-Hardwood Forest,Hardwood
+2512,Tr Appalachian Hemlock-Northern Hardwood Forest,269,Sugar maple-yellow poplar-American beech-oak forest,,2512,Tr Appalachian Hemlock-Northern Hardwood Forest,Tree,685,Pine-Hemlock-Hardwood Forest,Conifer-Hardwood
+2513,Tr Lower Mississippi River Flatwoods,283,Willow-laurel-water oak forest,,2513,Tr Lower Mississippi River Flatwoods,Tree,684,Pine Flatwoods,Conifer
+2517,Tr Paleozoic Plateau Bluff and Talus,0,Urban-Barren,,2517,Tr Paleozoic Plateau Bluff and Talus,Tree,663,Black Oak Woodland and Savanna,Hardwood
+2517,Tr Paleozoic Plateau Bluff and Talus,0,Urban-Barren,,2517,Tr Paleozoic Plateau Bluff and Talus,Herb,663,Black Oak Woodland and Savanna,Hardwood
+2518,Tr North-Central Interior Wet Flatwoods,449,Pin oak-white oak/buttonbush forest,,2518,Tr North-Central Interior Wet Flatwoods,Tree,673,Hardwood Flatwoods,Hardwood
+2519,Tr East-Central Texas Plains Post Oak Savanna and Woodland,264,Post-blackjack oak forest,,2519,Tr East-Central Texas Plains Post Oak Savanna and Woodland,Tree,662,Post Oak Woodland and Savanna,Hardwood
+2522,Tr Northern Atlantic Coastal Plain Heathland,243,Pitch pine/scrub oak shrubland,,2522,Sh Northern Atlantic Coastal Plain Heathland,Shrub,674,Heathland and Grassland,Shrubland
+2522,Sh Northern Atlantic Coastal Plain Heathland,243,Pitch pine/scrub oak shrubland,,2522,Tr Northern Atlantic Coastal Plain Heathland,Herb,674,Heathland and Grassland,Shrubland
+2523,Tr Edwards Plateau Dry-Mesic Slope Forest and Woodland,450,Oak-Ashe juniper forest,,2523,Tr Edwards Plateau Dry-Mesic Slope Forest and Woodland,Tree,696,Juniper-Oak,Conifer-Hardwood
+2524,Tr Edwards Plateau Mesic Canyon,451,Texas live oak/roughleaf dogwood forest,,2524,Tr Edwards Plateau Mesic Canyon,Tree,605,Bigtooth Maple Woodland,Hardwood
+2525,Tr Edwards Plateau Riparian,129,Green ash-American elm forest,,2525,Tr Edwards Plateau Riparian,Tree,668,Eastern Small Stream Riparian Forests,Riparian
+2525,Sh Edwards Plateau Riparian,129,Green ash-American elm forest,,2525,Sh Edwards Plateau Riparian,Shrub,668,Eastern Small Stream Riparian Forests,Riparian
+2526,Tr Laurentian-Acadian Swamp Systems,427,Red spruce-northern white cedar-tamarack forest,,2526,Tr Laurentian-Acadian Swamp Systems,Tree,694,Atlantic Swamp Forests,Riparian
+2526,Tr Laurentian-Acadian Swamp Systems,427,Red spruce-northern white cedar-tamarack forest,,2526,Tr Laurentian-Acadian Swamp Systems,Shrub,694,Atlantic Swamp Forests,Riparian
+2527,Tr East Gulf Coastal Plain Interior Oak Forest,264,Post-blackjack oak forest,,2527,Tr East Gulf Coastal Plain Interior Oak Forest,Tree,690,Shortleaf Pine-Oak Forest and Woodland,Conifer-Hardwood
+2531,Tr Ruderal Upland Vegetation,453,Bluestem-tall fescue-switchgrass grassland,,2531,Tr Ruderal Upland Vegetation,Herb,740,Ruderal Forest,Conifer-Hardwood
+2531,Tr Ruderal Upland Vegetation,453,Bluestem-tall fescue-switchgrass grassland,,2531,Tr Ruderal Upland Vegetation,Tree,740,Ruderal Forest,Conifer-Hardwood
+2531,Tr Ruderal Upland Vegetation,453,Bluestem-tall fescue-switchgrass grassland,,2531,Tr Ruderal Upland Vegetation,Shrub,740,Ruderal Forest,Conifer-Hardwood
+2532,Tr Ruderal Forest-Northern and Central Hardwood and Conifer,454,American beech-maple/American red raspberry forest,,2532,Tr Ruderal Forest-Northern and Central Hardwood and Conifer,Tree,740,Ruderal Forest,Conifer-Hardwood
+2533,Tr Ruderal Forest-Southeast Hardwood and Conifer,180,Red maple-oak-hickory-sweetgum forest,,2533,Tr Ruderal Forest-Southeast Hardwood and Conifer,Tree,740,Ruderal Forest,Conifer-Hardwood
+2534,Tr Managed Tree Plantation-Northern and Central Hardwood and Conifer Plantation Group,455,Red pine forest,,2534,Tr Managed Tree Plantation-Northern and Central Hardwood and Conifer Plantation Group,Tree,731,Managed Tree Plantation,Conifer
+2535,Tr Managed Tree Plantation-Southeast Conifer and Hardwood Plantation Group,161,Loblolly-slash pine plantation,,2535,Tr Managed Tree Plantation-Southeast Conifer and Hardwood Plantation Group,Tree,731,Managed Tree Plantation,Conifer
+2536,Tr Introduced Wetland Vegetation-Tree,456,Chinese tallow forest,,2536,Tr Introduced Wetland Vegetation-Tree,Tree,708,Introduced Woody Wetland Vegetation,Riparian
+2538,He Introduced Wetland Vegetation-Herbaceous,176,Smooth cordgrass-black needlerush grassland invaded by common reed,,2538,He Introduced Wetland Vegetation-Herbaceous,Herb,709,Introduced Herbaceous Wetland Vegetation,Exotic Herbaceous
+2539,Sh Modified/Managed Northern Tallgrass Grassland,133,Tall fescue-foxtail-purple bluestem grassland,,2539,Sh Modified/Managed Northern Tallgrass Grassland,Herb,711,Modified-Managed Prairie Grassland,Grassland
+2540,Sh Modified/Managed Southern Tallgrass Grassland,133,Tall fescue-foxtail-purple bluestem grassland,,2540,Sh Modified/Managed Southern Tallgrass Grassland,Herb,711,Modified-Managed Prairie Grassland,Grassland
+2546,Tr East Gulf Coastal Plain Interior Shortleaf Pine-Oak Forest,281,Shortleaf pine-post oak-black oak forest  ,,2546,Tr East Gulf Coastal Plain Interior Shortleaf Pine-Oak Forest,Tree,690,Shortleaf Pine-Oak Forest and Woodland,Conifer-Hardwood
+2550,Tr Pinus taeda Forest Alliance,282,Loblolly pine forest,,2550,Tr Pinus taeda Forest Alliance,Tree,697,Loblolly Pine Forest and Woodland,Conifer
+2551,Tr Pinus elliottii Saturated Temperate Woodland Alliance,165,Longleaf pine/three-awned grass-pitcher plant savanna - managed with prescribed fire,,2551,Tr Pinus elliottii Saturated Temperate Woodland Alliance,Tree,684,Pine Flatwoods,Conifer-Hardwood
+2552,Tr Pinus palustris-Pinus elliottii Forest Alliance,190,Slash pine-longleaf pine/gallberry forest,,2552,Tr Pinus palustris-Pinus elliottii Forest Alliance,Tree,677,Longleaf Pine Woodland,Conifer
+2553,Tr Mixed Loblolly-Slash Pine,191,Longleaf pine-slash pine/gallberry forest,,2553,Tr Mixed Loblolly-Slash Pine,Tree,698,Loblolly Pine-Slash Pine Forest and Woodland,Conifer
+2554,Tr Acadian Low-Elevation Hardwood Forest,110,American beech-yellow birch-sugar maple forest,,2554,Tr Acadian Low-Elevation Hardwood Forest,Tree,693,Spruce-Fir-Hardwood Forest,Conifer-Hardwood
+2555,Tr Acadian Low-Elevation Spruce-Fir-Hardwood Forest,265,Balsam fir-white spruce-mixed hardwood forest,,2555,Tr Acadian Low-Elevation Spruce-Fir-Hardwood Forest,Tree,693,Spruce-Fir-Hardwood Forest,Conifer-Hardwood
+2556,Tr Central Appalachian Rocky Oak Woodland,107,Pitch pine/scrub oak forest,,2556,Tr Central Appalachian Rocky Oak Woodland,Tree,664,Chestnut Oak-Virginia Pine Forest and Woodland,Conifer-Hardwood
+2557,Tr Central Appalachian Rocky Pine-Oak Woodland,281,Shortleaf pine-post oak-black oak forest  ,,2557,Tr Central Appalachian Rocky Pine-Oak Woodland,Tree,664,Chestnut Oak-Virginia Pine Forest and Woodland,Conifer-Hardwood
+2582,Tr Ozark-Ouachita Oak Forest and Woodland,90,White oak-northern red oak forest,,2582,Tr Ozark-Ouachita Oak Forest and Woodland,Tree,690,Shortleaf Pine-Oak Forest and Woodland,Conifer-Hardwood
+2583,Tr Ozark-Ouachita Shortleaf Pine-Oak Forest and Woodland,281,Shortleaf pine-post oak-black oak forest  ,,2583,Tr Ozark-Ouachita Shortleaf Pine-Oak Forest and Woodland,Tree,690,Shortleaf Pine-Oak Forest and Woodland,Conifer-Hardwood
+2584,Tr West Gulf Coastal Plain Hardwood Forest,461,Post oak-black oak forest,,2584,Tr West Gulf Coastal Plain Hardwood Forest,Tree,689,Shortleaf Pine Woodland,Conifer
+2585,Tr West Gulf Coastal Plain Pine-Hardwood Forest,281,Shortleaf pine-post oak-black oak forest  ,,2585,Tr West Gulf Coastal Plain Pine-Hardwood Forest,Tree,689,Shortleaf Pine Woodland,Conifer
+2586,Tr West Gulf Coastal Plain Sandhill Oak Forest and Woodland,281,Shortleaf pine-post oak-black oak forest  ,,2586,Tr West Gulf Coastal Plain Sandhill Oak Forest and Woodland,Tree,689,Shortleaf Pine Woodland,Conifer
+2587,Tr West Gulf Coastal Plain Sandhill Oak and Shortleaf Pine Forest and Woodland,281,Shortleaf pine-post oak-black oak forest  ,,2587,Tr West Gulf Coastal Plain Sandhill Oak and Shortleaf Pine Forest and Woodland,Tree,689,Shortleaf Pine Woodland,Conifer
+2588,Tr East Gulf Coastal Plain Southern Hardwood Flatwoods,463,Willow oak-water oak forest,,2588,Tr East Gulf Coastal Plain Southern Hardwood Flatwoods,Tree,684,Pine Flatwoods,Conifer
+2589,Tr East Gulf Coastal Plain Southern Loblolly-Hardwood Flatwoods,464,Loblolly pine-willow oak forest,,2589,Tr East Gulf Coastal Plain Southern Loblolly-Hardwood Flatwoods,Tree,684,Pine Flatwoods,Conifer
+2590,Tr West Gulf Coastal Plain Hardwood Flatwoods,465,Post oak-southern red oak-loblolly pine forest,,2590,Tr West Gulf Coastal Plain Hardwood Flatwoods,Tree,684,Pine Flatwoods,Conifer
+2591,Tr West Gulf Coastal Plain Pine-Hardwood Flatwoods,466,Loblolly pine-post oak-southern red oak forest,,2591,Tr West Gulf Coastal Plain Pine-Hardwood Flatwoods,Tree,684,Pine Flatwoods,Conifer
+2600,Tr Western North American Boreal White Spruce Forest,101,White spruce forest,,2600,Tr Western North American Boreal White Spruce Forest,Tree,784,White Spruce Forest and Woodland,Conifer
+2601,Tr Western North American Boreal Treeline White Spruce Woodland,324,White spruce woodland,,2601,Tr Western North American Boreal Treeline White Spruce Woodland,Tree,784,White Spruce Forest and Woodland,Conifer
+2602,Tr Western North American Boreal Spruce-Lichen Woodland,85,Black spruce/lichen forest,,2602,Tr Western North American Boreal Spruce-Lichen Woodland,Tree,778,Spruce-Lichen Woodland,Shrubland
+2603,Tr Alaska Boreal White Spruce Forest,105,Paper birch-quaking aspen-white spruce forest,,2603,Tr Alaska Boreal White Spruce Forest,Tree,785,White Spruce Forest and Woodland,Conifer
+2604,Tr Western North American Boreal Mesic Black Spruce Forest,87,Black spruce/feathermoss forest,,2604,Tr Western North American Boreal Mesic Black Spruce Forest,Tree,758,Black Spruce Forest and Woodland,Conifer
+2605,Tr Western North American Boreal Mesic Birch-Aspen Forest,93,Paper birch-quaking aspen forest,,2605,Tr Western North American Boreal Mesic Birch-Aspen Forest,Tree,756,Birch-Aspen Forest,Hardwood
+2606,Tr Western North American Boreal Dry Aspen-Steppe Bluff,323,Quaking aspen/sagebrush boreal woodland,,2606,Tr Western North American Boreal Dry Aspen-Steppe Bluff,Tree,760,Dry Aspen-Steppe Bluff,Hardwood
+2607,Tr Western North American Boreal Subalpine Balsam Poplar-Aspen Woodland,94,Balsam poplar-quaking aspen forest,,2607,Tr Western North American Boreal Subalpine Balsam Poplar-Aspen Woodland,Tree,753,Balsam Poplar-Aspen Woodland,Hardwood
+2608,Sh Alaska Sub-boreal Avalanche Slope Shrubland,95,Willow-mountain alder shrubland,,2608,Sh Alaska Sub-boreal Avalanche Slope Shrubland,Shrub,752,Avalanche Slope Shrubland,Shrubland
+2609,Sh Alaska Sub-boreal Mesic Subalpine Alder Shrubland,95,Willow-mountain alder shrubland,,2609,Sh Alaska Sub-boreal Mesic Subalpine Alder Shrubland,Shrub,750,Alder Shrubland,Shrubland
+2610,Sh Western North American Boreal Mesic Scrub Birch-Willow Shrubland,326,Willow-birch shrubland,,2610,Sh Western North American Boreal Mesic Scrub Birch-Willow Shrubland,Shrub,786,Willow Shrubland,Shrubland
+2611,He Western North American Sub-boreal Mesic Bluejoint Meadow,99,Bluejoint reedgrass grassland,,2611,He Western North American Sub-boreal Mesic Bluejoint Meadow,Herb,783,Wet Meadow,Riparian
+2612,He Western North American Boreal Dry Grassland,100,Altai fescue grassland,,2612,He Western North American Boreal Dry Grassland,Herb,759,Boreal Grassland,Grassland
+2631,Sh Western North American Boreal Alpine Dwarf-Shrub Summit,333,Dryas tundra shrubland,,2631,Sh Western North American Boreal Alpine Dwarf-Shrub Summit,Shrub,762,Dwarf Shrubland,Shrubland
+2633,He Western North American Boreal Alpine Mesic Herbaceous Meadow,100,Altai fescue grassland,,2633,He Western North American Boreal Alpine Mesic Herbaceous Meadow,Herb,767,Herbaceous Meadow,Grassland
+2634,Sh Western North American Boreal Alpine Dryas Dwarf-Shrubland,333,Dryas tundra shrubland,,2634,Sh Western North American Boreal Alpine Dryas Dwarf-Shrubland,Shrub,762,Dwarf Shrubland,Shrubland
+2635,Sh Western North American Boreal Alpine Ericaceous Dwarf-Shrubland,334,Mountain heather tundra shrubland,,2635,Sh Western North American Boreal Alpine Ericaceous Dwarf-Shrubland,Shrub,762,Dwarf Shrubland,Shrubland
+2636,Sh Western North American Boreal Alpine Dwarf-Shrub-Lichen Shrubland,98,Marsh labrador tea-lingonberry tundra shrubland,,2636,Sh Western North American Boreal Alpine Dwarf-Shrub-Lichen Shrubland,Shrub,762,Dwarf Shrubland,Shrubland
+2638,Sh Alaska Arctic Mesic Alder Shrubland,95,Willow-mountain alder shrubland,,2638,Sh Alaska Arctic Mesic Alder Shrubland,Shrub,750,Alder Shrubland,Shrubland
+2639,Sh Alaska Arctic Mesic-Wet Willow Shrubland,95,Willow-mountain alder shrubland,,2639,Sh Alaska Arctic Mesic-Wet Willow Shrubland,Shrub,786,Willow Shrubland,Shrubland
+2640,Sh Aleutian Mesic-Wet Willow Shrubland,95,Willow-mountain alder shrubland,,2640,Sh Aleutian Mesic-Wet Willow Shrubland,Shrub,786,Willow Shrubland,Shrubland
+2642,Tr Aleutian Kenai Birch-Cottonwood-Poplar Forest,332,Balsam poplar-paper birch forest,,2642,Tr Aleutian Kenai Birch-Cottonwood-Poplar Forest,Tree,757,Birch-Cottonwood-Poplar Forest,Hardwood
+2643,Sh Alaskan Pacific Maritime Alpine Dwarf-Shrubland,329,Mountain heath tundra shrubland,,2643,Sh Alaskan Pacific Maritime Alpine Dwarf-Shrubland,Shrub,762,Dwarf Shrubland,Shrubland
+2644,Tr Alaskan Pacific Maritime Sitka Spruce Forest,322,Sitka spruce-western hemlock forest,,2644,Tr Alaskan Pacific Maritime Sitka Spruce Forest,Tree,638,Sitka Spruce Forest,Conifer
+2645,He Alaska Sub-boreal and Maritime Alpine Mesic Herbaceous Meadow,339,Nootka lupine-sedge grassland,,2645,He Alaska Sub-boreal and Maritime Alpine Mesic Herbaceous Meadow,Herb,767,Herbaceous Meadow,Grassland
+2646,Tr Alaskan Pacific Maritime Western Hemlock Forest,322,Sitka spruce-western hemlock forest,,2646,Tr Alaskan Pacific Maritime Western Hemlock Forest,Tree,782,Western Hemlock-Yellow-cedar Forest,Conifer
+2648,Tr Alaskan Pacific Maritime Mountain Hemlock Forest,325,White spruce-mountain hemlock forest,,2648,Tr Alaskan Pacific Maritime Mountain Hemlock Forest,Tree,627,Mountain Hemlock Forest and Woodland,Conifer
+2649,Tr Alaskan Pacific Maritime Subalpine Mountain Hemlock Woodland,329,Mountain heath tundra shrubland,,2649,Tr Alaskan Pacific Maritime Subalpine Mountain Hemlock Woodland,Tree,627,Mountain Hemlock Forest and Woodland,Conifer
+2650,Tr Alaskan Pacific Maritime Periglacial Woodland and Shrubland,332,Balsam poplar-paper birch forest,,2650,Tr Alaskan Pacific Maritime Periglacial Woodland and Shrubland,Tree,769,Periglacial Woodland and Shrubland,Shrubland
+2650,Tr Alaskan Pacific Maritime Periglacial Woodland and Shrubland,332,Balsam poplar-paper birch forest,,2650,Tr Alaskan Pacific Maritime Periglacial Woodland and Shrubland,Shrub,769,Periglacial Woodland and Shrubland,Shrubland
+2651,He Aleutian Mesic Herbaceous Meadow,99,Bluejoint reedgrass grassland,,2651,He Aleutian Mesic Herbaceous Meadow,Herb,767,Herbaceous Meadow,Grassland
+2652,Sh Alaskan Pacific Maritime Subalpine Alder-Salmonberry Shrubland,331,Sitka alder-salmonberry shrubland,,2652,Sh Alaskan Pacific Maritime Subalpine Alder-Salmonberry Shrubland,Shrub,750,Alder Shrubland,Shrubland
+2653,He Alaskan Pacific Maritime Mesic Herbaceous Meadow,99,Bluejoint reedgrass grassland,,2653,He Alaskan Pacific Maritime Mesic Herbaceous Meadow,Herb,767,Herbaceous Meadow,Grassland
+2654,Tr Alaskan Pacific Maritime Sitka Spruce Beach Ridge,322,Sitka spruce-western hemlock forest,,2654,Tr Alaskan Pacific Maritime Sitka Spruce Beach Ridge,Tree,638,Sitka Spruce Forest,Conifer
+2671,He Aleutian American Dunegrass Grassland,330,American dunegrass grassland,,2671,He Aleutian American Dunegrass Grassland,Herb,761,Dune Grassland,Grassland
+2672,Sh Alaskan Pacific Maritime Subalpine Copperbush Shrubland,237,Huckleberry-heather shrubland,,2672,Sh Alaskan Pacific Maritime Subalpine Copperbush Shrubland,Shrub,750,Alder Shrubland,Shrubland
+2674,Sps Alaskan Pacific Maritime Alpine Sparse Shrub and Fell-field,0,Urban-Barren,,2674,Sps Alaskan Pacific Maritime Alpine Sparse Shrub and Fell-field,Sparse,776,Sparse Shrub and Fell-field,Shrubland
+2677,Tr Alaska Sub-boreal White-Lutz Spruce Forest and Woodland,101,White spruce forest,,2677,Tr Alaska Sub-boreal White-Lutz Spruce Forest and Woodland,Tree,784,White Spruce Forest and Woodland,Conifer
+2678,Tr Alaska Sub-boreal Mountain Hemlock-White Spruce Forest,325,White spruce-mountain hemlock forest,,2678,Tr Alaska Sub-boreal Mountain Hemlock-White Spruce Forest,Tree,784,White Spruce Forest and Woodland,Conifer
+2679,Tr Alaska Sub-boreal White Spruce-Hardwood Forest,103,White spruce-paper birch forest,,2679,Tr Alaska Sub-boreal White Spruce-Hardwood Forest,Tree,785,White Spruce-Hardwood Forest and Woodland,Conifer-Hardwood
+2680,Sh Alaskan Pacific Maritime Avalanche Slope Shrubland,95,Willow-mountain alder shrubland,,2680,Sh Alaskan Pacific Maritime Avalanche Slope Shrubland,Shrub,752,Avalanche Slope Shrubland,Shrubland
+2682,Sh Alaska Arctic Scrub Birch-Ericaceous Shrubland,326,Willow-birch shrubland,,2682,Sh Alaska Arctic Scrub Birch-Ericaceous Shrubland,Shrub,762,Dwarf Shrubland,Shrubland
+2683,Sh Alaska Arctic Mesic Sedge-Willow Tundra,338,Water sedge-tall cottongrass grassland,,2683,Sh Alaska Arctic Mesic Sedge-Willow Tundra,Shrub,775,Shrub Tundra,Shrubland
+2684,Sh Alaska Arctic Mesic Sedge-Dryas Tundra,333,Dryas tundra shrubland,,2684,Sh Alaska Arctic Mesic Sedge-Dryas Tundra,Shrub,775,Shrub Tundra,Shrubland
+2685,Sps Alaska Arctic Acidic Sparse Tundra,0,Urban-Barren,,2685,Sps Alaska Arctic Acidic Sparse Tundra,Sparse,777,Sparse Tundra,Shrubland
+2686,Sps Alaska Arctic Non-Acidic Sparse Tundra,0,Urban-Barren,,2686,Sps Alaska Arctic Non-Acidic Sparse Tundra,Sparse,777,Sparse Tundra,Shrubland
+2687,Sh Alaska Arctic Lichen Tundra,0,Urban-Barren,,2687,Sh Alaska Arctic Lichen Tundra,Shrub,775,Shrub Tundra,Shrubland
+2688,Sh Alaska Arctic Acidic Dryas Dwarf-Shrubland,333,Dryas tundra shrubland,,2688,Sh Alaska Arctic Acidic Dryas Dwarf-Shrubland,Shrub,762,Dwarf Shrubland,Shrubland
+2689,Sh Alaska Arctic Non-Acidic Dryas Dwarf-Shrubland,333,Dryas tundra shrubland,,2689,Sh Alaska Arctic Non-Acidic Dryas Dwarf-Shrubland,Shrub,762,Dwarf Shrubland,Shrubland
+2690,Sh Alaska Arctic Dwarf-Shrubland,334,Mountain heather tundra shrubland,,2690,Sh Alaska Arctic Dwarf-Shrubland,Shrub,762,Dwarf Shrubland,Shrubland
+2691,Sh Alaska Arctic Acidic Dwarf-Shrub Lichen Tundra,333,Dryas tundra shrubland,,2691,Sh Alaska Arctic Acidic Dwarf-Shrub Lichen Tundra,Shrub,775,Shrub Tundra,Shrubland
+2692,Sh Alaska Arctic Non-Acidic Dwarf-Shrub Lichen Tundra,333,Dryas tundra shrubland,,2692,Sh Alaska Arctic Non-Acidic Dwarf-Shrub Lichen Tundra,Shrub,775,Shrub Tundra,Shrubland
+2699,He Alaska Arctic Mesic Herbaceous Meadow,339,Nootka lupine-sedge grassland,,2699,He Alaska Arctic Mesic Herbaceous Meadow,Herb,767,Herbaceous Meadow,Grassland
+2709,He Alaska Arctic Marine Beach and Beach Meadow,330,American dunegrass grassland,,2709,He Alaska Arctic Marine Beach and Beach Meadow,Herb,754,Beach Meadow,Grassland
+2718,Sh Aleutian Mesic Alder-Salmonberry Shrubland,331,Sitka alder-salmonberry shrubland,,2718,Sh Aleutian Mesic Alder-Salmonberry Shrubland,Shrub,750,Alder Shrubland,Shrubland
+2719,Sh Aleutian Crowberry-Herbaceous Heath,329,Mountain heath tundra shrubland,,2719,Sh Aleutian Crowberry-Herbaceous Heath,Shrub,762,Dwarf Shrubland,Shrubland
+2720,Sh Aleutian Mixed Dwarf-Shrub-Herbaceous Shrubland,334,Mountain heather tundra shrubland,,2720,Sh Aleutian Mixed Dwarf-Shrub-Herbaceous Shrubland,Shrub,762,Dwarf Shrubland,Shrubland
+2725,He Aleutian Marine Beach and Beach Meadow,330,American dunegrass grassland,,2725,He Aleutian Marine Beach and Beach Meadow,Herb,754,Beach Meadow,Grassland
+2730,Sps Aleutian Sparse Heath and Fell-Field,0,Urban-Barren,,2730,Sps Aleutian Sparse Heath and Fell-Field,Sparse,776,Sparse Shrub and Fell-field,Shrubland
+2731,Sh Aleutian Oval-leaf Blueberry Shrubland,329,Mountain heath tundra shrubland,,2731,Sh Aleutian Oval-leaf Blueberry Shrubland,Shrub,786,Willow Shrubland,Shrubland
+2740,He Boreal Aquatic Beds,336,Lyngbye's sedge-alkaligrass grassland,,2740,He Boreal Aquatic Beds,Herb,764,Freshwater Aquatic Bed,Riparian
+2741,He Polar Tidal Marshes and Aquatic Beds,336,Lyngbye's sedge-alkaligrass grassland,,2741,He Polar Tidal Marshes and Aquatic Beds,Herb,780,Tidal Marsh,Riparian
+2742,"He Temperate Pacific Tidal Marshes, Aquatic Beds, and Intertidal Flats",336,Lyngbye's sedge-alkaligrass grassland,,2742,"He Temperate Pacific Tidal Marshes, Aquatic Beds, and Intertidal Flats",Herb,779,Tidal Flat,Riparian
+2743,He Aleutian Herbaceous Wetlands,338,Water sedge-tall cottongrass grassland,,2743,He Aleutian Herbaceous Wetlands,Herb,765,Freshwater Marsh,Riparian
+2743,He Aleutian Herbaceous Wetlands,338,Water sedge-tall cottongrass grassland,,2743,He Aleutian Herbaceous Wetlands,Shrub,765,Freshwater Marsh,Riparian
+2744,He Arctic Herbaceous Wetlands,338,Water sedge-tall cottongrass grassland,,2744,He Arctic Herbaceous Wetlands,Herb,765,Freshwater Marsh,Riparian
+2745,He Boreal Herbaceous Wetlands,338,Water sedge-tall cottongrass grassland,,2745,He Boreal Herbaceous Wetlands,Herb,783,Wet Meadow,Riparian
+2746,He Pacific Maritime Herbaceous Wetlands,318,Bluejoint reedgrass-water sedge grassland,,2746,He Pacific Maritime Herbaceous Wetlands,Herb,765,Freshwater Marsh,Riparian
+2747,Sh Arctic Sedge Meadows,338,Water sedge-tall cottongrass grassland,,2747,Sh Arctic Sedge Meadows,Shrub,783,Wet Meadow,Riparian
+2749,He Pacific Maritime Coastal Meadows and Slough-Levee,330,American dunegrass grassland,,2749,He Pacific Maritime Coastal Meadows and Slough-Levee,Herb,754,Beach Meadow,Grassland
+2750,Tr Alaska Sub-boreal White Spruce-Hardwood Forest,103,White spruce-paper birch forest,,2750,Tr Alaska Sub-boreal White Spruce-Hardwood Forest,Tree,785,White Spruce-Hardwood Forest and Woodland,Conifer-Hardwood
+2751,Tr Boreal Coniferous Woody Wetland,88,Black spruce/sphagnum moss forest,,2751,Tr Boreal Coniferous Woody Wetland,Tree,683,Peatland Forests,Conifer
+2752,Tr Pacific Maritime Coniferous Woody Wetland,355,Hemlock-Alaska cedar/blueberry forest,,2752,Tr Pacific Maritime Coniferous Woody Wetland,Tree,683,Peatland Forests,Conifer
+2753,Tr Boreal Coniferous-Deciduous Woody Wetland,356,Black spruce-tamarack/sphagnum moss forest,,2753,Tr Boreal Coniferous-Deciduous Woody Wetland,Tree,758,Black Spruce Forest and Woodland,Conifer
+2756,Sh Arctic Dwarf Shrub Wetland,98,Marsh labrador tea-lingonberry tundra shrubland,,2756,Sh Arctic Dwarf Shrub Wetland,Shrub,762,Dwarf Shrubland,Shrubland
+2757,Sh Boreal Dwarf Shrub Wetland,98,Marsh labrador tea-lingonberry tundra shrubland,,2757,Sh Boreal Dwarf Shrub Wetland,Shrub,762,Dwarf Shrubland,Shrubland
+2758,Sh Pacific Maritime Dwarf Shrub Wetland,340,Sweetgale-bog blueberry shrubland,,2758,Sh Pacific Maritime Dwarf Shrub Wetland,Shrub,762,Dwarf Shrubland,Shrubland
+2761,Tr Aleutian Floodplains,357,Balsam poplar-black cottonwood forest,,2761,Tr Aleutian Floodplains,Shrub,772,Shrub and Herbaceous Floodplain Wetland,Riparian
+2761,Tr Aleutian Floodplains,357,Balsam poplar-black cottonwood forest,,2761,Tr Aleutian Floodplains,Tree,772,Shrub and Herbaceous Floodplain Wetland,Riparian
+2762,Sh Arctic Floodplains,95,Willow-mountain alder shrubland,,2762,Sh Arctic Floodplains,Shrub,763,Floodplain Forest and Shrubland,Hardwood
+2763,Tr Boreal Floodplains,350,Balsam poplar-white spruce forest,,2763,Tr Boreal Floodplains,Tree,763,Floodplain Forest and Shrubland,Hardwood
+2763,Tr Boreal Floodplains,350,Balsam poplar-white spruce forest,,2763,Tr Boreal Floodplains,Herb,763,Floodplain Forest and Shrubland,Hardwood
+2763,Tr Boreal Floodplains,350,Balsam poplar-white spruce forest,,2763,Tr Boreal Floodplains,Shrub,763,Floodplain Forest and Shrubland,Hardwood
+2764,Tr Pacific Maritime Floodplains,332,Balsam poplar-paper birch forest,,2764,Tr Pacific Maritime Floodplains,Tree,763,Floodplain Forest and Shrubland,Hardwood
+2764,Tr Pacific Maritime Floodplains,332,Balsam poplar-paper birch forest,,2764,Tr Pacific Maritime Floodplains,Shrub,763,Floodplain Forest and Shrubland,Hardwood
+2771,Sh Aleutian Peatlands,351,Bog blueberry-lingonberry shrubland,,2771,Sh Aleutian Peatlands,Shrub,773,Shrub and Herbaceous Peatlands,Riparian
+2771,Sh Aleutian Peatlands,351,Bog blueberry-lingonberry shrubland,,2771,Sh Aleutian Peatlands,Herb,773,Shrub and Herbaceous Peatlands,Riparian
+2772,Sh Arctic Peatlands,351,Bog blueberry-lingonberry shrubland,,2772,Sh Arctic Peatlands,Shrub,773,Shrub and Herbaceous Peatlands,Riparian
+2772,Sh Arctic Peatlands,351,Bog blueberry-lingonberry shrubland,,2772,Sh Arctic Peatlands,Herb,773,Shrub and Herbaceous Peatlands,Riparian
+2773,Sh Boreal Peatlands,351,Bog blueberry-lingonberry shrubland,,2773,Sh Boreal Peatlands,Shrub,773,Shrub and Herbaceous Peatlands,Riparian
+2774,Tr Pacific Maritime Peatlands,327,Marsh Labrador tea/cottongrass grassland,,2774,Tr Pacific Maritime Peatlands,Tree,683,Peatland Forests,Conifer
+2774,Tr Pacific Maritime Peatlands,327,Marsh Labrador tea/cottongrass grassland,,2774,Tr Pacific Maritime Peatlands,Shrub,683,Peatland Forests,Conifer
+2776,Tr Boreal Riparian Stringer Forest and Shrubland,324,White spruce woodland,,2776,Tr Boreal Riparian Stringer Forest and Shrubland,Tree,770,Riparian Stringer Forest and Shrubland,Riparian
+2777,Sh Boreal Shrub Swamp,358,Alder-willow shrubland,,2777,Sh Boreal Shrub Swamp,Shrub,774,Shrub Swamp,Shrubland
+2778,Sh Pacific Maritime Shrub Swamp,358,Alder-willow shrubland,,2778,Sh Pacific Maritime Shrub Swamp,Shrub,774,Shrub Swamp,Shrubland
+2779,Tr Alaska Boreal Hardwood Forest,92,Quaking aspen-paper birch-white spruce-black spruce forest,,2779,Tr Alaska Boreal Hardwood Forest,Tree,785,White Spruce-Hardwood Forest and Woodland,Conifer-Hardwood
+2780,Tr Alaska Boreal White Spruce-Hardwood Forest,103,White spruce-paper birch forest,,2780,Tr Alaska Boreal White Spruce-Hardwood Forest,Tree,785,White Spruce-Hardwood Forest and Woodland,Conifer-Hardwood
+2781,Sh Arctic Sedge-Tussock-Lichen Tundra,359,Sedge-lichen tussock tundra shrubland,,2781,Sh Arctic Sedge-Tussock-Lichen Tundra,Shrub,777,Sparse Tundra,Shrubland
+2781,Sh Arctic Sedge-Tussock-Lichen Tundra,359,Sedge-lichen tussock tundra shrubland,,2781,Sh Arctic Sedge-Tussock-Lichen Tundra,Herb,777,Sparse Tundra,Shrubland
+2782,He Boreal Tussock Tundra,327,Marsh Labrador tea/cottongrass grassland,,2782,He Boreal Tussock Tundra,Herb,781,Tussock Tundra,Shrubland
+2783,Sh Arctic Tussock Tundra,341,Marsh Labrador tea/Bigelow sedge tundra shrubland,,2783,Sh Arctic Tussock Tundra,Shrub,781,Tussock Tundra,Shrubland
+2783,Sh Arctic Tussock Tundra,341,Marsh Labrador tea/Bigelow sedge tundra shrubland,,2783,Sh Arctic Tussock Tundra,Herb,781,Tussock Tundra,Shrubland
+2784,Sh Arctic Shrub-Tussock Tundra,98,Marsh labrador tea-lingonberry tundra shrubland,,2784,Sh Arctic Shrub-Tussock Tundra,Shrub,781,Tussock Tundra,Shrubland
+2785,Sh Arctic Shrub Tundra,333,Dryas tundra shrubland,,2785,Sh Arctic Shrub Tundra,Shrub,775,Shrub Tundra,Shrubland
+2786,Tr Boreal Shrub-Tussock Tundra and Woodland,89,Black spruce/cottonsedge woodland,,2786,Tr Boreal Shrub-Tussock Tundra and Woodland,Tree,758,Black Spruce Forest and Woodland,Conifer
+2786,Tr Boreal Shrub-Tussock Tundra and Woodland,89,Black spruce/cottonsedge woodland,,2786,Tr Boreal Shrub-Tussock Tundra and Woodland,Shrub,758,Black Spruce Forest and Woodland,Conifer
+2789,Tr Alaska Sub-boreal White Spruce-Hardwood Forest,105,Paper birch-quaking aspen-white spruce forest,,2789,Tr Alaska Sub-boreal White Spruce-Hardwood Forest,Tree,785,White Spruce-Hardwood Forest and Woodland,Conifer-Hardwood
+2791,Sps Aleutian Sparsely Vegetated,0,Urban-Barren,,2791,Sps Aleutian Sparsely Vegetated,Sparse,755,"Bedrock, Scree, and Talus",Non-vegetated
+2792,Sps Arctic Sparsely Vegetated,0,Urban-Barren,,2792,Sps Arctic Sparsely Vegetated,Sparse,755,"Bedrock, Scree, and Talus",Non-vegetated
+2793,Sps Boreal Sparsely Vegetated,0,Urban-Barren,,2793,Sps Boreal Sparsely Vegetated,Sparse,755,"Bedrock, Scree, and Talus",Non-vegetated
+2794,Sps Pacific Maritime Sparsely Vegetated,0,Urban-Barren,,2794,Sps Pacific Maritime Sparsely Vegetated,Sparse,755,"Bedrock, Scree, and Talus",Non-vegetated
+2806,He Hawai'i Bog,342,Dubautia/sedge bog shrubland,,,,,,,
+2808,Tr Hawai'i Lowland Rainforest,72,Ohia/uluhe forest,,,,,,,
+2809,Tr Hawai'i Montane Cloud Forest,73,Koa/pukiawe forest,,,,,,,
+2810,Tr Hawai'i Montane Rainforest,73,Koa/pukiawe forest,,,,,,,
+2811,Sh Hawai'i Wet Cliff and Ridge Crest Shrubland,343,Ohia/Ohelo 'ai shrubland,,,,,,,
+2813,Tr Hawai'i Lowland Dry Forest,71,Ohia/Florida hopbush-kupaoa forest,,,,,,,
+2814,Tr Hawai'i Lowland Mesic Forest,72,Ohia/uluhe forest,,,,,,,
+2815,Tr Hawai'i Montane-Subalpine Dry Forest and Woodland,74,Mamani-naio savanna,,,,,,,
+2816,Tr Hawai'i Montane-Subalpine Mesic Forest,72,Ohia/uluhe forest,,,,,,,
+2817,Sh Hawai'i Lowland Dry Shrubland,78,Florida hopbush-Mauna Loa beggarticks shrubland,,,,,,,
+2818,Sh Hawai'i Lowland Mesic Shrubland,78,Florida hopbush-Mauna Loa beggarticks shrubland,,,,,,,
+2819,He Hawai'i Lowland Dry Grassland,79,Pili grass-broomsedge bluestem grassland,,,,,,,
+2820,He Hawai'i Lowland Mesic Grassland,81,Pukiawe/Columbia bluestem grassland,,,,,,,
+2821,Sh Hawai'i Montane-Subalpine Dry Shrubland,78,Florida hopbush-Mauna Loa beggarticks shrubland,,,,,,,
+2822,He Hawai'i Montane-Subalpine Dry Grassland,344,Hardstem lovegrass grassland,,,,,,,
+2823,He Hawai'i Montane-Subalpine Mesic Grassland,345,Alpine hairgrass-decomposition brackenfern grassland,,,,,,,
+2824,Sh Hawai'i Alpine Dwarf-Shrubland,346,Mountain dubautia-silversword shrubland,,,,,,,
+2825,Sh Hawai'i Dry Cliff,347,Wormwood-Mauna loa beggarticks shrubland,,,,,,,
+2826,Sh Hawai'i Dry Coastal Strand,348,Yellow ilima/hurricanegrass shrubland,,,,,,,
+2827,Sh Hawai'i Wet-Mesic Coastal Strand,348,Yellow ilima/hurricanegrass shrubland,,,,,,,
+2828,Sh Hawai'i Subalpine Mesic Shrubland,349,Ohelu kau la'au-silversword shrubland,,,,,,,
+2845,Tr Hawai'i Introduced Dry Forest,76, Slash pine/molasses grass forest,,,,,,,
+2847,Sh Hawai'i Introduced Deciduous Shrubland,82,White leadtree/Guinea grass shrubland,,,,,,,
+2848,He Hawai'i Introduced Perennial Grassland,81,Pukiawe/Columbia bluestem grassland,,,,,,,
+2853,Sh Hawai'i Introduced Coastal Wetland Vegetation - Shrub,82,White leadtree/Guinea grass shrubland,,,,,,,
+2854,He Hawai'i Introduced Coastal Wetland Vegetation - Herbaceous,81,Pukiawe/Columbia bluestem grassland,,,,,,,
+2855,Tr Hawai'i Managed Tree Plantation,75,Slash pine/New Caledonia pine forest,,,,,,,
+2860,Bau Caribbean High-medium density urban,0,Urban-Barren,,,,,,,
+2861,Bau Caribbean Low-medium density urban,0,Urban-Barren,,,,,,,
+2902,Bau Developed-Low Intensity,0,Urban-Barren,,2902,Bau Developed-Low Intensity,Developed,22,Developed-Low Intensity,Developed-Low Intensity
+2903,Bau Developed-Medium Intensity,0,Urban-Barren,,2903,Bau Developed-Medium Intensity,Developed,23,Developed-Medium Intensity,Developed-Medium Intensity
+2904,Bau Developed-High Intensity,0,Urban-Barren,,2904,Bau Developed-High Intensity,Developed,24,Developed-High Intensity,Developed-High Intensity
+2905,Bau Developed-Roads,0,Urban-Barren,,2905,Bau Developed-Roads,Developed,25,Developed-Roads,Developed-Roads
+2913,Dtd Urban Deciduous Forest,283,Willow-laurel-water oak forest (ECT),,2913,Dtd Urban Deciduous Forest,Tree,13,Developed-Upland Deciduous Forest,Developed
+2913,Dtd Urban Deciduous Forest,283,Willow-laurel-water oak forest (EWT),,2913,Dtd Urban Deciduous Forest,Tree,13,Developed-Upland Deciduous Forest,Developed
+2913,Dtd Urban Deciduous Forest,319,Pacific silver fir-Sitka alder forest (WCT),,2913,Dtd Urban Deciduous Forest,Tree,13,Developed-Upland Deciduous Forest,Developed
+2913,Dtd Urban Deciduous Forest,426,Sugarberry/acacia forest (WWT),,2913,Dtd Urban Deciduous Forest,Tree,13,Developed-Upland Deciduous Forest,Developed
+2914,Dtc Urban Evergreen Forest,22,Mature lodgepole pine forest,,2914,Dtc Urban Evergreen Forest,Tree,14,Developed-Upland Evergreen Forest,Developed
+2914,Dtc Urban Evergreen Forest,32,Ponderosa pine-pinyon pine-Utah juniper forest (WWT),,2914,Dtc Urban Evergreen Forest,Tree,14,Developed-Upland Evergreen Forest,Developed
+2914,Dtc Urban Evergreen Forest,196,Loblolly pine/bluestem forest (EWT),,2914,Dtc Urban Evergreen Forest,Tree,14,Developed-Upland Evergreen Forest,Developed
+2914,Dtc Urban Evergreen Forest,427,Red spruce-northern white cedar-tamarack forest (ECT),,2914,Dtc Urban Evergreen Forest,Tree,14,Developed-Upland Evergreen Forest,Developed
+2915,Dtm Urban Mixed Deciduous-Evergreen Forest,409,Virginia pine-chestnut oak/little bluestem forest (EWT),,2915,Dtm Urban Mixed Deciduous-Evergreen Forest,Tree,15,Developed-Upland Mixed Forest,Developed
+2916,Dgr Urban Herbaceous,213,Wheatgrass-cheatgrass grassland - post prescribed burn (WCT),,2916,Dgr Urban Herbaceous,Herb,16,Developed-Upland Herbaceous,Developed
+2917,Dsh Urban Shrubland,60,Sagebrush shrubland - post prescribed burn  (WCT),,2917,Dsh Urban Shrubland,Shrub,17,Developed-Upland Shrubland,Developed
+2917,Dsh Urban Shrubland,115,Rhododendron-blueberry-mountain laurel shrubland (ECT),,2917,Dsh Urban Shrubland,Shrub,17,Developed-Upland Shrubland,Developed
+2917,Dsh Urban Shrubland,310,Greasewood shrubland (WWT),,2917,Dsh Urban Shrubland,Shrub,17,Developed-Upland Shrubland,Developed
+2917,Dsh Urban Shrubland,401,Holly-privet shrubland (EWT),,2917,Dsh Urban Shrubland,Shrub,17,Developed-Upland Shrubland,Developed
+2923,Dtd Developed Ruderal Deciduous Forest,43,Arizona white-gray-Emory oak woodland,,2923,Dtd Developed Ruderal Deciduous Forest,Tree,13,Developed-Upland Deciduous Forest,Developed
+2923,Dtd Developed Ruderal Deciduous Forest,110,American beech-yellow birch-sugar maple forest (ECT),,2923,Dtd Developed Ruderal Deciduous Forest,Tree,13,Developed-Upland Deciduous Forest,Developed
+2923,Dtd Developed Ruderal Deciduous Forest,180,Red maple-oak-hickory-sweetgum forest (EWT),,2923,Dtd Developed Ruderal Deciduous Forest,Tree,13,Developed-Upland Deciduous Forest,Developed
+2923,Dtd Developed Ruderal Deciduous Forest,317,Bigtooth maple forest (WCT),,2923,Dtd Developed Ruderal Deciduous Forest,Tree,13,Developed-Upland Deciduous Forest,Developed
+2924,Dtc Developed Ruderal Evergreen Forest,67,Interior ponderosa pine-Douglas-fir forest (WCT),,2924,Dtc Developed Ruderal Evergreen Forest,Tree,14,Developed-Upland Evergreen Forest,Developed
+2924,Dtc Developed Ruderal Evergreen Forest,286,Limber pine-ponderosa pine forest (WCT),,2924,Dtc Developed Ruderal Evergreen Forest,Tree,14,Developed-Upland Evergreen Forest,Developed
+2924,Dtc Developed Ruderal Evergreen Forest,114,Virginia pine-pitch pine-shortleaf pine forest (EWT),,2924,Dtc Developed Ruderal Evergreen Forest,Tree,14,Developed-Upland Evergreen Forest,Developed
+2924,Dtc Developed Ruderal Evergreen Forest,222,Interior ponderosa pine forest (WWT),,2924,Dtc Developed Ruderal Evergreen Forest,Tree,14,Developed-Upland Evergreen Forest,Developed
+2925,Dtm Developed Ruderal Deciduous-Evergreen Forest,143,Quaking aspen-paper birch-white spruce-balsam fir forest (ECT),,2925,Dtm Developed Ruderal Deciduous-Evergreen Forest,Tree,15,Developed-Upland Mixed Forest,Developed
+2925,Dtm Developed Ruderal Deciduous-Evergreen Forest,185,Longleaf pine/turkey oak forest 1-2 yr postfire (EWT),,2925,Dtm Developed Ruderal Deciduous-Evergreen Forest,Tree,15,Developed-Upland Mixed Forest,Developed
+2925,Dtm Developed Ruderal Deciduous-Evergreen Forest,157,Loblolly-shortleaf pine-mixed hardwood forest (EWT),,2925,Dtm Developed Ruderal Deciduous-Evergreen Forest,Tree,15,Developed-Upland Mixed Forest,Developed
+2925,Dtm Developed Ruderal Deciduous-Evergreen Forest,219,Ponderosa pine-white fir/quaking aspen forest (WCT),,2925,Dtm Developed Ruderal Deciduous-Evergreen Forest,Tree,15,Developed-Upland Mixed Forest,Developed
+2925,Dtm Developed Ruderal Deciduous-Evergreen Forest,216,Gambel oak-bigtooth maple forest (WCT),,2925,Dtm Developed Ruderal Deciduous-Evergreen Forest,Tree,15,Developed-Upland Mixed Forest,Developed
+2925,Dtm Developed Ruderal Deciduous-Evergreen Forest,219,Ponderosa pine-white fir/quaking aspen forest (WWT),,2925,Dtm Developed Ruderal Deciduous-Evergreen Forest,Tree,15,Developed-Upland Mixed Forest,Developed
+2926,Dsh Developed Ruderal Shrubland,115,Rhododendron-blueberry-mountain laurel shrubland (ECT),,2926,Dsh Developed Ruderal Shrubland,Shrub,17,Developed-Upland Shrubland,Developed
+2926,Dsh Developed Ruderal Shrubland,233,Sagebrush shrubland - fire exclusion (WCT),,2926,Dsh Developed Ruderal Shrubland,Shrub,17,Developed-Upland Shrubland,Developed
+2927,Dgr Developed Ruderal Grassland,66,Bluebunch wheatgrass-bluegrass grassland (ECT),,2927,Dgr Developed Ruderal Grassland,Herb,16,Developed-Upland Herbaceous,Developed
+2927,Dgr Developed Ruderal Grassland,66,Bluebunch wheatgrass-bluegrass grassland (EWT),,2927,Dgr Developed Ruderal Grassland,Herb,16,Developed-Upland Herbaceous,Developed
+2927,Dgr Developed Ruderal Grassland,213,Wheatgrass-cheatgrass grassland - post prescribed burn (WCT),,2927,Dgr Developed Ruderal Grassland,Herb,16,Developed-Upland Herbaceous,Developed
+2927,Dgr Developed Ruderal Grassland,66,Bluebunch wheatgrass-bluegrass grassland (WCT),,2927,Dgr Developed Ruderal Grassland,Herb,16,Developed-Upland Herbaceous,Developed
+2933,Dtd Undeveloped Ruderal Deciduous Forest,43,Arizona white-gray-Emory oak woodland (WWT),,2933,Dtd Undeveloped Ruderal Deciduous Forest,Tree,13,Developed-Upland Deciduous Forest,Developed
+2933,Dtd Undeveloped Ruderal Deciduous Forest,225,Quaking aspen forest - post prescribed burn (WWT),,2933,Dtd Undeveloped Ruderal Deciduous Forest,Tree,13,Developed-Upland Deciduous Forest,Developed
+2933,Dtd Undeveloped Ruderal Deciduous Forest,110,American beech-yellow birch-sugar maple forest (ECT),,2933,Dtd Undeveloped Ruderal Deciduous Forest,Tree,13,Developed-Upland Deciduous Forest,Developed
+2933,Dtd Undeveloped Ruderal Deciduous Forest,180,Red maple-oak-hickory-sweetgum forest (EWT),,2933,Dtd Undeveloped Ruderal Deciduous Forest,Tree,13,Developed-Upland Deciduous Forest,Developed
+2934,Dtc Undeveloped Ruderal Evergreen Forest,24,Pacific ponderosa pine-Douglas-fir forest (WCT),,2934,Dtc Undeveloped Ruderal Evergreen Forest,Tree,14,Developed-Upland Evergreen Forest,Developed
+2934,Dtc Undeveloped Ruderal Evergreen Forest,27,Ponderosa pine-two needle pinyon-Utah juniper forest (WWT),,2934,Dtc Undeveloped Ruderal Evergreen Forest,Tree,14,Developed-Upland Evergreen Forest,Developed
+2934,Dtc Undeveloped Ruderal Evergreen Forest,241,Longleaf-loblolly pine forest with hurricane damage (EWT),,2934,Dtc Undeveloped Ruderal Evergreen Forest,Tree,14,Developed-Upland Evergreen Forest,Developed
+2934,Dtc Undeveloped Ruderal Evergreen Forest,242,Longleaf-loblolly pine forest with hurricane damage - post prescribed burn (EWT),,2934,Dtc Undeveloped Ruderal Evergreen Forest,Tree,14,Developed-Upland Evergreen Forest,Developed
+2934,Dtc Undeveloped Ruderal Evergreen Forest,279,Black spruce-northern white cedar-larch forest (ECT),,2934,Dtc Undeveloped Ruderal Evergreen Forest,Tree,14,Developed-Upland Evergreen Forest,Developed
+2935,Dtm Undeveloped Ruderal Deciduous-Evergreen Forest,109,Eastern white pine-northern red oak-red maple forest (ECT),,2935,Dtm Undeveloped Ruderal Deciduous-Evergreen Forest,Tree,15,Developed-Upland Mixed Forest,Developed
+2935,Dtm Undeveloped Ruderal Deciduous-Evergreen Forest,185,Longleaf pine/turkey oak forest 1-2 yr postfire (EWT),,2935,Dtm Undeveloped Ruderal Deciduous-Evergreen Forest,Tree,15,Developed-Upland Mixed Forest,Developed
+2935,Dtm Undeveloped Ruderal Deciduous-Evergreen Forest,174,Live oak-sabal palm forest (EWT),,2935,Dtm Undeveloped Ruderal Deciduous-Evergreen Forest,Tree,15,Developed-Upland Mixed Forest,Developed
+2936,Dsh Undeveloped Ruderal Shrubland,115,Rhododendron-blueberry-mountain laurel shrubland (ECT),,2936,Dsh Undeveloped Ruderal Shrubland,Shrub,17,Developed-Upland Shrubland,Developed
+2936,Dsh Undeveloped Ruderal Shrubland,233,Sagebrush shrubland - fire exclusion (WCT),,2936,Dsh Undeveloped Ruderal Shrubland,Shrub,17,Developed-Upland Shrubland,Developed
+2936,Dsh Undeveloped Ruderal Shrubland,240,Saw palmetto/three-awned grass shrubland (EWT),,2936,Dsh Undeveloped Ruderal Shrubland,Shrub,17,Developed-Upland Shrubland,Developed
+2936,Dsh Undeveloped Ruderal Shrubland,307,Paloverde shrubland (WWT),,2936,Dsh Undeveloped Ruderal Shrubland,Shrub,17,Developed-Upland Shrubland,Developed
+2937,Dgr Undeveloped Ruderal Grassland,66,Bluebunch wheatgrass-bluegrass grassland (WCT),,2937,Dgr Undeveloped Ruderal Grassland,Herb,16,Developed-Upland Herbaceous,Developed
+2937,Dgr Undeveloped Ruderal Grassland,66,Bluebunch wheatgrass-bluegrass grassland (WWT),,2937,Dgr Undeveloped Ruderal Grassland,Herb,16,Developed-Upland Herbaceous,Developed
+2937,Dgr Undeveloped Ruderal Grassland,435,Little bluestem-buffalograss grassland (ECT),,2937,Dgr Undeveloped Ruderal Grassland,Herb,16,Developed-Upland Herbaceous,Developed
+2937,Dgr Undeveloped Ruderal Grassland,415,Bluestem-forb grassland (ECT),,2937,Dgr Undeveloped Ruderal Grassland,Herb,16,Developed-Upland Herbaceous,Developed
+2960,Dab Orchard,1273,Tree fruit field - with no inter-row groundcover,,2960,Dab Orchard,Tree,60,Agricultural-Orchard,Agricultural
+2961,Da Vineyard,1273,Tree fruit field - with no inter-row groundcover,,2961,Da Vineyard,Agriculture,61,Agricultural-Vineyard,Agricultural
+2962,Dab Bush Fruit and Berries,1247,Miscellaneous vegetable or fruit field - post harvest,,2962,Dab Bush Fruit and Berries,Shrub,62,Agricultural-Bush fruit and berries,Agricultural
+2962,Dab Bush Fruit and Berries,1247,Miscellaneous vegetable or fruit field - post harvest,,2962,Dab Bush Fruit and Berries,Shrub,62,Agricultural-Bush fruit and berries,Agricultural
+2963,Da Row Crop - Close Grown Crop,1244,Other crop field - post harvest,,2963,Da Row Crop - Close Grown Crop,Agriculture,63,Agricultural-Row Crop-Close Grown Crop,Agricultural
+2963,Da Row Crop - Close Grown Crop,1230,Other crop field - growing season,,2963,Da Row Crop - Close Grown Crop,Agriculture,63,Agricultural-Row Crop-Close Grown Crop,Agricultural
+2964,Da Row Crop,1244,Other crop field - post harvest,,2964,Da Row Crop,Agriculture,64,Agricultural-Row Crop,Agricultural
+2965,Da Close Grown Crop,1244,Other crop field - post harvest,,2965,Da Close Grown Crop,Agriculture,65,Agricultural-Close Grown Crop,Agricultural
+2966,Dab Fallow/Idle Cropland,1261,Fallow field - growing season,,2966,Dab Fallow/Idle Cropland,Herb,66,Agricultural-Fallow/Idle Cropland,Agricultural
+2967,Dab Pasture and Hayland,1281,"Pasture, hay, or alfalfa field - grazed or harvested",,2967,Dab Pasture and Hayland,Herb,67,Agricultural-Pasture and Hayland,Agricultural
+2967,Dab Pasture and Hayland,1283,"Pasture, hay, or alfalfa field - ungrazed or unharvested",,2967,Dab Pasture and Hayland,Herb,67,Agricultural-Pasture and Hayland,Agricultural
+2968,Da Wheat,1223,Wheat field - post harvest,,2968,Da Wheat,Agriculture,68,Agricultural-Wheat,Agricultural
+2968,Da Wheat,1224,Wheat field - growing season,,2968,Da Wheat,Agriculture,68,Agricultural-Wheat,Agricultural
+2969,Da Aquaculture,1203,Rice field - post harvest,,2969,Da Aquaculture,Agriculture,69,Agricultual-Aquaculture,Agricultural
+2969,Da Aquaculture,1208,Rice field - growing season,,2969,Da Aquaculture,Agriculture,69,Agricultual-Aquaculture,Agricultural
+9999,Nodata,0,Urban-Barren,,9999,Nodata,Nodata,-9999,Nodata,Nodata
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,

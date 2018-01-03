@@ -6,7 +6,7 @@
 # this will determine the correlation between different pairs in the dataset
 # the minimum co-occurence was arbitrarily chosen
 
-corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.cooccur=FALSE,cooccur.filename="Co-occurence_EVT",write.file.corr=FALSE,corr.filename="Correlation_EVT")
+corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.cooccur=FALSE,cooccur.filename="Co-occurence_EVT",write.file.corr=FALSE,corr.filename="Correlation_EVT",write.file.corlog=FALSE,corlog.filename="CorrelationLog")
 {
   cooccur.list<-list()
   corr.list<-list()
@@ -72,9 +72,17 @@ corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.
     names(corr.list[[1]])<-names(data.file)[start.col:ncol(data.file)]
     row.names(corr.list[[1]])<-names(data.file)[start.col:ncol(data.file)]
     
+    if(write.file.corr)
+      write.csv(corr.list[[1]],file=paste(corr.filename,".csv",sep=""))
+    
+    # writing corr log list to csv
     corr.log.list[[1]]<-as.data.frame(corr.log.list[[1]])
     names(corr.log.list[[1]])<-names(data.file)[start.col:ncol(data.file)]
     row.names(corr.log.list[[1]])<-names(data.file)[start.col:ncol(data.file)]
+    
+    if(write.file.corr)
+      write.csv(corr.log.list[[1]],file=paste(corlog.filename,".csv",sep=""))
+    
   }
   
   else
@@ -144,19 +152,17 @@ corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.
       names(corr.list[[i]])<-names(data.file)[start.col:ncol(data.file)]
       row.names(corr.list[[i]])<-names(data.file)[start.col:ncol(data.file)]
 
+      if(write.file.corr)
+        write.csv(corr.list[[i]],file=paste(corr.filename,evts[i],".csv",sep=""))
+      
+      # writing correlation log list
       corr.log.list[[i]]<-as.data.frame(corr.log.list[[i]])
       names(corr.log.list[[i]])<-names(data.file)[start.col:ncol(data.file)]
       row.names(corr.log.list[[i]])<-names(data.file)[start.col:ncol(data.file)]
       
-      #pdf(file=paste("Graph_",evts,".pdf",sep = ""))
-      #{
-        #plot(AllLoads[,15],AllLoads[,16],main="Correlation_",names(data.file),"_and_",names(data.file),pch=1,xlab="duff_loading",ylab="duff_depth")
-      #}
-      #dev.off()
-      
       if(write.file.corr)
-        write.csv(corr.list[[i]],file=paste(corr.filename,evts[i],".csv",sep=""))
-      
+        write.csv(corr.log.list[[i]],file=paste(corlog.filename,".csv",sep=""))
+    
     }
   }
   return(all.list=list(corr.list,corr.log.list))

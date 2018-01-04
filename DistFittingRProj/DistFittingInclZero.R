@@ -10,7 +10,7 @@
 
 data.file<-read.csv("../Data/CurrentData/_metricLoadingsCrosstab.csv") #substitute filepath and name for local system
 # start.col=13
-# EVTCol = LFEVTGroupCd_FINAL
+# EVTCol = "LFEVTGroupCd_FINAL"
 # first read the functions into the current session
 file.sources<-list.files("../Functions/") # all functions in this directory
 file.sources<-sapply(file.sources,FUN=function(x) paste("../Functions/",x,sep=""))
@@ -30,9 +30,10 @@ evt.vals<-EVTTallies$evt.min_tally
 # that meets the minimum data requirement
 library(fitdistrplus) # required for distribution fitting
 # note, in new file 1 value < 0
+min.plot<-100
 distributionFittingWZero <- dist.fit.fn(data.file, evts = evt.vals, start.col = start.col, 
                                    write.file = FALSE, min.plot = min.plot, 
-                                    evt.col = evt.col,include0=TRUE)
+                                    evt.col = EVTCol,include0=TRUE)
 # see warnings in fitting with 0, but only 1-3
 # Warning messages:
 #   1: In sqrt(diag(varcovar)) : NaNs produced
@@ -52,10 +53,10 @@ distributionFittingWOZero <- dist.fit.fn(data.file, evts = evt.vals, start.col =
 # now look at which distributions are chosen
 ##########
 distributionRankingWZero<-distfit.rank.fn(evts = evt.vals,
-                                          DistFitSum = distributionFittingWZero,start.col=13)
+                                          DistFitSum = distributionFittingWZero[[2]],start.col=13)
 
 distributionRankingWOZero<-distfit.rank.fn(evts = evt.vals,
-                                          DistFitSum = distributionFittingWOZero,start.col=13)
+                                          DistFitSum = distributionFittingWZero[[1]],start.col=13)
 ##########
 # look at some of the fits
 ##########
@@ -77,6 +78,16 @@ write.csv(distSummaryWZero,file="DistributionsChosenWZeroes.csv",row.names=FALSE
 write.csv(distSummaryWOZero,file="DistributionsChosenWOZeroes.csv",row.names=FALSE)
 
 # Look at some of the distribution fits.
+
+# now let's try an example hurdle model, using EVT 614.
+
+# We have to decide whether a hurdle model is necessary, and compare fits between the distribution modeled with and 
+# without the hurdle. I think use simulation to assess fits, or come up with a likelihood estimate
+
+
+
+
+
 
 #Next we will assess the QUALITY of the fits, using equivalence testing
 library(equivalence)

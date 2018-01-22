@@ -1,0 +1,50 @@
+---
+title: "Simulation study of spatial validation of fuels loading"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This represents a first draft of a simulation study to demonstrate the folly of using plot-level data to validate the pixel value (at 1 km or 30-m pixels) of fuel loading in a map of fuels.
+
+##General design:
+
+We will simulate a spatial distribution of fuels in a 1 km grid, at the lowest spatial resolution of (whatever FIA (forest inventory or analysis) plot-sizes are). For simplicity we will divide the 1 km pixel into a smaller grid at the plot-level resolution.
+
+There will be a "true" value of mean fuel loading within the pixel. We will specify also a variability in fuel loading (with an analysis of the effect of increasing variability in fuel loading, informed by the fuel loading database estimates of within-EVT group). We will then distribute the fuel loading to each sub pixel randomly based on the distribution (comparing also CSR and spatial auto-correlated processes). 
+
+We will then randomly sample the individual pixels, and show in general the proportion that "validate" the true mean value (and estimate the  error between the plot-level and pixel-level values). We will also create confidence intervals based on the plot-level data, and show in general (presumably) that those get the answer more correct.
+
+
+(Another database question--how to compare observed distributions to database distributions? Should we do a KS-type test? Simple boxplot?, also, ways to visualize the database)
+
+Note that downed woody debris in FIA is along a 7.32 m transect. For simplicity's sake, let's go with 10x10 m sub pixels, so 100 sub-pixels per 1 km pixel.
+
+```{r simulateTry1}
+# Here is the first attempt to conduct simulation
+# Use an example EVT fit distribution, with a log-normal distribution.
+# Note we should also do this with a normal distribution, to show
+# how the complexity of the distribution shapes impacts this (and assumptions therein)
+mu.log<-1.75
+sd.log<-0.25
+# for lognormal, the expected value is: 
+exp(mu.log+sd.log^2/2)
+
+fuels.vals<-data.frame(x=1:100,y=1:100,loading=NA)
+
+#simple CSR
+fuels.vals$loading<-rlnorm(100,1.75,0.25)
+
+hist(fuels.vals$loading)
+mean(log(fuels.vals$loading))
+mean(fuels.vals$loading)
+
+# take samples of increasing size from this larger pixel to estimate mean loading across entire pixel. Calculate estimation error
+
+```
+
+
+
+

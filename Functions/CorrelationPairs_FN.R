@@ -6,7 +6,10 @@
 # this will determine the correlation between different pairs in the dataset
 # the minimum co-occurence was arbitrarily chosen
 
-corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.cooccur=FALSE,cooccur.filename="Co-occurence_EVT",write.file.corr=FALSE,corr.filename="Correlation_EVT",write.file.corlog=FALSE,corlog.filename="CorrelationLog")
+corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,
+                       write.file.cooccur=FALSE,cooccur.filename="Co-occurence_EVT",
+                       write.file.corr=FALSE,corr.filename="Correlation_EVT",write.file.corlog=FALSE,
+                       corlog.filename="CorrelationLog",method="spearman",include0=TRUE)
 {
   cooccur.list<-list()
   corr.list<-list()
@@ -29,11 +32,15 @@ corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.
       {
       # this part is not removing the NAs from each column, it does so when it is done by itself, not as the whole for loop
       tmp.load1<-tmp.loads[!is.na(tmp.loads[,j]),]
+      if(!include0)
+        tmp.load1<-tmp.load1[tmp.load1[,j]>0,] # and remove the zeroes, since these will be used for the continuous portion of the distribution (?)
     
 #      for(k in (j+1):ncol(data.file)) 
       for(k in (j+1):ncol(tmp.loads)) 
       {
         tmp.load2<-tmp.load1[!is.na(tmp.load1[,k]),1]
+        if(!include0)
+          tmp.load2<-tmp.load2[tmp.load2[,k]>0,1]
        
         cooccur.list[[1]][j,k]<-length(tmp.load2)
         
@@ -49,13 +56,14 @@ corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.
 #      curloads<-tmp.loads[,c(cor.id[l,1]+2,cor.id[l,2]+2)]
       curloads<-tmp.loads[,c(cor.id[l,1],cor.id[l,2])]
       curloads<-curloads[!is.na(curloads[,1])&!is.na(curloads[,2]),] # should we be excluding zeroes here too? Also, might want to calculate log transformation
-      if(sd(curloads[,1])>0&sd(curloads[,2])>0)
+      if(sd(curloads[,1])>0&sd(curloads[,2])>0) # making sure they're not all zeroes
       {
-        corr.list[[1]][cor.id[l,1],cor.id[l,2]]<-cor(x=curloads[,1],y=curloads[,2])
+        corr.list[[1]][cor.id[l,1],cor.id[l,2]]<-cor(x=curloads[,1],y=curloads[,2],method = method)
         cur2.loads<-curloads[curloads[,1]>0&curloads[,2]>0,]
         if(nrow(cur2.loads)>min.co)
-          corr.log.list[[1]][cor.id[l,1],cor.id[l,2]]<-cor(x=log(cur2.loads[,1]),y=log(cur2.loads[,2]))
-        
+          corr.log.list[[1]][cor.id[l,1],cor.id[l,2]]<-cor(x=log(cur2.loads[,1]),y=log(cur2.loads[,2]),method = method)
+        corr.list[[1]][cor.id[l,1],cor.id[l,1]]<-1# fill in the diagonals
+        corr.list[[1]][cor.id[l,2],cor.id[l,2]]<-1
       }
      }
     
@@ -101,11 +109,15 @@ corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.
       for(j in 1:(ncol(tmp.loads)-1))
         {
         tmp.load1<-tmp.loads[!is.na(tmp.loads[,j]),]
+        if(!include0)
+          tmp.load1<-tmp.load1[tmp.load1[,j]>0,]
       
 #        for(k in (j+1):ncol(data.file)) 
           for(k in (j+1):ncol(tmp.loads)) 
           {
           tmp.load2<-tmp.load1[!is.na(tmp.load1[,k]),1]
+          if(!include0)
+            tmp.load2<-tmp.load2[tmp.load2[,k]>0,1]
 #          cooccur.list[[i]][j-2,k-2]<-length(tmp.load2)
           cooccur.list[[i]][j,k]<-length(tmp.load2)
           }
@@ -123,11 +135,13 @@ corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.
           curloads<-curloads[!is.na(curloads[,1])&!is.na(curloads[,2]),]
           if(sd(curloads[,1])>0&sd(curloads[,2])>0)
           {            
-            corr.list[[i]][cor.id[l,1],cor.id[l,2]]<-cor(x=curloads[,1],y=curloads[,2])
+            corr.list[[i]][cor.id[l,1],cor.id[l,2]]<-cor(x=curloads[,1],y=curloads[,2],method = method)
             cur2.loads<-curloads[curloads[,1]>0,]
             cur2.loads<-cur2.loads[cur2.loads[,2]>0,]
             if(nrow(cur2.loads)>min.co)
-              corr.log.list[[i]][cor.id[l,1],cor.id[l,2]]<-cor(x=log(cur2.loads[,1]),y=log(cur2.loads[,2]))
+              corr.log.list[[i]][cor.id[l,1],cor.id[l,2]]<-cor(x=log(cur2.loads[,1]),y=log(cur2.loads[,2]),method = method)
+            corr.list[[i]][cor.id[l,1],cor.id[l,1]]<-1# fill in the diagonals
+            corr.list[[i]][cor.id[l,2],cor.id[l,2]]<-1
             
           }          
           else
@@ -165,7 +179,7 @@ corrpairs.fn<-function(data.file,start.col,evts=NA,evt.col,min.co=10,write.file.
     
     }
   }
-  return(all.list=list(corr.list,corr.log.list))
+  return(all.list=list(CoOccur=cooccur.list,Corr=corr.list,CorrLog=corr.log.list))
 }
 
 

@@ -1,0 +1,155 @@
+---
+title: "Distribution fitting for Database Manuscript 1"
+author: "Maureen Kennedy"
+date: "March 20, 2018"
+output: 
+  word_document:
+    reference_docx: g:/My Drive/TeachingRScripts/GeneralRDocs/RMarkDown/WordStyleLabReference.docx
+    fig_height: 8
+    fig_width: 8
+bibliography: d:/MendeleyDocs/Manuscripts-FuelsDatabase.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Distribution-fitting Methods
+
+After an initial visual inspection of empirical distributions for each fuel loading type we decided on 4 candidate distributions: normal, lognormal, gamma, and Weibull (although, with hurdle modeling we migth stick to just lognormal and gamma--normal is almost never chosem, weibull is very similar to the other two, and this avoids issues with truncation for the normal and Weibull). The lognormal, gamma, and Weibull distributions were chosen because many of the fuel loading types for many of the EVT groups exhibited right-skewedness. Each of these distributions have two parameters that can be estimated using maximum likelihood (Table). The normal and weibull distributions can accommodate zeroes, whereas the lognormal and gamma distributions have domain > 0. 
+
+Distributions (see table)
+
+normal pdf:
+
+$\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$
+
+E(x) = $\mu$
+
+V(x) = $\sigma^2$
+
+lognormal pdf: 
+
+$\frac{1}{\sigma x\sqrt{2\pi}}e^{-\frac{(\ln x-\mu)^2}{2\sigma^2}}$
+
+E(x) = $e^{\mu+\frac{sigma^2}{2}}$
+
+V(x) = $e^{2\mu+\sigma^2}(e^{\sigma^2}-1)$
+
+gamma pdf:
+
+$\frac{1}{\beta^\alpha\Gamma(\alpha)}x^{\alpha-1}e^{-x/\beta}$
+
+E(X) = $\alpha\beta$
+
+V(X) = $\alpha\beta^2$
+
+Weibull pdf:
+
+$\frac{\alpha}{\beta}(\frac{x}{\beta})^{(\alpha - 1)}e^{-(x/\beta)^\alpha}$
+
+E(X) = $\beta \Gamma(1+1/\alpha)$
+
+V(X) = $\beta^2 [\Gamma(1+2/\alpha)-(\Gamma(1+1/\alpha))^2]$
+
+where:
+
+$\Gamma(x) = \int_0^\infty t^{x-1} e^{-t} dt$ for x>0
+
+We chose a minimum number of entries allowed for distribution fitting (n $\geq 30$), and fit each of the candidate distributions to all fuel type and EVT group combinations that achieved the minimum number of entries (using fitdistrplus package in R). The distribution achieving the maximum liklihood criterion for each EVT group and fuel type was chosen as the final distribution.
+
+```{r citeFitDist}
+citation("fitdistrplus")
+```
+
+# Zeroes
+
+For many of the EVT groups there were entries of zero loading for many fuel types. We evaluated two options for all distributions: 
+
+1. estimate the distribution including all values, with a value of 0.1 added for all fuel types so the lognormal and gamma distributions could be estimated 
+
+2. estimate a hurdle-type model (ref), where the distribution function (f(x)) is represented as: 
+
+$\pi$ if x=0
+
+$(1-\pi)$ h(x) if x>0
+
+0 otherwise,
+
+h(x) is one of the candidate distributions (normal, lognormal, gamma, Weibull; ***note: normal is pretty much never chosen, and Weibull isn't necessarily appropriate for hurdle fitting, so might just stick with gamma and lognormal--seems pretty common with biomass modeling***), and $\pi$ is the estimated probability of zero loading for that fuel type in a given EVT group. Hurdle models are common tools for zero-inflated data, where the zero values are represented in greater proportion than can be modeled using the density function alone (usually with discrete count models, but have also been applied to continuous distributions with many zeroes). It has been shown (ref) that the two components of the distribution function are indepdendent , with the consequence that the proportion of zeroes can be estimated simply as the proportion of entries that have a value of zero, and then the distribution can be estimated for the remaining non-zero entries. All distributions were estimated with both approaches, and the fit of each approach compared (see below). (note, for normal and weibull this implies a truncated distribution--stick with lognormal and gamma only for these?)
+
+See Lecomte et al. [-@Lecomte2013] for biomass estimation with zero-inflated data, using a gamma distribution ("Delta-gamma approach"). Note that they show some issues with variable sampling effort (volume), which we will have to assume is constant here. 
+
+# Assessing fits: equivalence testing
+
+The Kolmogorov-Smirnov test is a common test used for the equality of distributions (ref), where the null hypothesis is that the empirical distribution follows the named theoretical density function. As with most statistical tests, failure to reject the null hypothesis is not equivalent to accepting the null hypothesis, especially in cases of low power (small sample size). Therefore failure to reject the null hypothesis does not necessarily indicate an adequate match between empirical and theoretical distribution. Furthermore, in cases of high power (large sample sizes), statistical significance does not indicate large effect size (or an inadequate fit), such that the chosen distribution may be adequate even when the null hypothesis is rejected. 
+
+Robinson and Froese (i think! [@Robinson2004] ref) recommend an equivalence test to compare empirical data to model predictions using a two-one-sided t-test (TOST). In equivalence testing a maximum allowable error (or error tolerance) is defined, and the null hypothesis is that the observed distribution is outside of the error tolerance relative to the theoretical distribution. If the observed distribution is seen to be within the maximum error (or error tolerance), then the null hypothesis is rejected and the observed data is judged to be "equivalent" to the theoretical distribution.  Here we use TOST to assess adequate matching between our observed empirical cumulative distribution of fuel type and the theoretical cdf associated with each candidate distribution. Let $x_{(i)}$ be the ith quantile of the empirical data distribution, and $\hat{x}_{(i)}$ be the ith quantile of the theoretical distribution. Then the difference between the observed and theoretical ($x_{d_i}$) is:
+
+$$x_{d_i} = x_{(i)} - \hat{x}_{(i)}$$
+
+We then calculate $\bar{x}_d$ as the mean distance between observed and theoretical, and use TOST to determine statistically if the observed and theoretical distributions differ by more than a specified error tolerance ($\epsilon$). This requires a standard error tolerance to be specified, which for our application would be a relatively arbitrarily defined threshold. 
+
+Prichard et al  (; [@Prichard2014]) use a similar equivalence procedure to evaluate the uncertainty of the fits of observed fuel consumption relative to those predicted by empirical consumption equations. For their analysis, rather than choosing a single arbitrary error threshold, they repeated the equivalence test with increasing $\epsilon$ until the first $\epsilon$ at which the equivalence test null hypothesis was rejected. This then defined the bound of uncertainty for that fuel type. We adapt their approach here, repeating the equivalence test for increasing error thresholds between observed and theoretical distributions for distributions estimated both with zeroes (and an offset), and distributions estimated for only values > 0. We then compare the minimum $\epsilon$ that rejects the null hypothesis to assess both the uncertainty in the distribution estimates and the relative fits between the two approaches (since these aren't nested, can't compare likelihoods directly--except maybe we can, need to think more about calculating a likelihood for a full hurdle model).
+
+We like this approach because it assesses adequacy of empirical fit to theoretical, rather than statistical differences. We will use the equivalence package in R.
+
+```{r citeEq}
+citation("equivalence")
+```
+
+# OR!
+
+We can just use bootstraps of the parameter estimates for each distribution, or look at MC null KS tests (following [@Lilliefors1967]) and see if we get significance.
+
+Method: calculate KS statistic for observed distribution relative to "theoretical" distribution at estimated parameter values. Then, for 5000 MC replicates, take n (n=number of observed values in original distribution fit) random draws from "theoretical" distribution at estimated parameter values. For each of these, estimate the same theoretical distribution, then perform KS test of random to theoretical distribution at estimated parameter values. This will generate 1000 KS values when the null hypothesis is true, thus a "null" distribution. The p-value is then calculated as:
+
+$$1-\frac{\sum_{i=1}^{n_{mc}}I(d_{obs}>d_i)}{n_{mc}+1}$$
+
+where $n_{mc}$ is the number of simulated statistics in the null distribution, $d_i$ is the ith simulated statisic, and $d_{obs}$ is the observed statistic. I is an indicator function that takes a value of 1 if the observed statistic is less than the simulated, 0 otherwise. The sum tallies the number of simulated statistics are smaller than the observed statistic. Note that we divide by $n_{mc}$+1 because we have $n_{mc}$+1 total statistics (including $d_{obs}$). We can then evaluate, against say $\alpha$ = 0.10, which if any distributions are "fail to reject" (ftr) The question, as above, is whether this is a good idea with respect to power and interpretation. (We'll see how many are ftr.) 
+
+# Decisions to be made
+By what criteria(on) will we deem a distribution to be adequate for a given fuel load type and EVT group? 
+
+1. Set a maximum equivalence threshold and only accept those within that threshold. Drawbacks: thresholds are arbitrary unless there is a real accepted design specification!
+
+2. Only accept those that ftr the MC KS test. Drawbacks: power!
+
+3. Accept the best-fitting distribution, and define uncertainty around that using either: equivalence UA, or bootstrap CI. Drawback: Still feel like there needs to be some kind of poor fit beyond which we cannot accept a distribution. Also, how to incoporate that into random draws? Or don't incorporate, just use as part of visualization of uncertainty. Bootstrap standard errors as a CV--error/estimate
+
+4. Use bootstrap to create an envelope of values in the ecdf, and see if the observed ecdf leaves the envelope. Presumably similar results to the MC KS test. Drawbacks: new! Different?
+
+Also, ways to quantify uncertainty: equivalence threshold for "distribution error", bootstrap sd on the estimated parameter values (relative to estimate, so a bootstrap CV for the estimate)
+
+##Results
+
+Here we give some example results from all of the options described above. In general we're finding that the hurdle fits are either better than, or indistinguishable from, non-hurdle fits. I think we should just use that for all fuel types, understanding that for most of the fuel types there are no zeroes in the database (such that $\hat{\pi}$ = 0).
+
+Can create a master table with all EVTs, the best-fitting distribution, parameter estimates, bootstrap standard deviations and CV, equivalence values, MC KS p-values, and proportion of zero entries in the database.
+
+
+
+Note, all results are generated by loading the following RData workspace (generated in the FitHurdleUnivariateDistributions.R script): HurdleFits.RData, BootstrapHurdleFitsList.RData, EquivalenceResults.RData, MasterTable.RData
+
+Here is an example of the master summary table, for EVT 697 (Loblolly Pine Forest and Woodland)
+
+```{r table1,echo=FALSE}
+load("Workspaces/HurdleFits.RData")
+load("Workspaces/MasterTablePrelim.RData")
+knitr::kable(distribution.masterTable[[which(evt.vals==620)]],row.names = FALSE)
+
+```
+
+And here is how it would look if we dismiss the NAs:
+
+```{r table2,echo=FALSE}
+knitr::kable(distribution.masterTable[[which(evt.vals==697)]][!is.na(distribution.masterTable[[which(evt.vals==697)]]$distr),],row.names = FALSE)
+```
+
+We could then give example fit graphs for chosen EVTs and fuel types, perhaps showing one or two example good fits and one or two example poor fits.
+
+
+
+> page_break
+
+## References

@@ -6,28 +6,24 @@
 
 
 distfit.rank.fn<-function(evts,file.inputname="DistFitSummaryEVT",write.file=FALSE,
-                          file.outputname="DistFitRankEVT",DistFitSum,start.col)
+                          file.outputname="DistFitRankEVT",DistFitSum,start.col,
+                          dist.cols=c("lnormLL","gammaLL","normLL","weibullLL"))
 {
-  # loading LL results
-#  DistFitSum<-list()
-  
   # results data frame
   DistFitRank<-list()
   
-  dist.names<-c("normal","logNormal","gamma","weibull")
+#  dist.names<-c("normal","logNormal","gamma","weibull")
 
   for(i in 1:length(evts))
   {
-    # reading distribution fitting summary csv
-#    DistFitSum[[i]]<-read.csv(paste(file.inputname,evts[i],".csv",sep=""))
-    
     DistFitRank[[i]]<-data.frame(fueltype=names(data.file)[start.col:ncol(data.file)],dist.LL=NA,tie=0,dist1.fit=NA,dist2.fit=NA,dist3.fit=NA,dist4.fit=NA)
     
     dist.type<-as.data.frame(DistFitSum[[i]])
     
     for(j in 1:nrow(dist.type))
     {
-      tmp.ll<-dist.type[j,seq(2,11,3)]
+      tmp.ll<-dist.type[j,dist.cols]
+      
       tmp.ll<-tmp.ll[!is.na(tmp.ll)]
       if(length(tmp.ll)>0)
       {
@@ -36,10 +32,10 @@ distfit.rank.fn<-function(evts,file.inputname="DistFitSummaryEVT",write.file=FAL
         
         if(!is.na(max.ll))
         {
-          distfit.id<-which(dist.type[j,seq(2,11,3)]==max.ll)
-          tmp.sort<-sort.int(unlist(dist.type[j,seq(2,11,3)]),index.return = TRUE,decreasing=TRUE)
-          DistFitRank[[i]][j,4:7]<-dist.names[tmp.sort$ix]
-          
+          distfit.id<-which(dist.type[j,dist.cols]==max.ll)
+          tmp.sort<-sort.int(unlist(dist.type[j,dist.cols]),index.return = TRUE,decreasing=TRUE)
+          DistFitRank[[i]][j,4:7]<-dist.cols[tmp.sort$ix]
+
           if(length(distfit.id)>1)
           {
             DistFitRank[[i]]$tie[j]<-1

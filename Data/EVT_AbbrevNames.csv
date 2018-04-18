@@ -1,0 +1,175 @@
+Count,,EVT,EVT_GP,EVT_GP_Name,EVT_Group_AbbreviatedName,Sum of COUNT
+2,,012 Snow-Ice,12,Snow-Ice,Snow-Ice,1929687
+,,,13,Developed-Upland Deciduous Forest,Dev - Upland Hardwood,53381846
+,,,14,Developed-Upland Evergreen Forest,Dev - Upland Evergreen Forest,18020404
+,,,15,Developed-Upland Mixed Forest,Dev - Upland Mixed Forest,12289741
+,,,16,Developed-Upland Herbaceous,Dev - Upland Herbaceous,294820147
+,,,17,Developed-Upland Shrubland,Dev - Upland Shrubland,127595327
+2,,021 Developed-Open Space,21,021 Developed-Open Space,Dev - OpenSpace,
+1,,022 Developed-Low Intensity,22,Developed-Low Intensity,Dev - Low Intensity,75677540
+,,,23,Developed-Medium Intensity,Dev - Med Intensity,41678993
+,,,24,Developed-High Intensity,Dev - High Intensity,15472562
+,,,25,Developed-Roads,Road,213289792
+13,,031 Barren,31,Barren,Barren,103842805
+,,,32,Quarries-Strip Mines-Gravel Pits,Quarry-Gravel Pit,4935237
+,,,60,Agricultural-Orchard,Ag - Orchard,17474179
+,,,61,Agricultural-Vineyard,Ag - Vineyard,4701137
+,,,62,Agricultural-Bush fruit and berries,Ag - Bush fruit,438066
+,,,63,Agricultural-Row Crop-Close Grown Crop,Ag - Row Crop,6818919
+,,,64,Agricultural-Row Crop,Ag - Row,888033289
+,,,65,Agricultural-Close Grown Crop,Ag - Crop,109661788
+,,,66,Agricultural-Fallow/Idle Cropland,Ag - Fallow Cropland,97808513
+,,,67,Agricultural-Pasture and Hayland,Ag - Pasture,518739291
+,,,68,Agricultural-Wheat,Ag - Wheat,236796230
+,,,69,Agricultual-Aquaculture,Ag - Aquaculture,669955
+1,,082 Agriculture-Cultivated Crops and Irrigated Agriculture,82,082 Agriculture-Cultivated Crops and Irrigated Agriculture,Ag - Irrigated Crop,
+438,,201 Unclassified Forest and Woodland,201,201 Unclassified Forest and Woodland,Unclass - Forest,
+65,,202 Unclassified Shrubland,202,202 Unclassified Shrubland,Unclass - Shrubland,
+44,,203 Unclassified Upland Herbaceous,203,203 Unclassified Upland Herbaceous,Unclass - Upland Herbaceous,
+31,,204 Unclassified Savanna,204,204 Unclassified Savanna,Unclass - Savanna,
+16,,205 Unclassified Shrub-Steppe,205,205 Unclassified Shrub-Steppe,Unclass - Shrubland,
+14,,206 Unclassified Grassland,206,206 Unclassified Grassland,Unclass - Grassland,
+17,,207 Unclassified Wetland-Riparian Herbaceous,207,207 Unclassified Wetland-Riparian Herbaceous,Unclass - Riparian,
+48,,"601 ""Alpine Dwarf-Shrubland  Fell-field and Meadow""",601,"Alpine Dwarf-Shrubland, Fell-field and Meadow",Alpine Shrubland,26669747
+135,,"602 ""Aspen Forest  Woodland  and Parkland""",602,"Aspen Forest, Woodland, and Parkland",Aspen Forest,36543317
+104,,603 Aspen-Mixed Conifer Forest and Woodland,603,Aspen-Mixed Conifer Forest and Woodland,Aspen-Mixed Conifer Forest,22273666
+152,,604 Big Sagebrush Shrubland and Steppe,604,Big Sagebrush Shrubland and Steppe,Big Sage Shrubland,476286882
+,,,605,Bigtooth Maple Woodland,Bigtooth Maple Woodland,2880782
+5,,606 Blackbrush Shrubland,606,Blackbrush Shrubland,Blackbrush Shrubland,21373482
+77,,607 Chaparral,607,Chaparral,Chaparral Shrubland,61061444
+,,,608,Pacific Coastal Marsh,Pacific Coastal Marsh,334877
+3,,609 Pacific Coastal Scrub,609,Pacific Coastal Scrub,Pacific Coastal Scrub,6434229
+187,,610 Conifer-Oak Forest and Woodland,610,Conifer-Oak Forest and Woodland,Mixed Conifer Oak Forest,26566963
+3,,611 Creosotebush Desert Scrub,611,Creosotebush Desert Scrub,Creosotebush Shrubland,103514067
+93,,612 Deciduous Shrubland,612,Deciduous Shrubland,Deciduous Shrubland,42189235
+53,,613 Desert Scrub,613,Desert Scrub,Desert Scrub,220296270
+982,,614 Douglas-fir Forest and Woodland,614,Douglas-fir Forest and Woodland,Douglas-fir Forest,73603927
+1439,,615 Douglas-fir-Western Hemlock Forest and Woodland,615,Douglas-fir-Western Hemlock Forest and Woodland,Douglas-fir Western Hemlock Forest,54508244
+3,,616 Dry Tundra,616,Dry Tundra,Dry Tundra,2464953
+117,,617 Grassland,617,Grassland,Grassland,144394719
+29,,618 Grassland and Steppe,618,Grassland and Steppe,Grassland and Steppe,79137690
+12,,619 Greasewood Shrubland,619,Greasewood Shrubland,Greasewood Shrubland,53736715
+618,,620 Juniper Woodland and Savanna,620,Juniper Woodland and Savanna,Juniper Woodland,10548586
+30,,621 Limber Pine Woodland,621,Limber Pine Woodland,Limber Pine Woodland,3764371
+883,,622 Lodgepole Pine Forest and Woodland,622,Lodgepole Pine Forest and Woodland,Lodgepole Pine Forest  ,33526665
+22,,623 Low Sagebrush Shrubland and Steppe,623,Low Sagebrush Shrubland and Steppe,Low Sage Shrubland,78437005
+1310,,624 Mesquite Woodland and Scrub,624,Mesquite Woodland and Scrub,Mequite,134950038
+894,,625 Douglas-fir-Ponderosa Pine-Lodgepole Pine Forest and Woodland,625,Douglas-fir-Ponderosa Pine-Lodgepole Pine Forest and Woodland,"Douglas-fir, Ponderosa Pine, Lodgepole Pine Forest",85744097
+467,,626 California Mixed Evergreen Forest and Woodland,626,California Mixed Evergreen Forest and Woodland,CA Mixed Evergreen Forest,22531260
+348,,627 Mountain Hemlock Forest and Woodland,627,Mountain Hemlock Forest and Woodland,Mountain Hemlock Forest,6118314
+69,,628 Mountain Mahogany Woodland and Shrubland,628,Mountain Mahogany Woodland and Shrubland,Mountain Mahogany Woodland,9586821
+161,,629 Western Oak Woodland and Savanna,629,Western Oak Woodland and Savanna,Western Oak Woodland,10899278
+618,,630 Pinyon-Juniper Woodland,630,Pinyon-Juniper Woodland,Pinyon-Juniper Woodland,186758992
+1427,,"631 ""Ponderosa Pine Forest  Woodland and Savanna""",631,"Ponderosa Pine Forest, Woodland and Savanna",Ponderosa Pine Forest,100852377
+90,,632 Red Alder Forest and Woodland,632,Red Alder Forest and Woodland,Red Alder Forest,11042572
+169,,633 Red Fir Forest and Woodland,633,Red Fir Forest and Woodland,Red Fir Forest,11714373
+16,,634 Redwood Forest and Woodland,634,Redwood Forest and Woodland,Redwood Forest,8188918
+137,,635 Western Herbaceous Wetland,635,Western Riparian Woodland and Shrubland,Western Riparian Woodland,81747282
+20,,636 Salt Desert Scrub,636,Salt Desert Scrub,Salt Desert Scrub,107492406
+3,,637 Sand Shrubland,637,Sand Shrubland,Sand Shrubland,55600988
+130,,638 Sitka Spruce Forest,638,Sitka Spruce Forest,Sitka Spruce Forest,7606984
+995,,639 Spruce-Fir Forest and Woodland,639,Spruce-Fir Forest and Woodland,Spruce-Fir Forest,75965510
+283,,640 Subalpine Woodland and Parkland,640,Subalpine Woodland and Parkland,Subalpine Woodland,21470966
+,,,641,Succulent Desert Scrub,Succulent Desert Scrub,8511188
+1118,,642 Western Hemlock-Silver Fir Forest,642,Western Hemlock-Silver Fir Forest,Western Hemlock-Silver Fir Forest,19558041
+1056,,643 Douglas-fir-Grand Fir-White Fir Forest and Woodland,643,Douglas-fir-Grand Fir-White Fir Forest and Woodland,"Douglas-fir, Grand and White Fir Forest",69168428
+135,,644 Western Larch Forest and Woodland,644,Western Larch Forest and Woodland,Western Larch Forest,164623
+368,,645 Western Red-cedar-Western Hemlock Forest,645,Western Red-cedar-Western Hemlock Forest,Western Redcedar Western Hemlock Forest,7415846
+46,,646 Mixedgrass Prairie,646,Mixedgrass Prairie,Mixed Grass Prairie,337757552
+22,,647 Sand Prairie,647,Sand Prairie,Sand Prairie,99594338
+21,,648 Shortgrass Prairie,648,Shortgrass Prairie,Shortgrass Prairie,180773057
+88,,649 Tallgrass Prairie,649,Tallgrass Prairie,Tallgrass Prairie,40325080
+3,,650 Depressional Wetland,650,Depressional Wetland,Depressional Wetland,19722722
+,,,651,Alpine-Subalpine Barrens,Alpine-Subalpine Barrens,69567
+346,,652 Aspen-Birch Forest,652,Aspen-Birch Forest,Aspen-Birch Forest,18328806
+21,,653 Atlantic Coastal Marsh,653,Atlantic Coastal Marsh,Atlantic Coastal Marsh,32768203
+,,,654,Atlantic Dunes and Grasslands,Atlantic Dunes and Grasslands,1699877
+167,,655 Beech-Maple-Basswood Forest,655,Beech-Maple-Basswood Forest,"Mixed Hardwood Forest - beech, maple, basswood",174095716
+236,,656 Texas Live Oak,656,Texas Live Oak,Texas Live Oak,3633016
+55,,657 Cypress,657,Cypress,Cypress Forest,5677513
+10,,658 Coastal Plain Oak Forest,658,Coastal Plain Oak Forest,Coastal Plain Oak Forest,47391375
+71,,659 Bur Oak Woodland and Savanna,659,Bur Oak Woodland and Savanna,Bur Oak Woodland,3664919
+1161,,660 White Oak-Red Oak-Hickory Forest and Woodland,660,White Oak-Red Oak-Hickory Forest and Woodland,Mixed Oak Forest,175615952
+276,,661 Chestnut Oak Forest and Woodland,661,Chestnut Oak Forest and Woodland,Chestnut Oak Forest,100358731
+355,,662 Post Oak Woodland and Savanna,662,Post Oak Woodland and Savanna,Post Oak Woodland,75618211
+203,,663 Black Oak Woodland and Savanna,663,Black Oak Woodland and Savanna,Black Oak Woodland,14673162
+51,,664 Chestnut Oak-Virginia Pine Forest and Woodland,664,Chestnut Oak-Virginia Pine Forest and Woodland,Chestnut Oak - Virginia Pine Forest,92972248
+229,,665 Red Pine-White Pine Forest and Woodland,665,Red Pine-White Pine Forest and Woodland,Red and White Pine Forest,10302599
+1548,,666 Eastern Floodplain Forests,666,Eastern Floodplain Forests,Eastern Floodplain Forest,115287300
+147,,667 White Oak-Beech Forest and Woodland,667,White Oak-Beech Forest and Woodland,White Oak-Beech Forest,20397907
+123,,668 Eastern Small Stream Riparian Forests,668,Eastern Small Stream Riparian Forests,Eastern Riparian Forest,44522876
+12,,669 Florida Slash Pine,669,669 Florida Slash Pine,Slash Pine,
+28,,670 Glades and Barrens,670,Glades and Barrens,Glades and Barrens,7183427
+3,,671 Great Lakes Alvar,671,Great Lakes Alvar,Great Lakes Alvar,51783
+33,,672 Hammocks,672,Hammocks,Hammocks,358388
+14,,673 Hardwood Flatwoods,673,Hardwood Flatwoods,Hardwood Flatwoods,1695200
+8,,674 Heathland and Grassland,674,Heathland and Grassland,Heathland and Grassland,42328
+51,,675 Inland Marshes and Prairies,675,Inland Marshes and Prairies,Inland Marsh and Prairie,21394906
+89,,676 Jack Pine Forest,676,Jack Pine Forest,Jack Pine Forest,12604050
+114,,677 Longleaf Pine Woodland,677,Longleaf Pine Woodland,Longleaf Pine,49239149
+3,,678 Mangrove,678,Mangrove,Mangrove,2285361
+80,,679 Maritime Forest,679,Maritime Forest,Maritime Forest,2059810
+458,,680 Sweetgum-Water Oak Forest,680,Sweetgum-Water Oak Forest,Sweetgum-Water Oak Forest,43667727
+1,,681 Montane Oak Forest,681,Montane Oak Forest,Montane Oak Forest,3322895
+415,,682 Yellow Birch-Sugar Maple Forest,682,Yellow Birch-Sugar Maple Forest,"Mixed Hardwood Forest - yellow birch, sugar maple",176321143
+70,,683 Peatland Forests,683,Peatland Forests,Peatland Forest,33403527
+1109,,684 Pine Flatwoods,684,Pine Flatwoods,Pine Flatwoods,40945729
+146,,685 Pine-Hemlock-Hardwood Forest,685,Pine-Hemlock-Hardwood Forest,Pine-Hemlock-Hardwood Forest,88687961
+82,,686 Pitch Pine Woodlands,686,Pitch Pine Woodlands,Pitch Pine Woodlands,3532424
+26,,687 Pocosin,687,Pocosin,Pocosin,4790770
+1,,688 Prairies and Barrens,688,Prairies and Barrens,Prairies and Barrens,3388146
+126,,689 Shortleaf Pine Woodland,689,Shortleaf Pine Woodland,Shortleaf Pine-Oak Forest,24186138
+138,,690 Shortleaf Pine-Oak Forest and Woodland,690,Shortleaf Pine-Oak Forest and Woodland,Shortleaf Pine-Oak Forest,26387389
+49,,691 Southern Scrub Oak,691,Southern Scrub Oak,Southern Scrub Oak,428507
+11,,692 Spruce Flats and Barrens,692,Spruce Flats and Barrens,Spruce Flats and Barrens,601
+305,,693 Spruce-Fir-Hardwood Forest,693,Spruce-Fir-Hardwood Forest,Spruce-Fir and Hardwood Forest,70047890
+236,,694 Atlantic Swamp Forests,694,Atlantic Swamp Forests,Atlantic Swamp Forest,94925853
+85,,695 Virginia Pine Forest,695,Virginia Pine Forest,Virginia Pine Forest,5302845
+141,,696 Juniper-Oak,696,Juniper-Oak,Juniper-Oak Woodland,53997938
+1321,,697 Loblolly Pine Forest and Woodland,697,Loblolly Pine Forest and Woodland,Loblolly Pine Forest,2624388
+1,,698 Loblolly Pine-Slash Pine Forest and Woodland,698,Loblolly Pine-Slash Pine Forest and Woodland,Loblolly Pine-Slash Pine Forest,906814
+1,,699,699,UNKNOWN,,
+35,,700 Sparse Vegetation,700,Sparse Vegetation,Sparse Vegetation,107114864
+1,,701 Introduced Riparian Vegetation,701,Introduced Riparian Vegetation,Exotic Riparian Vegetation,3197045
+24,,702 Introduced Annual Grassland,702,Introduced Annual Grassland,Exotic Annual Grassland,105143396
+17,,703 Introduced Perennial Grassland and Forbland,703,Introduced Perennial Grassland and Forbland,Exotic Perennial Grassland,41002956
+8,,704 Introduced Annual and Biennial Forbland,704,Introduced Annual and Biennial Forbland,Exotic Annual Forbland,12675690
+,,,705,Introduced Wetland Vegetation,Exotic Wetland Vegetation,217655
+1,,706 Introduced Upland Vegetation-Shrub,706,Introduced Upland Vegetation-Shrub,Introduced Upland Shrubland,172284
+55,,707 Introduced Upland Vegetation-Treed,707,Introduced Upland Vegetation-Treed,Introduced Upland Forest,2232695
+5,,708 Introduced Woody Wetland Vegetation,708,Introduced Woody Wetland Vegetation,Introduced Woody Wetland Vegetation,1187704
+,,,709,Introduced Herbaceous Wetland Vegetation,Exotic Herbaceous Wetland Vegetation,387056
+,,,710,Transitional Herbacous Vegetation,Herbland,22038028
+,,,711,Modified-Managed Prairie Grassland,Managed Prairie,64144514
+,,,720,Transitional Shrub Vegetation,Transitional Shrubland,797051
+,,,730,Transitional Forest Vegetation,Transitional Forest,6923
+,,,731,Managed Tree Plantation,Plantation,162466180
+347,,740 Ruderal Forest,740,Ruderal Forest,Ruderal Forest,114410800
+9,,750 Alder Shrubland,750,750 Alder Shrubland,Alder Shrubland,
+2,,"755 ""Bedrock  Scree  and Talus""",755,"755 ""Bedrock  Scree  and Talus""",Bedrock ,
+46,,756 Birch-Aspen Forest,756,756 Birch-Aspen Forest,,
+5,,757 Birch-Cottonwood-Poplar Forest,757,757 Birch-Cottonwood-Poplar Forest,Birch Cottonwood Poplar Forest,
+137,,758 Black Spruce Forest and Woodland,758,758 Black Spruce Forest and Woodland,Black Spruce Forest,
+6,,762 Dwarf Shrubland,762,762 Dwarf Shrubland,Dwarf Shrubland,
+1,,763 Floodplain Forest and Shrubland,763,763 Floodplain Forest and Shrubland,Floodplain Forest,
+1,,764 Freshwater Aquatic Bed,764,764 Freshwater Aquatic Bed,Freshwater ,
+4,,765 Freshwater Marsh,765,765 Freshwater Marsh,Freshwater Marsh,
+8,,767 Herbaceous Meadow,767,767 Herbaceous Meadow,Herbaceous Meadow,
+9,,773 Shrub and Herbaceous Peatlands,773,773 Shrub and Herbaceous Peatlands,Peatland  ,
+1,,774 Shrub Swamp,774,774 Shrub Swamp,Shrub Swamp,
+11,,775 Shrub Tundra,775,775 Shrub Tundra,Shrub Tundra,
+4,,777 Sparse Tundra,777,777 Sparse Tundra,Sparse Tundra,
+8,,781 Tussock Tundra,781,781 Tussock Tundra,Tussock Tundra,
+14,,782 Western Hemlock-Yellow-cedar Forest,782,782 Western Hemlock-Yellow-cedar Forest,Western Hemlock Yellow cedar Forest,
+2,,783 Wet Meadow,783,783 Wet Meadow,Wet Meadow,
+16,,784 White Spruce Forest and Woodland,784,784 White Spruce Forest and Woodland,White Spruce Forest,
+1,,785 White Spruce Forest and Woodland,785,785 White Spruce Forest and Woodland,White Spruce Forest,
+15,,786 Willow Shrubland,786,786 Willow Shrubland,Willow Shrubland,
+1,,787,787,787,UNKNOWN,
+1,,788,788,788,UNKNOWN,
+1,,790 Hawai'i Rainforest,790,790 Hawai'i Rainforest,HI Rainforest,
+8,,791 Hawai'i Dry Forest,791,791 Hawai'i Dry Forest,HI Dry Forest,
+7,,792 Hawai'i Mesic Forest,792,792 Hawai'i Mesic Forest,HI Mesic Forest,
+6,,793 Hawai'i Dry Shrubland,793,793 Hawai'i Dry Shrubland,HI Dry Shrubland,
+1,,794 Hawai'i Mesic Shrubland,794,794 Hawai'i Mesic Shrubland,HI Mesic Shrubland,
+12,,795 Hawai'i Dry Grassland,795,795 Hawai'i Dry Grassland,HI Dry Grassland,

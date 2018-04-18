@@ -9,7 +9,7 @@
 
 dist.fit.fn<-function(data.file,evts,evt.col,start.col,min.plot=30,
                       write.file=FALSE,file.name="DistFitSummaryEVT",
-                      include0=FALSE,add.val=0.1)
+                      include0=FALSE,add.val=0.1,verbose=FALSE)
 {
   distfit.df<-list()
   if(include0)
@@ -18,7 +18,8 @@ dist.fit.fn<-function(data.file,evts,evt.col,start.col,min.plot=30,
   for(i in 1:length(evts))
   {
     # summary dataframe
-    print(paste("starting evt",evts[i]))
+    if(verbose)
+      print(paste("starting evt",evts[i]))
     distfit.df[[i]]<-data.frame(fueltype=names(data.file)[cur.cols],normLL=NA,norm.mu=NA,norm.sigma=NA,lgnormLL=NA,lnorm.mu=NA,lnorm.sigma=NA,gammaLL=NA,gamma.shape=NA,gamma.rate=NA,weibullLL=NA,weibull.shape=NA,weibull.scale=NA)
     if(include0)
       distfitW0.df[[i]]<-data.frame(fueltype=names(data.file)[cur.cols],normLL=NA,norm.mu=NA,norm.sigma=NA,lgnormLL=NA,lnorm.mu=NA,lnorm.sigma=NA,gammaLL=NA,gamma.shape=NA,gamma.rate=NA,weibullLL=NA,weibull.shape=NA,weibull.scale=NA)

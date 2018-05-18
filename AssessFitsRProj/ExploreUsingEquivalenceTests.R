@@ -35,6 +35,6 @@ equivalenceWZero<-equivalence.fn(data.file,distFit.obj=distributionFittingWZero,
                                 ep.val=ep.val, include0=FALSE,add.val=add.val)
                               
 equivalenceWOZero<-equivalence.fn(data.file,distFit.obj=distributionFittingWOZero,evts=evt.vals,
-                                 evt.col=evt.col,start.col=start.col,
+                                 evt.col=evt.col,start.col=start.col,cur.cols=start.col:ncol(data.file),
                                  min.plot=min.plot,write.file=FALSE,file.name="EquivalenceEVT",
                                  ep.val=ep.val, include0=FALSE,add.val=add.val)

@@ -10,16 +10,16 @@ library(fitdistrplus)
 file.sources<-list.files("../Functions/") # all functions in this directory
 file.sources<-sapply(file.sources,FUN=function(x) paste("../Functions/",x,sep=""))
 sapply(file.sources,FUN="source")
-data.file<-read.csv("../Data/loadingsByEVTGroup_20170928.csv") #substitute filepath and name for local system
-
-start.col<-13
+data.file<-read.csv("../Data/CurrentData/_metricLoadingsCrosstab.csv") #substitute filepath and name for local system
+start.col=13 # the first fuel-loading column
+EVTCol = "LFEVTGroupCd_FINAL"
 
 #########
 # look for zero variability
-EVTTallies<-EVT.tally.fn(data.file, evt.col = "LFEVTGroupCd", write.file = TRUE)
+EVTTallies<-EVT.tally.fn(data.file, evt.col = EVTCol, write.file = TRUE)
 # first see which EVTs have multiple entries
 evts1<-EVTTallies[[1]][EVTTallies[[1]][,2]>=10,1]
-new.corr<-corrpairs.fn(data.file = data.file,start.col = start.col,evts = evts1,evt.col = "LFEVTGroupCd")
+new.corr<-corrpairs.fn(data.file = data.file,start.col = start.col,evts = evts1,evt.col = EVTCol)
 # Can leverage the correlation function to identify those with zero variability
 # for now have it print those evts and just copy it from the screen
 
@@ -39,7 +39,7 @@ out.id<-0
 histWithOuts<-list()
 for(i in 1:length(evts1)) # so stick with only those with more than 10 study points
 {
-  tmp.df<-data.file[data.file$LFEVTGroupCd==evts1[i],12:ncol(data.file)]
+  tmp.df<-data.file[data.file$LFEVTGroupCd==evts1[i],start.col:ncol(data.file)]
   for(j in 1:ncol(tmp.df))
   {
     tmp.loads<-tmp.df[,j]
@@ -75,43 +75,57 @@ out.vals<-out.vals[!is.na(out.vals[,1]),]
 neg.vals<-out.vals[!is.na(neg.vals[,1]),]
 
 ## or the "outer fence" id'd by NIST, > 3*IQR
-out3.vals<-data.frame(EVT=rep(NA,nrow(data.file)),fuelType=NA)
+# I'm finding ~1.2% of lnorm random draws > Q3+4*IQR (when looking at raw data)
+outNoLog.vals<-data.frame(EVT=rep(NA,nrow(data.file)),sourceID=NA,studyPoint=NA,fuelType=NA,data.val=NA,i=NA,j=NA)
 out.id<-0
 histWithOuts2<-list()
+iqr.mult<-4
 for(i in 1:length(evts1)) # so stick with only those with more than 10 study points
 {
-  tmp.df<-data.file[data.file$LFEVTGroupCd==evts1[i],start.col:ncol(data.file)]
+  tmp.df<-data.file[data.file[,EVTCol]==evts1[i],start.col:ncol(data.file)]
+  tmp1.source<-data.file[data.file[,EVTCol]==evts1[i],c(3,5)]
   for(j in 1:ncol(tmp.df))
   {
     tmp.loads<-tmp.df[,j]
+    tmp.source<-tmp1.source[!is.na(tmp.loads),]
     tmp.loads<-tmp.loads[!is.na(tmp.loads)]
+    tmp.source<-tmp.source[tmp.loads>0,]
     tmp.loads<-tmp.loads[tmp.loads>0]
-    tmp.loads<-log(tmp.loads)
+#    tmp.loads<-log(tmp.loads)
     if(length(tmp.loads)>10)
     {
       tmp.hist<-hist(tmp.loads)
-      tmp.iq<-3*IQR(tmp.loads)
+      tmp.iq<-iqr.mult*IQR(tmp.loads)
       tmp.qs<-quantile(tmp.loads,probs = c(0.25,0.75))
-      if(min(tmp.loads)<(tmp.qs[1]-tmp.iq)|max(tmp.loads)>(tmp.qs[2]+tmp.iq))
+      if(max(tmp.loads)>(tmp.qs[2]+tmp.iq))
       {
-          out.id<-out.id+1
-          out3.vals$EVT[out.id]<-evts1[i]
-          out3.vals$fuelType[out.id]<-names(tmp.df)[j]
-          histWithOuts2[[out.id]]<-tmp.hist
+        out.id<-out.id+1
+        outNoLog.vals$EVT[out.id]<-evts1[i]
+        outNoLog.vals$fuelType[out.id]<-names(tmp.df)[j]
+        histWithOuts3[[out.id]]<-tmp.hist
+        outNoLog.vals$sourceID[out.id]<-tmp.source[which(tmp.loads==max(tmp.loads))[1],1]
+        outNoLog.vals$studyPoint[out.id]<-tmp.source[which(tmp.loads==max(tmp.loads))[1],2]
+        outNoLog.vals$data.val[out.id]<-max(tmp.loads)
+        outNoLog.vals$i[out.id]<-i
+        outNoLog.vals$j[out.id]<-j
       }
-        #       print(paste("Possible extreme outlier",evts1[i],"load",names(tmp.df)[j]))
+      #       print(paste("Possible extreme outlier",evts1[i],"load",names(tmp.df)[j]))
     }
     
   }
 }
+outNoLog.vals<-outNoLog.vals[!is.na(outNoLog.vals[,1]),]
+write.csv(outNoLog.vals,file="PotentialOutliersCheckNoLogMult4.csv",row.names = FALSE)
 
-out3.vals<-data.frame(EVT=rep(NA,nrow(data.file)),sourceID=NA,studyPoint=NA,fuelType=NA,data.val=NA)
+
+out2.vals<-data.frame(EVT=rep(NA,nrow(data.file)),sourceID=NA,studyPoint=NA,fuelType=NA,data.val=NA)
 out.id<-0
+iqr.mult<-1.5
 histWithOuts3<-list()
 for(i in 1:length(evts1)) # so stick with only those with more than 10 study points
 {
-  tmp.df<-data.file[data.file$LFEVTGroupCd==evts1[i],start.col:ncol(data.file)]
-  tmp1.source<-data.file[data.file$LFEVTGroupCd==evts1[i],c(3,5)]
+  tmp.df<-data.file[data.file[,EVTCol]==evts1[i],start.col:ncol(data.file)]
+  tmp1.source<-data.file[data.file[,EVTCol]==evts1[i],c(3,5)]
   for(j in 1:ncol(tmp.df))
   {
     tmp.loads<-tmp.df[,j]
@@ -123,23 +137,26 @@ for(i in 1:length(evts1)) # so stick with only those with more than 10 study poi
     if(length(tmp.loads)>10)
     {
       tmp.hist<-hist(tmp.loads)
-      tmp.iq<-3*IQR(tmp.loads)
+      tmp.iq<-iqr.mult*IQR(tmp.loads)
       tmp.qs<-quantile(tmp.loads,probs = c(0.25,0.75))
       if(max(tmp.loads)>(tmp.qs[2]+tmp.iq))
       {
         out.id<-out.id+1
-        out3.vals$EVT[out.id]<-evts1[i]
-        out3.vals$fuelType[out.id]<-names(tmp.df)[j]
+        out2.vals$EVT[out.id]<-evts1[i]
+        out2.vals$fuelType[out.id]<-names(tmp.df)[j]
         histWithOuts3[[out.id]]<-tmp.hist
-        out3.vals$sourceID[out.id]<-tmp.source[which(tmp.loads==max(tmp.loads))[1],1]
-        out3.vals$studyPoint[out.id]<-tmp.source[which(tmp.loads==max(tmp.loads))[1],2]
-        out3.vals$data.val[out.id]<-max(exp(tmp.loads))
+        out2.vals$sourceID[out.id]<-tmp.source[which(tmp.loads==max(tmp.loads))[1],1]
+        out2.vals$studyPoint[out.id]<-tmp.source[which(tmp.loads==max(tmp.loads))[1],2]
+        out2.vals$data.val[out.id]<-max(exp(tmp.loads))
       }
       #       print(paste("Possible extreme outlier",evts1[i],"load",names(tmp.df)[j]))
     }
     
   }
 }
+out2.vals<-out2.vals[!is.na(out2.vals[,1]),]
+
+
 
 out4.vals<-data.frame(EVT=rep(NA,nrow(data.file)),sourceID=NA,studyPoint=NA,fuelType=NA,data.val=NA)
 out.id<-0

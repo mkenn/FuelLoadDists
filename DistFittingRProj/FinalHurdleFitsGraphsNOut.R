@@ -12,6 +12,7 @@ load("Workspaces/HurdleCustomFitsNoZeroWNoOut.RData") # estimated distributions
 library(fitdistrplus)
 source("../Functions/Dist_Fit_Graph_Pub_FN.R")
 
+# also need to decide on final fuel types and EVT groups, and standardize axes for fuel type loading comparisons
 ##########
 fuel.labels<-c(expression(paste("100-hr (Mg h",a^-1,")")),
                expression(paste("10-hr (Mg h",a^-1,")")),

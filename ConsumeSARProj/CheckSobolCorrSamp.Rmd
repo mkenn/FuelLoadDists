@@ -1,0 +1,93 @@
+---
+title: "Test Sobol with correlation structure"
+author: "Maureen Kennedy"
+date: "May 17, 2018"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+This is to test whether the correlation structure created by the Iman method is conserved with a Sobol rearrangement, for global SA.
+
+```{r getData,echo=FALSE,include=FALSE}
+# first load in the fit distributions workspace
+load("../DistFittingRProj/Workspaces/HurdleCustomFitsNoZeroWNoOut.RData")
+# read in the mapping between the EVT groups and a characteristic fuel bed
+evtFB.map<-read.csv("EVT_Fuelbed_xwalk.csv") # FCCSID is the fuelbed number, EVT_GP is the EVT group
+# read in the FCCS fuelbeds
+# skip the header line, this is the FCCS fuelbeds file to give baseline values for the fuel loadings
+all.fbs<-read.table("consume/input_data/fccs_loadings.csv",skip=1,header=TRUE,sep=",",stringsAsFactors=TRUE) 
+#  fueltype names in FCCS with those in database names
+fbLoadNames.df<-read.table("FCCS_DataBaseCategoryMapUpdated.csv",stringsAsFactors = FALSE,sep=",",header=TRUE)
+
+# should contain everything necessary to estimate correlation matrices
+# Make sure that the woody totals are present
+data.file$X10Khr_loading_Mgha<-data.file$X10KhrR_loading_Mgha+data.file$X10KhrS_loading_Mgha
+data.file$X1Khr_loading_Mgha<-data.file$X1KhrR_loading_Mgha+data.file$X1KhrS_loading_Mgha
+
+data.file$cwd_loading_Mgha<-data.file$X10Khr_loading_Mgha+data.file$X1Khr_loading_Mgha+data.file$GT10KhrR_loading_Mgha+data.file$GT10KhrS_loading_Mgha
+
+
+data.file$fwd_loading_Mgha<-data.file$X1hr_loading_Mgha+data.file$X10hr_loading_Mgha+data.file$X100hr_loading_Mgha
+
+# so now we need a new function, to calculate a complete and proper
+# correlation matrix on the subsets of interest in the database
+smolder1.id<-c(4,5,8,9,16,17)
+smolder2.id<-c(3,7,16,17) # because we don't seem to have a total column for >10K
+
+flaming1.id<-c(1,2,6,18,20,22,23,26)
+flaming2.id<-c(15,18,20,22,23,26) # assuming fwd is 1-hr+10-hr+100-hr
+flaming3.id<-c(1,2,6,18,22,26) # remove lichen and moss because those data seem to be rare
+
+# now we will subset by the groups for an example EVT, and calculate the
+# correlation matrix. It does seem reasonable that if 1 in this group is measured,
+# the others likely also are
+# try with the first EVT
+#replace commented section below with function call
+#######
+cur.evt<-3
+tmp.df<-data.file[data.file[,EVTCol]==evt.vals[cur.evt],]
+tmp.loads.df<-tmp.df[,start.col:ncol(tmp.df)]
+# might need an imputation package to assess the missingness 
+# in the subset of data
+tmp2.loads.df<-tmp.loads.df[,smolder1.id]
+
+# package mice has a way to assess the missingness in a matrix
+library(mice)
+tmp.md<-md.pattern(tmp2.loads.df)
+
+source("../Functions/SimHurdleDist_FN.R")
+source("../Functions/SensitivitySampleWithCorr_FN.R")
+sens.mats.smolder.list<-corr.sa.fn(data.file,fuel.ids=smolder1.id,complete.case=TRUE,min.co.occur=30,
+                     evts=evt.vals,EVTCol=EVTCol,start.col=start.col,n.samp=1000,
+                     rankObj=distributionCustomRankingHurdleNOut,fitObj=distributionCustomFittingHurdleNOut)
+sens.mats.smolder.list.upper<-corr.sa.fn(data.file,fuel.ids=smolder1.id,complete.case=TRUE,min.co.occur=30,
+                     evts=evt.vals,EVTCol=EVTCol,start.col=start.col,n.samp=1000,
+                     rankObj=distributionCustomRankingHurdleNOut,fitObj=distributionCustomFittingHurdleNOut,
+                     upper.quantile = 0.95)
+# looks like lichen and moss might present an issue here. Try without
+# might also be more of an issue with complete cases
+sens.mats.flame.list<-corr.sa.fn(data.file,fuel.ids=flaming3.id,complete.case=TRUE,min.co.occur=30,
+                     evts=evt.vals,EVTCol=EVTCol,start.col=start.col,n.samp=1000,
+                     rankObj=distributionCustomRankingHurdleNOut,fitObj=distributionCustomFittingHurdleNOut)
+sens.mats.flame.list.upper<-corr.sa.fn(data.file,fuel.ids=flaming3.id,complete.case=TRUE,min.co.occur=30,
+                     evts=evt.vals,EVTCol=EVTCol,start.col=start.col,n.samp=1000,
+                     rankObj=distributionCustomRankingHurdleNOut,fitObj=distributionCustomFittingHurdleNOut,
+                     upper.quantile=0.95)
+
+# this yields a list, where the first component is the sampled values in a dataframe
+# if you set upper.quantile to a value, then the sample is truncated to the upper quantile
+library(sensitivity)
+sobol1<-sobolEff(X1=sens.mats.flame.list[[1]][[cur.evt]][1:500,],X2=sens.mats.flame.list[[1]][[cur.evt]][501:1000,],nboot = 1000)
+cor(sobol1$X)
+cor(sens.mats.flame.list[[1]][[cur.evt]])
+# seems to keep the general form of the correlation matrix
+# so now we can run the SA as before--keeping everything else at the baseline values for the given fuelbed
+
+```
+
+First generate the correlated sample.

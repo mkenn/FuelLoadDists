@@ -85,13 +85,8 @@ For assessing distribution estimates, a fuel type that both has a low KS p-value
 Finally, we use a bootstrap procedure to estimate a standard deviation for estimated distribution parameter values, and to generate a 95% confidence interval for each distribution parameter value. The bootstrap estimates are generated using the bootdist function in the fitdistrplus package. In general, for a bootstrap, the observed data are resampled with replacement and the distribution parameters estimated for each resampling. This is repeated (**5000**) times to generate a distribution of parameter values. From this distribution a standard deviation can be calculated, and a 95% confidence interval as the 0.025 and 0.975 quantiles of the boostrap distribution. 
 
 #Outliers
-On prelimanary exploratory analysis, and as part of our quality assurance effort, we identified extreme outliers in the database. Outliers were identified as any value > $Q_3+4*IQR$, where  $Q_m$ is the  $m^{th}$ quartile for the empirical distribution and IQR is the interquartile range ($Q_3-Q_2$. First we determined if the outlier was due to an error in rounding, units or data entry. For those values that were not entered in error, we estimated distributions both with and without the value of the identified outlier. Below we give results for distributions estimated without outliers (note, not all fuel types and EVT groups had outliers). All distribution estimates, both with and without outliers, are given in Supplementary Material. Among the  (**~765**) estimated distributions,  ____ had outliers that were omitted from estimation (___%).
+On prelimanary exploratory analysis, and as part of our quality assurance effort, we identified extreme outliers in the database. Outliers were identified as any value > $Q_3+4*IQR$, where $Q_3$ is the third quartile for the empirical distribution and IQR is the interquartile range ($Q_3-Q_2$). First we determined if the outlier was due to an error in rounding, units or data entry. For those values that were not entered in error, we estimated distributions both with and without the value of the identified outlier. Below we give results for distributions estimated without outliers. All distribution estimates, both with and without outliers, are given in Supplementary Material.
 
-# Supplementary Material:
-Database file
-All fits graph pdf
-Master tables csv in zipped format
-R scripts: 
 
 #EVT groups and fuel types
 For the purposes of demonstrating comparisons of distributions among fuel types and EVT groups we present here distributions for EVT groups: (...) and the following fuel types: (...). We chose these comparisons because (...). Results for all other EVT groups and fuel types are given in supplementary material (S for graphics, S for Excel file of master tables).

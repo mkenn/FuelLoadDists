@@ -99,6 +99,26 @@ C.star
 ```
 
 Now let's test this on an example EVT group. Some considerations--do we go with the full correlation matrix, or only those deemed "statistically" significant, and by what measure? Also, back to zeroes! We need to include them in the correlation consideration, and theoretically they shouldn't be a problem with a rank correlation v. a pearson correlation. 
+Further complicating this analysis is the missing data. In particular, whether we can say that the missing data are random ("missing completely at random, MCAR"), or if there is some kind of systematic reason for the missing data. I don't think we have very good reason to say the data are missing at random. They are missing because they weren't measured. In general missing data literature is based on a single study, where missingness is due to things like subjects dropping out. Ours is a special case, where we're combining (presumably indepdendent) studies. So the missingness has to do with the choices of the researcher and the goals of the studies. A question is whether these have a chance to introduce bias (in general, I'm still ok with marginal distribution fitting, that is, individual distributions--this is mostly concerned with estimating the correlation matrix)
+
+The issue is that if we estimate correlations pair-wise on only the non-missing data, with thereby different rows in the database contributing to the estimation depending on which pair of data we're considering, then the resulting correlation matrix is no longer positive semi-definite. That's a technical way of saying that it's not a proper matrix for any of these calculations, even if we have confidence in the individual pair-wise correlations. There are additional statistical considerations of bias and efficiency of the estimates. 
+
+There are methods to handle missing data, including some form of imputation. might want to set some threshold for missingness, and perform reasonable imputations. Note, we're performing estimation, not inference here, so mostly concerned about bias.
+
+Can do multiple imputations, and take the mean correlation? Will this preserved the variance/covariance matrix?
+
+Options: Review subsets of fuel types in original SA study design, and decide if these help to reduce missingness.
+
+subsets: (where is duff?)
+1. Ground fuels including course wood > 1000 hr, rotten or sound, stumps, basal accumultaion, and squirrel middens (so just cwd likely)
+In database (?); (column index): "X10Khr_loading_Mgha" (3), "X10KhrR_loading_Mgha" (4),   "X10KhrS_loading_Mgha" (5), "X1Khr_loading_Mgha" (7), "X1KhrR_loading_Mgha" (8),      "X1KhrS_loading_Mgha" (9), "cwd_loading_Mgha" (10), "cwd_rotten_loading_Mgha" (11), "cwd_sound_loading_Mgha" (12), "GT10KhrR_loading_Mgha" (16), "GT10KhrS_loading_Mgha" (17)
+Note: probably don't need 10Khr loading, or 1K hr, or cwd_loading WITH their rotten/sound components. Look at R/S without total, then just totals w/o rotten/sound
+
+2. Surface fuels:
+shrubs, herbs, fine woody, litter/lichen/moss, piles
+In database (?): "X100hr_loading_Mgha" (1), "X10hr_loading_Mgha" (2), "X1hr_loading_Mgha" (6), "fwd_loading_Mgha" (15), "herb_loading_Mgha" (18), "lichen_loading_Mgha" (20), "litter_loading_Mgha" (22), "moss_loading_Mgha" (23), "shrub_loading_Mgha" (26)
+
+3. Canopy fuels Overstory/midstory (really underrepresented in database)
 
 ```{r getData,echo=FALSE}
 load("../DistFittingRProj/Workspaces/HurdleCustomFitsNoZeroWNoOut.RData")
@@ -112,24 +132,44 @@ all.corr<-corrpairs.fn(data.file,start.col,evts=evt.vals,evt.col=EVTCol,min.co=1
                        write.file.corr=FALSE,corr.filename="Correlation_EVT",write.file.corlog=FALSE,
                        corlog.filename="CorrelationLog",method="spearman",include0=TRUE)
 
-cur.corr<-all.corr$Corr[[1]]
+
+
 
 # Issue: don't have all pairwise correlations--for example, duff might co-occur with 1 variable, but not
 # with another. So this matrix will have holes
 # so, do we only include variables for which there are no NAs?
-for(i in 1:(nrow(cur.corr))
+# solution! all NA's are zero. Therefore we have the same size matrix for all applications
+# and we thereby assume absent other information, we cannot assume any correlation (0 is the default)
+cur.corr<-as.matrix(all.corr$Corr[[2]])
+diag(cur.corr)<-1
+cur.corr[is.na(cur.corr)]<-0 # so this is now the matrix C.star above; except we need to fill in the lower diagonal symmetric to the upper diag
+
+cur.corr.try<-cur.corr
+
+
+cur.corr.try[lower.tri(cur.corr.try)]<-t(cur.corr.try)[lower.tri(cur.corr.try)]
+
+cur.corr.try<-round(cur.corr.try,digits=3)
+
+tmp.sums<-colSums(cur.corr) # any tmp.sums with value = 1 have no correlations
+delete.id<-which(tmp.sums==1)
+
+small.corr<-cur.corr.try[-delete.id,-delete.id] # delete those rows and columns
+
+P.trans<-chol(small.corr[1:7,1:7]) # this returns the cholesky factorization, P' in the paper # getting not positive definite error, seems that we still need a smaller matrix; exclude those variables with ALL zeroes
+# So, this isn't working because we are handling the NA's pairwise, removing them 
+# for each pair. This means that the resulting correlation matrix is NOT
+# positive semi-definite, which means that the factorization can't work.
+P.mat<-t(P.trans) # The transpose of the above matrix is the P matrix in the paper 
+N<-1000 # 1000 samples
+a.vals<-qnorm((1:N)/(N+1))
+K<-ncol(cur.corr) # the number of variables
+R.mat<-matrix(NA,ncol=K,nrow=N)
+for(j in 1:K)
 {
-  
+  R.mat[,j]<-sample(a.vals)
 }
-tmp.n<-length(all.corr$Corr[[1]][1,!is.na(all.corr$Corr[[1]][1,])])
-tmp.corr.mat<-matrix(NA,ncol=tmp.n,nrow=tmp.n)
-for(i in 1:(tmp.n-1))
-{
-  tmp.row<-all.corr$Corr[[1]][i,
-  for(j in (i+1):tmp.n)
-  {
-    tmp.corr.mat[i,j]
-  }
-}
+R.star<-R.mat%*%P.trans 
+
 
 ```

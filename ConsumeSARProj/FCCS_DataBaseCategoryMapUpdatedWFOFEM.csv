@@ -1,5 +1,5 @@
 Consume,JFSP Fuels Database,DataBaseInR,FOFEM
-fuelbed_number,NA,NA,Unit
+fuelbed_number,NA,NA,Stand
 filename,NA,NA,NA
 cover_type,NA,NA,NA
 ecoregion,NA,NA,NA
@@ -33,13 +33,13 @@ duff_upper_loading,duff_loading,duff_loading_Mgha,Duff_tpa
 duff_lower_loading,NA,NA,NA
 duff_upper_depth,duff_depth,duff_depth_cm,DuffDepth
 duff_lower_depth,NA,NA,NA
-w_sound_0_quarter_loading,1hr_loading,X1hr_loading_Mgha,1hr
-w_sound_quarter_1_loading,10hr_loading,X10hr_loading_Mgha,10hr
-w_sound_1_3_loading,100hr_loading,X100hr_loading_Mgha,100hr
+w_sound_0_quarter_loading,1hr_loading,X1hr_loading_Mgha,X1hr
+w_sound_quarter_1_loading,10hr_loading,X10hr_loading_Mgha,X10hr
+w_sound_1_3_loading,100hr_loading,X100hr_loading_Mgha,X100hr
 w_sound_3_9_loading,1KhrS_loading,X1KhrS_loading_Mgha,Log
 w_sound_9_20_loading,10KhrS_loading,X10KhrS_loading_Mgha,NA
 w_sound_gt20_loading,GT10KhrS_loading,GT10KhrS_loading_Mgha,NA
-w_rotten_3_9_loading,1KhrR_loading,X1KhrR_loading_Mgha,
+w_rotten_3_9_loading,1KhrR_loading,X1KhrR_loading_Mgha,NA
 w_rotten_9_20_loading,10KhrR_loading,X10KhrR_loading_Mgha,NA
 w_rotten_gt20_loading,GT10KhrR_loading,GT10KhrR_loading_Mgha,NA
 w_stump_sound_loading,NA,NA,NA
@@ -51,13 +51,13 @@ pile_vdirty_loading,NA,NA,NA
 Total_available_fuel_loading,NA,NA,NA
 efg_natural,NA,NA,NA
 efg_activity,NA,NA,NA
-NA,NA,NA,10FM
-NA,NA,NA,1000FM
+NA,NA,NA,X10FM
+NA,NA,NA,X1000FM
 NA,NA,NA,Distribution
 NA,NA,NA,DuffFM
 NA,NA,NA,Foliage
 NA,NA,NA,Branch
-NA,NA,NA,%Burn
+NA,NA,NA,XBurn
 NA,NA,NA,Region
 NA,NA,NA,Group
 NA,NA,NA,Season

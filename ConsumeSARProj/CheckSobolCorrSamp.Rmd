@@ -22,7 +22,7 @@ evtFB.map<-read.csv("EVT_Fuelbed_xwalk.csv") # FCCSID is the fuelbed number, EVT
 # skip the header line, this is the FCCS fuelbeds file to give baseline values for the fuel loadings
 all.fbs<-read.table("consume/input_data/fccs_loadings.csv",skip=1,header=TRUE,sep=",",stringsAsFactors=TRUE) 
 #  fueltype names in FCCS with those in database names
-fbLoadNames.df<-read.table("FCCS_DataBaseCategoryMapUpdated.csv",stringsAsFactors = FALSE,sep=",",header=TRUE)
+fbLoadNames.df<-read.table("FCCS_DataBaseCategoryMapUpdatedWFOFEM.csv",stringsAsFactors = FALSE,sep=",",header=TRUE)
 
 # should contain everything necessary to estimate correlation matrices
 # Make sure that the woody totals are present
@@ -38,6 +38,7 @@ data.file$fwd_loading_Mgha<-data.file$X1hr_loading_Mgha+data.file$X10hr_loading_
 # correlation matrix on the subsets of interest in the database
 smolder1.id<-c(4,5,8,9,16,17)
 smolder2.id<-c(3,7,16,17) # because we don't seem to have a total column for >10K
+# note that fofem only has "log", which is 1000K, plus percent rotten.
 
 flaming1.id<-c(1,2,6,18,20,22,23,26)
 flaming2.id<-c(15,18,20,22,23,26) # assuming fwd is 1-hr+10-hr+100-hr
@@ -49,7 +50,7 @@ flaming3.id<-c(1,2,6,18,22,26) # remove lichen and moss because those data seem 
 # try with the first EVT
 #replace commented section below with function call
 #######
-cur.evt<-3
+cur.evt<-58 # 
 tmp.df<-data.file[data.file[,EVTCol]==evt.vals[cur.evt],]
 tmp.loads.df<-tmp.df[,start.col:ncol(tmp.df)]
 # might need an imputation package to assess the missingness 
@@ -82,12 +83,103 @@ sens.mats.flame.list.upper<-corr.sa.fn(data.file,fuel.ids=flaming3.id,complete.c
 # this yields a list, where the first component is the sampled values in a dataframe
 # if you set upper.quantile to a value, then the sample is truncated to the upper quantile
 library(sensitivity)
-sobol1<-sobolEff(X1=sens.mats.flame.list[[1]][[cur.evt]][1:500,],X2=sens.mats.flame.list[[1]][[cur.evt]][501:1000,],nboot = 1000)
-cor(sobol1$X)
+sobolF<-sobolEff(X1=sens.mats.flame.list[[1]][[cur.evt]][1:500,],X2=sens.mats.flame.list[[1]][[cur.evt]][501:1000,],nboot = 1000)
+cor(sobolF$X)
 cor(sens.mats.flame.list[[1]][[cur.evt]])
 # seems to keep the general form of the correlation matrix
 # so now we can run the SA as before--keeping everything else at the baseline values for the given fuelbed
+sobolS<-sobolEff(X1=sens.mats.smolder.list[[1]][[cur.evt]][1:500,],X2=sens.mats.smolder.list[[1]][[cur.evt]][501:1000,],nboot = 1000)
+```
+
+First generate the correlated sample, and then create the sobol object. Identify baseline values for all other necessary fuel types, and add as constant to final dataframe. Call consume (or fofem), then evaluate results. we will do this with an example evt
+
+```{r makeConsumeInputFromSobol, echo=FALSE,include=FALSE}
+source("GenerateConsumeLoadingsFileCorrSamp.R")
+cur.evt.num<-evt.vals[cur.evt]
+  base.fb<-evtFB.map$FCCSID[evtFB.map$EVT_GP==cur.evt.num]#
+  base.fb<-unique(base.fb[!is.na(base.fb)])#&!is.na(evtFB.map$FCCSID)][1]
+
+  corr.samp.vals<-data.frame(sobol1$X)
+  names(corr.samp.vals)<-names(sens.mats.flame.list[[1]][[cur.evt]])
+  consume.fuel.loads<-GenerateSobolFuelInput.fn(corr.samp.vals,nreps,fbLoadNames.df,all.fbs,base.fb,change.units=T)
+  
+      outfilename<-"FuelLoadInputSA.csv"
+      loadInFile.head<-matrix(c("GeneratorName=FCCS   3.0","GeneratorVersion=3.0.0","DateCreated=07/18/2016"),ncol=3)# didn't like today's date
+      # write the file with the proper header information
+      write.table(loadInFile.head,file=outfilename,row.names=FALSE,col.names=FALSE,sep=",",quote = FALSE)
+      # Now append that file with the generated loadings
+      write.table(consume.fuel.loads,file=outfilename,row.names=FALSE,append=TRUE,sep=",",quote=FALSE)
+
+      # and create an environmental input file that is just repeated for all rows of the fuels file
+      
+      env.in<-read.csv("sample_consume_input.csv") #####******* Need to change units to metric!?**********
+      new.env.in<-env.in[1,]
+      for(m in 2:nrow(consume.fuel.loads))
+      {
+        new.env.in<-rbind(new.env.in,env.in[1,])
+      }
+      new.env.in$fuelbeds<-consume.fuel.loads$fuelbed_number
+      envoutfilename<-"EnvInputSA.csv"
+      write.table(new.env.in,file=envoutfilename,row.names=FALSE,sep=",")
 
 ```
 
-First generate the correlated sample.
+Next we call the consume batch processor. We can do this from R.
+
+```{r callConsume, echo=FALSE, include=FALSE}
+      system.call<-paste("python consume_batch.py natural",envoutfilename,  "-f", outfilename)
+      system(system.call) # tells R to execute this system call in the working directory
+      
+      results.sa<-read.csv("consume_results.csv") # writes to this file every time, replacing previous results
+
+```
+
+And now we calculate the sensitivity metrics
+
+```{r CalcSens, echo=FALSE,fig.height=12,fig.width=8}
+response.vars<-c("PM.Emissions","CO.Emissions","CO2.Emissions","PM25.Emissions")
+par(mfrow=c(2,2),mar=c(12,3,1.5,0.5),mgp=c(2,0.5,0))
+sens.list<-list()
+for(k in 1:length(response.vars))
+{
+  sens.list[[k]]<-tell(sobol1,
+                       (results.sa[,response.vars[k]]-mean(results.sa[,response.vars[k]]))/sd(results.sa[,response.vars[k]]))
+  rownames(sens.list[[k]]$S)<-names(corr.samp.vals)
+  plot(1:nrow(sens.list[[k]]$S),sens.list[[k]]$S$original,axes=FALSE,ylim=c(-.15,1),pch=16,
+             xlab="",ylab="Sensitivity index",
+       main=paste("EVT:",cur.evt,"FB",base.fb,"output:",response.vars[k]))#las=2)
+        
+        axis(1,at=1:nrow(sens.list[[k]]$S),labels=rownames(sens.list[[k]]$S),las=2,cex.lab=0.9,tick = F)
+        segments(x0 = 1:nrow(sens.list[[k]]$S),x1=1:nrow(sens.list[[k]]$S),y0=sens.list[[k]]$S$`min. c.i.`,y1=sens.list[[k]]$S$`max. c.i.`)
+        axis(2,las=1)
+        abline(h=0,lwd=2,col="grey") # to see if CI for SI is above 0
+        box()
+      }
+
+``` 
+
+Now we will try FOFEM
+
+```{r fofemTry1}
+# here is the header for the fofem input
+##Stand	Litter_tpa	1hr 	10hr	10FM	100hr	Log	1000FM	%Rotten	Distribution	Duff_tpa	DuffFM	DuffDepth	Herb	Shrub	Foliage	Branch	%Burn	Region	Group	Season	Category
+
+setwd("fofem")
+base.fofem<-read.csv("fofem/FOFEM_6_May12013_MCKUpdate.csv") # note, this file has the header--our final file 
+base.fofem.use<-base.fofem[1,]
+# will be written without the header
+fofem.filename<-"FOFEM_6_May12013_MCKUpdateNoH.csv"
+system.call<-paste("FOF_GUI C",fofem.filename,"ConE-Out.txt ConE-run.txt ConE-Err.txt H", sep=" ")
+system(system.call) # tells R to execute this system call in the working directory
+      
+results.fofem.sa<-read.txt("fofem/ConE-Out.txt") # writes to this file every time, replacing previous results
+
+# for flaming:
+responseF.vars<-c("COF","CO2F","PM25F")
+
+# for smoldering:
+responseS.vars<-c("COS","CO2S","PM25S")
+# These are all lb/ac
+
+
+```

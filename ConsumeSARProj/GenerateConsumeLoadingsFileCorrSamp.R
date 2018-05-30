@@ -5,7 +5,7 @@
 ###########
 # mod="C" for consume,"F" for fofem
 # phase="F" for flaming, "S" for smoldering
-GenerateSobolFuelInput.fn<-function(corr.samp.vals,nreps=NA,fbLoadNames.df,all.fbs,base.fb,
+GenerateFuelInput.fn<-function(corr.samp.vals,nreps=NA,fbLoadNames.df,all.fbs,base.fb,
                                     base.fofem=NA,change.units=T,mod="C",phase="F")
 {
   input.samp<-corr.samp.vals

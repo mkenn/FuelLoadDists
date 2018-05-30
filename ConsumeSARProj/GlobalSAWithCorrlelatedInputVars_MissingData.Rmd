@@ -29,7 +29,7 @@ C.star<-matrix(c(c(1,rep(0,5)),c(0,1,rep(0,4)),c(0,0,1,0,0,0),c(0,0,0,1,0.75,-0.
                c(0,0,0,0.75,1,-0.95),c(0,0,0,-.7,-.95,1)),ncol=6,byrow=TRUE)
 P.trans<-chol(C.star) # this returns the cholesky factorization, P' in the paper
 P.mat<-t(P.trans) # The transpose of the above matrix is the P matrix in the paper
-N<-15
+N<-500
 a.vals<-qnorm((1:N)/(N+1))
 K<-6
 R.mat<-matrix(NA,ncol=K,nrow=N)
@@ -76,7 +76,8 @@ Also Iman proposes a variance reduction method that produces closer (more consis
 T.mat<-cor(R.mat,method="spearman")
 Q.trans<-chol(T.mat)
 Q.mat<-t(T.mat)
-S.mat<-P.mat%*%solve(T.mat)
+#S.mat<-P.mat%*%solve(T.mat)
+S.mat<-P.mat%*%solve(Q.mat)
 R.star.b<-R.mat%*%t(S.mat)
 X.sort.b<-matrix(NA,ncol=K,nrow=N)
 for(j in 1:K)

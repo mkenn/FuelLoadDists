@@ -16,13 +16,16 @@ This is to test whether the correlation structure created by the Iman method is 
 ```{r getData,echo=FALSE,include=FALSE}
 # first load in the fit distributions workspace
 load("../DistFittingRProj/Workspaces/HurdleCustomFitsNoZeroWNoOut.RData")
+set.seed(NULL) # reset the seed, otherwise get same seed every time based on loading this workspace
 # read in the mapping between the EVT groups and a characteristic fuel bed
 evtFB.map<-read.csv("EVT_Fuelbed_xwalk.csv") # FCCSID is the fuelbed number, EVT_GP is the EVT group
 # read in the FCCS fuelbeds
 # skip the header line, this is the FCCS fuelbeds file to give baseline values for the fuel loadings
-all.fbs<-read.table("consume/input_data/fccs_loadings.csv",skip=1,header=TRUE,sep=",",stringsAsFactors=TRUE) 
+all.fbs<-read.table("consume/input_data/fccs_loadings.csv",skip=1,header=TRUE,sep=",",
+                    stringsAsFactors=TRUE) 
 #  fueltype names in FCCS with those in database names
-fbLoadNames.df<-read.table("FCCS_DataBaseCategoryMapUpdatedWFOFEM.csv",stringsAsFactors = FALSE,sep=",",header=TRUE)
+fbLoadNames.df<-read.table("FCCS_DataBaseCategoryMapUpdatedWFOFEM.csv",
+                           stringsAsFactors = FALSE,sep=",",header=TRUE)
 
 # should contain everything necessary to estimate correlation matrices
 # Make sure that the woody totals are present
@@ -61,25 +64,32 @@ tmp2.loads.df<-tmp.loads.df[,smolder1.id]
 library(mice)
 tmp.md<-md.pattern(tmp2.loads.df)
 
+N.samp<-5000
+
 source("../Functions/SimHurdleDist_FN.R")
 source("../Functions/SensitivitySampleWithCorr_FN.R")
-sens.mats.smolder.list<-corr.sa.fn(data.file,fuel.ids=smolder1.id,complete.case=TRUE,min.co.occur=30,
-                     evts=evt.vals,EVTCol=EVTCol,start.col=start.col,n.samp=1000,
-                     rankObj=distributionCustomRankingHurdleNOut,fitObj=distributionCustomFittingHurdleNOut)
-sens.mats.smolder.list.upper<-corr.sa.fn(data.file,fuel.ids=smolder1.id,complete.case=TRUE,min.co.occur=30,
-                     evts=evt.vals,EVTCol=EVTCol,start.col=start.col,n.samp=1000,
-                     rankObj=distributionCustomRankingHurdleNOut,fitObj=distributionCustomFittingHurdleNOut,
+sens.mats.smolder.list<-corr.sa.fn(data.file,fuel.ids=smolder1.id,complete.case=TRUE,
+                                   min.co.occur=30,
+                     evts=evt.vals,EVTCol=EVTCol,start.col=start.col,n.samp=N.samp,
+                     rankObj=distributionCustomRankingHurdleNOut,
+                     fitObj=distributionCustomFittingHurdleNOut)
+
+sens.mats.smolder.list.upper<-corr.sa.fn(data.file,fuel.ids=smolder1.id,complete.case=TRUE,
+                                         min.co.occur=30,
+                     evts=evt.vals,EVTCol=EVTCol,start.col=start.col,n.samp=N.samp,
+                     rankObj=distributionCustomRankingHurdleNOut,
+                     fitObj=distributionCustomFittingHurdleNOut,
                      upper.quantile = 0.95)
 # looks like lichen and moss might present an issue here. Try without
 # might also be more of an issue with complete cases
 sens.mats.flame.list<-corr.sa.fn(data.file,fuel.ids=flaming3.id,complete.case=TRUE,
                                  min.co.occur=30,
-                     evts=evt.vals,EVTCol=EVTCol,start.col=start.col,n.samp=1000,
+                     evts=evt.vals,EVTCol=EVTCol,start.col=start.col,n.samp=N.samp,
                      rankObj=distributionCustomRankingHurdleNOut,
                      fitObj=distributionCustomFittingHurdleNOut)
 sens.mats.flame.list.upper<-corr.sa.fn(data.file,fuel.ids=flaming3.id,complete.case=TRUE,
                                        min.co.occur=30,
-                     evts=evt.vals,EVTCol=EVTCol,start.col=start.col,n.samp=1000,
+                     evts=evt.vals,EVTCol=EVTCol,start.col=start.col,n.samp=N.samp,
                      rankObj=distributionCustomRankingHurdleNOut,
                      fitObj=distributionCustomFittingHurdleNOut,
                      upper.quantile=0.95)
@@ -87,7 +97,7 @@ sens.mats.flame.list.upper<-corr.sa.fn(data.file,fuel.ids=flaming3.id,complete.c
 # this yields a list, where the first component is the sampled values in a dataframe
 # if you set upper.quantile to a value, then the sample is truncated to the upper quantile
 library(sensitivity)
-sobolF<-sobolEff(X1=sens.mats.flame.list[[1]][[cur.evt]][1:500,],X2=sens.mats.flame.list[[1]][[cur.evt]][501:1000,],nboot = 1000)
+sobolF<-sobolEff(X1=sens.mats.flame.list[[1]][[cur.evt]][1:(N.samp/2),],X2=sens.mats.flame.list[[1]][[cur.evt]][(N.samp/2+1):N.samp,],nboot = 1000)
 cor(sobolF$X)
 cor(sens.mats.flame.list[[1]][[cur.evt]])
 # seems to keep the general form of the correlation matrix
@@ -112,7 +122,9 @@ cur.evt.num<-evt.vals[cur.evt]
   names(corr.sampF.vals)<-names(sens.mats.flame.list[[1]][[cur.evt]])
   consume.fuel.loads<-GenerateSobolFuelInput.fn(corr.sampF.vals,nreps,
                                                 fbLoadNames.df,all.fbs,base.fb,change.units=T)
-  
+# for prcc  
+  consume.fuel.loads<-GenerateFuelInput.fn(sens.mats.flame.list[[1]][[cur.evt]],nreps,
+                                                fbLoadNames.df,all.fbs,base.fb,change.units=T)
   outfilename<-"FuelLoadInputSA.csv"
   loadInFile.head<-matrix(c("GeneratorName=FCCS   3.0","GeneratorVersion=3.0.0","DateCreated=07/18/2016"),ncol=3)
   # didn't like today's date
@@ -139,9 +151,17 @@ Next we call the consume batch processor. We can do this from R.
 
 ```{r callConsume, echo=FALSE, include=FALSE}
   system.call<-paste("python consume_batch.py natural",envoutfilename,  "-f", outfilename)
-  system(system.call) # tells R to execute this system call in the working directory
+  try1<-try(system(system.call)) # tells R to execute this system call in the working directory
       
-  results.sa<-read.csv("consume_results.csv") # writes to this file every time, replacing previous results
+  if(try1==1)
+  {
+    print("Failed consume call")
+  }
+  if(try1==0)
+  {
+    results.sa<-read.csv("consume_results.csv") # writes to this file every time, replacing previous    
+  }
+results
 
 ```
 
@@ -242,3 +262,11 @@ if(length(check.fofem)==0) # if there is no error recorded, then this file will 
 
   
 ```
+
+air quality standard for e.g., PM 2.5 is 15 micrograms/m^3. We are given lbs/acre (at least for fofem, probably consume as well)
+
+1 lb = 453600000 micrograms
+
+1 acre foot = 1233.48 cubic meters
+
+lbs/acre foot * 453600000 micrograms/lb * 1 acre foot / 1233.48 m^3

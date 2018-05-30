@@ -72,12 +72,16 @@ sens.mats.smolder.list.upper<-corr.sa.fn(data.file,fuel.ids=smolder1.id,complete
                      upper.quantile = 0.95)
 # looks like lichen and moss might present an issue here. Try without
 # might also be more of an issue with complete cases
-sens.mats.flame.list<-corr.sa.fn(data.file,fuel.ids=flaming3.id,complete.case=TRUE,min.co.occur=30,
+sens.mats.flame.list<-corr.sa.fn(data.file,fuel.ids=flaming3.id,complete.case=TRUE,
+                                 min.co.occur=30,
                      evts=evt.vals,EVTCol=EVTCol,start.col=start.col,n.samp=1000,
-                     rankObj=distributionCustomRankingHurdleNOut,fitObj=distributionCustomFittingHurdleNOut)
-sens.mats.flame.list.upper<-corr.sa.fn(data.file,fuel.ids=flaming3.id,complete.case=TRUE,min.co.occur=30,
+                     rankObj=distributionCustomRankingHurdleNOut,
+                     fitObj=distributionCustomFittingHurdleNOut)
+sens.mats.flame.list.upper<-corr.sa.fn(data.file,fuel.ids=flaming3.id,complete.case=TRUE,
+                                       min.co.occur=30,
                      evts=evt.vals,EVTCol=EVTCol,start.col=start.col,n.samp=1000,
-                     rankObj=distributionCustomRankingHurdleNOut,fitObj=distributionCustomFittingHurdleNOut,
+                     rankObj=distributionCustomRankingHurdleNOut,
+                     fitObj=distributionCustomFittingHurdleNOut,
                      upper.quantile=0.95)
 
 # this yields a list, where the first component is the sampled values in a dataframe
@@ -88,7 +92,12 @@ cor(sobolF$X)
 cor(sens.mats.flame.list[[1]][[cur.evt]])
 # seems to keep the general form of the correlation matrix
 # so now we can run the SA as before--keeping everything else at the baseline values for the given fuelbed
-sobolS<-sobolEff(X1=sens.mats.smolder.list[[1]][[cur.evt]][1:500,],X2=sens.mats.smolder.list[[1]][[cur.evt]][501:1000,],nboot = 1000)
+# change base EVT for smoldering distribution coverage
+# note that these will have a lot of zeroes, so
+# might need to change sampling scheme
+#sobolS<-sobolEff(X1=sens.mats.smolder.list[[1]][[cur.evt]][1:500,],
+#                 X2=sens.mats.smolder.list[[1]][[cur.evt]][501:1000,],
+#                 nboot = 1000)
 ```
 
 First generate the correlated sample, and then create the sobol object. Identify baseline values for all other necessary fuel types, and add as constant to final dataframe. Call consume (or fofem), then evaluate results. we will do this with an example evt
@@ -99,38 +108,40 @@ cur.evt.num<-evt.vals[cur.evt]
   base.fb<-evtFB.map$FCCSID[evtFB.map$EVT_GP==cur.evt.num]#
   base.fb<-unique(base.fb[!is.na(base.fb)])#&!is.na(evtFB.map$FCCSID)][1]
 
-  corr.samp.vals<-data.frame(sobol1$X)
-  names(corr.samp.vals)<-names(sens.mats.flame.list[[1]][[cur.evt]])
-  consume.fuel.loads<-GenerateSobolFuelInput.fn(corr.samp.vals,nreps,fbLoadNames.df,all.fbs,base.fb,change.units=T)
+  corr.sampF.vals<-data.frame(sobolF$X)
+  names(corr.sampF.vals)<-names(sens.mats.flame.list[[1]][[cur.evt]])
+  consume.fuel.loads<-GenerateSobolFuelInput.fn(corr.sampF.vals,nreps,
+                                                fbLoadNames.df,all.fbs,base.fb,change.units=T)
   
-      outfilename<-"FuelLoadInputSA.csv"
-      loadInFile.head<-matrix(c("GeneratorName=FCCS   3.0","GeneratorVersion=3.0.0","DateCreated=07/18/2016"),ncol=3)# didn't like today's date
+  outfilename<-"FuelLoadInputSA.csv"
+  loadInFile.head<-matrix(c("GeneratorName=FCCS   3.0","GeneratorVersion=3.0.0","DateCreated=07/18/2016"),ncol=3)
+  # didn't like today's date
       # write the file with the proper header information
-      write.table(loadInFile.head,file=outfilename,row.names=FALSE,col.names=FALSE,sep=",",quote = FALSE)
+  write.table(loadInFile.head,file=outfilename,row.names=FALSE,col.names=FALSE,sep=",",quote = FALSE)
       # Now append that file with the generated loadings
-      write.table(consume.fuel.loads,file=outfilename,row.names=FALSE,append=TRUE,sep=",",quote=FALSE)
+  write.table(consume.fuel.loads,file=outfilename,row.names=FALSE,append=TRUE,sep=",",quote=FALSE)
 
       # and create an environmental input file that is just repeated for all rows of the fuels file
       
-      env.in<-read.csv("sample_consume_input.csv") #####******* Need to change units to metric!?**********
-      new.env.in<-env.in[1,]
-      for(m in 2:nrow(consume.fuel.loads))
-      {
-        new.env.in<-rbind(new.env.in,env.in[1,])
-      }
-      new.env.in$fuelbeds<-consume.fuel.loads$fuelbed_number
-      envoutfilename<-"EnvInputSA.csv"
-      write.table(new.env.in,file=envoutfilename,row.names=FALSE,sep=",")
+  env.in<-read.csv("sample_consume_input.csv") ###Note, if this file changes so should the FOFEM input file moistures
+  new.env.in<-env.in[1,]
+  for(m in 2:nrow(consume.fuel.loads))
+  {
+    new.env.in<-rbind(new.env.in,env.in[1,])
+  }
+  new.env.in$fuelbeds<-consume.fuel.loads$fuelbed_number
+  envoutfilename<-"EnvInputSA.csv"
+  write.table(new.env.in,file=envoutfilename,row.names=FALSE,sep=",")
 
 ```
 
 Next we call the consume batch processor. We can do this from R.
 
 ```{r callConsume, echo=FALSE, include=FALSE}
-      system.call<-paste("python consume_batch.py natural",envoutfilename,  "-f", outfilename)
-      system(system.call) # tells R to execute this system call in the working directory
+  system.call<-paste("python consume_batch.py natural",envoutfilename,  "-f", outfilename)
+  system(system.call) # tells R to execute this system call in the working directory
       
-      results.sa<-read.csv("consume_results.csv") # writes to this file every time, replacing previous results
+  results.sa<-read.csv("consume_results.csv") # writes to this file every time, replacing previous results
 
 ```
 
@@ -141,38 +152,39 @@ response.vars<-c("PM.Emissions","CO.Emissions","CO2.Emissions","PM25.Emissions")
 par(mfrow=c(2,2),mar=c(12,3,1.5,0.5),mgp=c(2,0.5,0))
 sens.list<-list()
 for(k in 1:length(response.vars))
-{
-  sens.list[[k]]<-tell(sobol1,
+{ # here we standardize outputs to the z-scoore
+  sens.list[[k]]<-tell(sobolF,
                        (results.sa[,response.vars[k]]-mean(results.sa[,response.vars[k]]))/sd(results.sa[,response.vars[k]]))
-  rownames(sens.list[[k]]$S)<-names(corr.samp.vals)
+  rownames(sens.list[[k]]$S)<-names(corr.sampF.vals)
   plot(1:nrow(sens.list[[k]]$S),sens.list[[k]]$S$original,axes=FALSE,ylim=c(-.15,1),pch=16,
              xlab="",ylab="Sensitivity index",
        main=paste("EVT:",cur.evt,"FB",base.fb,"output:",response.vars[k]))#las=2)
         
-        axis(1,at=1:nrow(sens.list[[k]]$S),labels=rownames(sens.list[[k]]$S),las=2,cex.lab=0.9,tick = F)
-        segments(x0 = 1:nrow(sens.list[[k]]$S),x1=1:nrow(sens.list[[k]]$S),y0=sens.list[[k]]$S$`min. c.i.`,y1=sens.list[[k]]$S$`max. c.i.`)
+        axis(1,at=1:nrow(sens.list[[k]]$S),labels=rownames(sens.list[[k]]$S),
+             las=2,cex.lab=0.9,tick = F)
+        segments(x0 = 1:nrow(sens.list[[k]]$S),x1=1:nrow(sens.list[[k]]$S),
+                 y0=sens.list[[k]]$S$`min. c.i.`,y1=sens.list[[k]]$S$`max. c.i.`)
         axis(2,las=1)
         abline(h=0,lwd=2,col="grey") # to see if CI for SI is above 0
         box()
-      }
+}
 
 ``` 
 
-Now we will try FOFEM
+Now we will try FOFEM.<!-- First let's test the FOFEM I/O and system call
 
 ```{r fofemTry1}
 # here is the header for the fofem input
-##Stand	Litter_tpa	1hr 	10hr	10FM	100hr	Log	1000FM	%Rotten	Distribution	Duff_tpa	DuffFM	DuffDepth	Herb	Shrub	Foliage	Branch	%Burn	Region	Group	Season	Category
+# Start with the switch: #1k-SizeClass
+##Stand	Litter_tpa	1hr 	10hr	10FM	100hr	3sound 6sound 9sound 20sound 3rotten 6rotten 9rotten 20rotten  	1000FM	Duff_tpa	DuffFM	DuffDepth	Herb	Shrub	Foliage	Branch	%Burn	Region	Group	Season	Category
 
-setwd("fofem")
-base.fofem<-read.csv("fofem/FOFEM_6_May12013_MCKUpdate.csv") # note, this file has the header--our final file 
-base.fofem.use<-base.fofem[1,]
+#setwd("fofem")
 # will be written without the header
 fofem.filename<-"FOFEM_6_May12013_MCKUpdateNoH.csv"
 system.call<-paste("FOF_GUI C",fofem.filename,"ConE-Out.txt ConE-run.txt ConE-Err.txt H", sep=" ")
 system(system.call) # tells R to execute this system call in the working directory
       
-results.fofem.sa<-read.txt("fofem/ConE-Out.txt") # writes to this file every time, replacing previous results
+results.fofem.sa<-read.csv("fofem/ConE-Out.txt") # writes to this file every time, replacing previous results
 
 # for flaming:
 responseF.vars<-c("COF","CO2F","PM25F")
@@ -180,6 +192,79 @@ responseF.vars<-c("COF","CO2F","PM25F")
 # for smoldering:
 responseS.vars<-c("COS","CO2S","PM25S")
 # These are all lb/ac
+# so, results.fofem.sa[,responseS.vars] wuold give the fofem outputs for those variables
+# results.fofem.sa[,responseS.vars[1]] gives the vector of values for COS
 
+```
+--> 
+Now let's try to create a FOFEM input file from the Sobol sample, with the switch indicated large fuel loads by size class.
 
+```{r fofemSobol, echo=FALSE,include=FALSE}
+#Assumes that the sobol sample was already generated for consume
+# this file fill guide the creation of the FOFEM input file
+# we will need to update with the appropriate moistures
+# regions and emissions depending on the base EVT for the SA
+setwd("fofem")
+base.fofem<-read.csv("FOFEM_6_May12013_MCKUpdate2.csv") 
+# note, this file has the header--our final file 
+# note also this has the fuel moistures matched to consume env input as
+# best we can. If that changes, so should this
+base.fofem.use<-base.fofem[1,]
+
+  fofem.fuel.loads<-GenerateSobolFuelInput.fn(corr.sampF.vals,nreps,fbLoadNames.df,
+                                                all.fbs,base.fb,base.fofem=base.fofem.use,change.units=T,mod="F")
+  
+# write it to an input file for FOFEM
+# First write the switch for expanded CWD
+fofem.filename<-"FOFEM_FlamingSAInput1.csv"
+write("#1k-SizeClass",file=fofem.filename)
+write.table(fofem.fuel.loads,file=fofem.filename,append = TRUE,sep=",",row.names = FALSE,col.names = FALSE)
+system.call<-paste("FOF_GUI C",fofem.filename,"ConE-Out.txt ConE-run.txt ConE-Err.txt H", sep=" ")
+system(system.call) # tells R to execute this system call in the working directory
+
+```
+
+Note: we're getting a warning that no ignition simulated for some of the stands. Need to look into that. 
+
+```{r plotFOFEMSA,echo=FALSE,fig.height=12,fig.width=8}
+check.fofem<-scan("fofem/ConE-Err.txt",what = character())# if there is no error recorded, then this file will be empty
+
+if(length(check.fofem)==0) # if there is no error recorded, then this file will be empty
+{
+  results.fofem.sa<-read.csv("fofem/ConE-Out.txt") # writes to this file every time, replacing previous results
+
+  # for flaming:
+  responseF.vars<-c("COF","CO2F","PM25F")
+
+  # for smoldering:
+  responseS.vars<-c("COS","CO2S","PM25S")
+  par(mfrow=c(2,2),mar=c(12,3,1.5,0.5),mgp=c(2,0.5,0))
+  sens.list<-list()
+  for(k in 1:length(responseF.vars))
+  { # here we standardize outputs to the z-scoore
+    sens.list[[k]]<-tell(sobolF,
+                         (results.fofem.sa[,responseF.vars[k]]-mean(results.fofem.sa[,responseF.vars[k]]))/sd(results.fofem.sa[,responseF.vars[k]]))
+    rownames(sens.list[[k]]$S)<-names(corr.sampF.vals)
+    plot(1:nrow(sens.list[[k]]$S),sens.list[[k]]$S$original,axes=FALSE,ylim=c(-.15,1),pch=16,
+               xlab="",ylab="Sensitivity index",
+         main=paste("EVT:",cur.evt,"FOFEM","output:",responseF.vars[k]))#las=2)
+          
+          axis(1,at=1:nrow(sens.list[[k]]$S),labels=rownames(sens.list[[k]]$S),
+               las=2,cex.lab=0.9,tick = F)
+          segments(x0 = 1:nrow(sens.list[[k]]$S),x1=1:nrow(sens.list[[k]]$S),
+                   y0=sens.list[[k]]$S$`min. c.i.`,y1=sens.list[[k]]$S$`max. c.i.`)
+          axis(2,las=1)
+          abline(h=0,lwd=2,col="grey") # to see if CI for SI is above 0
+          box()
+  }
+
+}
+# else
+# {
+#   print("Check FOFEM error file!")
+#   
+# }
+      
+
+  
 ```

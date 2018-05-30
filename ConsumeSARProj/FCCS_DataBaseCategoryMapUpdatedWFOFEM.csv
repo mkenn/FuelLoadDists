@@ -36,12 +36,12 @@ duff_lower_depth,NA,NA,NA
 w_sound_0_quarter_loading,1hr_loading,X1hr_loading_Mgha,X1hr
 w_sound_quarter_1_loading,10hr_loading,X10hr_loading_Mgha,X10hr
 w_sound_1_3_loading,100hr_loading,X100hr_loading_Mgha,X100hr
-w_sound_3_9_loading,1KhrS_loading,X1KhrS_loading_Mgha,Log
-w_sound_9_20_loading,10KhrS_loading,X10KhrS_loading_Mgha,NA
-w_sound_gt20_loading,GT10KhrS_loading,GT10KhrS_loading_Mgha,NA
-w_rotten_3_9_loading,1KhrR_loading,X1KhrR_loading_Mgha,NA
-w_rotten_9_20_loading,10KhrR_loading,X10KhrR_loading_Mgha,NA
-w_rotten_gt20_loading,GT10KhrR_loading,GT10KhrR_loading_Mgha,NA
+w_sound_3_9_loading,1KhrS_loading,X1KhrS_loading_Mgha,X3S
+w_sound_9_20_loading,10KhrS_loading,X10KhrS_loading_Mgha,X9S
+w_sound_gt20_loading,GT10KhrS_loading,GT10KhrS_loading_Mgha,X20S
+w_rotten_3_9_loading,1KhrR_loading,X1KhrR_loading_Mgha,X3R
+w_rotten_9_20_loading,10KhrR_loading,X10KhrR_loading_Mgha,X9R
+w_rotten_gt20_loading,GT10KhrR_loading,GT10KhrR_loading_Mgha,X20R
 w_stump_sound_loading,NA,NA,NA
 w_stump_rotten_loading,NA,NA,NA
 w_stump_lightered_loading,NA,NA,NA
@@ -51,6 +51,8 @@ pile_vdirty_loading,NA,NA,NA
 Total_available_fuel_loading,NA,NA,NA
 efg_natural,NA,NA,NA
 efg_activity,NA,NA,NA
+NA,NA,NA,X6S
+NA,NA,NA,X6R
 NA,NA,NA,X10FM
 NA,NA,NA,X1000FM
 NA,NA,NA,Distribution

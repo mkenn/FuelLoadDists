@@ -12,16 +12,10 @@ GenerateFuelInput.fn<-function(corr.samp.vals,nreps=NA,fbLoadNames.df,all.fbs,ba
   fuel.matches<-match(names(corr.samp.vals),fbLoadNames.df[,3]) 
   # match the database column names to rows in the matching dataframe
   # these are the columns we won't do anything with
-  # match.Names<-switch(mod,
-  #                            C=fbLoadNames.df[fuel.matches[!is.na(fuel.matches)],1],
-  #                            F=fbLoadNames.df[fuel.matches[!is.na(fuel.matches)],4])
   match.Names<-switch(mod,
                       C=fbLoadNames.df[fuel.matches[!is.na(fuel.matches)],1],
                       F=fbLoadNames.df[fuel.matches[!is.na(fuel.matches)],4])
   
-  # range.vals[[1]][[2]]$ConsumeNames<-NA # create a new column the gives the Consume column name corresponding to the database column names
-  # range.vals[[1]][[2]]$ConsumeNames[!is.na(range.matches)]<-fbLoadNames.df[range.matches[!is.na(range.matches)],1]
-  # create a corresponding column for the consume names to the range.values data frame
   if(change.units) # convert from Mg/ha to tons/acre, or from cm to in if depth. ignore percent
   {
     for(ii in 1:length(match.Names))
@@ -33,7 +27,7 @@ GenerateFuelInput.fn<-function(corr.samp.vals,nreps=NA,fbLoadNames.df,all.fbs,ba
           input.samp[,ii]<-corr.samp.vals[,ii]*0.393701
         }
          
-         else # 1Mg = 1.10231 tons, 1 ha = 2.47105 acre
+         else # 1.10231 tons/Mg, 2.47105 acre/ha
         {
           input.samp[,ii]<-corr.samp.vals[,ii]*1.10231/2.47105
         }
@@ -41,15 +35,6 @@ GenerateFuelInput.fn<-function(corr.samp.vals,nreps=NA,fbLoadNames.df,all.fbs,ba
     }
   }
   
-  # base.loads<-switch(mod,
-  #                    C=all.fbs[all.fbs$fuelbed_number==base.fb,], # identify the baseline fb and fill in the new fuels dataframe
-  #                    F=all.fbs[all.fbs$fuelbed_number==base.fb,match2a.names])
-  # for(i in 2:(nrow(corr.samp.vals))) # 
-  #   base.loads<-switch(mod,
-  #                      C=rbind(base.loads,all.fbs[all.fbs$fuelbed_number==base.fb,]),
-  #                      F=rbind(base.loads,all.fbs[all.fbs$fuelbed_number==base.fb,match2a.names])) # only rbind the necessary columns
-  
-  #
   if(mod=="C")
   {
     base.loads<-all.fbs[all.fbs$fuelbed_number==base.fb,]
@@ -79,13 +64,11 @@ GenerateFuelInput.fn<-function(corr.samp.vals,nreps=NA,fbLoadNames.df,all.fbs,ba
     for(i in 2:(nrow(corr.samp.vals))) # 
       base.loads<-rbind(base.loads,cur.fofem) # only rbind the necessary columns
     
-    base.loads[,match.Names]<-input.samp
+    base.loads[,match.Names]<-input.samp # replace baseline fuel loading with the sampled values for the target types
 
     
     base.loads$Stand<-as.numeric(base.loads$Stand)
     base.loads$Stand[(1:(nrow(input.samp)))]<-base.fb*1000+1:nrow(input.samp)
-    # but here we need to give baseline values for the remaining fuels types, for now 
-    # based on the base.fb
   }
   return(base.loads)
 }

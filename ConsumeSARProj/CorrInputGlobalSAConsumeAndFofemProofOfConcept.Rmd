@@ -41,7 +41,6 @@ data.file$fwd_loading_Mgha<-data.file$X1hr_loading_Mgha+data.file$X10hr_loading_
 # correlation matrix on the subsets of interest in the database
 smolder1.id<-c(4,5,8,9,16,17)
 smolder2.id<-c(3,7,16,17) # because we don't seem to have a total column for >10K
-# note that fofem only has "log", which is 1000K, plus percent rotten.
 
 flaming1.id<-c(1,2,6,18,20,22,23,26)
 flaming2.id<-c(15,18,20,22,23,26) # assuming fwd is 1-hr+10-hr+100-hr

@@ -1,6 +1,6 @@
-Stands: 3500 
+Stands: 175 
 Errors: 0 
-Stands: 3500 
+Stands: 175 
 Errors: 0 
 
 Input : FOFEM_FlamingSAInput1.csv 

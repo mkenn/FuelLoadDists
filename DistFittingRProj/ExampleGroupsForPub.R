@@ -7,6 +7,27 @@
 # conifer forest group 785, 683, 758 (785 not in database, 683 works--but peatland?! 758 works, black spruce)
 # mixed forest group 664, 685 (664 works, 685 works)
 ############
+# fuel types: grassland = herbs
+# forest: duff, cwd, shrub?
+# shrubland: shrubs
+# Which vegetation 
+# e.g., look at duff 4-6 conifer forests
+# common data points for common EVT groups, not represented: 
+# data gap or mislabeled EVT group
+#############
+# think through where we have reasonable distribution
+# a matrix of where we think the distributions 
+# color-code, grey color ramp for each table with good, medium, bad
+# predictive model for surface fuel loadings (Keane group)
+# how they might be able to predict surface fuels 
+# using the database
+#############
+# Shankar Blue Sky Framework
+# what comes next
+#############
+
+
+
 load("Workspaces/HurdleCustomFitsNoZeroWNoOut.RData") # estimated distributions
 library(fitdistrplus)
 source("../Functions/Dist_Fit_Graph_Pub_FN.R")

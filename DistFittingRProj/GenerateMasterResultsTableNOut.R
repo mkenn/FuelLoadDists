@@ -10,56 +10,88 @@
 # load("Workspaces/EquivalenceResults.RData") # equivalence tests
 # #load("Workspaces/HurdleFits.RData") # estimated distributions
 # load("Workspaces/HurdleCustomFits.RData") # estimated distributions
-# load("Workspaces/bootstrapHurdleNOutFitsList.RData") # bootstrap results
+# load("Workspaces/bootstrapHurdleFitsNoutList.RData") # bootstrap results
 
-load("Workspaces/KS_MCFnTestResultsInclNOut.RData") # KS tests
-load("Workspaces/EquivalenceResultsInclNOut.RData") # equivalence tests
-load("Workspaces/HurdleCustomFitsNoZeroWNOut.RData") # estimated distributions
-load("Workspaces/bootstrapHurdleNOutFitsListInclNOut.RData") # bootstrap results
+load("Workspaces/Current/KS_MCFnTestResults.RData") # KS tests
+load("Workspaces/Current/EquivalenceResultsInclNOut.RData") # equivalence tests
+load("Workspaces/Current/HurdleCustomFitsNoZeroWNoOut.RData") # estimated distributions
+load("Workspaces/Current/bootstrapHurdleFitsNoutListInclNOut.RData") # bootstrap results
 
 
 distribution.masterTableNOut<-list()
+lower.ep.thresh<-0.05 # epsilon threshold for excellent (n>=100) or good fit (30<=n<100)
+upper.ep.thresh<-0.15 # epsilon threshold for good fit
 for(i in 1:length(evt.vals))
 {
   distribution.masterTableNOut[[i]]<-data.frame(fuelType=colnames(data.file)[start.col:ncol(data.file)],
                                             distr=NA,n.obs=NA,prop0=NA,
                                             param1.est=NA,param1.sd=NA,param1.cv=NA,
                                             param2.est=NA,param2.sd=NA,param2.cv=NA,
-                                            KS.pVal=NA,equivalence.val=NA)
+                                            KS.pVal=NA,equivalence.val=NA,distr.fit.class=NA)
   fuel.cols<-start.col:ncol(data.file)
   for(j in 1:length(fuel.cols))
   {
     distribution.masterTableNOut[[i]]$n.obs[j]<-round(distributionCustomFittingHurdleNOut$HurdleFit[[i]]$n.obs[j],digits=3)
     distribution.masterTableNOut[[i]]$prop0[j]<-round(distributionCustomFittingHurdleNOut$HurdleFit[[i]]$prop0[j],digits=3)
     distribution.masterTableNOut[[i]]$distr[j]<-distributionCustomRankingHurdleNOut[[i]]$dist1.fit[j]
-    distribution.masterTableNOut[[i]]$param1.est[j]<-round(bootstrapHurdleNOutFits[[i]]$param1.est[j],digits=3)
-    distribution.masterTableNOut[[i]]$param1.sd[j]<-round(bootstrapHurdleNOutFits[[i]]$param1.bootSD[j],digits=3)
-    distribution.masterTableNOut[[i]]$param1.cv[j]<-round(bootstrapHurdleNOutFits[[i]]$param1.bootCV[j],digits=3)
-    distribution.masterTableNOut[[i]]$param2.est[j]<-round(bootstrapHurdleNOutFits[[i]]$param2.est[j],digits=3)
-    distribution.masterTableNOut[[i]]$param2.sd[j]<-round(bootstrapHurdleNOutFits[[i]]$param2.bootSD[j],digits=3)
-    distribution.masterTableNOut[[i]]$param2.cv[j]<-round(bootstrapHurdleNOutFits[[i]]$param2.bootCV[j],digits=3)
+    distribution.masterTableNOut[[i]]$param1.est[j]<-round(bootstrapHurdleFitsNout[[i]]$param1.est[j],digits=3)
+    distribution.masterTableNOut[[i]]$param1.sd[j]<-round(bootstrapHurdleFitsNout[[i]]$param1.bootSD[j],digits=3)
+    distribution.masterTableNOut[[i]]$param1.cv[j]<-round(bootstrapHurdleFitsNout[[i]]$param1.bootCV[j],digits=3)
+    distribution.masterTableNOut[[i]]$param2.est[j]<-round(bootstrapHurdleFitsNout[[i]]$param2.est[j],digits=3)
+    distribution.masterTableNOut[[i]]$param2.sd[j]<-round(bootstrapHurdleFitsNout[[i]]$param2.bootSD[j],digits=3)
+    distribution.masterTableNOut[[i]]$param2.cv[j]<-round(bootstrapHurdleFitsNout[[i]]$param2.bootCV[j],digits=3)
     if(!is.na(distribution.masterTableNOut[[i]]$distr[j]))
+    {
       distribution.masterTableNOut[[i]]$equivalence.val[j]<-switch(distribution.masterTableNOut[[i]]$distr[j],
                                                      normLL=round(equivalence.epValNOut.list[[i]]$normResult[j],digits=3),
                                                      lnormLL=round(equivalence.epValNOut.list[[i]]$lnormResult[j],digits=3),
                                                      gammaLL=round(equivalence.epValNOut.list[[i]]$gammaResult[j],digits=3),
                                                      weibullLL=round(equivalence.epValNOut.list[[i]]$weibullResult[j],digits=3))
-    # if(i<length(ksPValsNOut)) # placeholder, until we complete KS p-values
-    # {
-      if(!is.na(distribution.masterTableNOut[[i]]$distr[j]))
+      
         distribution.masterTableNOut[[i]]$KS.pVal[j]<-switch(distribution.masterTableNOut[[i]]$distr[j],
-                                                         normLL=round(ksPValsNOut[[i]]$normPVal[j],digits=3),
-                                                         lnormLL=round(ksPValsNOut[[i]]$lnormPVal[j],digits=3),
-                                                         gammaLL=round(ksPValsNOut[[i]]$gammaPVal[j],digits=3),
-                                                         weibullLL=round(ksPValsNOut[[i]]$weibullPVal[j],digits=3))
+                                                         normLL=round(ksPValsWOZeroNOut[[i]]$normPVal[j],digits=3),
+                                                         lnormLL=round(ksPValsWOZeroNOut[[i]]$lnormPVal[j],digits=3),
+                                                         gammaLL=round(ksPValsWOZeroNOut[[i]]$gammaPVal[j],digits=3),
+                                                         weibullLL=round(ksPValsWOZeroNOut[[i]]$weibullPVal[j],digits=3))
+        ###************ NEED TO CHECK CLASSIFICATIONS--SPOT CHECK SOME DISTR GRAPHS****###
+        if(distribution.masterTableNOut[[i]]$n.obs[j]*(1-distribution.masterTableNOut[[i]]$prop0[j])>=100)
+        {
+          if(distribution.masterTableNOut[[i]]$KS.pVal[j]>0.05)
+          {
+            if(distribution.masterTableNOut[[i]]$equivalence.val[j]<=lower.ep.thresh)
+              distribution.masterTableNOut[[i]]$distr.fit.class[j]<-"Excellent"
+            else
+            {
+              if(distribution.masterTableNOut[[i]]$KS.pVal[j]>0.05&distribution.masterTableNOut[[i]]$equivalence.val[j]<=upper.ep.thresh)
+                distribution.masterTableNOut[[i]]$distr.fit.class[j]<-"Good"
+              else
+              distribution.masterTableNOut[[i]]$distr.fit.class[j]<-"Poor"
+            }
+          }
+        }
+        else # the the number is [30,100)
+        {
+            if(distribution.masterTableNOut[[i]]$KS.pVal[j]>0.05)
+            {
+              if(distribution.masterTableNOut[[i]]$equivalence.val[j]<=upper.ep.thresh)
+                distribution.masterTableNOut[[i]]$distr.fit.class[j]<-"Good"
+            }
+            else
+            {
+              if(distribution.masterTableNOut[[i]]$equivalence.val[j]<=lower.ep.thresh)
+                distribution.masterTableNOut[[i]]$distr.fit.class[j]<-"Good"
+              else
+                distribution.masterTableNOut[[i]]$distr.fit.class[j]<-"Poor"
+            }
+        }
     }
-#  }
+  }
 }
 save(distribution.masterTableNOut,file="Workspaces/MasterTableNOut.RData")
 
 for(i in 1:length(evt.vals))
 {
-  write.csv(distribution.masterTableNOut[[i]],file=paste("MasterTables/MasterTableNOutEVT_",evt.vals[i],".csv",sep=""),row.names = FALSE)
+  write.csv(distribution.masterTableNOut[[i]],file=paste("MasterTables/Current/MasterTableNOutEVT_",evt.vals[i],".csv",sep=""),row.names = FALSE)
 }
 
 #save(distribution.masterTableNOut,file="Workspaces/MasterTable.RData")

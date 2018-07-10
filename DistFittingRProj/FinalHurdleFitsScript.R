@@ -2,8 +2,10 @@
 # script to estimate hurdle distribution
 ##########
 # read in the current version of the database
-data.file<-read.csv("../Data/CurrentData/_metricLoadingsCrosstab.csv") #substitute filepath and name for local system
-start.col=13 # the first fuel-loading column
+# data.file<-read.csv("../Data/CurrentData/_metricLoadingsCrosstab.csv") #substitute filepath and name for local system
+# start.col=13 # the first fuel-loading column
+data.file<-read.csv("../Data/CurrentData/loadingsByEVTGroup_20180706.csv") #substitute filepath and name for local system
+start.col=11 # the first fuel-loading column
 EVTCol = "LFEVTGroupCd_FINAL"
 # read the functions into the current session
 file.sources<-list.files("../Functions/") # all functions in this directory
@@ -46,12 +48,12 @@ distributionCustomFittingHurdleNOut <- dist.custom.hurdle.fit.fn(data.file, evts
 #                                           DistFitSum = distributionFittingHurdle$WithZeroFit,start.col=13)
 distributionCustomRankingHurdleAll<-distfit.rank.fn(evts = evt.vals,
                                            DistFitSum = distributionCustomFittingHurdleAll$HurdleFit,
-                                           start.col=13)
+                                           start.col=start.col)
 distributionCustomRankingHurdle<-distfit.rank.fn(evts = evt.vals,
                                                  DistFitSum = distributionCustomFittingHurdle$HurdleFit,
-                                                 start.col=13,dist.cols = c("lnormLL","gammaLL"))
+                                                 start.col=start.col,dist.cols = c("lnormLL","gammaLL"))
 distributionCustomRankingHurdleNOut<-distfit.rank.fn(evts = evt.vals,
                                                  DistFitSum = distributionCustomFittingHurdleNOut$HurdleFit,
-                                                 start.col=13,dist.cols = c("lnormLL","gammaLL"))
+                                                 start.col=start.col,dist.cols = c("lnormLL","gammaLL"))
 
-save.image("Workspaces/HurdleCustomFitsNoZeroWNoOut.RData")
+save.image("Workspaces/Current/HurdleCustomFitsNoZeroWNoOut.RData")

@@ -5,8 +5,9 @@
 # MCK
 ########
 
-data.file<-read.csv("../Data/CurrentData/_metricLoadingsCrosstab.csv") #substitute filepath and name for local system
-start.col=13 # the first fuel-loading column
+#data.file<-read.csv("../Data/CurrentData/_metricLoadingsCrosstab.csv") #substitute filepath and name for local system
+data.file<-read.csv("../Data/CurrentData/loadingsByEVTGroup_20180607.csv") #substitute filepath and name for local system
+start.col=11 # the first fuel-loading column
 EVTCol = "LFEVTGroupCd_FINAL"
 # first read the functions into the current session
 file.sources<-list.files("../Functions/") # all functions in this directory

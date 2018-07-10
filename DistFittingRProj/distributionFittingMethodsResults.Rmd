@@ -64,7 +64,7 @@ citation("fitdistrplus")
 
 # Zeroes
 
-For many of the EVT groups there were entries of zero loading for many fuel types. We evaluated two options for all distributions: 
+  For many of the EVT groups there were entries of zero loading for many fuel types. We evaluated two options for all distributions: 
 
 1. estimate the distribution including all values, with a value of 0.1 added for all fuel types so the lognormal and gamma distributions could be estimated 
 

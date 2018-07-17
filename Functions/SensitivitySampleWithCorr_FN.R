@@ -8,9 +8,11 @@
 ##########
 
 corr.sa.fn<-function(data.file,fuel.ids,complete.case=TRUE,min.co.occur=10,
-                     evts,EVTCol,start.col,n.samp=1000,rankObj,fitObj,upper.quantile=NA)
+                     evts,EVTCol,start.col,n.samp=1000,rankObj,fitObj,
+                     upper.quantile=NA,use.corr=TRUE)
 {
   sens.sort.list<-list()
+  sens.unCorr.list<-list()
   corr.mats.list<-list()
   R.star.list<-list()
   for(cur.evt in 1:length(evts))
@@ -22,7 +24,7 @@ corr.sa.fn<-function(data.file,fuel.ids,complete.case=TRUE,min.co.occur=10,
     # in the subset of data
     tmp2.loads.df<-tmp.loads.df[,fuel.ids]
     cur.loads<-tmp2.loads.df[complete.cases(tmp2.loads.df),]
-    if(nrow(cur.loads)>min.co.occur)
+    if(nrow(cur.loads)>min.co.occur)#&use.corr)
     {
       cur.corr<-cor(cur.loads,method="spearman")
 #      try.na<-which(is.na(cur.corr[1,])) need to better id the missing correlations
@@ -70,33 +72,56 @@ corr.sa.fn<-function(data.file,fuel.ids,complete.case=TRUE,min.co.occur=10,
                                      curFit=fitObj$HurdleFit[[cur.evt]][new.fuel.ids,],
                                      new.fuel.ids=new.fuel.ids,n.samp,cur.loads=tmp3.loads.df,
                                      upper.quantile=upper.quantile)
+      sens.mat<-data.frame(sens.mat)
+      names(sens.mat)<-names(tmp2.loads.df)
+      sens.unCorr.list[[cur.evt]]<-sens.mat # to keep the uncorrelated sampled values
+      # if(corr.vals)
+      # {
       # apply the matrix to enforce the correlation structure
-      sens.sort<-sortSensMat.fn(sens.mat,R.star,new.fuel.ids,n.samp)
-      if(!is.na(try.na[1])) # then we need to fill in some columns
-      {
-        final.sens.sort<-matrix(NA,ncol=length(fuel.ids),nrow=n.samp)
-        final.sens.sort[,no.na]<-sens.sort
-        for(f in 1:length(try.na))
+        sens.sort<-sortSensMat.fn(sens.mat,R.star,new.fuel.ids,n.samp)
+        if(!is.na(try.na[1])) # then we need to fill in some columns
         {
-          final.sens.sort[,try.na[f]]<-rep(cur.loads[1,try.na[f]],n.samp)
+          final.sens.sort<-matrix(NA,ncol=length(fuel.ids),nrow=n.samp)
+          final.sens.sort[,no.na]<-sens.sort
+          for(f in 1:length(try.na))
+          {
+            final.sens.sort[,try.na[f]]<-rep(cur.loads[1,try.na[f]],n.samp)
+          }
         }
+        else
+          final.sens.sort<-sens.sort
+        final.sens.sort<-data.frame(final.sens.sort)
+        names(final.sens.sort)<-names(tmp2.loads.df)
+        # now, insert columns in the appropriate place for those variables with no correlation
+        sens.sort.list[[cur.evt]]<-final.sens.sort
       }
       else
-        final.sens.sort<-sens.sort
-      final.sens.sort<-data.frame(final.sens.sort)
-      names(final.sens.sort)<-names(tmp2.loads.df)
-      # now, insert columns in the appropriate place for those variables with no correlation
-      sens.sort.list[[cur.evt]]<-final.sens.sort
-    }
-    else
-    {
-      sens.sort.list[[cur.evt]]<-NA
-      corr.mats.list[[cur.evt]]<-NA
-      R.star.list[[cur.evt]]<-NA
-      
-    }
+      {
+        # if(use.corr)
+        # {
+          sens.sort.list[[cur.evt]]<-NA
+          corr.mats.list[[cur.evt]]<-NA
+          R.star.list[[cur.evt]]<-NA
+        # }
+        # else
+        # {
+        #   tmp.df<-data.file[data.file[,EVTCol]==evt.vals[cur.evt],]
+        #   tmp.loads.df<-tmp.df[,start.col:ncol(tmp.df)]
+        #   # might need an imputation package to assess the missingness 
+        #   # in the subset of data
+        #   tmp2.loads.df<-tmp.loads.df[,fuel.ids]
+        #   
+        #   sens.sort.list[[cur.evt]]<-sampleFuelsMatrix.fn(curRank=rankObj[[cur.evt]][fuel.ids,],
+        #                                  curFit=fitObj$HurdleFit[[cur.evt]][fuel.ids,],
+        #                                  new.fuel.ids=fuel.ids,n.samp,cur.loads=tmp2.loads.df,
+        #                                  upper.quantile=upper.quantile)
+        #   
+        # }
+         
+      }
+    #}
   }
-  return(list(sens.sort=sens.sort.list,corr.mats=corr.mats.list,R.star=R.star.list))
+  return(list(sens.sort=sens.sort.list,sensunCorr.mat=sens.unCorr.list,corr.mats=corr.mats.list,R.star=R.star.list))
 }
 
 corr2sort.matrix.fn<-function(cur.corr,n.samp,var.red=TRUE)
@@ -149,22 +174,29 @@ sampleFuelsMatrix.fn<-function(curRank,curFit,new.fuel.ids,n.samp,cur.loads,uppe
     {
       tmp.loads<-cur.loads[,k]
       tmp.loads<-tmp.loads[!is.na(tmp.loads)]
-      cur.gt0<-tmp.loads[tmp.loads>0]
-      n.gt0<-length(cur.gt0)
-      n.0<-length(tmp.loads[tmp.loads==0])
-      cur.prop0<-n.0/(n.gt0+n.0)
-      if(cur.prop0<1)
+      if(length(tmp.loads)>0)
       {
-        tmp.mu<-mean(log(cur.gt0))
-        tmp.sd<-sd(log(cur.gt0))
-        tmp.samp<-simHurdle.fn(distr="lnorm",prop0=cur.prop0,nsamp=N,nrep=1,
-                               param1=tmp.mu,
-                               param2=tmp.sd,cur.gt0)
-        sens.mat[,k]<-tmp.samp[,1]
+        cur.gt0<-tmp.loads[tmp.loads>0]
+        n.gt0<-length(cur.gt0)
+        n.0<-length(tmp.loads[tmp.loads==0])
+        cur.prop0<-n.0/(n.gt0+n.0)
+        if(cur.prop0<1)
+        {
+          tmp.mu<-mean(log(cur.gt0))
+          tmp.sd<-sd(log(cur.gt0))
+          tmp.samp<-simHurdle.fn(distr="lnorm",prop0=cur.prop0,nsamp=N,nrep=1,
+                                 param1=tmp.mu,
+                                 param2=tmp.sd,cur.gt0)
+          sens.mat[,k]<-tmp.samp[,1]
+        }
+        else
+        {
+          sens.mat[,k]<-0
+        }
       }
       else
       {
-        sens.mat[,k]<-0
+        sens.mat[,k]<-NA
       }
     }
   }

@@ -125,7 +125,7 @@ consumeNoCorr.fuel.loads<-GenerateFuelInput.fn(Nocorr.sampF.vals,nreps,
 
 source("CallModsForSA.R") #This function actually switches between consume and fofem to generate input file. 
 consume.sobol.sa.results<-call.emissions.mods(fuel.loads = consume.fuel.loads)
-consume.sobolNoCorr.sa.results<-call.emissions.mods(fuel.loads = consumeNoCorr.fuel.loads)
+consume.sobolNoCorr.sa.results<-call.emissions.mods(fuel.loads = consumeNoCorr.fuel.loads,outfilename = "consumeNoCorr_output_summary.csv")
 
 source("PlotSobolAndPRCCResults.R") # functions to graph Sobol and PRCC results
 # calculate sobol indices for selected model predictions

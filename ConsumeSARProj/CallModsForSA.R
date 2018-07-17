@@ -4,8 +4,8 @@
 #########
 
 call.emissions.mods<-function(infilename="FuelLoadInputSA.csv",mod="C",fuel.loads=NA,
-                             env.in.name="sample_consume_input.csv",envfilename="EnvInputSA.csv",
-                             fofem.filename="FOFEM_FlamingSAInput1.csv")
+                             env.in.name="sample_consume5_input.csv",envfilename="EnvInputSA.csv",
+                             fofem.filename="FOFEM_FlamingSAInput1.csv")#,outfilename="output_summary.csv")
 {
   if(mod=="C")
   {
@@ -33,7 +33,8 @@ call.emissions.mods<-function(infilename="FuelLoadInputSA.csv",mod="C",fuel.load
     
     # and now we call consume
     # first format the system call
-    system.call<-paste("python consume_batch.py natural",envfilename,  "-f", infilename)
+    setwd("consume5/apps-consume/")
+    system.call<-paste("python consume_batch.py natural",envfilename,  "-f", infilename)#, "-x",outfilename)
     try1<-try(system(system.call)) # tells R to execute this system call in the working directory
     # Then we readin the results, and calculate the Sobol sensitivity indices
     
@@ -46,12 +47,14 @@ call.emissions.mods<-function(infilename="FuelLoadInputSA.csv",mod="C",fuel.load
     {
       results.sa<-read.csv("consume_results.csv") # writes to this file every time, replacing previous    
     }
+    setwd("../../")
   }
   if(mod=="F")
   {
     
     write("#1k-SizeClass",file=fofem.filename) # switch header to indicate 
     write.table(fuel.loads,file=fofem.filename,append = TRUE,sep=",",row.names = FALSE,col.names = FALSE)
+    setwd("fofem")
     system.call<-paste("FOF_GUI C",fofem.filename,"ConE-Out.txt ConE-run.txt ConE-Err.txt H", sep=" ")
     system(system.call) # tells R to execute this system call in the working directory
     
@@ -60,6 +63,7 @@ call.emissions.mods<-function(infilename="FuelLoadInputSA.csv",mod="C",fuel.load
       results.sa<-read.csv("ConE-Out.txt") # writes to this file every time, replacing previous results
     else
       results.sa<-NA
+    setwd("../")
       
   }
   return(results.sa)

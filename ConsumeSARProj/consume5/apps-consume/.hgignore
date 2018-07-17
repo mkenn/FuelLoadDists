@@ -1,0 +1,16 @@
+syntax glob:
+
+emitcalc/*
+fccs2ef/*
+output/*
+./*.orig
+./*.pyc
+./*.csv
+.idea
+build_distribution/consume/*
+build_distribution/mercurial_rev.txt
+consume/version.py
+windows_exe/winexe/*
+dist/*
+.gradle/*
+build/lib/

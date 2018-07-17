@@ -125,13 +125,16 @@ consumeNoCorr.fuel.loads<-GenerateFuelInput.fn(Nocorr.sampF.vals,nreps,
 
 source("CallModsForSA.R") #This function actually switches between consume and fofem to generate input file. 
 consume.sobol.sa.results<-call.emissions.mods(fuel.loads = consume.fuel.loads)
-consume.sobolNoCorr.sa.results<-call.emissions.mods(fuel.loads = consumeNoCorr.fuel.loads,outfilename = "consumeNoCorr_output_summary.csv")
+consume.sobolNoCorr.sa.results<-call.emissions.mods(fuel.loads = consumeNoCorr.fuel.loads)#,outfilename = "consumeNoCorr_output_summary.csv")
 
 source("PlotSobolAndPRCCResults.R") # functions to graph Sobol and PRCC results
 # calculate sobol indices for selected model predictions
-response.vars<-c("PM.Emissions","CO.Emissions","CO2.Emissions","PM25.Emissions")
-responseFConsume.vars<-c("E_co_F","E_co2_F","E_pm25_F")
-responseSConsume.vars<-c("E_co_S","E_co2_S","E_pm25_S")
+#response.vars<-c("PM.Emissions","CO.Emissions","CO2.Emissions","PM25.Emissions")
+# responseFConsume.vars<-c("E_co_F","E_co2_F","E_pm25_F")
+# responseSConsume.vars<-c("E_co_S","E_co2_S","E_pm25_S")
+response.vars<-c("pm","co","co2","pm25")
+responseFConsume.vars<-c("e_co_F","e_co2_F","e_pm25_F")
+responseSConsume.vars<-c("e_co_S","e_co2_S","e_pm25_S")
 par(mfrow=c(2,2),mar=c(12,3,1.5,0.5),mgp=c(2,0.5,0),las=1)
 sens.list<-list()
 for(k in 1:length(response.vars))
@@ -206,10 +209,10 @@ fofemNoCorr.fuel.loads<-GenerateFuelInput.fn(Nocorr.sampF.vals,nreps,fbLoadNames
                                        all.fbs,base.fb,base.fofem=base.fofem.use,change.units=T,mod="F")
 results.fofem.sa<-call.emissions.mods(infilename="FuelLoadInputSA.csv",mod="F",fuel.loads=fofem.fuel.loads,
                               env.in.name="sample_consume_input.csv",envfilename="EnvInputSA.csv",
-                              fofem.filename="FOFEM_FlamingSAInput1.csv")
+                              fofem.filename="FOFEM_FlamingSAInput1.csv",newwd="fofem",oldwd="../")
 resultsNoCorr.fofem.sa<-call.emissions.mods(infilename="FuelLoadInputSA.csv",mod="F",fuel.loads=fofemNoCorr.fuel.loads,
                                       env.in.name="sample_consume_input.csv",envfilename="EnvInputSA.csv",
-                                      fofem.filename="FOFEM_FlamingSAInput1.csv")
+                                      fofem.filename="FOFEM_FlamingSAInput1.csv",newwd="fofem",oldwd="../")
 
   # note: FOFEM divides emissions into flaming and smoldering, which consume doesn't seem
   # to do. Will complicate comparisons. Except it does! See addition above
@@ -280,10 +283,10 @@ fofem2NoCorr.fuel.loads<-GenerateFuelInput.fn(sens.mats.flame.list[[2]][[cur.evt
 
 results2.fofem.sa<-call.emissions.mods(infilename="FuelLoadInputSA.csv",mod="F",fuel.loads=fofem2.fuel.loads,
                                       env.in.name="sample_consume_input.csv",envfilename="EnvInputSA.csv",
-                                      fofem.filename="FOFEM_FlamingSAInput1.csv")
+                                      fofem.filename="FOFEM_FlamingSAInput1.csv",newwd="fofem",oldwd="../")
 results2NoCorr.fofem.sa<-call.emissions.mods(infilename="FuelLoadInputSA.csv",mod="F",fuel.loads=fofem2NoCorr.fuel.loads,
                                             env.in.name="sample_consume_input.csv",envfilename="EnvInputSA.csv",
-                                            fofem.filename="FOFEM_FlamingSAInput1.csv")
+                                            fofem.filename="FOFEM_FlamingSAInput1.csv",newwd="fofem",oldwd="../")
 fofemF.prcc<-list()
 fofemNoCorrF.prcc<-list()
 for(k in 1:length(responseF.vars))

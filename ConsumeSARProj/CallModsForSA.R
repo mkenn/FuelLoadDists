@@ -5,10 +5,11 @@
 
 call.emissions.mods<-function(infilename="FuelLoadInputSA.csv",mod="C",fuel.loads=NA,
                              env.in.name="sample_consume5_input.csv",envfilename="EnvInputSA.csv",
-                             fofem.filename="FOFEM_FlamingSAInput1.csv")#,outfilename="output_summary.csv")
+                             fofem.filename="FOFEM_FlamingSAInput1.csv",newwd="consume5/apps-consume/",oldwd="../../")#,outfilename="output_summary.csv")
 {
   if(mod=="C")
   {
+    setwd(newwd)
     loadInFile.head<-matrix(c("GeneratorName=FCCS   3.0","GeneratorVersion=3.0.0","DateCreated=07/18/2016"),
                             ncol=3)
     # didn't like today's date
@@ -33,7 +34,6 @@ call.emissions.mods<-function(infilename="FuelLoadInputSA.csv",mod="C",fuel.load
     
     # and now we call consume
     # first format the system call
-    setwd("consume5/apps-consume/")
     system.call<-paste("python consume_batch.py natural",envfilename,  "-f", infilename)#, "-x",outfilename)
     try1<-try(system(system.call)) # tells R to execute this system call in the working directory
     # Then we readin the results, and calculate the Sobol sensitivity indices

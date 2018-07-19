@@ -73,7 +73,7 @@ cur.evt<-58 # example EVT candidate from database paper, with sufficient coverag
 # need to find one for smoldering
 ###############
 # flaming first
-N.samp<-5000 # number of random samples for SA, set low for now for efficiency and testing
+N.samp<-100 # number of random samples for SA, set low for now for efficiency and testing
 
 source("../Functions/SimHurdleDist_FN.R")
 source("../Functions/SensitivitySampleWithCorr_FN.R")

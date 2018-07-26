@@ -11,7 +11,7 @@ load("../DistFittingRProj/Workspaces/HurdleCustomFitsNoZeroWNoOut.RData")
 
 
 library(equivalence)
-equivalence.epValNOut.list<-equivalence.epValWOZero.list<-list() # contains results with and without 00
+equivalence.epValNOut.list<-equivalence.epValWOZero.list<-list() # contains results with and without 0
 cur.cols<-start.col:ncol(data.file)
 for(i in 1:length(evt.vals)) # for each evt group
 {

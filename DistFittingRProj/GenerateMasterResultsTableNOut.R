@@ -15,7 +15,7 @@
 load("Workspaces/Current/KS_MCFnTestResults.RData") # KS tests
 load("Workspaces/Current/EquivalenceResultsInclNOut.RData") # equivalence tests
 load("Workspaces/Current/HurdleCustomFitsNoZeroWNoOut.RData") # estimated distributions
-load("Workspaces/Current/bootstrapHurdleFitsNoutListInclNOut.RData") # bootstrap results
+load("Workspaces/Current/bootstrapHurdleNoutFitsListInclNOut.RData") # bootstrap results
 
 
 distribution.masterTableNOut<-list()
@@ -100,7 +100,7 @@ for(i in 1:length(evt.vals))
 # KS p-values v. eq Vals, KS p-vals v. n.obs, eq Vals v. n.obs
 
 masterSummaryNOut.list<-list()
-for(j in 1:30)
+for(j in 1:length(fuel.cols))
 {
   masterSummaryNOut.list[[j]]<-data.frame(n.obs=rep(NA,length(evt.vals)),KS.pval=NA,ep.val=NA,param1.cv=NA,param2.cv=NA)
   for(k in 1:length(evt.vals))
@@ -115,7 +115,7 @@ for(j in 1:30)
 
 pdf(file="MasterSummaryCompEpNOut.pdf")
 par(mfrow=c(2,3),mar=c(3.5,3.5,1.5,0.5),mgp=c(2.25,0.5,0),las=1)
-for(j in 1:30)
+for(j in 1:length(fuel.cols))
   {
     plot(masterSummaryNOut.list[[j]]$n.obs,masterSummaryNOut.list[[j]]$ep.val,
          xlim=c(0,1300),ylim=c(0,0.1),pch=16,main=distribution.masterTableNOut[[1]]$fuelType[j],
@@ -131,7 +131,7 @@ dev.off()
 
 pdf(file="MasterSummaryCompKSPValNOut.pdf")
 par(mfrow=c(2,3),mar=c(3.5,3.5,1.5,0.5),mgp=c(2.25,0.5,0),las=1)
-for(j in 1:30)
+for(j in 1:length(fuel.cols))
 {
   plot(masterSummaryNOut.list[[j]]$n.obs,masterSummaryNOut.list[[j]]$KS.pval,
        xlim=c(0,1300),ylim=c(0,1),pch=16,main=distribution.masterTableNOut[[1]]$fuelType[j],
@@ -148,7 +148,7 @@ dev.off()
 
 pdf(file="MasterSummaryCompEpKSNOut.pdf")
 par(mfrow=c(2,3),mar=c(3.5,3.5,1.5,0.5),mgp=c(2.25,0.5,0),las=1)
-for(j in 1:30)
+for(j in 1:length(fuel.cols))
 {  
   plot(masterSummaryNOut.list[[j]]$KS.pval,masterSummaryNOut.list[[j]]$ep.val,
        xlim=c(0,1),ylim=c(0,0.1),pch=16,main=distribution.masterTableNOut[[1]]$fuelType[j],

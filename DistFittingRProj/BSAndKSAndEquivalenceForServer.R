@@ -33,7 +33,7 @@ n.iter<-5000
 cur.cols<-start.col:ncol(data.file)
 
 cur.fit<-distributionCustomFittingHurdleNOut$HurdleFit
-for(i in 34:length(distributionCustomFittingHurdleNOut$HurdleFit))
+for(i in 64:length(distributionCustomFittingHurdleNOut$HurdleFit))
 {
   ksPValsWOZeroNOut[[i]]<-data.frame(fueltype=names(data.file)[cur.cols],lnormPVal=NA,gammaPVal=NA)
   for(j in 1:nrow(ksPValsWOZeroNOut[[i]])) 

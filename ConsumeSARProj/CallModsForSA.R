@@ -47,14 +47,16 @@ call.emissions.mods<-function(infilename="FuelLoadInputSA.csv",mod="C",fuel.load
     {
       results.sa<-read.csv("consume_results.csv") # writes to this file every time, replacing previous    
     }
-    setwd("../../")
+#    setwd("../../")
+    setwd(oldwd)
   }
   if(mod=="F")
   {
     
+    setwd(newwd)
+#    setwd("fofem")
     write("#1k-SizeClass",file=fofem.filename) # switch header to indicate 
     write.table(fuel.loads,file=fofem.filename,append = TRUE,sep=",",row.names = FALSE,col.names = FALSE)
-    setwd("fofem")
     system.call<-paste("FOF_GUI C",fofem.filename,"ConE-Out.txt ConE-run.txt ConE-Err.txt H", sep=" ")
     system(system.call) # tells R to execute this system call in the working directory
     
@@ -63,7 +65,8 @@ call.emissions.mods<-function(infilename="FuelLoadInputSA.csv",mod="C",fuel.load
       results.sa<-read.csv("ConE-Out.txt") # writes to this file every time, replacing previous results
     else
       results.sa<-NA
-    setwd("../")
+#    setwd("../")
+    setwd(oldwd)
       
   }
   return(results.sa)

@@ -14,7 +14,8 @@
 # bootdist(fitObj, niter), looks like you can parallize it with parallel="snow" in windows ("multicore" otherwise), 
 # and specifying the number of available CPUs; should probably also do this on server, if attempted.
 
-bootstrapHurdleFits<-bootstrapFits.fn(data.file=data.file,evts=evt.vals,evt.col=evt.col,start.col=13,min.plot=30,
+bootstrapHurdleFits<-bootstrapFits.fn(data.file=data.file,evts=evt.vals,evt.col=evt.col,start.col=start.col,
+                                      min.plot=min.plot,
                            write.file=FALSE,file.name="DistFitSummaryEVT",
                            include0=FALSE,add.val=0.1,verbose=FALSE,rankObj=distributionRankingHurdle,
                            n.iter=5000) #rankObj is a distribution ranking object

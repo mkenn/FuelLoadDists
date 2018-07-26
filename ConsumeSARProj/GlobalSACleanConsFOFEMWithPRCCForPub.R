@@ -36,6 +36,8 @@ smolder1.id<-c("X10KhrR_loading_Mgha","X10KhrS_loading_Mgha","X1000hrR_loading_M
 # names(data.file)[smolder1.id+start.col-1]
 # "X10KhrR_loading_Mgha"  "X10KhrS_loading_Mgha"  "X1KhrR_loading_Mgha"   "X1KhrS_loading_Mgha"  
 # "GT10KhrR_loading_Mgha" "GT10KhrS_loading_Mgha"
+# These aren't in consume, which requires R and S for all
+# coarse fuels
 smolder2.id<-c("X10Khr_loading_Mgha","X1000hr_loading_Mgha",
                "GT10KhrR_loading_Mgha","GT10KhrS_loading_Mgha")
 #smolder2.id<-c(3,7,16,17) # because we don't seem to have a total column for >10K
@@ -73,7 +75,7 @@ cur.evt<-58 # example EVT candidate from database paper, with sufficient coverag
 # need to find one for smoldering
 ###############
 # flaming first
-N.samp<-100 # number of random samples for SA, set low for now for efficiency and testing
+N.samp<-1000 # number of random samples for SA, set low for now for efficiency and testing
 
 source("../Functions/SimHurdleDist_FN.R")
 source("../Functions/SensitivitySampleWithCorr_FN.R")
@@ -81,6 +83,11 @@ source("../Functions/SensitivitySampleWithCorr_FN.R")
 # correlation structure that matches that for the database for that EVT--the matrix X*
 # also includes the uncorrelated matrix X for comparison
 sens.mats.flame.list<-corr.sa.fn(data.file,fuel.ids=flaming3.id,complete.case=TRUE,
+                                 min.co.occur=30,
+                                 evts=evt.vals,EVTCol=EVTCol,start.col=start.col,n.samp=N.samp,
+                                 rankObj=distributionCustomRankingHurdleNOut,
+                                 fitObj=distributionCustomFittingHurdleNOut)
+sens.mats.smolder.list<-corr.sa.fn(data.file,fuel.ids=smolder1.id,complete.case=TRUE,
                                  min.co.occur=30,
                                  evts=evt.vals,EVTCol=EVTCol,start.col=start.col,n.samp=N.samp,
                                  rankObj=distributionCustomRankingHurdleNOut,
@@ -98,10 +105,12 @@ sens.mats.flame.list.upper<-corr.sa.fn(data.file,fuel.ids=flaming3.id,complete.c
 library(sensitivity)
 sobolF<-sobolEff(X1=sens.mats.flame.list[[1]][[cur.evt]][1:(N.samp/2),],
                  X2=sens.mats.flame.list[[1]][[cur.evt]][(N.samp/2+1):N.samp,],nboot = 1000)
+sobolS<-sobolEff(X1=sens.mats.smolder.list[[1]][[cur.evt]][1:(N.samp/2),],
+                 X2=sens.mats.smolder.list[[1]][[cur.evt]][(N.samp/2+1):N.samp,],nboot = 1000)
 sobolFNoCorr<-sobolEff(X1=sens.mats.flame.list[[2]][[cur.evt]][1:(N.samp/2),],
                  X2=sens.mats.flame.list[[2]][[cur.evt]][(N.samp/2+1):N.samp,],nboot = 1000)
 
-#compare the Sobol correlation matrx to the original sample
+#compare the Sobol correlation matrix to the original sample
 # cor(sobolF$X)
 # cor(sens.mats.flame.list[[1]][[cur.evt]])
 
@@ -113,6 +122,8 @@ base.fb<-unique(base.fb[!is.na(base.fb)])
 
 corr.sampF.vals<-data.frame(sobolF$X)
 names(corr.sampF.vals)<-names(sens.mats.flame.list[[1]][[cur.evt]])
+corr.sampS.vals<-data.frame(sobolS$X)
+names(corr.sampS.vals)<-names(sens.mats.smolder.list[[1]][[cur.evt]])
 Nocorr.sampF.vals<-data.frame(sobolFNoCorr$X)
 names(Nocorr.sampF.vals)<-names(sens.mats.flame.list[[1]][[cur.evt]])
 ###############
@@ -120,6 +131,9 @@ names(Nocorr.sampF.vals)<-names(sens.mats.flame.list[[1]][[cur.evt]])
 # create a dataframe that combines baseline values with sobol-sampled ones
 consume.fuel.loads<-GenerateFuelInput.fn(corr.sampF.vals,nreps,
                                               fbLoadNames.df,all.fbs,base.fb,change.units=T)
+consume.smolder.fuel.loads<-GenerateFuelInput.fn(corr.sampS.vals,nreps,
+                                         fbLoadNames.df,all.fbs,base.fb,change.units=T)
+
 consumeNoCorr.fuel.loads<-GenerateFuelInput.fn(Nocorr.sampF.vals,nreps,
                                          fbLoadNames.df,all.fbs,base.fb,change.units=T)
 
@@ -196,8 +210,8 @@ boxplot(results2.sa[,response.vars[k]]) # CO2 takes the cake!
 
 #########
 # now FOFEM
-setwd("fofem")
-base.fofem<-read.csv("FOFEM_6_May12013_MCKUpdate2.csv") 
+#setwd("fofem")
+base.fofem<-read.csv("fofem/FOFEM_6_May12013_MCKUpdate2.csv") 
 # note, this file has the header--our final file 
 # note also this has the fuel moistures matched to consume env input as
 # best we can. If that changes, so should this

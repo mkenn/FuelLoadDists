@@ -68,13 +68,25 @@ corr.sa.fn<-function(data.file,fuel.ids,complete.case=TRUE,min.co.occur=10,
       # have current loads now be based on the full data set, for
       # those cases where the continuous distribution was not fit
       tmp3.loads.df<-tmp.loads.df[,new.fuel.ids]
-      sens.mat<-sampleFuelsMatrix.fn(curRank=rankObj[[cur.evt]][new.fuel.ids,],
-                                     curFit=fitObj$HurdleFit[[cur.evt]][new.fuel.ids,],
+      new.fuel.rowNum<-!is.na(match(rankObj[[cur.evt]][,1],new.fuel.ids))
+      sens.mat<-sampleFuelsMatrix.fn(curRank=rankObj[[cur.evt]][new.fuel.rowNum,],
+                                     curFit=fitObj$HurdleFit[[cur.evt]][new.fuel.rowNum,],
                                      new.fuel.ids=new.fuel.ids,n.samp,cur.loads=tmp3.loads.df,
                                      upper.quantile=upper.quantile)
-      sens.mat<-data.frame(sens.mat)
-      names(sens.mat)<-names(tmp2.loads.df)
-      sens.unCorr.list[[cur.evt]]<-sens.mat # to keep the uncorrelated sampled values
+      if(!is.na(try.na[1])) # then we need to fill in some columns
+      {
+        final.sens.mat<-matrix(NA,ncol=length(fuel.ids),nrow=n.samp)
+        final.sens.mat[,no.na]<-sens.mat
+        for(f in 1:length(try.na))
+        {
+          final.sens.mat[,try.na[f]]<-rep(cur.loads[1,try.na[f]],n.samp)
+        }
+      }
+      else
+        final.sens.mat<-sens.mat
+      final.sens.mat<-data.frame(final.sens.mat)
+      names(final.sens.mat)<-names(tmp2.loads.df)
+      sens.unCorr.list[[cur.evt]]<-final.sens.mat # to keep the uncorrelated sampled values
       # if(corr.vals)
       # {
       # apply the matrix to enforce the correlation structure

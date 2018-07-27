@@ -196,10 +196,16 @@ sampleFuelsMatrix.fn<-function(curRank,curFit,new.fuel.ids,n.samp,cur.loads,uppe
         {
           tmp.mu<-mean(log(cur.gt0))
           tmp.sd<-sd(log(cur.gt0))
-          tmp.samp<-simHurdle.fn(distr="lnorm",prop0=cur.prop0,nsamp=N,nrep=1,
-                                 param1=tmp.mu,
-                                 param2=tmp.sd,cur.gt0)
-          sens.mat[,k]<-tmp.samp[,1]
+          if(!is.na(tmp.sd)) {
+            tmp.samp<-simHurdle.fn(distr="lnorm",prop0=cur.prop0,nsamp=N,nrep=1,
+                                   param1=tmp.mu,
+                                   param2=tmp.sd,cur.gt0)
+            sens.mat[,k]<-tmp.samp[,1]
+          }  else
+          {
+            sens.mat[,k]<-0
+          }
+         
         }
         else
         {

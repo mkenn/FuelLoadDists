@@ -54,7 +54,7 @@ flaming3.id<-c("X100hr_loading_Mgha","X10hr_loading_Mgha","X1hr_loading_Mgha","h
 ############
 
 # this gives the index location for the EVT
-cur.evt<-75
+cur.evt<-35
 
 ###############
 
@@ -106,7 +106,7 @@ sobolFNoCorr<-sobolEff(X1=sens.mats.flame.list[[2]][[cur.evt]][1:(N.samp/2),],
 source("GenerateConsumeLoadingsFileCorrSamp.R") #This function actually switches between consume and fofem to generate input file. 
 cur.evt.num<-evt.vals[cur.evt]
 base.fb<-evtFB.map$FCCSID[evtFB.map$EVT_GP==cur.evt.num]# identify the base fb associated with this evt group
-base.fb<-unique(base.fb[!is.na(base.fb)])
+base.fb<-unique(base.fb[!is.na(base.fb)])[1]
 
 corr.sampF.vals<-data.frame(sobolF$X)
 names(corr.sampF.vals)<-names(sens.mats.flame.list[[1]][[cur.evt]])

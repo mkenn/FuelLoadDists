@@ -1,4 +1,5 @@
 #############
+# Katalina's Edits
 # conduct sensitiviy analysis of
 # CONSUME and FOFEM
 # using both Sobol variance partitioning and
@@ -30,6 +31,8 @@ smolder1.id<-c("X10KhrR_loading_Mgha","X10KhrS_loading_Mgha","X1000hrR_loading_M
 smolder2.id<-c("X10Khr_loading_Mgha","X1000hr_loading_Mgha",
                "GT10KhrR_loading_Mgha","GT10KhrS_loading_Mgha")
 
+smolder3.id<-c("cwd_sound_loading_Mgha","cwd_rotten_loading_Mgha","duff_loading_Mgha")
+
 flaming1.id<-c("X100hr_loading_Mgha","X10hr_loading_Mgha","X1hr_loading_Mgha","herb_loading_Mgha",  
                "lichen_loading_Mgha","litter_loading_Mgha","moss_loading_Mgha","shrub_loading_Mgha" )
 
@@ -54,11 +57,14 @@ flaming3.id<-c("X100hr_loading_Mgha","X10hr_loading_Mgha","X1hr_loading_Mgha","h
 ############
 
 # this gives the index location for the EVT
-cur.evt<-35
+
+  
+
+cur.evt<-10
 
 ###############
 
-N.samp<-100 # number of random samples for SA, set low for now for efficiency and testing
+N.samp<-1000 # number of random samples for SA, set low for now for efficiency and testing
 
 source("../Functions/SimHurdleDist_FN.R")
 source("../Functions/SensitivitySampleWithCorr_FN.R")
@@ -73,7 +79,7 @@ sens.mats.flame.list<-corr.sa.fn(data.file,fuel.ids=flaming3.id,complete.case=TR
                                  rankObj=distributionCustomRankingHurdleNOut,
                                  fitObj=distributionCustomFittingHurdleNOut)
 
-sens.mats.smolder.list<-corr.sa.fn(data.file,fuel.ids=smolder1.id,complete.case=TRUE,
+sens.mats.smolder.list<-corr.sa.fn(data.file,fuel.ids=smolder2.id,complete.case=TRUE,
                                    min.co.occur=30,
                                    evts=evt.vals,EVTCol=EVTCol,start.col=start.col,n.samp=N.samp,
                                    rankObj=distributionCustomRankingHurdleNOut,
@@ -98,9 +104,8 @@ sobolS<-sobolEff(X1=sens.mats.smolder.list[[1]][[cur.evt]][1:(N.samp/2),],
 sobolFNoCorr<-sobolEff(X1=sens.mats.flame.list[[2]][[cur.evt]][1:(N.samp/2),],
                        X2=sens.mats.flame.list[[2]][[cur.evt]][(N.samp/2+1):N.samp,],nboot = 1000)
 
-#compare the Sobol correlation matrix to the original sample
-# cor(sobolF$X)
-# cor(sens.mats.flame.list[[1]][[cur.evt]])
+sobolSNoCorr<-sobolEff(X1=sens.mats.smolder.list[[2]][[cur.evt]][1:(N.samp/2),],
+                       X2=sens.mats.smolder.list[[2]][[cur.evt]][(N.samp/2+1):N.samp,],nboot = 1000)
 
 
 source("GenerateConsumeLoadingsFileCorrSamp.R") #This function actually switches between consume and fofem to generate input file. 
@@ -114,11 +119,13 @@ corr.sampS.vals<-data.frame(sobolS$X)
 names(corr.sampS.vals)<-names(sens.mats.smolder.list[[1]][[cur.evt]])
 Nocorr.sampF.vals<-data.frame(sobolFNoCorr$X)
 names(Nocorr.sampF.vals)<-names(sens.mats.flame.list[[1]][[cur.evt]])
+Nocorr.sampS.vals<-data.frame(sobolSNoCorr$X)
+names(Nocorr.sampS.vals)<-names(sens.mats.smolder.list[[1]][[cur.evt]])
 
 
 ###############
 # first CONSUME
-# create a dataframe that combines baseline values with sobol-sampled ones
+
 consume.fuel.loads<-GenerateFuelInput.fn(corr.sampF.vals,nreps,
                                          fbLoadNames.df,all.fbs,base.fb,change.units=T)
 consume.smolder.fuel.loads<-GenerateFuelInput.fn(corr.sampS.vals,nreps,
@@ -127,89 +134,88 @@ consume.smolder.fuel.loads<-GenerateFuelInput.fn(corr.sampS.vals,nreps,
 consumeNoCorr.fuel.loads<-GenerateFuelInput.fn(Nocorr.sampF.vals,nreps,
                                                fbLoadNames.df,all.fbs,base.fb,change.units=T)
 
-source("CallModsForSA.R") #This function actually switches between consume and fofem to generate input file. 
-consume.sobol.sa.results<-call.emissions.mods(fuel.loads = consume.fuel.loads)
-consume.sobolNoCorr.sa.results<-call.emissions.mods(fuel.loads = consumeNoCorr.fuel.loads)#,outfilename = "consumeNoCorr_output_summary.csv")
+##For Smolder
+consumeNoSCorr.fuel.loads<-GenerateFuelInput.fn(Nocorr.sampS.vals,nreps,
+                                               fbLoadNames.df,all.fbs,base.fb,change.units=T)
+
+source("CallModsForSA.R") 
+consume.sobol.sa.results<-call.emissions.mods(fuel.loads = consume.smolder.fuel.loads)
+consume.sobolNoCorr.sa.results<-call.emissions.mods(fuel.loads = consumeNoSCorr.fuel.loads)#,outfilename = "consumeNoCorr_output_summary.csv")
 
 source("PlotSobolAndPRCCResults.R") # functions to graph Sobol and PRCC results
-# calculate sobol indices for selected model predictions
-#response.vars<-c("PM.Emissions","CO.Emissions","CO2.Emissions","PM25.Emissions")
-# responseFConsume.vars<-c("E_co_F","E_co2_F","E_pm25_F")
-# responseSConsume.vars<-c("E_co_S","E_co2_S","E_pm25_S")
+
 response.vars<-c("pm","co","co2","pm25")
 responseFConsume.vars<-c("e_co_F","e_co2_F","e_pm25_F")
 responseSConsume.vars<-c("e_co_S","e_co2_S","e_pm25_S")
 par(mfrow=c(2,2),mar=c(12,3,1.5,0.5),mgp=c(2,0.5,0),las=1)
 sens.list<-list()
 for(k in 1:length(response.vars))
-{ # here we standardize outputs to the z-score
-  # sens.list[[k]]<-tell(sobolF,
-  #                      (results.sa[,response.vars[k]]-mean(results.sa[,response.vars[k]]))/sd(results.sa[,response.vars[k]]))
-  sens.list[[k]]<-tell(sobolF,consume.sobol.sa.results[,response.vars[k]]) # for non-centered
+{ 
+  sens.list[[k]]<-tell(sobolS,consume.sobol.sa.results[,response.vars[k]]) # for non-centered
   
   
-  rownames(sens.list[[k]]$S)<-names(corr.sampF.vals)
+  rownames(sens.list[[k]]$S)<-names(corr.sampS.vals)
   my.plot.sobol(n.var = nrow(sens.list[[k]]$S),sobol.obj = sens.list[[k]],
-                main.txt=paste("EVT:",evt.vals[cur.evt],"Consume","output:",response.vars[k]))
+                main.txt=paste("EVT:",evt.vals[cur.evt],"Consume Smolder","output:",response.vars[k]))
 }
 par(mfrow=c(2,2),mar=c(12,3,1.5,0.5),mgp=c(2,0.5,0),las=1)
 sensNoCorr.list<-list()
 for(k in 1:length(response.vars))
-{ # here we standardize outputs to the z-score
-  # sens.list[[k]]<-tell(sobolF,
-  #                      (results.sa[,response.vars[k]]-mean(results.sa[,response.vars[k]]))/sd(results.sa[,response.vars[k]]))
-  sensNoCorr.list[[k]]<-tell(sobolF,consume.sobolNoCorr.sa.results[,response.vars[k]]) # for non-centered
+{ 
+  sensNoCorr.list[[k]]<-tell(sobolS,consume.sobolNoCorr.sa.results[,response.vars[k]]) # for non-centered
   
   
-  rownames(sensNoCorr.list[[k]]$S)<-names(corr.sampF.vals)
+  rownames(sensNoCorr.list[[k]]$S)<-names(corr.sampS.vals)
   my.plot.sobol(n.var = nrow(sensNoCorr.list[[k]]$S),sobol.obj = sensNoCorr.list[[k]],
-                main.txt=paste("EVT:",evt.vals[cur.evt],"Consume","output:",response.vars[k]))
+                main.txt=paste("EVT:",evt.vals[cur.evt],"Consume Smolder No Corr","output:",response.vars[k]))
 }
 
 # now the prcc
-# we need to generate a new loadings file with just the X* matrix, unmodified by Sobol
-consume2.fuel.loads<-GenerateFuelInput.fn(sens.mats.flame.list[[1]][[cur.evt]],nreps,
+consume2.fuel.loads<-GenerateFuelInput.fn(sens.mats.smolder.list[[1]][[cur.evt]],nreps,
                                           fbLoadNames.df,all.fbs,base.fb,change.units=T)
-consume2NoCorr.fuel.loads<-GenerateFuelInput.fn(sens.mats.flame.list[[2]][[cur.evt]],nreps,
+consume2NoSCorr.fuel.loads<-GenerateFuelInput.fn(sens.mats.smolder.list[[2]][[cur.evt]],nreps,
                                                 fbLoadNames.df,all.fbs,base.fb,change.units=T)
 consume2.prcc.sa.results<-call.emissions.mods(fuel.loads = consume2.fuel.loads)
-consume2.prccNoCorr.sa.results<-call.emissions.mods(fuel.loads = consume2NoCorr.fuel.loads)
+consume2.prccNoCorr.sa.results<-call.emissions.mods(fuel.loads = consume2NoSCorr.fuel.loads)
 
 
-consumeF.prcc<-list()
-consumeFNoCorr.prcc<-list()
+consumeS.prcc<-list()
+consumeSNoCorr.prcc<-list()
 for(k in 1:length(response.vars))
-  consumeF.prcc[[k]]<-pcc(sens.mats.flame.list[[1]][[cur.evt]],y=consume2.prcc.sa.results[,response.vars[k]],
+  consumeS.prcc[[k]]<-pcc(sens.mats.smolder.list[[1]][[cur.evt]],y=consume2.prcc.sa.results[,response.vars[k]],
                           rank=TRUE,nboot=1000)
 for(k in 1:length(response.vars))
-  consumeFNoCorr.prcc[[k]]<-pcc(sens.mats.flame.list[[2]][[cur.evt]],y=consume2.prccNoCorr.sa.results[,response.vars[k]],
+  consumeSNoCorr.prcc[[k]]<-pcc(sens.mats.smolder.list[[2]][[cur.evt]],y=consume2.prccNoCorr.sa.results[,response.vars[k]],
                                 rank=TRUE,nboot=1000)
 par(mfrow=c(2,2),mar=c(12,3,1.5,0.5),mgp=c(2,0.5,0),las=1)
 for(k in 1:length(response.vars))
-  my.plot.prcc(n.var=length(flaming3.id),prcc.obj = consumeF.prcc[[k]],
-               main.txt=paste("EVT:",evt.vals[cur.evt],"Consume","output:",response.vars[k]))
+  my.plot.prcc(n.var=length(smolder2.id),prcc.obj = consumeS.prcc[[k]],
+               main.txt=paste("EVT:",evt.vals[cur.evt],"Consume Smolder","output:",response.vars[k]))
 
 par(mfrow=c(2,2),mar=c(12,3,1.5,0.5),mgp=c(2,0.5,0),las=1)
 for(k in 1:length(response.vars))
-  my.plot.prcc(n.var=length(flaming3.id),prcc.obj = consumeFNoCorr.prcc[[k]],
-               main.txt=paste("EVT:",evt.vals[cur.evt],"Consume No Corr","output:",response.vars[k]))
+  my.plot.prcc(n.var=length(smolder2.id),prcc.obj = consumeSNoCorr.prcc[[k]],
+               main.txt=paste("EVT:",evt.vals[cur.evt],"Consume Smolder No Corr","output:",response.vars[k]))
 
 # Start looking at graphing the emissions and determining uncertainty intervals
 
 boxplot(results2.sa[,response.vars[k]]) # CO2 takes the cake!
 
+
+
+########Need to modify FOFEM for Smolder?
 #########
 # now FOFEM
-#setwd("fofem")
-base.fofem<-read.csv("fofem/FOFEM_6_May12013_MCKUpdate2.csv") 
+##setwd("c:/Research/FuelLoadDists/ConsumeSARProj/fofem")
+base.fofem<-read.csv("FOFEM_6_May12013_MCKUpdate2.csv") 
 # note, this file has the header--our final file 
 # note also this has the fuel moistures matched to consume env input as
 # best we can. If that changes, so should this
 base.fofem.use<-base.fofem[1,]
 
-fofem.fuel.loads<-GenerateFuelInput.fn(corr.sampF.vals,nreps,fbLoadNames.df,
+fofem.fuel.loads<-GenerateFuelInput.fn(corr.sampS.vals,nreps,fbLoadNames.df,
                                        all.fbs,base.fb,base.fofem=base.fofem.use,change.units=T,mod="F")
-fofemNoCorr.fuel.loads<-GenerateFuelInput.fn(Nocorr.sampF.vals,nreps,fbLoadNames.df,
+fofemNoCorrS.fuel.loads<-GenerateFuelInput.fn(Nocorr.sampS.vals,nreps,fbLoadNames.df,
                                              all.fbs,base.fb,base.fofem=base.fofem.use,change.units=T,mod="F")
 results.fofem.sa<-call.emissions.mods(infilename="FuelLoadInputSA.csv",mod="F",fuel.loads=fofem.fuel.loads,
                                       env.in.name="sample_consume_input.csv",envfilename="EnvInputSA.csv",

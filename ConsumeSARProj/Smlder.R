@@ -207,7 +207,7 @@ boxplot(results2.sa[,response.vars[k]]) # CO2 takes the cake!
 #########
 # now FOFEM
 ##setwd("c:/Research/FuelLoadDists/ConsumeSARProj/fofem")
-base.fofem<-read.csv("FOFEM_6_May12013_MCKUpdate2.csv") 
+base.fofem<-read.csv("fofem/FOFEM_6_May12013_MCKUpdate2.csv") 
 # note, this file has the header--our final file 
 # note also this has the fuel moistures matched to consume env input as
 # best we can. If that changes, so should this

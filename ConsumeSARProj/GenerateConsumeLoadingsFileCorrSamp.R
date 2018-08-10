@@ -65,7 +65,6 @@ GenerateFuelInput.fn<-function(corr.samp.vals,nreps=NA,fbLoadNames.df,all.fbs,ba
   }
   if(mod=="F")
   {
-    setwd("fofem")
     cur.fofem<-base.fofem[1,]
     match2.names<-fbLoadNames.df[!is.na(fbLoadNames.df[,4]),1] # for fofem, to move between consume names and fofem names
     match2a.names<-unique(match2.names[!is.na(match2.names)])

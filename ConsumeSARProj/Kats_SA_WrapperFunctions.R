@@ -87,40 +87,37 @@ ModSA_Wrapper.fn<-function(corr.samp.vals.sobol,corr.samp.vals.prcc,nreps=NA,fbL
               sobolFfuelLoads=sobolF.fuel.loads,prccFfuelLoads=prccF.fuel.loads))
 }
 
-graphConsumeResult_Wrapper.fn<-function(type, fuels.mat, response.vars, sobolResults, corr.samp.vals.sobol, n.var=6, sobol.obj, x.lab="", y.lab="",y.lim=c(-0.15,1),
-                                 main.txt, corr.samp.vals.prcc, prccCResults, prcc.obj) 
-{
-  switch(type, sobol = 1, PRCC = 2)
-  if(type == 1) { ##meaning sobol 
-    sens.consume.list<-list()
-    for(k in 1:length(response.vars))
-    { # here we standardize outputs to the z-scoore
-      # sens.list[[k]]<-tell(sobolF,
-      #                      (results.fofem.sa[,responseF.vars[k]]-mean(results.fofem.sa[,responseF.vars[k]]))/sd(results.fofem.sa[,responseF.vars[k]]))
-      sens.consume.list[[k]]<-tell(fuels.mat, sobolResults)
-      # sens.list[[k]]<-tell(sobolF,results.fofem.sa[,responseF.vars[k]])
-      rownames(sens.consume.list[[k]]$S)<-names(corr.samp.vals.sobol)
-      my.plot.sobol(n.var = 6,sobol.obj = sens.consume.list[[k]],
-                    main.txt=paste("EVT:",evt.vals[cur.evt],"Consume","Sensitivity index output:",responseFConsume.vars[k]))
-    }
-    
-    return(sens.consume.list = sens.consume.list)
-  }
-  
-  if(type == 2) { ##meaning PRCC
-    consumeF.prcc<-list()
-    for(k in 1:length(response.vars))
-    { # here we standardize outputs to the z-scoore
-      # sens.list[[k]]<-tell(sobolF,
-      #                      (results.fofem.sa[,responseF.vars[k]]-mean(results.fofem.sa[,responseF.vars[k]]))/sd(results.fofem.sa[,responseF.vars[k]]))
-      consumeF.prcc[[k]]<-pcc(corr.samp.vals.prcc,
-                              y=prccCResults,
-                              rank=TRUE,nboot=1000)
-      # sens.list[[k]]<-tell(sobolF,results.fofem.sa[,responseF.vars[k]])
-      my.plot.prcc(n.var=6,prcc.obj = consumeF.prcc[[k]],
-                   main.txt=paste("EVT:",evt.vals[cur.evt],"Consume","Partial rank correlation coefficient output:",responseFConsume.vars[k]))
-    }
-    return(consumeF.prcc = consumeF.prcc)
-  }
-}
 
+graphResult_Wrapper.fn<-function(analysisType, modelListType,modelResponse.vars,mats.sobol.obj = NULL, sobolResults = NULL, #def null
+                                 corr.samp.vals.sobol=NULL, n.var=6,sobol.obj=NULL,x.lab="",y.lab="",y.lim=c(-0.15,1),
+                                 main.txt, corr.samp.vals.prcc = NULL ,prccCResults = NULL,rank=TRUE,nboot=1000, prcc.obj = NULL, evt.vals = NULL) #main text 
+{ #begin function
+
+  if(analysisType == "sobol") { #Sobol Block
+    modelListType<-list()
+        for(k in 1:length(modelResponse.vars))
+        { 
+          modelListType[[k]]<-tell(mats.sobol.obj,sobolResults[,modelResponse.vars[k]])
+          rownames(modelListType[[k]]$S)<-names( corr.samp.vals.sobol)
+          my.plot.sobol(n.var = 6,sobol.obj = modelListType[[k]],
+                        main.txt=paste("EVT:",evt.vals,x.lab,y.lab,modelResponse.vars[k])) #pass EVT...etc....
+        }
+        
+        return(modelListType=modelListType)
+  } #End Sobol Block
+  
+  ######################## PRCC #####################################################  
+  if(analysisType == "PRCC") { #PRCC Block
+      modelListType<-list()
+        for(k in 1:length(modelResponse.vars))
+        { 
+          modelListType[[k]]<-pcc(corr.samp.vals.prcc,
+                                  y=prccCResults[,modelResponse.vars[k]],
+                                  rank=TRUE,nboot=1000)
+          my.plot.prcc(n.var=6,prcc.obj = modelListType[[k]],
+                       main.txt=paste("EVT:",evt.vals[cur.evt]," ","",modelResponse.vars[k]))
+        }
+        return(modelListType=modelListType)
+      } #End PRCC BLock
+
+  } #End funtion

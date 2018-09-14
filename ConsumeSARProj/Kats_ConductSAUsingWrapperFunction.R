@@ -36,14 +36,40 @@ flaming1.id<-c("X100hr_loading_Mgha","X10hr_loading_Mgha","X1hr_loading_Mgha","h
 flaming2.id<-c("X100hr_loading_Mgha","X10hr_loading_Mgha","X1hr_loading_Mgha","herb_loading_Mgha",  
                "litter_loading_Mgha","shrub_loading_Mgha" )
 
-N.samp<-100 # number of random samples for SA, set low for now for efficiency and testing
+## Generic file name, obriviated to 'G' to keep code small
+G_C ="sample_consume5_input.csv"
+G_F = "FOFEM_FlamingSAInput1.csv"
 
-responseFConsume.vars<-c("e_co_f","e_co2_f","e_pm25_f")
-responseSConsume.vars<-c("e_co_s","e_co2_s","e_pm25_s")
-responseFFOFEM.vars<-c("COF","CO2F","PM25F")
-responseSFOFEM.vars<-c("COS","CO2S","PM25S")
+##Creates a vector of length 75 and fills it with generic input file name 
+env.consume.80.infile.names<- rep(G_C, 75)
+env.consume.97.infile.names<- rep(G_C, 75)
+env.fofem.80.infile.names<- rep(G_F, 75)
+env.fofem.97.infile.names<- rep(G_F, 75)
 
+##These are the locations in the evt vector that are of interest that need a different file name
+v1<-c(8, 15, 19, 25, 36, 39, 49, 58, 59)
+consume80Names<-c("../ConsumeSARProj/consume.Infile/Big Sagebrush Shrubland and Steppe 80p.csv", "../ConsumeSARProj/consume.Infile/Grassland 80p.csv","../ConsumeSARProj/consume.Infile/Douglas Fir Ponderosa Pine Lodgepole Forest and Woodland 80p.csv",
+                  "../ConsumeSARProj/consume.Infile/Ponderosa Pine Forest Woodland and Savanna 80p.csv", "../ConsumeSARProj/consume.Infile/Mixed Grass Prairie 80p.csv","../ConsumeSARProj/consume.Infile/Beech Maple Basswood Forest 80p.csv", 
+                  "../ConsumeSARProj/consume.Infile/Eastern Floodplain Forests 80p.csv","../ConsumeSARProj/consume.Infile/Yellow Birch Sugar Maple Forest 80p.csv","../ConsumeSARProj/consume.Infile/Peatland Forests 80p.csv")
+consume97Names<-c("../ConsumeSARProj/consume.Infile/Big Sagebrush Shrubland and Steppe 97p.csv", "../ConsumeSARProj/consume.Infile/Grassland 97p.csv","../ConsumeSARProj/consume.Infile/Douglas Fir Ponderosa Pine Lodgepole Forest and Woodland 97p.csv",
+                  "../ConsumeSARProj/consume.Infile/Ponderosa Pine Forest Woodland and Savanna 97p.csv", "../ConsumeSARProj/consume.Infile/Mixed Grass Prairie 97p.csv","../ConsumeSARProj/consume.Infile/Beech Maple Basswood Forest 97p.csv", 
+                  "../ConsumeSARProj/consume.Infile/Eastern Floodplain Forests 97p.csv","../ConsumeSARProj/consume.Infile/Yellow Birch Sugar Maple Forest 97p.csv","../ConsumeSARProj/consume.Infile/Peatland Forests 97p.csv")
+fofem80Names<-c("..ConsumeSARProj/fofem.infile/Big Sagebrush Shrubland and Steppe 80p.csv", "..ConsumeSARProj/fofem.infile/Grassland 80p.csv","..ConsumeSARProj/fofem.infile/Douglas Fir Ponderosa Pine Lodgepole Forest and Woodland 80p.csv",
+                "..ConsumeSARProj/fofem.infile/Ponderosa Pine Forest Woodland and Savanna 80p.csv", "..ConsumeSARProj/fofem.infile/Mixed Grass Prairie 80p.csv","..ConsumeSARProj/fofem.infile/Beech Maple Basswood Forest 80p.csv", 
+                "..ConsumeSARProj/fofem.infile/Eastern Floodplain Forests 80p.csv","..ConsumeSARProj/fofem.infile/Yellow Birch Sugar Maple Forest 80p.csv","..ConsumeSARProj/fofem.infile/Peatland Forests 80p.csv")
+fofem97Names<-c("..ConsumeSARProj/fofem.infile/Big Sagebrush Shrubland and Steppe 97p.csv", "..ConsumeSARProj/fofem.infile/Grassland 97p.csv","..ConsumeSARProj/fofem.infile/Douglas Fir Ponderosa Pine Lodgepole Forest and Woodland 97p.csv",
+                "..ConsumeSARProj/fofem.infile/Ponderosa Pine Forest Woodland and Savanna 97p.csv", "..ConsumeSARProj/fofem.infile/Mixed Grass Prairie 97p.csv","..ConsumeSARProj/fofem.infile/Beech Maple Basswood Forest 97p.csv", 
+                "..ConsumeSARProj/fofem.infile/Eastern Floodplain Forests 97p.csv","..ConsumeSARProj/fofem.infile/Yellow Birch Sugar Maple Forest 97p.csv","..ConsumeSARProj/fofem.infile/Peatland Forests 97p.csv")
 
+##take the vector and replace the locations of interest witht the corresponding file names
+env.consume.80.infile.names[v1] = consume80Names
+env.consume.97.infile.names[v1]= consume97Names
+env.fofem.80.infile.names[v1]= fofem80Names
+env.fofem.97.infile.names[v1]= fofem97Names
+
+#list for fofem and consume that contain both 80 and 97 percentile 
+consume.env.infile.names.list<-list(env.consume.80.infile.names, env.consume.97.infile.names)
+fofem.env.infile.names.list<-list(env.fofem.80.infile.names,env.fofem.97.infile.names)
 #######
 # flaming first
 #######
@@ -66,14 +92,17 @@ for(m in 1:length(evt.vals)) #set m
     # prcc and sobol. Below uses correlated sample inputs
     if(!is.na(fuels.flaming.mats)[1])
     {
+      for(j in 1:2) {
+        
+      
       flaming.sa.results<-ModSA_Wrapper.fn(corr.samp.vals.sobol = fuels.flaming.mats$corr.samp.vals.sobol,
                                            corr.samp.vals.prcc = fuels.flaming.mats$corr.samp.vals.prcc,nreps = nreps,
                                            fbLoadNames.df=fbLoadNames.df,all.fbs=all.fbs,evtFB.map=evtFB.map,
                                            cur.evt.num = cur.evt.num,change.units=T,
                                            infilename="FuelLoadInputSA.csv",mod="F",phase = "F",
-                                           env.in.name="sample_consume5_input.csv",envfilename="EnvInputSA.csv",
-                                           fofem.filename="FOFEM_FlamingSAInput1.csv",newwdF="fofem",oldwdF="../",
-                                           newwdC="consume5/apps-consume/",oldwdC="../../",base.fofem=base.fofem.use)
+                                           env.in.name=consume.env.infile.names.list[[v]][m], envfilename="EnvInputSA.csv",
+                                           fofem.filename=fofem.env.infile.names.list[[v]][m],newwdF="fofem",oldwdF="../",
+                                           newwdC="consume5/apps-consume/",oldwdC="../../",base.fofem=base.fofem.use)     ##fofem.inname
       ###########
       # now graph results
       ###########
@@ -128,7 +157,7 @@ for(m in 1:length(evt.vals)) #set m
 
       }
     }
-
+  }
 }
 
 dev.off()

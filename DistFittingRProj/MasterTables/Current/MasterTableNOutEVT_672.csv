@@ -4,11 +4,12 @@
 "os_loading_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "tree_crown_loading_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "tree_loading_summed_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"tree_loading_entered_Mgha","lnormLL",32,0.03,3.325,0.297,0.089,1.667,0.203,0.122,0.071,0.033,"Good"
-"tree_loading_Mgha","lnormLL",32,0.03,3.325,0.297,0.089,1.667,0.209,0.125,0.076,0.033,"Good"
+"tree_loading_entered_Mgha","lnormLL",32,0.03,3.325,0.293,0.088,1.667,0.209,0.125,0.078,0.033,"Good"
+"tree_loading_Mgha","lnormLL",32,0.03,3.325,0.293,0.088,1.667,0.209,0.125,0.077,0.033,"Good"
 "snag_loading_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"shrub_loading_Mgha","gammaLL",32,0.03,1.973,0.551,0.279,1.062,0.333,0.313,0.885,0.026,"Good"
-"herb_loading_Mgha","gammaLL",33,0,2.552,0.692,0.271,3.619,1.084,0.3,0,0.048,"Good"
+"shrub_loading_Mgha","gammaLL",32,0.03,1.973,0.532,0.27,1.062,0.333,0.314,0.896,0.026,"Good"
+"herb_loading_Mgha","gammaLL",33,0,2.552,0.701,0.275,3.619,1.11,0.307,0,0.048,"Good"
+"herb_percentlive",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "X1hr_loading_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "X10hr_loading_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "X100hr_loading_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
@@ -37,6 +38,6 @@
 "lichen_loading_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "moss_loading_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "litter_depth_cm",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"litter_loading_Mgha","gammaLL",31,0.031,1.342,0.366,0.272,0.311,0.104,0.335,0.905,0.029,"Good"
+"litter_loading_Mgha","gammaLL",31,0.031,1.342,0.367,0.274,0.311,0.105,0.336,0.909,0.029,"Good"
 "duff_depth_cm",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "duff_loading_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA

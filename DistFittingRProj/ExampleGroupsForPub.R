@@ -28,7 +28,7 @@
 
 
 
-load("Workspaces/HurdleCustomFitsNoZeroWNoOut.RData") # estimated distributions
+load("Workspaces/Current/HurdleCustomFitsNoZeroWNoOut.RData") # estimated distributions
 library(fitdistrplus)
 source("../Functions/Dist_Fit_Graph_Pub_FN.R")
 

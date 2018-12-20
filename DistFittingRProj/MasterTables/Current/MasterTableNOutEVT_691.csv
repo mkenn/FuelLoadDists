@@ -9,12 +9,13 @@
 "snag_loading_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "shrub_loading_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "herb_loading_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"herb_percentlive",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "X1hr_loading_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "X10hr_loading_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "X100hr_loading_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "fwd_loading_summed_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "fwd_loading_entered_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"fwd_loading_Mgha","gammaLL",41,0.047,0.565,0.116,0.206,0.168,0.055,0.325,0.001,0.049,"Good"
+"fwd_loading_Mgha","gammaLL",41,0.047,0.565,0.118,0.208,0.168,0.054,0.324,0.001,0.049,"Good"
 "X1000hrS_loading_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "X1000hrR_loading_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "X1000hr_loading_summed_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA

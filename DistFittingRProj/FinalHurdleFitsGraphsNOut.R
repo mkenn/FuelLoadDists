@@ -81,9 +81,11 @@ for(i in 1:length(evt.vals))
        tmp.which<-which(as.character(fuel.names$DataBaseInR)==as.character(distributionCustomRankingHurdleNOut[[i]]$fueltype[j]))
        if(length(tmp.which)>0)
        {
-        postscript(file=paste("HurdleFitGraphs/RemoveOutliers/WithQQAxis/NOutEVT",evt.vals[i],"fuelRow",j,".eps",sep=""),
-                   horizontal=FALSE,height=3.5,width=4,onefile=FALSE)
-       cur.distr<-switch(distributionCustomRankingHurdleNOut[[i]]$dist1.fit[j],
+        # postscript(file=paste("HurdleFitGraphs/RemoveOutliers/WithQQAxis/NOutEVT",evt.vals[i],"fuelRow",j,".eps",sep=""),
+        #            horizontal=FALSE,height=3.5,width=4,onefile=FALSE)
+         png(file=paste("HurdleFitGraphs/RemoveOutliers/WithQQAxis/NOutEVT",evt.vals[i],"fuelRow",j,".png",sep=""))#,
+                  #  horizontal=FALSE,height=3.5,width=4,onefile=FALSE)
+         cur.distr<-switch(distributionCustomRankingHurdleNOut[[i]]$dist1.fit[j],
                          gammaLL="gamma",
                          lnormLL="lnorm",
                          normLL="norm",

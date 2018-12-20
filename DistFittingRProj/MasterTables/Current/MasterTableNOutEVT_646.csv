@@ -8,7 +8,8 @@
 "tree_loading_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "snag_loading_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "shrub_loading_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"herb_loading_Mgha","gammaLL",46,0,2.435,0.563,0.231,1.506,0.384,0.255,0.065,0.016,"Good"
+"herb_loading_Mgha","gammaLL",46,0,2.435,0.55,0.226,1.506,0.372,0.247,0.056,0.016,"Good"
+"herb_percentlive",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "X1hr_loading_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "X10hr_loading_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "X100hr_loading_Mgha",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA

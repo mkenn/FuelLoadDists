@@ -43,6 +43,8 @@ smolder2.id<-c("X10Khr_loading_Mgha","X1000hr_loading_Mgha",
 #smolder2.id<-c(3,7,16,17) # because we don't seem to have a total column for >10K
 # "X10Khr_loading_Mgha"   "X1Khr_loading_Mgha"    "GT10KhrR_loading_Mgha" "GT10KhrS_loading_Mgha"
 
+smolder3.id<-c("cwd_sound_loading_Mgha","cwd_rotten_loading_Mgha","duff_loading_Mgha")
+
 #flaming1.id<-c(1,2,6,18,20,22,23,26)
 flaming1.id<-c("X100hr_loading_Mgha","X10hr_loading_Mgha","X1hr_loading_Mgha","herb_loading_Mgha",  
   "lichen_loading_Mgha","litter_loading_Mgha","moss_loading_Mgha","shrub_loading_Mgha" )
@@ -82,12 +84,12 @@ source("../Functions/SensitivitySampleWithCorr_FN.R")
 # samples from entire distribution, creating a data matrix with
 # correlation structure that matches that for the database for that EVT--the matrix X*
 # also includes the uncorrelated matrix X for comparison
-sens.mats.flame.list<-corr.sa.fn(data.file,fuel.ids=flaming3.id,complete.case=TRUE,
+sens.mats.flame.list<-corr.sa.fn(data.file,fuel.ids=flaming2.id,complete.case=TRUE,
                                  min.co.occur=30,
                                  evts=evt.vals,EVTCol=EVTCol,start.col=start.col,n.samp=N.samp,
                                  rankObj=distributionCustomRankingHurdleNOut,
                                  fitObj=distributionCustomFittingHurdleNOut)
-sens.mats.smolder.list<-corr.sa.fn(data.file,fuel.ids=smolder1.id,complete.case=TRUE,
+sens.mats.smolder.list<-corr.sa.fn(data.file,fuel.ids=smolder3.id,complete.case=TRUE,
                                  min.co.occur=30,
                                  evts=evt.vals,EVTCol=EVTCol,start.col=start.col,n.samp=N.samp,
                                  rankObj=distributionCustomRankingHurdleNOut,
@@ -118,7 +120,7 @@ sobolFNoCorr<-sobolEff(X1=sens.mats.flame.list[[2]][[cur.evt]][1:(N.samp/2),],
 source("GenerateConsumeLoadingsFileCorrSamp.R") #This function actually switches between consume and fofem to generate input file. 
 cur.evt.num<-evt.vals[cur.evt]
 base.fb<-evtFB.map$FCCSID[evtFB.map$EVT_GP==cur.evt.num]# identify the base fb associated with this evt group
-base.fb<-unique(base.fb[!is.na(base.fb)])
+base.fb<-unique(base.fb[!is.na(base.fb)])[1]
 
 corr.sampF.vals<-data.frame(sobolF$X)
 names(corr.sampF.vals)<-names(sens.mats.flame.list[[1]][[cur.evt]])
@@ -132,13 +134,14 @@ names(Nocorr.sampF.vals)<-names(sens.mats.flame.list[[1]][[cur.evt]])
 consume.fuel.loads<-GenerateFuelInput.fn(corr.sampF.vals,nreps,
                                               fbLoadNames.df,all.fbs,base.fb,change.units=T)
 consume.smolder.fuel.loads<-GenerateFuelInput.fn(corr.sampS.vals,nreps,
-                                         fbLoadNames.df,all.fbs,base.fb,change.units=T)
+                                         fbLoadNames.df,all.fbs,base.fb,change.units=T,phase = "S")
 
 consumeNoCorr.fuel.loads<-GenerateFuelInput.fn(Nocorr.sampF.vals,nreps,
                                          fbLoadNames.df,all.fbs,base.fb,change.units=T)
 
 source("CallModsForSA.R") #This function actually switches between consume and fofem to generate input file. 
 consume.sobol.sa.results<-call.emissions.mods(fuel.loads = consume.fuel.loads)
+consume.sobol.sa.smolder.results<-call.emissions.mods(fuel.loads = consume.smolder.fuel.loads)
 consume.sobolNoCorr.sa.results<-call.emissions.mods(fuel.loads = consumeNoCorr.fuel.loads)#,outfilename = "consumeNoCorr_output_summary.csv")
 
 source("PlotSobolAndPRCCResults.R") # functions to graph Sobol and PRCC results
@@ -162,6 +165,22 @@ for(k in 1:length(response.vars))
   my.plot.sobol(n.var = nrow(sens.list[[k]]$S),sobol.obj = sens.list[[k]],
                 main.txt=paste("EVT:",evt.vals[cur.evt],"Consume","output:",response.vars[k]))
 }
+
+par(mfrow=c(2,2),mar=c(12,3,1.5,0.5),mgp=c(2,0.5,0),las=1)
+sens.list<-list()
+for(k in 1:length(response.vars))
+{ # here we standardize outputs to the z-score
+  # sens.list[[k]]<-tell(sobolF,
+  #                      (results.sa[,response.vars[k]]-mean(results.sa[,response.vars[k]]))/sd(results.sa[,response.vars[k]]))
+  sens.list[[k]]<-tell(sobolS,consume.sobol.sa.smolder.results[,response.vars[k]]) # for non-centered
+  
+  
+  rownames(sens.list[[k]]$S)<-names(corr.sampS.vals)
+  my.plot.sobol(n.var = nrow(sens.list[[k]]$S),sobol.obj = sens.list[[k]],
+                main.txt=paste("EVT:",evt.vals[cur.evt],"Consume","output:",response.vars[k]))
+}
+
+
 par(mfrow=c(2,2),mar=c(12,3,1.5,0.5),mgp=c(2,0.5,0),las=1)
 sensNoCorr.list<-list()
 for(k in 1:length(response.vars))

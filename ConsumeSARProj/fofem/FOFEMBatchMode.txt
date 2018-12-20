@@ -1,0 +1,49 @@
+FOFEM Example input file format, csv (current file is "FOFEM_FlamingSAInput1.csv")
+
+Here are the column names (variables)
+Stand	Litter_tpa	1hr 	10hr	10FM	100hr	3S	6S	9S	20S	3R	6R	9R	20R	1000FM	Duff_tpa	DuffFM	DuffDepth	Herb	Shrub	Foliage	Branch	%Burn	Region	Group	Season	Category
+
+Here is an example csv file (note that the column names are not necessary for the input file
+#1k-SizeClass
+110001,12.7103484590147,0,1.04968105743025,20,0,1,0,5,0,0.5,0,1,0,50,7.92,80,1,0.226069649959207,0,0,0,0,"InteriorWest","WhiPinHem","Summer","Natural"
+110002,3.96952649005042,0.283792914909082,0.363071072787189,20,0,1,0,5,0,0.5,0,1,0,50,7.92,80,1,0.163146563951767,0,0,0,0,"InteriorWest","WhiPinHem","Summer","Natural"
+110003,2.81701093445899,0.0150657777574933,0.177812285561601,20,1.51655469095262,1,0,5,0,0.5,0,1,0,50,7.92,80,1,0.316275178684563,0,0,0,0,"InteriorWest","WhiPinHem","Summer","Natural"
+
+
+And in Excel the csv looks like:
+
+#1k-SizeClass																										
+110001	12.71035	0	1.049681	20	0	1	0	5	0	0.5	0	1	0	50	7.92	80	1	0.22607	0	0	0	0	InteriorWest	WhiPinHem	Summer	Natural
+110002	3.969526	0.283793	0.363071	20	0	1	0	5	0	0.5	0	1	0	50	7.92	80	1	0.163147	0	0	0	0	InteriorWest	WhiPinHem	Summer	Natural
+110003	2.817011	0.015066	0.177812	20	1.516555	1	0	5	0	0.5	0	1	0	50	7.92	80	1	0.316275	0	0	0	0	InteriorWest	WhiPinHem	Summer	Natural
+
+
+The header with #1k-SizeClass tells FOFEM that the = 1000-k hour fuels are separated by size class, and rotten v. sound
+
+Some of the environmental variables are defined in this file--any of the columns labeled FM (for fuel moisture). Not sure whether more environmental variables can be defined.
+
+To call FOFEM in batch mode, open a command console and navigate to the directory in which these files are found. The system call is:
+
+FOF_GUI C fuelLoadFilename ConE-Out.txt ConE-run.txt ConE-Err.txt H
+
+FOF_GUI calls the fofem program
+
+C = ? (need to check)
+
+fuelLoadFilename gives the name of the fuels input file, the first file given above
+
+ConE-Out.txt is the name of the file output by FOFEM. This is the file that contains the emissions estimates for each fuel loading combination and will be read into R for analysis
+
+ConE-run.txt is the name of the file that summarizes the status of the FOFEM run 
+
+ConE-Err.txt is the name of the file that documents any errors in the FOFEM run. If this file is empty, there are no errors
+
+H = ? (need to check)
+
+Note that the ConE* files are overwritten each new run of FOFEM batch. If you want to retain multiple batches, these should be renamed each time fofem is called, either by renaming the existing file or the filename in the system call.
+
+Note also that if FOFEM fails, there is no error written to screen. The only way to know if it fails is to inspect the Err file.
+
+So, for the example files the call is:
+
+> FOF_GUI C FOFEM_FlamingSAInput1.csv ConE-Out.txt ConE-run.txt ConE-Err.txt H

@@ -68,6 +68,14 @@ for(i in 1:length(evt.vals))
               distribution.masterTableNOut[[i]]$distr.fit.class[j]<-"Poor"
             }
           }
+          else
+          {
+            if(distribution.masterTableNOut[[i]]$equivalence.val[j]<=lower.ep.thresh)
+              distribution.masterTableNOut[[i]]$distr.fit.class[j]<-"Good"
+            else
+              distribution.masterTableNOut[[i]]$distr.fit.class[j]<-"Poor"
+            
+          }
         }
         else # the the number is [30,100)
         {
@@ -162,3 +170,96 @@ for(j in 1:length(fuel.cols))
 }
 dev.off()
 
+
+#########
+# now report summary statistics for each EVT group and fuel loading type
+#########
+
+sum.stats<-data.frame(matrix(NA,ncol=length(cur.cols)*2+1,nrow=length(evt.vals)))
+sum.stats.mean<-sum.stats.sd<-sum.stats.prop0<-sum.stats.n<-data.frame(matrix(NA,ncol=length(cur.cols)+1,nrow=length(evt.vals)))
+sum.stats[,1]<-evt.vals
+sum.stats.mean[,1]<-evt.vals
+sum.stats.sd[,1]<-evt.vals
+sum.stats.prop[,1]<-evt.vals
+sum.stats.n[,1]<-evt.vals
+
+cols1<-seq(3,85,2)
+
+
+for(i in 1:length(evt.vals))
+{
+  tmp.df<-data.file[data.file[,EVTCol]==evt.vals[i],]
+  for(j in cur.cols)
+  {
+    tmp.loads<-tmp.df[,j]
+    tmp2.loads<-tmp.loads[!is.na(tmp.loads)]
+    if(length(tmp2.loads)>0)
+    {
+      n0<-length(tmp2.loads[tmp2.loads==0])
+      nAll<-length(tmp2.loads)
+      sum.stats[i,2]<-round(n0/nAll,digits=3)
+      sum.stats.prop0[i,j-9]<-round(n0/nAll,digits=3)
+      tmp3.loads<-tmp2.loads[tmp2.loads>0]
+      sum.stats.n[i,j-9]<-length(tmp3.loads)
+      
+      if(length(tmp3.loads)>=30)
+      {
+        sum.stats[i,cols1[j-10]]<-round(mean(tmp3.loads),digits=2)
+        sum.stats[i,cols1[j-10]+1]<-round(sd(tmp3.loads),digits=2)
+        sum.stats.mean[i,j-9]<-round(mean(tmp3.loads),digits=2)
+        sum.stats.sd[i,j-9]<-round(sd(tmp3.loads),digits=2)
+      }
+    }
+  }
+}
+
+names(sum.stats.mean)<-c("EVT",names(data.file)[cur.cols])
+names(sum.stats.sd)<-c("EVT",names(data.file)[cur.cols])
+names(sum.stats.prop0)<-c("EVT",names(data.file)[cur.cols])
+names(sum.stats.n)<-c("EVT",names(data.file)[cur.cols])
+
+#sum.stats.sd/sum.stats.mean
+
+evt.ew<-c(655,682,666) # 
+evt.cf<-c(683,758,631) #peatland, black spruce woodland, pp
+evt.cf2<-c(683,631,625) # black spruce woodland, pp, df/pp/lp
+
+fuels.plot<-c("tree_loading_Mgha","cwd_loading_Mgha","duff_loading_Mgha","litter_loading_Mgha")
+
+tabForPub.df<-data.frame(EVT=rep(c(evt.ew,evt.cf2),each=length(fuels.plot)),fuelType=rep(fuels.plot,6),prop0=NA,nGT0=NA,mean=NA,sd=NA,CV=NA)
+
+tmp.id<-0
+for(i in c(evt.ew,evt.cf2))
+{
+  tmp.line<-which(evt.vals==i)
+  for(j in fuels.plot)
+  {
+    tmp.id<-tmp.id+1
+    tabForPub.df$prop0[tmp.id]<-sum.stats.prop0[tmp.line,j]
+    tabForPub.df$nGT0[tmp.id]<-sum.stats.n[tmp.line,j]
+    tabForPub.df$mean[tmp.id]<-sum.stats.mean[tmp.line,j]
+    tabForPub.df$sd[tmp.id]<-sum.stats.sd[tmp.line,j]
+    tabForPub.df$CV[tmp.id]<-round(sum.stats.sd[tmp.line,j]/sum.stats.mean[tmp.line,j],digits=2)
+    
+  }
+}
+  
+write.csv(tabForPub.df,file="SummaryLoadingTableForPub.csv",row.names = FALSE)  
+
+tab2ForPub.df<-data.frame(EVT=rep(c(evt.ew,evt.cf2),each=length(fuels.plot)),fuelType=rep(fuels.plot,6),prop0=NA,nGT0=NA,mean=NA,sd=NA,CV=NA)
+
+tmp.id<-0
+for(i in c(evt.ew,evt.cf2))
+{
+  tmp.line<-which(evt.vals==i)
+  for(j in fuels.plot)
+  {
+    tmp.id<-tmp.id+1
+    tabForPub.df$prop0[tmp.id]<-sum.stats.prop0[tmp.line,j]
+    tabForPub.df$nGT0[tmp.id]<-sum.stats.n[tmp.line,j]
+    tabForPub.df$mean[tmp.id]<-sum.stats.mean[tmp.line,j]
+    tabForPub.df$sd[tmp.id]<-sum.stats.sd[tmp.line,j]
+    tabForPub.df$CV[tmp.id]<-round(sum.stats.sd[tmp.line,j]/sum.stats.mean[tmp.line,j],digits=2)
+    
+  }
+}

@@ -36,6 +36,8 @@ names(data.file)[smolder1.id+start.col-1]
 smolder2.id<-c(3,7,16,17) # because we don't seem to have a total column for >10K
 # "X10Khr_loading_Mgha"   "X1Khr_loading_Mgha"    "GT10KhrR_loading_Mgha" "GT10KhrS_loading_Mgha"
 
+smolder3.id<-
+
 flaming1.id<-c(1,2,6,18,20,22,23,26)
 #  "X100hr_loading_Mgha" "X10hr_loading_Mgha"  "X1hr_loading_Mgha"   "herb_loading_Mgha"  
 # "lichen_loading_Mgha" "litter_loading_Mgha" "moss_loading_Mgha"   "shrub_loading_Mgha" 

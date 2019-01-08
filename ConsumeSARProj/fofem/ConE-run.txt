@@ -1,8 +1,8 @@
-Stands: 100 
+Stands: 1000 
 Errors: 0 
-Stands: 100 
+Stands: 1000 
 Errors: 0 
 
-Input : FOFEM_FlamingSAInput1.csv 
+Input : FOFEM_smolderingSAInput1.csv 
 Output: ConE-Out.txt 
 Errors: ConE-Err.txt 

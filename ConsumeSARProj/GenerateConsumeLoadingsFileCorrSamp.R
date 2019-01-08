@@ -62,6 +62,7 @@ GenerateFuelInput.fn<-function(corr.samp.vals,nreps=NA,fbLoadNames.df,all.fbs,ba
     
     base.loads$filename[(1:(nrow(input.samp)))]<-rep("sobolSamplefb",nrow(input.samp)) # and give each fuelbed a unique name, here, and number, below
     base.loads$fuelbed_number[(1:(nrow(input.samp)))]<-base.fb*1000+1:nrow(input.samp)
+    base.loads$duff_upper_loading[base.loads$duff_upper_loading<0.1]<-0.1 # for consistency with FOFEM
   }
   if(mod=="F")
   {
@@ -83,6 +84,7 @@ GenerateFuelInput.fn<-function(corr.samp.vals,nreps=NA,fbLoadNames.df,all.fbs,ba
     
     base.loads$Stand<-as.numeric(base.loads$Stand)
     base.loads$Stand[(1:(nrow(input.samp)))]<-base.fb*1000+1:nrow(input.samp)
+    base.loads$Duff_tpa[base.loads$Duff_tpa<0.1]<-0.10 # for FOFEM, does not allow a value of zero for duff
   }
   return(base.loads)
 }

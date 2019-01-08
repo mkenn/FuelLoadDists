@@ -22,7 +22,9 @@ call.emissions.mods<-function(infilename="FuelLoadInputSA.csv",mod="C",fuel.load
     
     # and create an environmental input file that is just repeated for all rows of the fuels file
     # This is baseline environmental conditions. Consider including in SA
+    print(paste("reading in environmental file",env.in.name))
     env.in<-read.csv(env.in.name) ###Note, if this file changes so should the FOFEM input file moistures
+    print(paste("finished reading in environmental file",env.in.name))
     new.env.in<-env.in[1,]
     for(m in 2:nrow(fuel.loads))
     {
@@ -31,6 +33,7 @@ call.emissions.mods<-function(infilename="FuelLoadInputSA.csv",mod="C",fuel.load
     new.env.in$fuelbeds<-fuel.loads$fuelbed_number
 #    envfilename<-"EnvInputSA.csv"
     write.table(new.env.in,file=envfilename,row.names=FALSE,sep=",")
+    print(paste("finished writing environmental file",envfilename))
     
     # and now we call consume
     # first format the system call
@@ -55,9 +58,11 @@ call.emissions.mods<-function(infilename="FuelLoadInputSA.csv",mod="C",fuel.load
     
     setwd(newwd)
 #    setwd("fofem")
+    print(paste("just before writing to",fofem.filename))
     write("#1k-SizeClass",file=fofem.filename) # switch header to indicate 
-    write.table(fuel.loads,file=fofem.filename,append = TRUE,sep=",",row.names = FALSE,col.names = FALSE)
+    write.table(fuel.loads,file=fofem.filename,append = TRUE,sep=",",row.names = FALSE,col.names = FALSE,na="  ")
     system.call<-paste("FOF_GUI C",fofem.filename,"ConE-Out.txt ConE-run.txt ConE-Err.txt H", sep=" ")
+    print("just before calling fofem")
     system(system.call) # tells R to execute this system call in the working directory
     
     check.fofem<-scan("ConE-Err.txt",what = character())# if there is no error recorded, then this file will be empty

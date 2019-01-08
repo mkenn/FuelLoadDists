@@ -1,7 +1,9 @@
 EVT_Fuel,EVT_Fuel_N,FCCSID,Fuelbed Name,,EVT_FUEL,EVT_FUEL_N,EVT_LF,EVT_GP,EVT_GP_N,EVT_PHYS
+2055,Tr Rocky Mountain Subalpine Dry-Mesic Spruce-Fir Forest and Woodland,59,Subalpine fir-Engelmann spruce -Douglas-fir-lodgepole pine forest,,2055,Tr Rocky Mountain Subalpine Dry-Mesic Spruce-Fir Forest and Woodland,Tree,639,Spruce-Fir Forest and Woodland,Conifer
 2314,Tr North-Central Interior Maple-Basswood Forest,266,Sugar maple-basswood forest,,2314,Tr North-Central Interior Maple-Basswood Forest,Tree,655,Beech-Maple-Basswood Forest,Hardwood
 2302,Tr Laurentian-Acadian Northern Hardwoods Forest,110,American beech-yellow birch-sugar maple forest,,2302,Tr Laurentian-Acadian Northern Hardwoods Forest,Tree,682,Yellow Birch-Sugar Maple Forest,Hardwood
 2469,Tr Eastern Great Plains Floodplain Systems,129,Green ash-American elm forest,,2469,Tr Eastern Great Plains Floodplain Systems,Tree,666,Eastern Floodplain Forests,Riparian
 2477,Tr Boreal Acidic Peatland Systems,279,Black spruce-northern white cedar-larch fores,,2477,Tr Boreal Acidic Peatland Systems,Tree,683,Peatland Forests,Riparian
 2053,Tr Northern Rocky Mountain Ponderosa Pine Woodland and Savanna,53,Pacific ponderosa pine forest,,2053,Tr Northern Rocky Mountain Ponderosa Pine Woodland and Savanna,Tree,631,"Ponderosa Pine Forest, Woodland and Savanna",Conifer
 2045,Tr Northern Rocky Mountain Dry-Mesic Montane Mixed Conifer Forest,52,Douglas-fir-Pacific ponderosa pine/oceanspray forest,,2045,Tr Northern Rocky Mountain Dry-Mesic Montane Mixed Conifer Forest,Tree,625,Douglas-fir-Ponderosa Pine-Lodgepole Pine Forest and Woodland,Conifer
+2050,Tr Rocky Mountain Lodgepole Pine Forest,22,Mature lodgepole pine forest,,2050,Tr Rocky Mountain Lodgepole Pine Forest,Tree,622,Lodgepole Pine Forest and Woodland,Conifer

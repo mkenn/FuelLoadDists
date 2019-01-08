@@ -1,6 +1,8 @@
 ##########
 # to run consume and fofem SA
 # using modular functions
+# Note that fofem doesn't work on MCK office computer because of issues
+# with .NET framework
 ###########
 # read in the necessary files
 ###########
@@ -136,7 +138,7 @@ fofem.env.infile.names.list<-list(fofem80Names,fofem97Names)
 ##
 # how many samples? Eventually probably 5000, let's just do 10 for now
 ##
-N.samp<-100
+N.samp<-20
 n.boot<-10
 #######
 # flaming first
@@ -151,7 +153,7 @@ flaming.sa.indices<-list()
 make.graph=TRUE
 
 if(make.graph)
-  pdf(file="FirstTryAllEVTsResultsUsingWrapperForPub.pdf")
+  pdf(file="FirstTryAllEVTsResultsUsingWrapperForPub5000.pdf")
 #for(m in 1:length(evt.vals)) #set m 
 for(k in 1:length(target.evts)) #set m 
 {

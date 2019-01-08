@@ -76,7 +76,7 @@ responseFOFEM.vars<-c("COF","CO2F","PM25F","COS","CO2S","PM25S")
 # env.fofem.97.infile.names<- rep(G_F, 75)
 
 ##These are the locations in the evt vector that are of interest that need a different file name
-v1<-c(8, 15, 19, 25, 36, 39, 49, 58, 59)
+#v1<-c(8, 15, 19, 25, 36, 39, 49, 58, 59)
 
 
 consume80Names<-c( 
@@ -119,8 +119,8 @@ fofem.env.infile.names.list<-list(fofem80Names,fofem97Names)
 ##
 # how many samples? Eventually probably 5000, let's just do 10 for now
 ##
-N.samp<-100
-n.boot<-10
+N.samp<-5000
+n.boot<-1000
 #######
 # smoldering first
 #######
@@ -131,7 +131,7 @@ fuels.smoldering.mats<-list()
 smoldering.sa.results<-list()
 smoldering.sa.indices<-list()
 
-make.graph=FALSE
+make.graph=TRUE
 
 # for smoldering only target EVGs 5 and 6 will work, have sufficient coverage
 

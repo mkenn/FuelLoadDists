@@ -45,10 +45,12 @@ ModSA_Wrapper.fn<-function(corr.samp.vals.sobol,corr.samp.vals.prcc,nreps=NA,fbL
                            env.in.name="sample_consume5_input.csv",envfilename="EnvInputSA.csv",
                            #fofem.env.in.name="FofemEnvExampleIn.csv",
                            fofem.filename="FOFEM_FlamingSAInput1.csv",newwdC="consume5/apps-consume/",
-                           oldwdC="../../",newwdF="fofem",oldwdF="../")
+                           oldwdC="../../",newwdF="fofem",oldwdF="../",callFOFEM=FALSE)
 {
   base.fb<-evtFB.map$FCCSID[evtFB.map$EVT_GP==cur.evt.num]# identify the base fb associated with this evt group
   base.fb<-unique(base.fb[!is.na(base.fb)])[1] # placeholder, take the first in the vector
+  
+  # Consume
   
   sobolC.fuel.loads<-GenerateFuelInput.fn(corr.samp.vals=corr.samp.vals.sobol,nreps=nreps,
                                           fbLoadNames.df=fbLoadNames.df,all.fbs=all.fbs,
@@ -67,28 +69,40 @@ ModSA_Wrapper.fn<-function(corr.samp.vals.sobol,corr.samp.vals.prcc,nreps=NA,fbL
   prccC.results<-call.emissions.mods(infilename=infilename,mod="C",fuel.loads=prccC.fuel.loads,
                                      env.in.name=env.in.name,envfilename=envfilename,
                                      fofem.filename=fofem.filename,newwd=newwdC,oldwd=oldwdC)
-  
   print("after prcc consume calc" )
-    sobolF.fuel.loads<-GenerateFuelInput.fn(corr.samp.vals=corr.samp.vals.sobol,nreps=nreps,
+
+  # FOFEM
+  sobolF.fuel.loads<-GenerateFuelInput.fn(corr.samp.vals=corr.samp.vals.sobol,nreps=nreps,
                                           fbLoadNames.df=fbLoadNames.df,all.fbs=all.fbs,
                                           base.fb=base.fb,base.fofem=base.fofem,change.units=change.units,
                                           mod="F",phase=phase)
   print("after generate fofem loads")
-  sobolF.results<-call.emissions.mods(infilename=infilename,mod="F",fuel.loads=sobolF.fuel.loads,
+  if(callFOFEM)
+  {
+   sobolF.results<-call.emissions.mods(infilename=infilename,mod="F",fuel.loads=sobolF.fuel.loads,
                                       env.in.name=env.in.name,envfilename=envfilename,
                                       fofem.filename=fofem.filename,newwd=newwdF,oldwd=oldwdF)
-  print("after fofem sobol results")
+    print("after fofem sobol results")
+   
+  }
+  else
+    sobolF.results<-NA
+  
   prccF.fuel.loads<-GenerateFuelInput.fn(corr.samp.vals=corr.samp.vals.prcc,nreps=nreps,
                                          fbLoadNames.df=fbLoadNames.df,all.fbs=all.fbs,
                                          base.fb=base.fb,base.fofem=base.fofem,change.units=change.units,
                                          mod="F",phase=phase)
   print("after prcc fofem call")
-  prccF.results<-call.emissions.mods(infilename=infilename,mod="F",fuel.loads=prccF.fuel.loads,
+  if(callFOFEM)
+  {
+    prccF.results<-call.emissions.mods(infilename=infilename,mod="F",fuel.loads=prccF.fuel.loads,
                                      env.in.name=env.in.name,envfilename=envfilename,
                                      fofem.filename=fofem.filename,newwd=newwdF,oldwd=oldwdF)
   
-  print("after prcc fofem results")
-  
+    print("after prcc fofem results")
+  }
+  else
+    prccF.results<-NA
   
   return(list(sobolCResults=sobolC.results,prccCResults=prccC.results,
               sobolFResults=sobolF.results,prccFResults=prccF.results,

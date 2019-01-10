@@ -119,7 +119,7 @@ fofem.env.infile.names.list<-list(fofem80Names,fofem97Names)
 ##
 # how many samples? Eventually probably 5000, let's just do 10 for now
 ##
-N.samp<-5000
+N.samp<-1000
 n.boot<-1000
 #######
 # smoldering first
@@ -135,6 +135,7 @@ make.graph=TRUE
 
 # for smoldering only target EVGs 5 and 6 will work, have sufficient coverage
 
+all.id<-0
 if(make.graph)
   pdf(file="FirstTryAllEVTsResultsUsingWrapperForPubSmoldering.pdf")
 #for(m in 1:length(evt.vals)) #set m 
@@ -160,18 +161,18 @@ for(k in 1:length(target.evts)) #set m
     if(!is.na(fuels.smoldering.mats[[k]])[1])
     {
       for(j in 1:2) {
-        
+        all.id<-all.id+1
       base.fofem<-read.csv(fofem.env.infile.names.list[[j]][k]) 
         # note, this file has the header--our final file will not
         # note also this has the fuel moistures matched to consume env input as
         # best we can. If that changes, so should this
         base.fofem.use<-base.fofem[1,]
         
-      smoldering.sa.results[[k]]<-ModSA_Wrapper.fn(corr.samp.vals.sobol = fuels.smoldering.mats[[k]]$corr.samp.vals.sobol,
+      smoldering.sa.results[[all.id]]<-ModSA_Wrapper.fn(corr.samp.vals.sobol = fuels.smoldering.mats[[k]]$corr.samp.vals.sobol,
                                            corr.samp.vals.prcc = fuels.smoldering.mats[[k]]$corr.samp.vals.prcc,nreps = nreps,
                                            fbLoadNames.df=fbLoadNames.df,all.fbs=all.fbs,evtFB.map=evtFB.map,
                                            cur.evt.num = cur.evt.num,change.units=T,
-                                           infilename="FuelLoadInputSA.csv",mod="F",phase = "F",
+                                           infilename="FuelLoadInputSA.csv",mod="F",phase = "S",
                                            env.in.name=consume.env.infile.names.list[[j]][k], envfilename="EnvInputSA.csv",
                                            #fofem.env.in.name=fofem.env.infile.names.list[[j]][k],
                                            fofem.filename="FOFEM_smolderingSAInput1.csv",newwdF="fofem",oldwdF="../",#fofem.filename=fofem.env.infile.names.list[[j]][k]
@@ -184,7 +185,7 @@ for(k in 1:length(target.evts)) #set m
           par(mfrow=c(3,3),mar=c(12,3,1.5,0.5),mgp=c(2,0.5,0))
           
           #Sobol Consume smoldering
-          smoldering.sa.indices[[k]]$ConsumeSobol<-graphResult_Wrapper.fn(analysisType = "sobol", modelListType = "sens.consume.list", 
+          smoldering.sa.indices[[all.id]]$ConsumeSobol<-graphResult_Wrapper.fn(analysisType = "sobol", modelListType = "sens.consume.list", 
                                                                        modelResponse.vars = responseConsume.vars,
                                  mats.sobol.obj = fuels.smoldering.mats[[k]]$sobol.obj, sobolResults = smoldering.sa.results[[k]]$sobolCResults,
                                  corr.samp.vals.sobol = fuels.smoldering.mats[[k]]$corr.samp.vals.sobol, n.var=length(smolder2.id),sobol.obj = sens.consume.list,

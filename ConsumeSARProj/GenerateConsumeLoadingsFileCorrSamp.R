@@ -38,12 +38,12 @@ GenerateFuelInput.fn<-function(corr.samp.vals,nreps=NA,fbLoadNames.df,all.fbs,ba
       {
         if(match.Names[ii]=="litter_depth"|match.Names[ii]=="duff_upper_depth"|match.Names[ii]=="DuffDepth")
         {
-          input.samp[,ii]<-input.samp[,ii]*0.393701
+          input.samp[,ii]<-round(input.samp[,ii]*0.393701,digits=5)
         }
          
          else # 1.10231 tons/Mg, 2.47105 acre/ha
         {
-          input.samp[,ii]<-input.samp[,ii]*1.10231/2.47105
+          input.samp[,ii]<-round(input.samp[,ii]*1.10231/2.47105,digits=5)
         }
       }
     }

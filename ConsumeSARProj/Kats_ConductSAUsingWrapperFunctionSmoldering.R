@@ -131,7 +131,8 @@ fuels.smoldering.mats<-list()
 smoldering.sa.results<-list()
 smoldering.sa.indices<-list()
 
-make.graph=FALSE
+callFOFEM=FALSE # office computer, retain fuel loads and call FOFEM on laptop
+make.graph=TRUE
 
 # for smoldering only target EVGs 5 and 6 will work, have sufficient coverage
 
@@ -176,7 +177,7 @@ for(k in 1:length(target.evts)) #set m
                                            env.in.name=consume.env.infile.names.list[[j]][k], envfilename="EnvInputSA.csv",
                                            #fofem.env.in.name=fofem.env.infile.names.list[[j]][k],
                                            fofem.filename="FOFEM_smolderingSAInput1.csv",newwdF="fofem",oldwdF="../",#fofem.filename=fofem.env.infile.names.list[[j]][k]
-                                           newwdC="consume5/apps-consume/",oldwdC="../../",base.fofem=base.fofem.use)     ##fofem.inname
+                                           newwdC="consume5/apps-consume/",oldwdC="../../",base.fofem=base.fofem.use,callFOFEM)     ##fofem.inname
         ###########
         # now graph results
         ###########
@@ -187,7 +188,7 @@ for(k in 1:length(target.evts)) #set m
           #Sobol Consume smoldering
           smoldering.sa.indices[[all.id]]$ConsumeSobol<-graphResult_Wrapper.fn(analysisType = "sobol", modelListType = "sens.consume.list", 
                                                                        modelResponse.vars = responseConsume.vars,
-                                 mats.sobol.obj = fuels.smoldering.mats[[all.id]]$sobol.obj, sobolResults = smoldering.sa.results[[all.id]]$sobolCResults,
+                                 mats.sobol.obj = fuels.smoldering.mats[[k]]$sobol.obj, sobolResults = smoldering.sa.results[[all.id]]$sobolCResults,
                                  corr.samp.vals.sobol = fuels.smoldering.mats[[k]]$corr.samp.vals.sobol, n.var=length(smolder2.id),sobol.obj = sens.consume.list,
                                  x.lab="Consume",y.lab="Sobol output:",y.lim=c(-0.15,1), corr.samp.vals.prcc,prccCResults,
                                  rank=TRUE,n.boot=n.boot, evt.vals = evt.vals[cur.evt]) 
@@ -200,6 +201,9 @@ for(k in 1:length(target.evts)) #set m
           #                        rank=TRUE,nboot=n.boot, prcc.obj, evt.vals = evt.vals[cur.evt]) 
           
           #Sobol FOFEM smoldering
+          if(callFOFEM)
+          {
+            
           smoldering.sa.indices[[all.id]]$FOFEMSobol<-graphResult_Wrapper.fn(analysisType = "sobol", modelListType = "sens.fofem.list",
                                 modelResponse.vars = responseFOFEM.vars,
                                  mats.sobol.obj = fuels.smoldering.mats[[k]]$sobol.obj, sobolResults = smoldering.sa.results[[all.id]]$sobolFResults,
@@ -207,6 +211,7 @@ for(k in 1:length(target.evts)) #set m
                                  x.lab="FOFEM",y.lab="Sobol output:",y.lim=c(-0.15,1), main.txt, corr.samp.vals.prcc,prccCResults,
                                  rank=TRUE,n.boot=n.boot, evt.vals = evt.vals[cur.evt]) 
           print("After fofem sobol")
+          }
           #Sobol FOFEM Smoldering
           # smoldering.sa.indices[[all.id]]$FOFEMSobolS<-graphResult_Wrapper.fn(analysisType = "sobol", modelListType = "sens.fofem.list",modelResponse.vars = responseSFOFEM.vars,
           #                        mats.sobol.obj = fuels.smoldering.mats[[k]]$sobol.obj, sobolResults = smoldering.sa.results[[all.id]]$sobolFResults,
@@ -225,11 +230,14 @@ for(k in 1:length(target.evts)) #set m
           #                        corr.samp.vals.prcc = fuels.smoldering.mats[[k]]$corr.samp.vals.prcc,prccCResults = smoldering.sa.results[[all.id]]$prccCResults,
           #                        rank=TRUE,nboot=n.boot, prcc.obj = consumeF.prcc, evt.vals = evt.vals[cur.evt]) 
           #PRCC FOFEM smoldering
+          if(callFOFEM)
+          {
           smoldering.sa.indices[[all.id]]$FOFEMPRCC<-graphResult_Wrapper.fn(analysisType = "PRCC", modelListType = "fofemF.prcc", modelResponse.vars = responseFOFEM.vars,
                                  mats.sobol.obj, sobolResults,corr.samp.vals.sobol, n.var=length(smolder2.id),sobol.obj, x.lab="FOFEM",y.lab="PRCC output:",y.lim=c(-0.15,1),  
                                  corr.samp.vals.prcc = fuels.smoldering.mats[[k]]$corr.samp.vals.prcc,prccCResults = smoldering.sa.results[[all.id]]$prccFResults,
                                  rank=TRUE,n.boot=n.boot, prcc.obj = consumeF.prcc, evt.vals = evt.vals[cur.evt]) 
           print("After fofem prcc")
+          }
           #PRCC FOFEM Smoldering
           # smoldering.sa.indices[[all.id]]$FOFEMPRCCS<-graphResult_Wrapper.fn(analysisType = "PRCC", modelListType = "fofemS.prcc", modelResponse.vars = responseSFOFEM.vars,
           #                        mats.sobol.obj, sobolResults,corr.samp.vals.sobol, n.var=length(smolder2.id),sobol.obj, x.lab="FOFEM Smoldering",y.lab="PRCC output:",y.lim=c(-0.15,1), main.txt, 
